@@ -94,10 +94,6 @@ module ClockSinkDomain_1(
                 auto_bootrom_in_d_ready,
                 auto_clock_in_clock,
                 auto_clock_in_reset,
-  output        auto_bootrom_in_a_ready,
-                auto_bootrom_in_d_valid,
-  output [1:0]  auto_bootrom_in_d_bits_size,
-  output [11:0] auto_bootrom_in_d_bits_source,
   output [63:0] auto_bootrom_in_d_bits_data
 );
 
@@ -113,10 +109,6 @@ module ClockSinkDomain_1(
     .auto_in_a_bits_mask    (auto_bootrom_in_a_bits_mask),
     .auto_in_a_bits_corrupt (auto_bootrom_in_a_bits_corrupt),
     .auto_in_d_ready        (auto_bootrom_in_d_ready),
-    .auto_in_a_ready        (auto_bootrom_in_a_ready),
-    .auto_in_d_valid        (auto_bootrom_in_d_valid),
-    .auto_in_d_bits_size    (auto_bootrom_in_d_bits_size),
-    .auto_in_d_bits_source  (auto_bootrom_in_d_bits_source),
     .auto_in_d_bits_data    (auto_bootrom_in_d_bits_data)
   );
 endmodule

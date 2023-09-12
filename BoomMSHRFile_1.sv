@@ -431,7 +431,6 @@ module BoomMSHRFile_1(
   wire [31:0] _mmios_0_io_mem_access_bits_address;	// mshrs.scala:710:22
   wire [7:0]  _mmios_0_io_mem_access_bits_mask;	// mshrs.scala:710:22
   wire [63:0] _mmios_0_io_mem_access_bits_data;	// mshrs.scala:710:22
-  wire        _mmio_alloc_arb_io_in_0_ready;	// mshrs.scala:703:30
   wire        _mshrs_3_io_req_pri_rdy;	// mshrs.scala:620:22
   wire        _mshrs_3_io_req_sec_rdy;	// mshrs.scala:620:22
   wire        _mshrs_3_io_idx_valid;	// mshrs.scala:620:22
@@ -450,7 +449,6 @@ module BoomMSHRFile_1(
   wire        _mshrs_3_io_refill_valid;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_3_io_refill_bits_way_en;	// mshrs.scala:620:22
   wire [11:0] _mshrs_3_io_refill_bits_addr;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_3_io_refill_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_3_io_meta_write_valid;	// mshrs.scala:620:22
   wire [5:0]  _mshrs_3_io_meta_write_bits_idx;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_3_io_meta_write_bits_way_en;	// mshrs.scala:620:22
@@ -466,12 +464,9 @@ module BoomMSHRFile_1(
   wire [2:0]  _mshrs_3_io_wb_req_bits_param;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_3_io_wb_req_bits_way_en;	// mshrs.scala:620:22
   wire        _mshrs_3_io_lb_read_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_3_io_lb_read_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_3_io_lb_read_bits_offset;	// mshrs.scala:620:22
   wire        _mshrs_3_io_lb_write_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_3_io_lb_write_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_3_io_lb_write_bits_offset;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_3_io_lb_write_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_3_io_replay_valid;	// mshrs.scala:620:22
   wire [6:0]  _mshrs_3_io_replay_bits_uop_uopc;	// mshrs.scala:620:22
   wire [31:0] _mshrs_3_io_replay_bits_uop_inst;	// mshrs.scala:620:22
@@ -657,7 +652,6 @@ module BoomMSHRFile_1(
   wire        _mshrs_2_io_refill_valid;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_2_io_refill_bits_way_en;	// mshrs.scala:620:22
   wire [11:0] _mshrs_2_io_refill_bits_addr;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_2_io_refill_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_2_io_meta_write_valid;	// mshrs.scala:620:22
   wire [5:0]  _mshrs_2_io_meta_write_bits_idx;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_2_io_meta_write_bits_way_en;	// mshrs.scala:620:22
@@ -673,12 +667,9 @@ module BoomMSHRFile_1(
   wire [2:0]  _mshrs_2_io_wb_req_bits_param;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_2_io_wb_req_bits_way_en;	// mshrs.scala:620:22
   wire        _mshrs_2_io_lb_read_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_2_io_lb_read_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_2_io_lb_read_bits_offset;	// mshrs.scala:620:22
   wire        _mshrs_2_io_lb_write_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_2_io_lb_write_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_2_io_lb_write_bits_offset;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_2_io_lb_write_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_2_io_replay_valid;	// mshrs.scala:620:22
   wire [6:0]  _mshrs_2_io_replay_bits_uop_uopc;	// mshrs.scala:620:22
   wire [31:0] _mshrs_2_io_replay_bits_uop_inst;	// mshrs.scala:620:22
@@ -864,7 +855,6 @@ module BoomMSHRFile_1(
   wire        _mshrs_1_io_refill_valid;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_1_io_refill_bits_way_en;	// mshrs.scala:620:22
   wire [11:0] _mshrs_1_io_refill_bits_addr;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_1_io_refill_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_1_io_meta_write_valid;	// mshrs.scala:620:22
   wire [5:0]  _mshrs_1_io_meta_write_bits_idx;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_1_io_meta_write_bits_way_en;	// mshrs.scala:620:22
@@ -880,12 +870,9 @@ module BoomMSHRFile_1(
   wire [2:0]  _mshrs_1_io_wb_req_bits_param;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_1_io_wb_req_bits_way_en;	// mshrs.scala:620:22
   wire        _mshrs_1_io_lb_read_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_1_io_lb_read_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_1_io_lb_read_bits_offset;	// mshrs.scala:620:22
   wire        _mshrs_1_io_lb_write_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_1_io_lb_write_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_1_io_lb_write_bits_offset;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_1_io_lb_write_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_1_io_replay_valid;	// mshrs.scala:620:22
   wire [6:0]  _mshrs_1_io_replay_bits_uop_uopc;	// mshrs.scala:620:22
   wire [31:0] _mshrs_1_io_replay_bits_uop_inst;	// mshrs.scala:620:22
@@ -1071,7 +1058,6 @@ module BoomMSHRFile_1(
   wire        _mshrs_0_io_refill_valid;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_0_io_refill_bits_way_en;	// mshrs.scala:620:22
   wire [11:0] _mshrs_0_io_refill_bits_addr;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_0_io_refill_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_0_io_meta_write_valid;	// mshrs.scala:620:22
   wire [5:0]  _mshrs_0_io_meta_write_bits_idx;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_0_io_meta_write_bits_way_en;	// mshrs.scala:620:22
@@ -1087,12 +1073,9 @@ module BoomMSHRFile_1(
   wire [2:0]  _mshrs_0_io_wb_req_bits_param;	// mshrs.scala:620:22
   wire [7:0]  _mshrs_0_io_wb_req_bits_way_en;	// mshrs.scala:620:22
   wire        _mshrs_0_io_lb_read_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_0_io_lb_read_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_0_io_lb_read_bits_offset;	// mshrs.scala:620:22
   wire        _mshrs_0_io_lb_write_valid;	// mshrs.scala:620:22
-  wire [1:0]  _mshrs_0_io_lb_write_bits_id;	// mshrs.scala:620:22
   wire [2:0]  _mshrs_0_io_lb_write_bits_offset;	// mshrs.scala:620:22
-  wire [63:0] _mshrs_0_io_lb_write_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_0_io_replay_valid;	// mshrs.scala:620:22
   wire [6:0]  _mshrs_0_io_replay_bits_uop_uopc;	// mshrs.scala:620:22
   wire [31:0] _mshrs_0_io_replay_bits_uop_inst;	// mshrs.scala:620:22
@@ -1260,11 +1243,9 @@ module BoomMSHRFile_1(
   wire [63:0] _mshrs_0_io_resp_bits_data;	// mshrs.scala:620:22
   wire        _mshrs_0_io_resp_bits_is_hella;	// mshrs.scala:620:22
   wire        _mshrs_0_io_probe_rdy;	// mshrs.scala:620:22
-  wire        _refill_arb_io_in_0_ready;	// mshrs.scala:604:30
   wire        _refill_arb_io_in_1_ready;	// mshrs.scala:604:30
   wire        _refill_arb_io_in_2_ready;	// mshrs.scala:604:30
   wire        _refill_arb_io_in_3_ready;	// mshrs.scala:604:30
-  wire        _resp_arb_io_in_0_ready;	// mshrs.scala:603:30
   wire        _resp_arb_io_in_1_ready;	// mshrs.scala:603:30
   wire        _resp_arb_io_in_2_ready;	// mshrs.scala:603:30
   wire        _resp_arb_io_in_3_ready;	// mshrs.scala:603:30
@@ -1351,22 +1332,18 @@ module BoomMSHRFile_1(
   wire [1:0]  _resp_arb_io_out_bits_uop_debug_tsrc;	// mshrs.scala:603:30
   wire [63:0] _resp_arb_io_out_bits_data;	// mshrs.scala:603:30
   wire        _resp_arb_io_out_bits_is_hella;	// mshrs.scala:603:30
-  wire        _replay_arb_io_in_0_ready;	// mshrs.scala:602:30
   wire        _replay_arb_io_in_1_ready;	// mshrs.scala:602:30
   wire        _replay_arb_io_in_2_ready;	// mshrs.scala:602:30
   wire        _replay_arb_io_in_3_ready;	// mshrs.scala:602:30
   wire        _replay_arb_io_out_valid;	// mshrs.scala:602:30
   wire [4:0]  _replay_arb_io_out_bits_uop_mem_cmd;	// mshrs.scala:602:30
   wire [4:0]  _replay_arb_io_out_bits_sdq_id;	// mshrs.scala:602:30
-  wire        _wb_req_arb_io_in_0_ready;	// mshrs.scala:601:30
   wire        _wb_req_arb_io_in_1_ready;	// mshrs.scala:601:30
   wire        _wb_req_arb_io_in_2_ready;	// mshrs.scala:601:30
   wire        _wb_req_arb_io_in_3_ready;	// mshrs.scala:601:30
-  wire        _meta_read_arb_io_in_0_ready;	// mshrs.scala:600:30
   wire        _meta_read_arb_io_in_1_ready;	// mshrs.scala:600:30
   wire        _meta_read_arb_io_in_2_ready;	// mshrs.scala:600:30
   wire        _meta_read_arb_io_in_3_ready;	// mshrs.scala:600:30
-  wire        _meta_write_arb_io_in_0_ready;	// mshrs.scala:599:30
   wire        _meta_write_arb_io_in_1_ready;	// mshrs.scala:599:30
   wire        _meta_write_arb_io_in_2_ready;	// mshrs.scala:599:30
   wire        _meta_write_arb_io_in_3_ready;	// mshrs.scala:599:30
@@ -1377,7 +1354,6 @@ module BoomMSHRFile_1(
   wire [1:0]  _lb_write_arb_io_out_bits_id;	// mshrs.scala:570:28
   wire [2:0]  _lb_write_arb_io_out_bits_offset;	// mshrs.scala:570:28
   wire [63:0] _lb_write_arb_io_out_bits_data;	// mshrs.scala:570:28
-  wire        _lb_read_arb_io_in_0_ready;	// mshrs.scala:569:28
   wire        _lb_read_arb_io_in_1_ready;	// mshrs.scala:569:28
   wire        _lb_read_arb_io_in_2_ready;	// mshrs.scala:569:28
   wire        _lb_read_arb_io_in_3_ready;	// mshrs.scala:569:28
@@ -1773,19 +1749,18 @@ module BoomMSHRFile_1(
   );
   Arbiter_24 lb_read_arb (	// mshrs.scala:569:28
     .io_in_0_valid       (_mshrs_0_io_lb_read_valid),	// mshrs.scala:620:22
-    .io_in_0_bits_id     (_mshrs_0_io_lb_read_bits_id),	// mshrs.scala:620:22
+    .io_in_0_bits_id     (2'h0),
     .io_in_0_bits_offset (_mshrs_0_io_lb_read_bits_offset),	// mshrs.scala:620:22
     .io_in_1_valid       (_mshrs_1_io_lb_read_valid),	// mshrs.scala:620:22
-    .io_in_1_bits_id     (_mshrs_1_io_lb_read_bits_id),	// mshrs.scala:620:22
+    .io_in_1_bits_id     (2'h1),
     .io_in_1_bits_offset (_mshrs_1_io_lb_read_bits_offset),	// mshrs.scala:620:22
     .io_in_2_valid       (_mshrs_2_io_lb_read_valid),	// mshrs.scala:620:22
-    .io_in_2_bits_id     (_mshrs_2_io_lb_read_bits_id),	// mshrs.scala:620:22
+    .io_in_2_bits_id     (2'h2),
     .io_in_2_bits_offset (_mshrs_2_io_lb_read_bits_offset),	// mshrs.scala:620:22
     .io_in_3_valid       (_mshrs_3_io_lb_read_valid),	// mshrs.scala:620:22
-    .io_in_3_bits_id     (_mshrs_3_io_lb_read_bits_id),	// mshrs.scala:620:22
+    .io_in_3_bits_id     (2'h3),	// Mux.scala:47:69
     .io_in_3_bits_offset (_mshrs_3_io_lb_read_bits_offset),	// mshrs.scala:620:22
     .io_out_ready        (~_lb_write_arb_io_out_valid),	// Mux.scala:47:69, mshrs.scala:543:21, :570:28, :572:29, :576:37, :579:30
-    .io_in_0_ready       (_lb_read_arb_io_in_0_ready),
     .io_in_1_ready       (_lb_read_arb_io_in_1_ready),
     .io_in_2_ready       (_lb_read_arb_io_in_2_ready),
     .io_in_3_ready       (_lb_read_arb_io_in_3_ready),
@@ -1795,21 +1770,21 @@ module BoomMSHRFile_1(
   );
   Arbiter_25 lb_write_arb (	// mshrs.scala:570:28
     .io_in_0_valid       (_mshrs_0_io_lb_write_valid),	// mshrs.scala:620:22
-    .io_in_0_bits_id     (_mshrs_0_io_lb_write_bits_id),	// mshrs.scala:620:22
+    .io_in_0_bits_id     (2'h0),
     .io_in_0_bits_offset (_mshrs_0_io_lb_write_bits_offset),	// mshrs.scala:620:22
-    .io_in_0_bits_data   (_mshrs_0_io_lb_write_bits_data),	// mshrs.scala:620:22
+    .io_in_0_bits_data   (io_mem_grant_bits_data),
     .io_in_1_valid       (_mshrs_1_io_lb_write_valid),	// mshrs.scala:620:22
-    .io_in_1_bits_id     (_mshrs_1_io_lb_write_bits_id),	// mshrs.scala:620:22
+    .io_in_1_bits_id     (2'h1),
     .io_in_1_bits_offset (_mshrs_1_io_lb_write_bits_offset),	// mshrs.scala:620:22
-    .io_in_1_bits_data   (_mshrs_1_io_lb_write_bits_data),	// mshrs.scala:620:22
+    .io_in_1_bits_data   (io_mem_grant_bits_data),
     .io_in_2_valid       (_mshrs_2_io_lb_write_valid),	// mshrs.scala:620:22
-    .io_in_2_bits_id     (_mshrs_2_io_lb_write_bits_id),	// mshrs.scala:620:22
+    .io_in_2_bits_id     (2'h2),
     .io_in_2_bits_offset (_mshrs_2_io_lb_write_bits_offset),	// mshrs.scala:620:22
-    .io_in_2_bits_data   (_mshrs_2_io_lb_write_bits_data),	// mshrs.scala:620:22
+    .io_in_2_bits_data   (io_mem_grant_bits_data),
     .io_in_3_valid       (_mshrs_3_io_lb_write_valid),	// mshrs.scala:620:22
-    .io_in_3_bits_id     (_mshrs_3_io_lb_write_bits_id),	// mshrs.scala:620:22
+    .io_in_3_bits_id     (2'h3),	// Mux.scala:47:69
     .io_in_3_bits_offset (_mshrs_3_io_lb_write_bits_offset),	// mshrs.scala:620:22
-    .io_in_3_bits_data   (_mshrs_3_io_lb_write_bits_data),	// mshrs.scala:620:22
+    .io_in_3_bits_data   (io_mem_grant_bits_data),
     .io_in_1_ready       (_lb_write_arb_io_in_1_ready),
     .io_in_2_ready       (_lb_write_arb_io_in_2_ready),
     .io_in_3_ready       (_lb_write_arb_io_in_3_ready),
@@ -1840,7 +1815,6 @@ module BoomMSHRFile_1(
     .io_in_3_bits_data_coh_state (_mshrs_3_io_meta_write_bits_data_coh_state),	// mshrs.scala:620:22
     .io_in_3_bits_data_tag       (_mshrs_3_io_meta_write_bits_data_tag),	// mshrs.scala:620:22
     .io_out_ready                (io_meta_write_ready),
-    .io_in_0_ready               (_meta_write_arb_io_in_0_ready),
     .io_in_1_ready               (_meta_write_arb_io_in_1_ready),
     .io_in_2_ready               (_meta_write_arb_io_in_2_ready),
     .io_in_3_ready               (_meta_write_arb_io_in_3_ready),
@@ -1868,7 +1842,6 @@ module BoomMSHRFile_1(
     .io_in_3_bits_way_en (_mshrs_3_io_meta_read_bits_way_en),	// mshrs.scala:620:22
     .io_in_3_bits_tag    (_mshrs_3_io_meta_read_bits_tag),	// mshrs.scala:620:22
     .io_out_ready        (io_meta_read_ready),
-    .io_in_0_ready       (_meta_read_arb_io_in_0_ready),
     .io_in_1_ready       (_meta_read_arb_io_in_1_ready),
     .io_in_2_ready       (_meta_read_arb_io_in_2_ready),
     .io_in_3_ready       (_meta_read_arb_io_in_3_ready),
@@ -1899,7 +1872,6 @@ module BoomMSHRFile_1(
     .io_in_3_bits_param  (_mshrs_3_io_wb_req_bits_param),	// mshrs.scala:620:22
     .io_in_3_bits_way_en (_mshrs_3_io_wb_req_bits_way_en),	// mshrs.scala:620:22
     .io_out_ready        (io_wb_req_ready),
-    .io_in_0_ready       (_wb_req_arb_io_in_0_ready),
     .io_in_1_ready       (_wb_req_arb_io_in_1_ready),
     .io_in_2_ready       (_wb_req_arb_io_in_2_ready),
     .io_in_3_ready       (_wb_req_arb_io_in_3_ready),
@@ -2247,7 +2219,6 @@ module BoomMSHRFile_1(
     .io_in_3_bits_way_en              (_mshrs_3_io_replay_bits_way_en),	// mshrs.scala:620:22
     .io_in_3_bits_sdq_id              (_mshrs_3_io_replay_bits_sdq_id),	// mshrs.scala:620:22
     .io_out_ready                     (io_replay_ready),
-    .io_in_0_ready                    (_replay_arb_io_in_0_ready),
     .io_in_1_ready                    (_replay_arb_io_in_1_ready),
     .io_in_2_ready                    (_replay_arb_io_in_2_ready),
     .io_in_3_ready                    (_replay_arb_io_in_3_ready),
@@ -2747,7 +2718,6 @@ module BoomMSHRFile_1(
     .io_in_4_bits_uop_debug_tsrc      (_mmios_0_io_resp_bits_uop_debug_tsrc),	// mshrs.scala:710:22
     .io_in_4_bits_data                (_mmios_0_io_resp_bits_data),	// mshrs.scala:710:22
     .io_out_ready                     (_respq_io_enq_ready),	// mshrs.scala:737:21
-    .io_in_0_ready                    (_resp_arb_io_in_0_ready),
     .io_in_1_ready                    (_resp_arb_io_in_1_ready),
     .io_in_2_ready                    (_resp_arb_io_in_2_ready),
     .io_in_3_ready                    (_resp_arb_io_in_3_ready),
@@ -2839,21 +2809,20 @@ module BoomMSHRFile_1(
     .io_in_0_valid       (_mshrs_0_io_refill_valid),	// mshrs.scala:620:22
     .io_in_0_bits_way_en (_mshrs_0_io_refill_bits_way_en),	// mshrs.scala:620:22
     .io_in_0_bits_addr   (_mshrs_0_io_refill_bits_addr),	// mshrs.scala:620:22
-    .io_in_0_bits_data   (_mshrs_0_io_refill_bits_data),	// mshrs.scala:620:22
+    .io_in_0_bits_data   (lb_read_data),	// mshrs.scala:576:37, :580:38
     .io_in_1_valid       (_mshrs_1_io_refill_valid),	// mshrs.scala:620:22
     .io_in_1_bits_way_en (_mshrs_1_io_refill_bits_way_en),	// mshrs.scala:620:22
     .io_in_1_bits_addr   (_mshrs_1_io_refill_bits_addr),	// mshrs.scala:620:22
-    .io_in_1_bits_data   (_mshrs_1_io_refill_bits_data),	// mshrs.scala:620:22
+    .io_in_1_bits_data   (lb_read_data),	// mshrs.scala:576:37, :580:38
     .io_in_2_valid       (_mshrs_2_io_refill_valid),	// mshrs.scala:620:22
     .io_in_2_bits_way_en (_mshrs_2_io_refill_bits_way_en),	// mshrs.scala:620:22
     .io_in_2_bits_addr   (_mshrs_2_io_refill_bits_addr),	// mshrs.scala:620:22
-    .io_in_2_bits_data   (_mshrs_2_io_refill_bits_data),	// mshrs.scala:620:22
+    .io_in_2_bits_data   (lb_read_data),	// mshrs.scala:576:37, :580:38
     .io_in_3_valid       (_mshrs_3_io_refill_valid),	// mshrs.scala:620:22
     .io_in_3_bits_way_en (_mshrs_3_io_refill_bits_way_en),	// mshrs.scala:620:22
     .io_in_3_bits_addr   (_mshrs_3_io_refill_bits_addr),	// mshrs.scala:620:22
-    .io_in_3_bits_data   (_mshrs_3_io_refill_bits_data),	// mshrs.scala:620:22
+    .io_in_3_bits_data   (lb_read_data),	// mshrs.scala:576:37, :580:38
     .io_out_ready        (io_refill_ready),
-    .io_in_0_ready       (_refill_arb_io_in_0_ready),
     .io_in_1_ready       (_refill_arb_io_in_1_ready),
     .io_in_2_ready       (_refill_arb_io_in_2_ready),
     .io_in_3_ready       (_refill_arb_io_in_3_ready),
@@ -2968,22 +2937,21 @@ module BoomMSHRFile_1(
     .io_mem_grant_bits_param            (io_mem_grant_bits_param),
     .io_mem_grant_bits_size             (io_mem_grant_bits_size),
     .io_mem_grant_bits_sink             (io_mem_grant_bits_sink),
-    .io_mem_grant_bits_data             (io_mem_grant_bits_data),
     .io_mem_finish_ready
       (io_mem_finish_ready & (~beatsLeft_1 | state_1_0)),	// Arbiter.scala:87:30, :88:28, :116:26, :121:24, :123:31
     .io_prober_state_valid              (io_prober_state_valid),
     .io_prober_state_bits               (io_prober_state_bits),
-    .io_refill_ready                    (_refill_arb_io_in_0_ready),	// mshrs.scala:604:30
-    .io_meta_write_ready                (_meta_write_arb_io_in_0_ready),	// mshrs.scala:599:30
-    .io_meta_read_ready                 (_meta_read_arb_io_in_0_ready),	// mshrs.scala:600:30
+    .io_refill_ready                    (io_refill_ready),
+    .io_meta_write_ready                (io_meta_write_ready),
+    .io_meta_read_ready                 (io_meta_read_ready),
     .io_meta_resp_valid                 (io_meta_resp_valid),
     .io_meta_resp_bits_coh_state        (io_meta_resp_bits_coh_state),
-    .io_wb_req_ready                    (_wb_req_arb_io_in_0_ready),	// mshrs.scala:601:30
-    .io_lb_read_ready                   (_lb_read_arb_io_in_0_ready),	// mshrs.scala:569:28
+    .io_wb_req_ready                    (io_wb_req_ready),
+    .io_lb_read_ready                   (~_lb_write_arb_io_out_valid),	// Mux.scala:47:69, mshrs.scala:543:21, :570:28, :572:29, :576:37, :579:30
     .io_lb_resp                         (lb_read_data),	// mshrs.scala:576:37, :580:38
     .io_lb_write_ready                  (1'h1),
-    .io_replay_ready                    (_replay_arb_io_in_0_ready),	// mshrs.scala:602:30
-    .io_resp_ready                      (_resp_arb_io_in_0_ready),	// mshrs.scala:603:30
+    .io_replay_ready                    (io_replay_ready),
+    .io_resp_ready                      (_respq_io_enq_ready),	// mshrs.scala:737:21
     .io_wb_resp                         (io_wb_resp),
     .io_req_pri_rdy                     (_mshrs_0_io_req_pri_rdy),
     .io_req_sec_rdy                     (_mshrs_0_io_req_sec_rdy),
@@ -3003,7 +2971,6 @@ module BoomMSHRFile_1(
     .io_refill_valid                    (_mshrs_0_io_refill_valid),
     .io_refill_bits_way_en              (_mshrs_0_io_refill_bits_way_en),
     .io_refill_bits_addr                (_mshrs_0_io_refill_bits_addr),
-    .io_refill_bits_data                (_mshrs_0_io_refill_bits_data),
     .io_meta_write_valid                (_mshrs_0_io_meta_write_valid),
     .io_meta_write_bits_idx             (_mshrs_0_io_meta_write_bits_idx),
     .io_meta_write_bits_way_en          (_mshrs_0_io_meta_write_bits_way_en),
@@ -3019,12 +2986,9 @@ module BoomMSHRFile_1(
     .io_wb_req_bits_param               (_mshrs_0_io_wb_req_bits_param),
     .io_wb_req_bits_way_en              (_mshrs_0_io_wb_req_bits_way_en),
     .io_lb_read_valid                   (_mshrs_0_io_lb_read_valid),
-    .io_lb_read_bits_id                 (_mshrs_0_io_lb_read_bits_id),
     .io_lb_read_bits_offset             (_mshrs_0_io_lb_read_bits_offset),
     .io_lb_write_valid                  (_mshrs_0_io_lb_write_valid),
-    .io_lb_write_bits_id                (_mshrs_0_io_lb_write_bits_id),
     .io_lb_write_bits_offset            (_mshrs_0_io_lb_write_bits_offset),
-    .io_lb_write_bits_data              (_mshrs_0_io_lb_write_bits_data),
     .io_replay_valid                    (_mshrs_0_io_replay_valid),
     .io_replay_bits_uop_uopc            (_mshrs_0_io_replay_bits_uop_uopc),
     .io_replay_bits_uop_inst            (_mshrs_0_io_replay_bits_uop_inst),
@@ -3300,7 +3264,6 @@ module BoomMSHRFile_1(
     .io_mem_grant_bits_param            (io_mem_grant_bits_param),
     .io_mem_grant_bits_size             (io_mem_grant_bits_size),
     .io_mem_grant_bits_sink             (io_mem_grant_bits_sink),
-    .io_mem_grant_bits_data             (io_mem_grant_bits_data),
     .io_mem_finish_ready
       (io_mem_finish_ready & (beatsLeft_1 ? state_1_1 : ~_mshrs_0_io_mem_finish_valid)),	// Arbiter.scala:16:61, :87:30, :116:26, :121:24, :123:31, mshrs.scala:620:22
     .io_prober_state_valid              (io_prober_state_valid),
@@ -3335,7 +3298,6 @@ module BoomMSHRFile_1(
     .io_refill_valid                    (_mshrs_1_io_refill_valid),
     .io_refill_bits_way_en              (_mshrs_1_io_refill_bits_way_en),
     .io_refill_bits_addr                (_mshrs_1_io_refill_bits_addr),
-    .io_refill_bits_data                (_mshrs_1_io_refill_bits_data),
     .io_meta_write_valid                (_mshrs_1_io_meta_write_valid),
     .io_meta_write_bits_idx             (_mshrs_1_io_meta_write_bits_idx),
     .io_meta_write_bits_way_en          (_mshrs_1_io_meta_write_bits_way_en),
@@ -3351,12 +3313,9 @@ module BoomMSHRFile_1(
     .io_wb_req_bits_param               (_mshrs_1_io_wb_req_bits_param),
     .io_wb_req_bits_way_en              (_mshrs_1_io_wb_req_bits_way_en),
     .io_lb_read_valid                   (_mshrs_1_io_lb_read_valid),
-    .io_lb_read_bits_id                 (_mshrs_1_io_lb_read_bits_id),
     .io_lb_read_bits_offset             (_mshrs_1_io_lb_read_bits_offset),
     .io_lb_write_valid                  (_mshrs_1_io_lb_write_valid),
-    .io_lb_write_bits_id                (_mshrs_1_io_lb_write_bits_id),
     .io_lb_write_bits_offset            (_mshrs_1_io_lb_write_bits_offset),
-    .io_lb_write_bits_data              (_mshrs_1_io_lb_write_bits_data),
     .io_replay_valid                    (_mshrs_1_io_replay_valid),
     .io_replay_bits_uop_uopc            (_mshrs_1_io_replay_bits_uop_uopc),
     .io_replay_bits_uop_inst            (_mshrs_1_io_replay_bits_uop_inst),
@@ -3632,7 +3591,6 @@ module BoomMSHRFile_1(
     .io_mem_grant_bits_param            (io_mem_grant_bits_param),
     .io_mem_grant_bits_size             (io_mem_grant_bits_size),
     .io_mem_grant_bits_sink             (io_mem_grant_bits_sink),
-    .io_mem_grant_bits_data             (io_mem_grant_bits_data),
     .io_mem_finish_ready
       (io_mem_finish_ready & (beatsLeft_1 ? state_1_2 : ~_GEN_9)),	// Arbiter.scala:16:61, :87:30, :116:26, :121:24, :123:31, package.scala:244:43
     .io_prober_state_valid              (io_prober_state_valid),
@@ -3667,7 +3625,6 @@ module BoomMSHRFile_1(
     .io_refill_valid                    (_mshrs_2_io_refill_valid),
     .io_refill_bits_way_en              (_mshrs_2_io_refill_bits_way_en),
     .io_refill_bits_addr                (_mshrs_2_io_refill_bits_addr),
-    .io_refill_bits_data                (_mshrs_2_io_refill_bits_data),
     .io_meta_write_valid                (_mshrs_2_io_meta_write_valid),
     .io_meta_write_bits_idx             (_mshrs_2_io_meta_write_bits_idx),
     .io_meta_write_bits_way_en          (_mshrs_2_io_meta_write_bits_way_en),
@@ -3683,12 +3640,9 @@ module BoomMSHRFile_1(
     .io_wb_req_bits_param               (_mshrs_2_io_wb_req_bits_param),
     .io_wb_req_bits_way_en              (_mshrs_2_io_wb_req_bits_way_en),
     .io_lb_read_valid                   (_mshrs_2_io_lb_read_valid),
-    .io_lb_read_bits_id                 (_mshrs_2_io_lb_read_bits_id),
     .io_lb_read_bits_offset             (_mshrs_2_io_lb_read_bits_offset),
     .io_lb_write_valid                  (_mshrs_2_io_lb_write_valid),
-    .io_lb_write_bits_id                (_mshrs_2_io_lb_write_bits_id),
     .io_lb_write_bits_offset            (_mshrs_2_io_lb_write_bits_offset),
-    .io_lb_write_bits_data              (_mshrs_2_io_lb_write_bits_data),
     .io_replay_valid                    (_mshrs_2_io_replay_valid),
     .io_replay_bits_uop_uopc            (_mshrs_2_io_replay_bits_uop_uopc),
     .io_replay_bits_uop_inst            (_mshrs_2_io_replay_bits_uop_inst),
@@ -3964,7 +3918,6 @@ module BoomMSHRFile_1(
     .io_mem_grant_bits_param            (io_mem_grant_bits_param),
     .io_mem_grant_bits_size             (io_mem_grant_bits_size),
     .io_mem_grant_bits_sink             (io_mem_grant_bits_sink),
-    .io_mem_grant_bits_data             (io_mem_grant_bits_data),
     .io_mem_finish_ready
       (io_mem_finish_ready & (beatsLeft_1 ? state_1_3 : ~_GEN_10)),	// Arbiter.scala:16:61, :87:30, :116:26, :121:24, :123:31, package.scala:244:43
     .io_prober_state_valid              (io_prober_state_valid),
@@ -3999,7 +3952,6 @@ module BoomMSHRFile_1(
     .io_refill_valid                    (_mshrs_3_io_refill_valid),
     .io_refill_bits_way_en              (_mshrs_3_io_refill_bits_way_en),
     .io_refill_bits_addr                (_mshrs_3_io_refill_bits_addr),
-    .io_refill_bits_data                (_mshrs_3_io_refill_bits_data),
     .io_meta_write_valid                (_mshrs_3_io_meta_write_valid),
     .io_meta_write_bits_idx             (_mshrs_3_io_meta_write_bits_idx),
     .io_meta_write_bits_way_en          (_mshrs_3_io_meta_write_bits_way_en),
@@ -4015,12 +3967,9 @@ module BoomMSHRFile_1(
     .io_wb_req_bits_param               (_mshrs_3_io_wb_req_bits_param),
     .io_wb_req_bits_way_en              (_mshrs_3_io_wb_req_bits_way_en),
     .io_lb_read_valid                   (_mshrs_3_io_lb_read_valid),
-    .io_lb_read_bits_id                 (_mshrs_3_io_lb_read_bits_id),
     .io_lb_read_bits_offset             (_mshrs_3_io_lb_read_bits_offset),
     .io_lb_write_valid                  (_mshrs_3_io_lb_write_valid),
-    .io_lb_write_bits_id                (_mshrs_3_io_lb_write_bits_id),
     .io_lb_write_bits_offset            (_mshrs_3_io_lb_write_bits_offset),
-    .io_lb_write_bits_data              (_mshrs_3_io_lb_write_bits_data),
     .io_replay_valid                    (_mshrs_3_io_replay_valid),
     .io_replay_bits_uop_uopc            (_mshrs_3_io_replay_bits_uop_uopc),
     .io_replay_bits_uop_inst            (_mshrs_3_io_replay_bits_uop_inst),
@@ -4189,14 +4138,10 @@ module BoomMSHRFile_1(
     .io_resp_bits_is_hella              (_mshrs_3_io_resp_bits_is_hella),
     .io_probe_rdy                       (_mshrs_3_io_probe_rdy)
   );
-  Arbiter_11 mmio_alloc_arb (	// mshrs.scala:703:30
-    .io_out_ready  (io_req_0_valid & ~cacheable),	// Parameters.scala:671:42, mshrs.scala:732:{44,47}
-    .io_in_0_ready (_mmio_alloc_arb_io_in_0_ready)
-  );
   BoomIOMSHR_1 mmios_0 (	// mshrs.scala:710:22
     .clock                            (clock),
     .reset                            (reset),
-    .io_req_valid                     (_mmio_alloc_arb_io_in_0_ready),	// mshrs.scala:703:30
+    .io_req_valid                     (io_req_0_valid & ~cacheable),	// Parameters.scala:671:42, mshrs.scala:732:{44,47}
     .io_req_bits_uop_uopc             (io_req_0_bits_uop_uopc),
     .io_req_bits_uop_inst             (io_req_0_bits_uop_inst),
     .io_req_bits_uop_debug_inst       (io_req_0_bits_uop_debug_inst),

@@ -234,9 +234,7 @@ module BoomNonBlockingDCache_1(
   reg  [7:0]       s2_tag_match_way_0;	// dcache.scala:642:33
   wire             _wb_io_data_req_ready_T;	// dcache.scala:541:55
   wire [63:0]      _amoalu_io_out;	// dcache.scala:895:24
-  wire             _lsu_release_arb_io_in_0_ready;	// dcache.scala:813:31
   wire             _lsu_release_arb_io_in_1_ready;	// dcache.scala:813:31
-  wire             _wbArb_io_in_0_ready;	// dcache.scala:804:21
   wire             _wbArb_io_in_1_ready;	// dcache.scala:804:21
   wire             _wbArb_io_out_valid;	// dcache.scala:804:21
   wire [19:0]      _wbArb_io_out_bits_tag;	// dcache.scala:804:21
@@ -266,14 +264,12 @@ module BoomNonBlockingDCache_1(
   wire [63:0]      _data_io_resp_0_5;	// dcache.scala:459:20
   wire [63:0]      _data_io_resp_0_6;	// dcache.scala:459:20
   wire [63:0]      _data_io_resp_0_7;	// dcache.scala:459:20
-  wire             _metaReadArb_io_in_0_ready;	// dcache.scala:444:27
   wire             _metaReadArb_io_in_1_ready;	// dcache.scala:444:27
   wire             _metaReadArb_io_in_2_ready;	// dcache.scala:444:27
   wire             _metaReadArb_io_in_3_ready;	// dcache.scala:444:27
   wire             _metaReadArb_io_in_4_ready;	// dcache.scala:444:27
   wire             _metaReadArb_io_out_valid;	// dcache.scala:444:27
   wire [5:0]       _metaReadArb_io_out_bits_req_0_idx;	// dcache.scala:444:27
-  wire             _metaWriteArb_io_in_0_ready;	// dcache.scala:442:28
   wire             _metaWriteArb_io_in_1_ready;	// dcache.scala:442:28
   wire             _metaWriteArb_io_out_valid;	// dcache.scala:442:28
   wire [5:0]       _metaWriteArb_io_out_bits_idx;	// dcache.scala:442:28
@@ -936,7 +932,7 @@ module BoomNonBlockingDCache_1(
     wb_fire = _wb_fire_T & _wb_fire_T_1;	// Decoupled.scala:40:37, dcache.scala:530:40
     prober_fire = _metaReadArb_io_in_1_ready & _prober_io_meta_read_valid;	// Decoupled.scala:40:37, dcache.scala:431:22, :444:27
     _s1_valid_T_7 = _io_lsu_req_ready_output & io_lsu_req_valid;	// Decoupled.scala:40:37, dcache.scala:479:50
-    _s0_send_resp_or_nack_T_1 = _metaReadArb_io_in_0_ready & _mshrs_io_replay_valid;	// Decoupled.scala:40:37, dcache.scala:432:21, :444:27
+    _s0_send_resp_or_nack_T_1 = _meta_0_io_read_ready & _mshrs_io_replay_valid;	// Decoupled.scala:40:37, dcache.scala:432:21, :441:41
     _s0_type_T_1 = _metaReadArb_io_in_3_ready & _mshrs_io_meta_read_valid;	// Decoupled.scala:40:37, dcache.scala:432:21, :444:27
     _GEN_0 = wb_fire | prober_fire | _s0_type_T_1;	// Decoupled.scala:40:37, dcache.scala:530:40, :582:21, :583:21, :584:21, :585:21
     _s0_req_T_5_0_uop_uses_ldq = ~_GEN_0 & _mshrs_io_replay_bits_uop_uses_ldq;	// dcache.scala:432:21, :582:21, :583:21, :584:21, :585:21
@@ -1703,7 +1699,7 @@ module BoomNonBlockingDCache_1(
     .io_mem_grant
       (tl_out_d_ready & auto_out_d_valid & _wb_io_mem_grant_T_1),	// dcache.scala:788:{30,48}, :790:20, :795:24, :811:44
     .io_release_ready            (auto_out_c_ready & (idle | state_0)),	// Arbiter.scala:88:28, :116:26, :121:24, :123:31
-    .io_lsu_release_ready        (_lsu_release_arb_io_in_0_ready),	// dcache.scala:813:31
+    .io_lsu_release_ready        (io_lsu_release_ready),
     .io_req_ready                (_wb_io_req_ready),
     .io_meta_read_valid          (_wb_io_meta_read_valid),
     .io_meta_read_bits_idx       (_wb_io_meta_read_bits_idx),
@@ -1734,7 +1730,7 @@ module BoomNonBlockingDCache_1(
       (auto_out_c_ready & (idle ? ~_wb_io_release_valid : state_1)),	// Arbiter.scala:16:61, :88:28, :116:26, :121:24, :123:31, dcache.scala:430:18
     .io_meta_read_ready                (_metaReadArb_io_in_1_ready),	// dcache.scala:444:27
     .io_meta_write_ready               (_metaWriteArb_io_in_1_ready),	// dcache.scala:442:28
-    .io_wb_req_ready                   (_wbArb_io_in_0_ready),	// dcache.scala:804:21
+    .io_wb_req_ready                   (_wb_io_req_ready),	// dcache.scala:430:18
     .io_way_en                         (s2_tag_match_way_0),	// dcache.scala:642:33
     .io_wb_rdy
       (_prober_io_meta_write_bits_idx != _wb_io_idx_bits | ~_wb_io_idx_valid),	// dcache.scala:430:18, :431:22, :784:{59,79,82}
@@ -1891,7 +1887,7 @@ module BoomNonBlockingDCache_1(
     .io_mem_grant_bits_data             (auto_out_d_bits_data),
     .io_mem_finish_ready                (auto_out_e_ready),
     .io_refill_ready                    (_dataWriteArb_io_in_1_ready),	// dcache.scala:460:28
-    .io_meta_write_ready                (_metaWriteArb_io_in_0_ready),	// dcache.scala:442:28
+    .io_meta_write_ready                (_meta_0_io_write_ready),	// dcache.scala:441:41
     .io_meta_read_ready                 (_metaReadArb_io_in_3_ready),	// dcache.scala:444:27
     .io_meta_resp_valid                 (~s2_nack_hit_0 | _prober_io_mshr_wb_rdy),	// dcache.scala:431:22, :721:31, :747:29, :771:52
     .io_meta_resp_bits_coh_state
@@ -1903,7 +1899,7 @@ module BoomNonBlockingDCache_1(
        | (s2_tag_match_way_0[5] ? mshrs_io_meta_resp_bits_REG_5_coh_state : 2'h0)
        | (s2_tag_match_way_0[6] ? mshrs_io_meta_resp_bits_REG_6_coh_state : 2'h0)
        | (s2_tag_match_way_0[7] ? mshrs_io_meta_resp_bits_REG_7_coh_state : 2'h0)),	// Mux.scala:27:72, :29:36, dcache.scala:432:21, :567:27, :642:33, :772:70
-    .io_replay_ready                    (_metaReadArb_io_in_0_ready),	// dcache.scala:444:27
+    .io_replay_ready                    (_meta_0_io_read_ready),	// dcache.scala:441:41
     .io_wb_req_ready                    (_wbArb_io_in_1_ready),	// dcache.scala:804:21
     .io_prober_state_valid              (_prober_io_state_valid),	// dcache.scala:431:22
     .io_prober_state_bits               (_prober_io_state_bits),	// dcache.scala:431:22
@@ -2078,7 +2074,6 @@ module BoomNonBlockingDCache_1(
     .io_in_1_bits_data_coh_state (_prober_io_meta_write_bits_data_coh_state),	// dcache.scala:431:22
     .io_in_1_bits_data_tag       (_prober_io_meta_write_bits_data_tag),	// dcache.scala:431:22
     .io_out_ready                (_meta_0_io_write_ready),	// dcache.scala:441:41
-    .io_in_0_ready               (_metaWriteArb_io_in_0_ready),
     .io_in_1_ready               (_metaWriteArb_io_in_1_ready),
     .io_out_valid                (_metaWriteArb_io_out_valid),
     .io_out_bits_idx             (_metaWriteArb_io_out_bits_idx),
@@ -2098,7 +2093,6 @@ module BoomNonBlockingDCache_1(
     .io_in_4_valid          (io_lsu_req_valid),
     .io_in_4_bits_req_0_idx (io_lsu_req_bits_0_bits_addr[11:6]),	// dcache.scala:484:{45,77}
     .io_out_ready           (_meta_0_io_read_ready),	// dcache.scala:441:41
-    .io_in_0_ready          (_metaReadArb_io_in_0_ready),
     .io_in_1_ready          (_metaReadArb_io_in_1_ready),
     .io_in_2_ready          (_metaReadArb_io_in_2_ready),
     .io_in_3_ready          (_metaReadArb_io_in_3_ready),
@@ -2189,7 +2183,6 @@ module BoomNonBlockingDCache_1(
     .io_in_1_bits_param    (_mshrs_io_wb_req_bits_param),	// dcache.scala:432:21
     .io_in_1_bits_way_en   (_mshrs_io_wb_req_bits_way_en),	// dcache.scala:432:21
     .io_out_ready          (_wb_io_req_ready),	// dcache.scala:430:18
-    .io_in_0_ready         (_wbArb_io_in_0_ready),
     .io_in_1_ready         (_wbArb_io_in_1_ready),
     .io_out_valid          (_wbArb_io_out_valid),
     .io_out_bits_tag       (_wbArb_io_out_bits_tag),
@@ -2204,7 +2197,6 @@ module BoomNonBlockingDCache_1(
     .io_in_1_valid        (_prober_io_lsu_release_valid),	// dcache.scala:431:22
     .io_in_1_bits_address (_prober_io_lsu_release_bits_address),	// dcache.scala:431:22
     .io_out_ready         (io_lsu_release_ready),
-    .io_in_0_ready        (_lsu_release_arb_io_in_0_ready),
     .io_in_1_ready        (_lsu_release_arb_io_in_1_ready),
     .io_out_valid         (io_lsu_release_valid),
     .io_out_bits_address  (io_lsu_release_bits_address)

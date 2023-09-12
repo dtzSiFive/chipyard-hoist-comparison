@@ -199,18 +199,7 @@ module ALUExeUnit_8(
   output [6:0]  io_ll_fresp_bits_fflags_bits_uop_rob_idx,
   output [4:0]  io_ll_fresp_bits_fflags_bits_flags,
   output        io_bypass_0_valid,
-  output [6:0]  io_bypass_0_bits_uop_pdst,
-  output [1:0]  io_bypass_0_bits_uop_dst_rtype,
   output [64:0] io_bypass_0_bits_data,
-  output        io_brinfo_uop_is_rvc,
-  output [15:0] io_brinfo_uop_br_mask,
-  output [3:0]  io_brinfo_uop_br_tag,
-  output [4:0]  io_brinfo_uop_ftq_idx,
-  output        io_brinfo_uop_edge_inst,
-  output [5:0]  io_brinfo_uop_pc_lob,
-  output [6:0]  io_brinfo_uop_rob_idx,
-  output [4:0]  io_brinfo_uop_ldq_idx,
-                io_brinfo_uop_stq_idx,
   output        io_brinfo_valid,
                 io_brinfo_mispredict,
                 io_brinfo_taken,
@@ -386,6 +375,10 @@ module ALUExeUnit_8(
   wire [19:0] _alu_io_resp_bits_uop_imm_packed;	// execution-unit.scala:262:17
   wire [63:0] _alu_io_resp_bits_data;	// execution-unit.scala:262:17
   wire [63:0] _alu_io_bypass_0_bits_data;	// execution-unit.scala:262:17
+  wire        _GEN =
+    io_req_valid
+    & (io_req_bits_uop_fu_code == 10'h1 | io_req_bits_uop_fu_code == 10'h2
+       | io_req_bits_uop_fu_code == 10'h20 & io_req_bits_uop_uopc != 7'h6C);	// execution-unit.scala:251:21, :254:21, :255:21, :266:20, :267:32, :268:{32,43}, :269:{32,43,67}
   `ifndef SYNTHESIS	// execution-unit.scala:350:12
     always @(posedge clock) begin	// execution-unit.scala:350:12
       if (~(_queue_io_enq_ready | reset)) begin	// execution-unit.scala:338:23, :350:12
@@ -399,10 +392,7 @@ module ALUExeUnit_8(
   ALUUnit_5 alu (	// execution-unit.scala:262:17
     .clock                          (clock),
     .reset                          (reset),
-    .io_req_valid
-      (io_req_valid
-       & (io_req_bits_uop_fu_code == 10'h1 | io_req_bits_uop_fu_code == 10'h2
-          | io_req_bits_uop_fu_code == 10'h20 & io_req_bits_uop_uopc != 7'h6C)),	// execution-unit.scala:251:21, :254:21, :255:21, :266:20, :267:32, :268:{32,43}, :269:{32,43,67}
+    .io_req_valid                   (_GEN),	// execution-unit.scala:266:20
     .io_req_bits_uop_uopc           (io_req_bits_uop_uopc),
     .io_req_bits_uop_is_rvc         (io_req_bits_uop_is_rvc),
     .io_req_bits_uop_ctrl_br_type   (io_req_bits_uop_ctrl_br_type),
@@ -417,15 +407,9 @@ module ALUExeUnit_8(
     .io_req_bits_uop_is_jal         (io_req_bits_uop_is_jal),
     .io_req_bits_uop_is_sfb         (io_req_bits_uop_is_sfb),
     .io_req_bits_uop_br_mask        (io_req_bits_uop_br_mask),
-    .io_req_bits_uop_br_tag         (io_req_bits_uop_br_tag),
-    .io_req_bits_uop_ftq_idx        (io_req_bits_uop_ftq_idx),
-    .io_req_bits_uop_edge_inst      (io_req_bits_uop_edge_inst),
-    .io_req_bits_uop_pc_lob         (io_req_bits_uop_pc_lob),
     .io_req_bits_uop_taken          (io_req_bits_uop_taken),
     .io_req_bits_uop_imm_packed     (io_req_bits_uop_imm_packed),
     .io_req_bits_uop_rob_idx        (io_req_bits_uop_rob_idx),
-    .io_req_bits_uop_ldq_idx        (io_req_bits_uop_ldq_idx),
-    .io_req_bits_uop_stq_idx        (io_req_bits_uop_stq_idx),
     .io_req_bits_uop_pdst           (io_req_bits_uop_pdst),
     .io_req_bits_uop_prs1           (io_req_bits_uop_prs1),
     .io_req_bits_uop_bypassable     (io_req_bits_uop_bypassable),
@@ -447,19 +431,7 @@ module ALUExeUnit_8(
     .io_resp_bits_uop_uses_stq      (io_iresp_bits_uop_uses_stq),
     .io_resp_bits_uop_dst_rtype     (io_iresp_bits_uop_dst_rtype),
     .io_resp_bits_data              (_alu_io_resp_bits_data),
-    .io_bypass_0_valid              (io_bypass_0_valid),
-    .io_bypass_0_bits_uop_pdst      (io_bypass_0_bits_uop_pdst),
-    .io_bypass_0_bits_uop_dst_rtype (io_bypass_0_bits_uop_dst_rtype),
     .io_bypass_0_bits_data          (_alu_io_bypass_0_bits_data),
-    .io_brinfo_uop_is_rvc           (io_brinfo_uop_is_rvc),
-    .io_brinfo_uop_br_mask          (io_brinfo_uop_br_mask),
-    .io_brinfo_uop_br_tag           (io_brinfo_uop_br_tag),
-    .io_brinfo_uop_ftq_idx          (io_brinfo_uop_ftq_idx),
-    .io_brinfo_uop_edge_inst        (io_brinfo_uop_edge_inst),
-    .io_brinfo_uop_pc_lob           (io_brinfo_uop_pc_lob),
-    .io_brinfo_uop_rob_idx          (io_brinfo_uop_rob_idx),
-    .io_brinfo_uop_ldq_idx          (io_brinfo_uop_ldq_idx),
-    .io_brinfo_uop_stq_idx          (io_brinfo_uop_stq_idx),
     .io_brinfo_valid                (io_brinfo_valid),
     .io_brinfo_mispredict           (io_brinfo_mispredict),
     .io_brinfo_taken                (io_brinfo_taken),
@@ -1069,6 +1041,7 @@ module ALUExeUnit_8(
   assign io_fu_types = {1'h0, _queue_io_empty, 8'h21};	// execution-unit.scala:255:49, :256:21, :284:15, :338:23
   assign io_iresp_bits_uop_csr_addr = _alu_io_resp_bits_uop_imm_packed[19:8];	// execution-unit.scala:262:17, :411:34
   assign io_iresp_bits_data = {1'h0, _alu_io_resp_bits_data};	// execution-unit.scala:262:17, :284:15, :403:24
+  assign io_bypass_0_valid = _GEN;	// execution-unit.scala:266:20
   assign io_bypass_0_bits_data = {1'h0, _alu_io_bypass_0_bits_data};	// execution-unit.scala:262:17, :284:15
 endmodule
 

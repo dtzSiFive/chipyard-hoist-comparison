@@ -129,10 +129,6 @@ module TilePRCIDomain(
   output [2:0]  auto_tl_master_clock_xing_out_e_bits_sink
 );
 
-  wire        _intsink_3_auto_out_0;	// Crossing.scala:94:29
-  wire        _intsink_2_auto_out_0;	// Crossing.scala:94:29
-  wire        _intsink_1_auto_out_0;	// Crossing.scala:94:29
-  wire        _intsink_1_auto_out_1;	// Crossing.scala:94:29
   wire        _intsink_auto_out_0;	// Crossing.scala:74:29
   wire        _buffer_1_auto_in_a_ready;	// Buffer.scala:68:28
   wire        _buffer_1_auto_in_b_valid;	// Buffer.scala:68:28
@@ -154,47 +150,6 @@ module TilePRCIDomain(
   wire [63:0] _buffer_1_auto_in_d_bits_data;	// Buffer.scala:68:28
   wire        _buffer_1_auto_in_d_bits_corrupt;	// Buffer.scala:68:28
   wire        _buffer_1_auto_in_e_ready;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_a_ready;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_b_valid;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_in_b_bits_opcode;	// Buffer.scala:68:28
-  wire [1:0]  _buffer_auto_in_b_bits_param;	// Buffer.scala:68:28
-  wire [3:0]  _buffer_auto_in_b_bits_size;	// Buffer.scala:68:28
-  wire [1:0]  _buffer_auto_in_b_bits_source;	// Buffer.scala:68:28
-  wire [31:0] _buffer_auto_in_b_bits_address;	// Buffer.scala:68:28
-  wire [7:0]  _buffer_auto_in_b_bits_mask;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_b_bits_corrupt;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_c_ready;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_d_valid;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_in_d_bits_opcode;	// Buffer.scala:68:28
-  wire [1:0]  _buffer_auto_in_d_bits_param;	// Buffer.scala:68:28
-  wire [3:0]  _buffer_auto_in_d_bits_size;	// Buffer.scala:68:28
-  wire [1:0]  _buffer_auto_in_d_bits_source;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_in_d_bits_sink;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_d_bits_denied;	// Buffer.scala:68:28
-  wire [63:0] _buffer_auto_in_d_bits_data;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_d_bits_corrupt;	// Buffer.scala:68:28
-  wire        _buffer_auto_in_e_ready;	// Buffer.scala:68:28
-  wire        _buffer_auto_out_a_valid;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_out_a_bits_opcode;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_out_a_bits_param;	// Buffer.scala:68:28
-  wire [3:0]  _buffer_auto_out_a_bits_size;	// Buffer.scala:68:28
-  wire [1:0]  _buffer_auto_out_a_bits_source;	// Buffer.scala:68:28
-  wire [31:0] _buffer_auto_out_a_bits_address;	// Buffer.scala:68:28
-  wire [7:0]  _buffer_auto_out_a_bits_mask;	// Buffer.scala:68:28
-  wire [63:0] _buffer_auto_out_a_bits_data;	// Buffer.scala:68:28
-  wire        _buffer_auto_out_b_ready;	// Buffer.scala:68:28
-  wire        _buffer_auto_out_c_valid;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_out_c_bits_opcode;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_out_c_bits_param;	// Buffer.scala:68:28
-  wire [3:0]  _buffer_auto_out_c_bits_size;	// Buffer.scala:68:28
-  wire [1:0]  _buffer_auto_out_c_bits_source;	// Buffer.scala:68:28
-  wire [31:0] _buffer_auto_out_c_bits_address;	// Buffer.scala:68:28
-  wire [63:0] _buffer_auto_out_c_bits_data;	// Buffer.scala:68:28
-  wire        _buffer_auto_out_d_ready;	// Buffer.scala:68:28
-  wire        _buffer_auto_out_e_valid;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_auto_out_e_bits_sink;	// Buffer.scala:68:28
-  wire        _clockNode_auto_out_clock;	// ClockGroup.scala:106:107
-  wire        _clockNode_auto_out_reset;	// ClockGroup.scala:106:107
   wire        _tile_reset_domain_auto_tile_wfi_out_0;	// TilePRCIDomain.scala:45:37
   wire        _tile_reset_domain_auto_tile_tl_other_masters_out_a_valid;	// TilePRCIDomain.scala:45:37
   wire [2:0]  _tile_reset_domain_auto_tile_tl_other_masters_out_a_bits_opcode;	// TilePRCIDomain.scala:45:37
@@ -214,35 +169,34 @@ module TilePRCIDomain(
   wire [63:0] _tile_reset_domain_auto_tile_tl_other_masters_out_c_bits_data;	// TilePRCIDomain.scala:45:37
   wire        _tile_reset_domain_auto_tile_tl_other_masters_out_d_ready;	// TilePRCIDomain.scala:45:37
   wire        _tile_reset_domain_auto_tile_tl_other_masters_out_e_valid;	// TilePRCIDomain.scala:45:37
-  wire [2:0]  _tile_reset_domain_auto_tile_tl_other_masters_out_e_bits_sink;	// TilePRCIDomain.scala:45:37
   TileResetDomain tile_reset_domain (	// TilePRCIDomain.scala:45:37
-    .auto_tile_int_local_in_3_0                    (_intsink_3_auto_out_0),	// Crossing.scala:94:29
-    .auto_tile_int_local_in_2_0                    (_intsink_2_auto_out_0),	// Crossing.scala:94:29
-    .auto_tile_int_local_in_1_0                    (_intsink_1_auto_out_0),	// Crossing.scala:94:29
-    .auto_tile_int_local_in_1_1                    (_intsink_1_auto_out_1),	// Crossing.scala:94:29
+    .auto_tile_int_local_in_3_0                    (auto_int_in_clock_xing_in_2_sync_0),
+    .auto_tile_int_local_in_2_0                    (auto_int_in_clock_xing_in_1_sync_0),
+    .auto_tile_int_local_in_1_0                    (auto_int_in_clock_xing_in_0_sync_0),
+    .auto_tile_int_local_in_1_1                    (auto_int_in_clock_xing_in_0_sync_1),
     .auto_tile_int_local_in_0_0                    (_intsink_auto_out_0),	// Crossing.scala:74:29
-    .auto_tile_tl_other_masters_out_a_ready        (_buffer_auto_in_a_ready),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_valid        (_buffer_auto_in_b_valid),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_bits_opcode  (_buffer_auto_in_b_bits_opcode),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_bits_param   (_buffer_auto_in_b_bits_param),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_bits_size    (_buffer_auto_in_b_bits_size),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_bits_source  (_buffer_auto_in_b_bits_source),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_bits_address (_buffer_auto_in_b_bits_address),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_bits_mask    (_buffer_auto_in_b_bits_mask),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_b_bits_corrupt (_buffer_auto_in_b_bits_corrupt),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_c_ready        (_buffer_auto_in_c_ready),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_valid        (_buffer_auto_in_d_valid),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_opcode  (_buffer_auto_in_d_bits_opcode),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_param   (_buffer_auto_in_d_bits_param),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_size    (_buffer_auto_in_d_bits_size),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_source  (_buffer_auto_in_d_bits_source),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_sink    (_buffer_auto_in_d_bits_sink),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_denied  (_buffer_auto_in_d_bits_denied),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_data    (_buffer_auto_in_d_bits_data),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_d_bits_corrupt (_buffer_auto_in_d_bits_corrupt),	// Buffer.scala:68:28
-    .auto_tile_tl_other_masters_out_e_ready        (_buffer_auto_in_e_ready),	// Buffer.scala:68:28
-    .auto_clock_in_clock                           (_clockNode_auto_out_clock),	// ClockGroup.scala:106:107
-    .auto_clock_in_reset                           (_clockNode_auto_out_reset),	// ClockGroup.scala:106:107
+    .auto_tile_tl_other_masters_out_a_ready        (_buffer_1_auto_in_a_ready),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_valid        (_buffer_1_auto_in_b_valid),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_bits_opcode  (_buffer_1_auto_in_b_bits_opcode),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_bits_param   (_buffer_1_auto_in_b_bits_param),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_bits_size    (_buffer_1_auto_in_b_bits_size),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_bits_source  (_buffer_1_auto_in_b_bits_source),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_bits_address (_buffer_1_auto_in_b_bits_address),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_bits_mask    (_buffer_1_auto_in_b_bits_mask),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_b_bits_corrupt (_buffer_1_auto_in_b_bits_corrupt),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_c_ready        (_buffer_1_auto_in_c_ready),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_valid        (_buffer_1_auto_in_d_valid),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_opcode  (_buffer_1_auto_in_d_bits_opcode),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_param   (_buffer_1_auto_in_d_bits_param),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_size    (_buffer_1_auto_in_d_bits_size),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_source  (_buffer_1_auto_in_d_bits_source),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_sink    (_buffer_1_auto_in_d_bits_sink),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_denied  (_buffer_1_auto_in_d_bits_denied),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_data    (_buffer_1_auto_in_d_bits_data),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_d_bits_corrupt (_buffer_1_auto_in_d_bits_corrupt),	// Buffer.scala:68:28
+    .auto_tile_tl_other_masters_out_e_ready        (_buffer_1_auto_in_e_ready),	// Buffer.scala:68:28
+    .auto_clock_in_clock                           (auto_tap_clock_in_clock),
+    .auto_clock_in_reset                           (auto_tap_clock_in_reset),
     .auto_tile_wfi_out_0
       (_tile_reset_domain_auto_tile_wfi_out_0),
     .auto_tile_tl_other_masters_out_a_valid
@@ -280,17 +234,11 @@ module TilePRCIDomain(
     .auto_tile_tl_other_masters_out_d_ready
       (_tile_reset_domain_auto_tile_tl_other_masters_out_d_ready),
     .auto_tile_tl_other_masters_out_e_valid
-      (_tile_reset_domain_auto_tile_tl_other_masters_out_e_valid),
-    .auto_tile_tl_other_masters_out_e_bits_sink
-      (_tile_reset_domain_auto_tile_tl_other_masters_out_e_bits_sink)
+      (_tile_reset_domain_auto_tile_tl_other_masters_out_e_valid)
   );
-  FixedClockBroadcast_5 clockNode (	// ClockGroup.scala:106:107
-    .auto_in_clock  (auto_tap_clock_in_clock),
-    .auto_in_reset  (auto_tap_clock_in_reset),
-    .auto_out_clock (_clockNode_auto_out_clock),
-    .auto_out_reset (_clockNode_auto_out_reset)
-  );
-  TLBuffer_15 buffer (	// Buffer.scala:68:28
+  TLBuffer_16 buffer_1 (	// Buffer.scala:68:28
+    .clock                   (auto_tap_clock_in_clock),
+    .reset                   (auto_tap_clock_in_reset),
     .auto_in_a_valid         (_tile_reset_domain_auto_tile_tl_other_masters_out_a_valid),	// TilePRCIDomain.scala:45:37
     .auto_in_a_bits_opcode
       (_tile_reset_domain_auto_tile_tl_other_masters_out_a_bits_opcode),	// TilePRCIDomain.scala:45:37
@@ -322,90 +270,7 @@ module TilePRCIDomain(
       (_tile_reset_domain_auto_tile_tl_other_masters_out_c_bits_data),	// TilePRCIDomain.scala:45:37
     .auto_in_d_ready         (_tile_reset_domain_auto_tile_tl_other_masters_out_d_ready),	// TilePRCIDomain.scala:45:37
     .auto_in_e_valid         (_tile_reset_domain_auto_tile_tl_other_masters_out_e_valid),	// TilePRCIDomain.scala:45:37
-    .auto_in_e_bits_sink
-      (_tile_reset_domain_auto_tile_tl_other_masters_out_e_bits_sink),	// TilePRCIDomain.scala:45:37
-    .auto_out_a_ready        (_buffer_1_auto_in_a_ready),	// Buffer.scala:68:28
-    .auto_out_b_valid        (_buffer_1_auto_in_b_valid),	// Buffer.scala:68:28
-    .auto_out_b_bits_opcode  (_buffer_1_auto_in_b_bits_opcode),	// Buffer.scala:68:28
-    .auto_out_b_bits_param   (_buffer_1_auto_in_b_bits_param),	// Buffer.scala:68:28
-    .auto_out_b_bits_size    (_buffer_1_auto_in_b_bits_size),	// Buffer.scala:68:28
-    .auto_out_b_bits_source  (_buffer_1_auto_in_b_bits_source),	// Buffer.scala:68:28
-    .auto_out_b_bits_address (_buffer_1_auto_in_b_bits_address),	// Buffer.scala:68:28
-    .auto_out_b_bits_mask    (_buffer_1_auto_in_b_bits_mask),	// Buffer.scala:68:28
-    .auto_out_b_bits_corrupt (_buffer_1_auto_in_b_bits_corrupt),	// Buffer.scala:68:28
-    .auto_out_c_ready        (_buffer_1_auto_in_c_ready),	// Buffer.scala:68:28
-    .auto_out_d_valid        (_buffer_1_auto_in_d_valid),	// Buffer.scala:68:28
-    .auto_out_d_bits_opcode  (_buffer_1_auto_in_d_bits_opcode),	// Buffer.scala:68:28
-    .auto_out_d_bits_param   (_buffer_1_auto_in_d_bits_param),	// Buffer.scala:68:28
-    .auto_out_d_bits_size    (_buffer_1_auto_in_d_bits_size),	// Buffer.scala:68:28
-    .auto_out_d_bits_source  (_buffer_1_auto_in_d_bits_source),	// Buffer.scala:68:28
-    .auto_out_d_bits_sink    (_buffer_1_auto_in_d_bits_sink),	// Buffer.scala:68:28
-    .auto_out_d_bits_denied  (_buffer_1_auto_in_d_bits_denied),	// Buffer.scala:68:28
-    .auto_out_d_bits_data    (_buffer_1_auto_in_d_bits_data),	// Buffer.scala:68:28
-    .auto_out_d_bits_corrupt (_buffer_1_auto_in_d_bits_corrupt),	// Buffer.scala:68:28
-    .auto_out_e_ready        (_buffer_1_auto_in_e_ready),	// Buffer.scala:68:28
-    .auto_in_a_ready         (_buffer_auto_in_a_ready),
-    .auto_in_b_valid         (_buffer_auto_in_b_valid),
-    .auto_in_b_bits_opcode   (_buffer_auto_in_b_bits_opcode),
-    .auto_in_b_bits_param    (_buffer_auto_in_b_bits_param),
-    .auto_in_b_bits_size     (_buffer_auto_in_b_bits_size),
-    .auto_in_b_bits_source   (_buffer_auto_in_b_bits_source),
-    .auto_in_b_bits_address  (_buffer_auto_in_b_bits_address),
-    .auto_in_b_bits_mask     (_buffer_auto_in_b_bits_mask),
-    .auto_in_b_bits_corrupt  (_buffer_auto_in_b_bits_corrupt),
-    .auto_in_c_ready         (_buffer_auto_in_c_ready),
-    .auto_in_d_valid         (_buffer_auto_in_d_valid),
-    .auto_in_d_bits_opcode   (_buffer_auto_in_d_bits_opcode),
-    .auto_in_d_bits_param    (_buffer_auto_in_d_bits_param),
-    .auto_in_d_bits_size     (_buffer_auto_in_d_bits_size),
-    .auto_in_d_bits_source   (_buffer_auto_in_d_bits_source),
-    .auto_in_d_bits_sink     (_buffer_auto_in_d_bits_sink),
-    .auto_in_d_bits_denied   (_buffer_auto_in_d_bits_denied),
-    .auto_in_d_bits_data     (_buffer_auto_in_d_bits_data),
-    .auto_in_d_bits_corrupt  (_buffer_auto_in_d_bits_corrupt),
-    .auto_in_e_ready         (_buffer_auto_in_e_ready),
-    .auto_out_a_valid        (_buffer_auto_out_a_valid),
-    .auto_out_a_bits_opcode  (_buffer_auto_out_a_bits_opcode),
-    .auto_out_a_bits_param   (_buffer_auto_out_a_bits_param),
-    .auto_out_a_bits_size    (_buffer_auto_out_a_bits_size),
-    .auto_out_a_bits_source  (_buffer_auto_out_a_bits_source),
-    .auto_out_a_bits_address (_buffer_auto_out_a_bits_address),
-    .auto_out_a_bits_mask    (_buffer_auto_out_a_bits_mask),
-    .auto_out_a_bits_data    (_buffer_auto_out_a_bits_data),
-    .auto_out_b_ready        (_buffer_auto_out_b_ready),
-    .auto_out_c_valid        (_buffer_auto_out_c_valid),
-    .auto_out_c_bits_opcode  (_buffer_auto_out_c_bits_opcode),
-    .auto_out_c_bits_param   (_buffer_auto_out_c_bits_param),
-    .auto_out_c_bits_size    (_buffer_auto_out_c_bits_size),
-    .auto_out_c_bits_source  (_buffer_auto_out_c_bits_source),
-    .auto_out_c_bits_address (_buffer_auto_out_c_bits_address),
-    .auto_out_c_bits_data    (_buffer_auto_out_c_bits_data),
-    .auto_out_d_ready        (_buffer_auto_out_d_ready),
-    .auto_out_e_valid        (_buffer_auto_out_e_valid),
-    .auto_out_e_bits_sink    (_buffer_auto_out_e_bits_sink)
-  );
-  TLBuffer_16 buffer_1 (	// Buffer.scala:68:28
-    .clock                   (auto_tap_clock_in_clock),
-    .reset                   (auto_tap_clock_in_reset),
-    .auto_in_a_valid         (_buffer_auto_out_a_valid),	// Buffer.scala:68:28
-    .auto_in_a_bits_opcode   (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
-    .auto_in_a_bits_param    (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
-    .auto_in_a_bits_size     (_buffer_auto_out_a_bits_size),	// Buffer.scala:68:28
-    .auto_in_a_bits_source   (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
-    .auto_in_a_bits_address  (_buffer_auto_out_a_bits_address),	// Buffer.scala:68:28
-    .auto_in_a_bits_mask     (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
-    .auto_in_a_bits_data     (_buffer_auto_out_a_bits_data),	// Buffer.scala:68:28
-    .auto_in_b_ready         (_buffer_auto_out_b_ready),	// Buffer.scala:68:28
-    .auto_in_c_valid         (_buffer_auto_out_c_valid),	// Buffer.scala:68:28
-    .auto_in_c_bits_opcode   (_buffer_auto_out_c_bits_opcode),	// Buffer.scala:68:28
-    .auto_in_c_bits_param    (_buffer_auto_out_c_bits_param),	// Buffer.scala:68:28
-    .auto_in_c_bits_size     (_buffer_auto_out_c_bits_size),	// Buffer.scala:68:28
-    .auto_in_c_bits_source   (_buffer_auto_out_c_bits_source),	// Buffer.scala:68:28
-    .auto_in_c_bits_address  (_buffer_auto_out_c_bits_address),	// Buffer.scala:68:28
-    .auto_in_c_bits_data     (_buffer_auto_out_c_bits_data),	// Buffer.scala:68:28
-    .auto_in_d_ready         (_buffer_auto_out_d_ready),	// Buffer.scala:68:28
-    .auto_in_e_valid         (_buffer_auto_out_e_valid),	// Buffer.scala:68:28
-    .auto_in_e_bits_sink     (_buffer_auto_out_e_bits_sink),	// Buffer.scala:68:28
+    .auto_in_e_bits_sink     (_buffer_1_auto_in_d_bits_sink),	// Buffer.scala:68:28
     .auto_out_a_ready        (auto_tl_master_clock_xing_out_a_ready),
     .auto_out_b_valid        (auto_tl_master_clock_xing_out_b_valid),
     .auto_out_b_bits_param   (auto_tl_master_clock_xing_out_b_bits_param),
@@ -468,20 +333,6 @@ module TilePRCIDomain(
     .clock          (auto_tap_clock_in_clock),
     .auto_in_sync_0 (auto_intsink_in_sync_0),
     .auto_out_0     (_intsink_auto_out_0)
-  );
-  IntSyncSyncCrossingSink intsink_1 (	// Crossing.scala:94:29
-    .auto_in_sync_0 (auto_int_in_clock_xing_in_0_sync_0),
-    .auto_in_sync_1 (auto_int_in_clock_xing_in_0_sync_1),
-    .auto_out_0     (_intsink_1_auto_out_0),
-    .auto_out_1     (_intsink_1_auto_out_1)
-  );
-  IntSyncSyncCrossingSink_1 intsink_2 (	// Crossing.scala:94:29
-    .auto_in_sync_0 (auto_int_in_clock_xing_in_1_sync_0),
-    .auto_out_0     (_intsink_2_auto_out_0)
-  );
-  IntSyncSyncCrossingSink_1 intsink_3 (	// Crossing.scala:94:29
-    .auto_in_sync_0 (auto_int_in_clock_xing_in_2_sync_0),
-    .auto_out_0     (_intsink_3_auto_out_0)
   );
   IntSyncCrossingSource_1 intsource_1 (	// Crossing.scala:26:31
     .clock           (auto_tap_clock_in_clock),

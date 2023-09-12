@@ -99,18 +99,17 @@ module DebugTransportModuleJTAG(
                 io_jtag_TDO_data
 );
 
-  wire        _GEN;	// DebugTransport.scala:208:26, :210:97
-  wire        _GEN_0;	// DebugTransport.scala:98:24, :122:25, :210:97, :218:24
+  wire        _GEN;	// JtagTap.scala:249:21, :250:26, :252:26
+  wire        _GEN_0;	// DebugTransport.scala:208:26, :210:97
+  wire        _GEN_1;	// DebugTransport.scala:98:24, :122:25, :210:97, :218:24
   wire        _tapIO_bypassChain_io_chainOut_data;	// JtagTap.scala:211:29
   wire [4:0]  _tapIO_controllerInternal_io_output_instruction;	// JtagTap.scala:203:36
   wire        _tapIO_controllerInternal_io_output_tapIsInTestLogicReset;	// JtagTap.scala:203:36
   wire        _tapIO_controllerInternal_io_dataChainOut_shift;	// JtagTap.scala:203:36
-  wire        _tapIO_controllerInternal_io_dataChainOut_data;	// JtagTap.scala:203:36
   wire        _tapIO_controllerInternal_io_dataChainOut_capture;	// JtagTap.scala:203:36
   wire        _tapIO_controllerInternal_io_dataChainOut_update;	// JtagTap.scala:203:36
   wire        _tapIO_idcodeChain_io_chainOut_data;	// JtagTap.scala:185:33
   wire        _dmiAccessChain_io_chainOut_data;	// DebugTransport.scala:136:31
-  wire        _dmiAccessChain_io_capture_capture;	// DebugTransport.scala:136:31
   wire        _dmiAccessChain_io_update_valid;	// DebugTransport.scala:136:31
   wire [6:0]  _dmiAccessChain_io_update_bits_addr;	// DebugTransport.scala:136:31
   wire [31:0] _dmiAccessChain_io_update_bits_data;	// DebugTransport.scala:136:31
@@ -129,11 +128,11 @@ module DebugTransportModuleJTAG(
   wire        _busy_T_1 = busyReg & ~io_dmi_resp_valid;	// DebugTransport.scala:98:24, :157:{20,22}
   wire        busy = _busy_T_1 | stickyBusyReg;	// DebugTransport.scala:99:30, :157:{20,42}
   wire        _nonzeroResp_T_1 = io_dmi_resp_valid & (|io_dmi_resp_bits_resp);	// DebugTransport.scala:180:{60,85}
-  wire        _GEN_1 = busy | ~io_dmi_resp_valid;	// DebugTransport.scala:157:42, :199:40
-  wire        _GEN_2 = io_dmi_req_ready & dmiReqValidReg;	// DebugTransport.scala:113:31, Decoupled.scala:40:37
+  wire        _GEN_2 = busy | ~io_dmi_resp_valid;	// DebugTransport.scala:157:42, :199:40
+  wire        _GEN_3 = io_dmi_req_ready & dmiReqValidReg;	// DebugTransport.scala:113:31, Decoupled.scala:40:37
   `ifndef SYNTHESIS	// DebugTransport.scala:205:9
     always @(posedge io_jtag_clock) begin	// DebugTransport.scala:205:9
-      if (~(~(_dmiAccessChain_io_update_valid & _GEN & _GEN_0 & _GEN_2)
+      if (~(~(_dmiAccessChain_io_update_valid & _GEN_0 & _GEN_1 & _GEN_3)
             | io_jtag_reset)) begin	// DebugTransport.scala:98:24, :122:25, :136:31, :205:{9,10,29}, :208:26, :210:97, :218:24, Decoupled.scala:40:37
         if (`ASSERT_VERBOSE_COND_)	// DebugTransport.scala:205:9
           $error("Assertion failed: Conflicting updates for dmiReqValidReg, should not happen.\n    at DebugTransport.scala:205 assert(!(dmiReqValidCheck && io.dmi.req.fire()), \"Conflicting updates for dmiReqValidReg, should not happen.\");\n");	// DebugTransport.scala:205:9
@@ -142,17 +141,19 @@ module DebugTransportModuleJTAG(
       end
     end // always @(posedge)
   `endif // not def SYNTHESIS
-  wire        _GEN_3 = downgradeOpReg | _dmiAccessChain_io_update_bits_op == 2'h0;	// DebugTransport.scala:102:31, :136:31, :210:{32,69}
-  assign _GEN_0 = ~_GEN_3;	// DebugTransport.scala:98:24, :122:25, :210:{32,97}, :218:24
-  assign _GEN = ~stickyBusyReg;	// DebugTransport.scala:99:30, :208:26, :210:97
+  wire        _GEN_4 = downgradeOpReg | _dmiAccessChain_io_update_bits_op == 2'h0;	// DebugTransport.scala:102:31, :136:31, :210:{32,69}
+  assign _GEN_1 = ~_GEN_4;	// DebugTransport.scala:98:24, :122:25, :210:{32,97}, :218:24
+  assign _GEN_0 = ~stickyBusyReg;	// DebugTransport.scala:99:30, :208:26, :210:97
   wire        _io_dmi_resp_ready_output =
-    dmiReqReg_op == 2'h2 ? io_dmi_resp_valid : _dmiAccessChain_io_capture_capture & ~busy;	// DebugTransport.scala:112:23, :136:31, :157:42, :226:27, :227:18, :231:{41,43}
+    dmiReqReg_op == 2'h2 ? io_dmi_resp_valid : _GEN & ~busy;	// DebugTransport.scala:112:23, :157:42, :226:27, :227:18, :231:{41,43}, JtagTap.scala:249:21, :250:26, :252:26
   wire        tapIO_icodeSelects_0 =
     _tapIO_controllerInternal_io_output_instruction == 5'h1;	// JtagTap.scala:203:36, :227:82
   wire        tapIO_icodeSelects_0_1 =
     _tapIO_controllerInternal_io_output_instruction == 5'h10;	// JtagTap.scala:203:36, :227:82
   wire        tapIO_icodeSelects_0_2 =
     _tapIO_controllerInternal_io_output_instruction == 5'h11;	// JtagTap.scala:203:36, :227:82
+  assign _GEN =
+    tapIO_icodeSelects_0_2 & _tapIO_controllerInternal_io_dataChainOut_capture;	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
   always @(posedge io_jtag_clock or posedge io_jtag_reset) begin
     if (io_jtag_reset) begin
       busyReg <= 1'h0;	// DebugTransport.scala:98:24
@@ -162,30 +163,28 @@ module DebugTransportModuleJTAG(
       dmiReqValidReg <= 1'h0;	// DebugTransport.scala:113:31
     end
     else begin
-      automatic logic _GEN_4 =
+      automatic logic _GEN_5 =
         _tapIO_controllerInternal_io_output_tapIsInTestLogicReset
         | _dtmInfoChain_io_update_valid & _dtmInfoChain_io_update_bits_dmireset;	// DebugTransport.scala:130:29, :165:44, :170:39, :171:49, :172:28, :173:21, :271:45, :273:19, JtagTap.scala:203:36
       busyReg <=
         ~(_tapIO_controllerInternal_io_output_tapIsInTestLogicReset
           | _io_dmi_resp_ready_output & io_dmi_resp_valid) & (dmiReqValidReg | busyReg);	// DebugTransport.scala:98:24, :113:31, :145:27, :146:13, :148:29, :149:13, :226:27, :271:45, :272:13, Decoupled.scala:40:37, JtagTap.scala:203:36
-      stickyBusyReg <=
-        ~_GEN_4 & (_dmiAccessChain_io_capture_capture & _busy_T_1 | stickyBusyReg);	// DebugTransport.scala:99:30, :136:31, :157:20, :165:44, :167:19, :170:39, :171:49, :173:21, :271:45, :273:19
-      dmiStatus_hi <=
-        ~_GEN_4 & (_dmiAccessChain_io_capture_capture & _nonzeroResp_T_1 | dmiStatus_hi);	// DebugTransport.scala:100:37, :136:31, :165:44, :168:26, :170:39, :171:49, :172:28, :173:21, :180:60, :271:45, :273:19, :274:26
+      stickyBusyReg <= ~_GEN_5 & (_GEN & _busy_T_1 | stickyBusyReg);	// DebugTransport.scala:99:30, :157:20, :165:44, :167:19, :170:39, :171:49, :173:21, :271:45, :273:19, JtagTap.scala:249:21, :250:26, :252:26
+      dmiStatus_hi <= ~_GEN_5 & (_GEN & _nonzeroResp_T_1 | dmiStatus_hi);	// DebugTransport.scala:100:37, :165:44, :168:26, :170:39, :171:49, :172:28, :173:21, :180:60, :271:45, :273:19, :274:26, JtagTap.scala:249:21, :250:26, :252:26
       downgradeOpReg <=
         ~_tapIO_controllerInternal_io_output_tapIsInTestLogicReset
-        & (_dmiAccessChain_io_capture_capture
+        & (_GEN
              ? ~busy & (dmiStatus_hi | _nonzeroResp_T_1)
-             : ~_dmiAccessChain_io_update_valid & downgradeOpReg);	// DebugTransport.scala:100:37, :102:31, :136:31, :157:42, :162:41, :163:20, :165:44, :166:{20,24,30}, :180:{39,60}, :271:45, :275:20, JtagTap.scala:203:36
+             : ~_dmiAccessChain_io_update_valid & downgradeOpReg);	// DebugTransport.scala:100:37, :102:31, :136:31, :157:42, :162:41, :163:20, :165:44, :166:{20,24,30}, :180:{39,60}, :271:45, :275:20, JtagTap.scala:203:36, :249:21, :250:26, :252:26
       dmiReqValidReg <=
-        ~(_tapIO_controllerInternal_io_output_tapIsInTestLogicReset | _GEN_2)
-        & (_dmiAccessChain_io_update_valid & ~(stickyBusyReg | _GEN_3) | dmiReqValidReg);	// DebugTransport.scala:99:30, :113:31, :136:31, :207:41, :208:26, :210:{32,97}, :217:22, :222:28, :223:20, :271:45, :276:20, Decoupled.scala:40:37, JtagTap.scala:203:36
+        ~(_tapIO_controllerInternal_io_output_tapIsInTestLogicReset | _GEN_3)
+        & (_dmiAccessChain_io_update_valid & ~(stickyBusyReg | _GEN_4) | dmiReqValidReg);	// DebugTransport.scala:99:30, :113:31, :136:31, :207:41, :208:26, :210:{32,97}, :217:22, :222:28, :223:20, :271:45, :276:20, Decoupled.scala:40:37, JtagTap.scala:203:36
     end
   end // always @(posedge, posedge)
   always @(posedge io_jtag_clock) begin
     if (~_dmiAccessChain_io_update_valid | stickyBusyReg) begin	// DebugTransport.scala:99:30, :102:31, :112:23, :136:31, :162:41, :163:20, :207:41, :208:26
     end
-    else if (_GEN_3) begin	// DebugTransport.scala:210:32
+    else if (_GEN_4) begin	// DebugTransport.scala:210:32
       dmiReqReg_addr <= 7'h0;	// DebugTransport.scala:112:23, :184:18
       dmiReqReg_data <= 32'h0;	// DebugTransport.scala:112:23, :186:18
       dmiReqReg_op <= 2'h0;	// DebugTransport.scala:112:23
@@ -235,8 +234,7 @@ module DebugTransportModuleJTAG(
     .reset                     (io_jtag_reset),
     .io_chainIn_shift
       (tapIO_icodeSelects_0_1 & _tapIO_controllerInternal_io_dataChainOut_shift),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
-    .io_chainIn_data
-      (tapIO_icodeSelects_0_1 & _tapIO_controllerInternal_io_dataChainOut_data),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
+    .io_chainIn_data           (tapIO_icodeSelects_0_1 & io_jtag_TDI),	// JtagTap.scala:227:82, :249:21, :250:26, :252:26
     .io_chainIn_capture
       (tapIO_icodeSelects_0_1 & _tapIO_controllerInternal_io_dataChainOut_capture),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
     .io_chainIn_update
@@ -251,18 +249,15 @@ module DebugTransportModuleJTAG(
     .reset                (io_jtag_reset),
     .io_chainIn_shift
       (tapIO_icodeSelects_0_2 & _tapIO_controllerInternal_io_dataChainOut_shift),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
-    .io_chainIn_data
-      (tapIO_icodeSelects_0_2 & _tapIO_controllerInternal_io_dataChainOut_data),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
-    .io_chainIn_capture
-      (tapIO_icodeSelects_0_2 & _tapIO_controllerInternal_io_dataChainOut_capture),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
+    .io_chainIn_data      (tapIO_icodeSelects_0_2 & io_jtag_TDI),	// JtagTap.scala:227:82, :249:21, :250:26, :252:26
+    .io_chainIn_capture   (_GEN),	// JtagTap.scala:249:21, :250:26, :252:26
     .io_chainIn_update
       (tapIO_icodeSelects_0_2 & _tapIO_controllerInternal_io_dataChainOut_update),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
-    .io_capture_bits_addr (_GEN_1 ? 7'h0 : dmiReqReg_addr),	// DebugTransport.scala:112:23, :184:18, :199:40
-    .io_capture_bits_data (_GEN_1 ? 32'h0 : io_dmi_resp_bits_data),	// DebugTransport.scala:186:18, :199:40
+    .io_capture_bits_addr (_GEN_2 ? 7'h0 : dmiReqReg_addr),	// DebugTransport.scala:112:23, :184:18, :199:40
+    .io_capture_bits_data (_GEN_2 ? 32'h0 : io_dmi_resp_bits_data),	// DebugTransport.scala:186:18, :199:40
     .io_capture_bits_resp
       (busy ? 2'h3 : io_dmi_resp_valid ? io_dmi_resp_bits_resp : 2'h0),	// DebugTransport.scala:157:42, :185:21, :199:{40,60}
     .io_chainOut_data     (_dmiAccessChain_io_chainOut_data),
-    .io_capture_capture   (_dmiAccessChain_io_capture_capture),
     .io_update_valid      (_dmiAccessChain_io_update_valid),
     .io_update_bits_addr  (_dmiAccessChain_io_update_bits_addr),
     .io_update_bits_data  (_dmiAccessChain_io_update_bits_data),
@@ -273,8 +268,7 @@ module DebugTransportModuleJTAG(
     .reset              (io_jtag_reset),
     .io_chainIn_shift
       (tapIO_icodeSelects_0 & _tapIO_controllerInternal_io_dataChainOut_shift),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
-    .io_chainIn_data
-      (tapIO_icodeSelects_0 & _tapIO_controllerInternal_io_dataChainOut_data),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
+    .io_chainIn_data    (tapIO_icodeSelects_0 & io_jtag_TDI),	// JtagTap.scala:227:82, :249:21, :250:26, :252:26
     .io_chainIn_capture
       (tapIO_icodeSelects_0 & _tapIO_controllerInternal_io_dataChainOut_capture),	// JtagTap.scala:203:36, :227:82, :249:21, :250:26, :252:26
     .io_chainIn_update
@@ -300,7 +294,6 @@ module DebugTransportModuleJTAG(
     .io_output_tapIsInTestLogicReset
       (_tapIO_controllerInternal_io_output_tapIsInTestLogicReset),
     .io_dataChainOut_shift           (_tapIO_controllerInternal_io_dataChainOut_shift),
-    .io_dataChainOut_data            (_tapIO_controllerInternal_io_dataChainOut_data),
     .io_dataChainOut_capture         (_tapIO_controllerInternal_io_dataChainOut_capture),
     .io_dataChainOut_update          (_tapIO_controllerInternal_io_dataChainOut_update)
   );
@@ -308,7 +301,7 @@ module DebugTransportModuleJTAG(
     .clock              (io_jtag_clock),
     .reset              (io_jtag_reset),
     .io_chainIn_shift   (_tapIO_controllerInternal_io_dataChainOut_shift),	// JtagTap.scala:203:36
-    .io_chainIn_data    (_tapIO_controllerInternal_io_dataChainOut_data),	// JtagTap.scala:203:36
+    .io_chainIn_data    (io_jtag_TDI),
     .io_chainIn_capture (_tapIO_controllerInternal_io_dataChainOut_capture),	// JtagTap.scala:203:36
     .io_chainIn_update  (_tapIO_controllerInternal_io_dataChainOut_update),	// JtagTap.scala:203:36
     .io_chainOut_data   (_tapIO_bypassChain_io_chainOut_data)

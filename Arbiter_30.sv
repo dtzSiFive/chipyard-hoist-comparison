@@ -493,8 +493,7 @@ module Arbiter_30(
                 io_in_4_bits_uop_debug_tsrc,
   input  [63:0] io_in_4_bits_data,
   input         io_out_ready,
-  output        io_in_0_ready,
-                io_in_1_ready,
+  output        io_in_1_ready,
                 io_in_2_ready,
                 io_in_3_ready,
                 io_in_4_ready,
@@ -585,7 +584,6 @@ module Arbiter_30(
   wire _grant_T = io_in_0_valid | io_in_1_valid;	// Arbiter.scala:31:68
   wire _grant_T_1 = _grant_T | io_in_2_valid;	// Arbiter.scala:31:68
   wire _io_out_valid_T = _grant_T_1 | io_in_3_valid;	// Arbiter.scala:31:68
-  assign io_in_0_ready = io_out_ready;
   assign io_in_1_ready = ~io_in_0_valid & io_out_ready;	// Arbiter.scala:31:78, :134:19
   assign io_in_2_ready = ~_grant_T & io_out_ready;	// Arbiter.scala:31:{68,78}, :134:19
   assign io_in_3_ready = ~_grant_T_1 & io_out_ready;	// Arbiter.scala:31:{68,78}, :134:19

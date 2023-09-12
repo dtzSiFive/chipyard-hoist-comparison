@@ -103,7 +103,6 @@ module CSRFile(
                 io_tval,
   input         io_fcsr_flags_valid,
   input  [4:0]  io_fcsr_flags_bits,
-  input  [31:0] io_inst_0,
   output [63:0] io_rw_rdata,
   output        io_decode_0_fp_illegal,
                 io_decode_0_fp_csr,
@@ -196,9 +195,7 @@ module CSRFile(
   output [31:0] io_pmp_7_mask,
   output        io_inhibit_cycle,
                 io_trace_0_valid,
-  output [39:0] io_trace_0_iaddr,
-  output [31:0] io_trace_0_insn,
-  output        io_trace_0_exception,
+                io_trace_0_exception,
   output [63:0] io_customCSRs_0_value
 );
 
@@ -1525,8 +1522,6 @@ module CSRFile(
   assign io_pmp_7_mask = {_GEN_13 & ~(_GEN_13 + 30'h1), 2'h3};	// CSR.scala:316:21, PMP.scala:29:14, :60:{14,16,23}
   assign io_inhibit_cycle = reg_mcountinhibit[0];	// CSR.scala:436:34, :437:40
   assign io_trace_0_valid = io_retire | _io_trace_0_exception_output;	// CSR.scala:738:43, :1162:30
-  assign io_trace_0_iaddr = io_pc;
-  assign io_trace_0_insn = io_inst_0;
   assign io_trace_0_exception = _io_trace_0_exception_output;	// CSR.scala:738:43
   assign io_customCSRs_0_value = reg_custom_0;	// CSR.scala:628:43
 endmodule

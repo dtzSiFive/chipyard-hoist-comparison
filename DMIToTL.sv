@@ -83,37 +83,22 @@
 `endif // not def SYNTHESIS
 
 module DMIToTL(
-  input         auto_out_a_ready,
-                auto_out_d_valid,
-                auto_out_d_bits_denied,
-  input  [31:0] auto_out_d_bits_data,
-  input         auto_out_d_bits_corrupt,
-                io_dmi_req_valid,
+  input         auto_out_d_bits_denied,
+                auto_out_d_bits_corrupt,
   input  [6:0]  io_dmi_req_bits_addr,
   input  [31:0] io_dmi_req_bits_data,
   input  [1:0]  io_dmi_req_bits_op,
-  input         io_dmi_resp_ready,
-  output        auto_out_a_valid,
   output [2:0]  auto_out_a_bits_opcode,
   output [8:0]  auto_out_a_bits_address,
   output [31:0] auto_out_a_bits_data,
-  output        auto_out_d_ready,
-                io_dmi_req_ready,
-                io_dmi_resp_valid,
-  output [31:0] io_dmi_resp_bits_data,
   output [1:0]  io_dmi_resp_bits_resp
 );
 
   wire _GEN = io_dmi_req_bits_op == 2'h2;	// DMI.scala:109:30, Parameters.scala:92:32
   wire _GEN_0 = io_dmi_req_bits_op == 2'h1;	// DMI.scala:110:37
-  assign auto_out_a_valid = io_dmi_req_valid;
   assign auto_out_a_bits_opcode = _GEN ? 3'h0 : {_GEN_0, 2'h0};	// Bundles.scala:256:54, DMI.scala:95:46, :109:{30,64,76}, :110:{37,64,76}, :111:76
   assign auto_out_a_bits_address = _GEN | _GEN_0 ? {io_dmi_req_bits_addr, 2'h0} : 9'h48;	// DMI.scala:95:46, :109:{30,64,76}, :110:{37,64}, Edges.scala:470:15
   assign auto_out_a_bits_data = _GEN ? io_dmi_req_bits_data : 32'h0;	// Bundles.scala:256:54, DMI.scala:109:{30,64,76}, :110:64
-  assign auto_out_d_ready = io_dmi_resp_ready;
-  assign io_dmi_req_ready = auto_out_a_ready;
-  assign io_dmi_resp_valid = auto_out_d_valid;
-  assign io_dmi_resp_bits_data = auto_out_d_bits_data;
   assign io_dmi_resp_bits_resp = {1'h0, auto_out_d_bits_corrupt | auto_out_d_bits_denied};	// DMI.scala:110:37, :119:{28,53}
 endmodule
 

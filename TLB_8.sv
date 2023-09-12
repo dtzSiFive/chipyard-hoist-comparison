@@ -172,74 +172,9 @@ module TLB_8(
   output [26:0] io_ptw_req_bits_bits_addr
 );
 
-  wire             _normal_entries_barrier_11_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_10_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_9_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_8_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_7_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_6_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_5_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_4_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_3_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_2_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_1_io_y_px;	// package.scala:258:25
-  wire             _normal_entries_barrier_io_y_px;	// package.scala:258:25
-  wire             _entries_barrier_12_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_12_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_12_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_11_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_11_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_11_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_10_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_10_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_10_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_9_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_9_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_9_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_8_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_8_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_8_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_7_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_7_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_7_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_6_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_6_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_6_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_5_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_5_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_5_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_4_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_4_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_4_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_3_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_3_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_3_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_2_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_2_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_2_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_1_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_1_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_1_io_y_sx;	// package.scala:258:25
-  wire             _entries_barrier_io_y_u;	// package.scala:258:25
-  wire             _entries_barrier_io_y_ae;	// package.scala:258:25
-  wire             _entries_barrier_io_y_sx;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_12_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_11_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_10_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_9_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_8_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_7_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_6_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_5_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_4_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_3_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_2_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_1_io_y_ppn;	// package.scala:258:25
-  wire [19:0]      _ppn_data_barrier_io_y_ppn;	// package.scala:258:25
   wire             _pmp_io_r;	// TLB.scala:193:19
   wire             _pmp_io_w;	// TLB.scala:193:19
   wire             _pmp_io_x;	// TLB.scala:193:19
-  wire [19:0]      _mpu_ppn_data_barrier_io_y_ppn;	// package.scala:258:25
   reg  [26:0]      sectored_entries_0_0_tag;	// TLB.scala:165:29
   reg  [34:0]      sectored_entries_0_0_data_0;	// TLB.scala:165:29
   reg  [34:0]      sectored_entries_0_0_data_1;	// TLB.scala:165:29
@@ -346,12 +281,11 @@ module TLB_8(
       ? {8'h0, io_ptw_resp_bits_pte_ppn[19:0]}
       : _vm_enabled_T_2
           ? {8'h0,
-             _mpu_ppn_data_barrier_io_y_ppn[19:18],
-             (ignore_13 ? io_req_bits_vaddr[29:21] : 9'h0)
-               | _mpu_ppn_data_barrier_io_y_ppn[17:9],
+             special_entry_data_0[34:33],
+             (ignore_13 ? io_req_bits_vaddr[29:21] : 9'h0) | special_entry_data_0[32:24],
              (special_entry_level[1] ? 9'h0 : io_req_bits_vaddr[20:12])
-               | _mpu_ppn_data_barrier_io_y_ppn[8:0]}
-          : io_req_bits_vaddr[39:12];	// TLB.scala:106:26, :108:28, :109:{28,47}, :135:61, :163:30, :167:56, :183:83, :186:44, :189:20, :190:{20,123}, package.scala:258:25
+               | special_entry_data_0[23:15]}
+          : io_req_bits_vaddr[39:12];	// TLB.scala:86:77, :106:26, :108:28, :109:{28,47}, :135:61, :163:30, :167:56, :183:83, :186:44, :189:20, :190:{20,123}
   wire [2:0]       mpu_priv =
     io_ptw_resp_valid ? 3'h1 : {io_ptw_status_debug, io_ptw_status_prv};	// Cat.scala:30:58, TLB.scala:192:27
   wire [13:0]      _GEN = mpu_ppn[13:0] ^ 14'h2010;	// Parameters.scala:137:31, TLB.scala:189:20
@@ -527,45 +461,45 @@ module TLB_8(
   wire [34:0]      _normal_entries_WIRE_15 = _GEN_20[io_req_bits_vaddr[13:12]];	// TLB.scala:163:30, package.scala:154:13
   wire [12:0]      x_array_lo_1 =
     (io_ptw_status_prv[0]
-       ? ~{_entries_barrier_12_io_y_u,
-           _entries_barrier_11_io_y_u,
-           _entries_barrier_10_io_y_u,
-           _entries_barrier_9_io_y_u,
-           _entries_barrier_8_io_y_u,
-           _entries_barrier_7_io_y_u,
-           _entries_barrier_6_io_y_u,
-           _entries_barrier_5_io_y_u,
-           _entries_barrier_4_io_y_u,
-           _entries_barrier_3_io_y_u,
-           _entries_barrier_2_io_y_u,
-           _entries_barrier_1_io_y_u,
-           _entries_barrier_io_y_u}
-       : {_entries_barrier_12_io_y_u,
-          _entries_barrier_11_io_y_u,
-          _entries_barrier_10_io_y_u,
-          _entries_barrier_9_io_y_u,
-          _entries_barrier_8_io_y_u,
-          _entries_barrier_7_io_y_u,
-          _entries_barrier_6_io_y_u,
-          _entries_barrier_5_io_y_u,
-          _entries_barrier_4_io_y_u,
-          _entries_barrier_3_io_y_u,
-          _entries_barrier_2_io_y_u,
-          _entries_barrier_1_io_y_u,
-          _entries_barrier_io_y_u})
-    & {_entries_barrier_12_io_y_sx,
-       _entries_barrier_11_io_y_sx,
-       _entries_barrier_10_io_y_sx,
-       _entries_barrier_9_io_y_sx,
-       _entries_barrier_8_io_y_sx,
-       _entries_barrier_7_io_y_sx,
-       _entries_barrier_6_io_y_sx,
-       _entries_barrier_5_io_y_sx,
-       _entries_barrier_4_io_y_sx,
-       _entries_barrier_3_io_y_sx,
-       _entries_barrier_2_io_y_sx,
-       _entries_barrier_1_io_y_sx,
-       _entries_barrier_io_y_sx};	// Cat.scala:30:58, TLB.scala:181:20, :266:{22,31}, :269:39, package.scala:258:25
+       ? ~{special_entry_data_0[14],
+           superpage_entries_3_data_0[14],
+           superpage_entries_2_data_0[14],
+           superpage_entries_1_data_0[14],
+           superpage_entries_0_data_0[14],
+           _normal_entries_WIRE_15[14],
+           _normal_entries_WIRE_13[14],
+           _normal_entries_WIRE_11[14],
+           _normal_entries_WIRE_9[14],
+           _normal_entries_WIRE_7[14],
+           _normal_entries_WIRE_5[14],
+           _normal_entries_WIRE_3[14],
+           _normal_entries_WIRE_1[14]}
+       : {special_entry_data_0[14],
+          superpage_entries_3_data_0[14],
+          superpage_entries_2_data_0[14],
+          superpage_entries_1_data_0[14],
+          superpage_entries_0_data_0[14],
+          _normal_entries_WIRE_15[14],
+          _normal_entries_WIRE_13[14],
+          _normal_entries_WIRE_11[14],
+          _normal_entries_WIRE_9[14],
+          _normal_entries_WIRE_7[14],
+          _normal_entries_WIRE_5[14],
+          _normal_entries_WIRE_3[14],
+          _normal_entries_WIRE_1[14]})
+    & {special_entry_data_0[10],
+       superpage_entries_3_data_0[10],
+       superpage_entries_2_data_0[10],
+       superpage_entries_1_data_0[10],
+       superpage_entries_0_data_0[10],
+       _normal_entries_WIRE_15[10],
+       _normal_entries_WIRE_13[10],
+       _normal_entries_WIRE_11[10],
+       _normal_entries_WIRE_9[10],
+       _normal_entries_WIRE_7[10],
+       _normal_entries_WIRE_5[10],
+       _normal_entries_WIRE_3[10],
+       _normal_entries_WIRE_1[10]};	// Cat.scala:30:58, TLB.scala:86:77, :166:30, :167:56, :181:20, :266:{22,31}, :269:39
   wire             bad_va =
     _vm_enabled_T_2 & ~(io_req_bits_vaddr[39:38] == 2'h0 | (&(io_req_bits_vaddr[39:38])));	// TLB.scala:173:18, :183:83, :284:117, :289:43, :290:{47,61,67,82}
   wire             tlb_miss =
@@ -2185,36 +2119,6 @@ module TLB_8(
       `FIRRTL_AFTER_INITIAL
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  OptimizationBarrier mpu_ppn_data_barrier (	// package.scala:258:25
-    .io_x_ppn (special_entry_data_0[34:15]),	// TLB.scala:86:77, :167:56
-    .io_x_u   (special_entry_data_0[14]),	// TLB.scala:86:77, :167:56
-    .io_x_ae  (special_entry_data_0[12]),	// TLB.scala:86:77, :167:56
-    .io_x_sw  (special_entry_data_0[11]),	// TLB.scala:86:77, :167:56
-    .io_x_sx  (special_entry_data_0[10]),	// TLB.scala:86:77, :167:56
-    .io_x_sr  (special_entry_data_0[9]),	// TLB.scala:86:77, :167:56
-    .io_x_pw  (special_entry_data_0[8]),	// TLB.scala:86:77, :167:56
-    .io_x_px  (special_entry_data_0[7]),	// TLB.scala:86:77, :167:56
-    .io_x_pr  (special_entry_data_0[6]),	// TLB.scala:86:77, :167:56
-    .io_x_ppp (special_entry_data_0[5]),	// TLB.scala:86:77, :167:56
-    .io_x_pal (special_entry_data_0[4]),	// TLB.scala:86:77, :167:56
-    .io_x_paa (special_entry_data_0[3]),	// TLB.scala:86:77, :167:56
-    .io_x_eff (special_entry_data_0[2]),	// TLB.scala:86:77, :167:56
-    .io_x_c   (special_entry_data_0[1]),	// TLB.scala:86:77, :167:56
-    .io_y_ppn (_mpu_ppn_data_barrier_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
   PMPChecker pmp (	// TLB.scala:193:19
     .io_prv         (mpu_priv[1:0]),	// TLB.scala:192:27, :197:14
     .io_pmp_0_cfg_l (io_ptw_pmp_0_cfg_l),
@@ -2279,1203 +2183,63 @@ module TLB_8(
     .io_w           (_pmp_io_w),
     .io_x           (_pmp_io_x)
   );
-  OptimizationBarrier ppn_data_barrier (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_1[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_1[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_1[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_1[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_1[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_1[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_1[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_1[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_1[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_1[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_1[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_1[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_1[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_1[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_1 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_3[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_3[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_3[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_3[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_3[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_3[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_3[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_3[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_3[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_3[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_3[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_3[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_3[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_3[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_1_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_2 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_5[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_5[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_5[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_5[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_5[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_5[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_5[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_5[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_5[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_5[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_5[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_5[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_5[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_5[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_2_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_3 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_7[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_7[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_7[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_7[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_7[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_7[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_7[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_7[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_7[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_7[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_7[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_7[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_7[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_7[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_3_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_4 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_9[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_9[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_9[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_9[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_9[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_9[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_9[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_9[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_9[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_9[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_9[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_9[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_9[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_9[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_4_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_5 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_11[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_11[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_11[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_11[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_11[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_11[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_11[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_11[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_11[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_11[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_11[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_11[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_11[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_11[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_5_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_6 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_13[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_13[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_13[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_13[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_13[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_13[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_13[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_13[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_13[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_13[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_13[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_13[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_13[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_13[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_6_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_7 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_15[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_15[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_15[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_15[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_15[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_15[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_15[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_15[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_15[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_15[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_15[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_15[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_15[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_15[1]),	// TLB.scala:86:77
-    .io_y_ppn (_ppn_data_barrier_7_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_8 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_0_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_0_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_0_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_0_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_0_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_0_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_0_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_0_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_0_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_0_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_0_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_0_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_0_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_0_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (_ppn_data_barrier_8_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_9 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_1_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_1_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_1_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_1_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_1_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_1_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_1_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_1_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_1_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_1_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_1_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_1_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_1_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_1_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (_ppn_data_barrier_9_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_10 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_2_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_2_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_2_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_2_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_2_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_2_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_2_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_2_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_2_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_2_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_2_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_2_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_2_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_2_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (_ppn_data_barrier_10_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_11 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_3_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_3_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_3_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_3_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_3_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_3_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_3_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_3_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_3_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_3_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_3_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_3_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_3_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_3_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (_ppn_data_barrier_11_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier ppn_data_barrier_12 (	// package.scala:258:25
-    .io_x_ppn (special_entry_data_0[34:15]),	// TLB.scala:86:77, :167:56
-    .io_x_u   (special_entry_data_0[14]),	// TLB.scala:86:77, :167:56
-    .io_x_ae  (special_entry_data_0[12]),	// TLB.scala:86:77, :167:56
-    .io_x_sw  (special_entry_data_0[11]),	// TLB.scala:86:77, :167:56
-    .io_x_sx  (special_entry_data_0[10]),	// TLB.scala:86:77, :167:56
-    .io_x_sr  (special_entry_data_0[9]),	// TLB.scala:86:77, :167:56
-    .io_x_pw  (special_entry_data_0[8]),	// TLB.scala:86:77, :167:56
-    .io_x_px  (special_entry_data_0[7]),	// TLB.scala:86:77, :167:56
-    .io_x_pr  (special_entry_data_0[6]),	// TLB.scala:86:77, :167:56
-    .io_x_ppp (special_entry_data_0[5]),	// TLB.scala:86:77, :167:56
-    .io_x_pal (special_entry_data_0[4]),	// TLB.scala:86:77, :167:56
-    .io_x_paa (special_entry_data_0[3]),	// TLB.scala:86:77, :167:56
-    .io_x_eff (special_entry_data_0[2]),	// TLB.scala:86:77, :167:56
-    .io_x_c   (special_entry_data_0[1]),	// TLB.scala:86:77, :167:56
-    .io_y_ppn (_ppn_data_barrier_12_io_y_ppn),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_1[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_1[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_1[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_1[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_1[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_1[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_1[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_1[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_1[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_1[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_1[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_1[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_1[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_1[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_io_y_u),
-    .io_y_ae  (_entries_barrier_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_1 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_3[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_3[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_3[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_3[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_3[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_3[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_3[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_3[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_3[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_3[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_3[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_3[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_3[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_3[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_1_io_y_u),
-    .io_y_ae  (_entries_barrier_1_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_1_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_2 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_5[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_5[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_5[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_5[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_5[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_5[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_5[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_5[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_5[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_5[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_5[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_5[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_5[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_5[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_2_io_y_u),
-    .io_y_ae  (_entries_barrier_2_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_2_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_3 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_7[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_7[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_7[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_7[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_7[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_7[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_7[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_7[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_7[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_7[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_7[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_7[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_7[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_7[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_3_io_y_u),
-    .io_y_ae  (_entries_barrier_3_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_3_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_4 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_9[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_9[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_9[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_9[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_9[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_9[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_9[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_9[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_9[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_9[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_9[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_9[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_9[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_9[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_4_io_y_u),
-    .io_y_ae  (_entries_barrier_4_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_4_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_5 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_11[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_11[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_11[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_11[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_11[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_11[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_11[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_11[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_11[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_11[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_11[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_11[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_11[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_11[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_5_io_y_u),
-    .io_y_ae  (_entries_barrier_5_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_5_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_6 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_13[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_13[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_13[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_13[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_13[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_13[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_13[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_13[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_13[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_13[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_13[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_13[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_13[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_13[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_6_io_y_u),
-    .io_y_ae  (_entries_barrier_6_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_6_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_7 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_15[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_15[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_15[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_15[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_15[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_15[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_15[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_15[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_15[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_15[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_15[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_15[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_15[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_15[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_7_io_y_u),
-    .io_y_ae  (_entries_barrier_7_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_7_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_8 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_0_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_0_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_0_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_0_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_0_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_0_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_0_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_0_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_0_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_0_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_0_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_0_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_0_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_0_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_8_io_y_u),
-    .io_y_ae  (_entries_barrier_8_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_8_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_9 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_1_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_1_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_1_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_1_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_1_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_1_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_1_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_1_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_1_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_1_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_1_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_1_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_1_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_1_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_9_io_y_u),
-    .io_y_ae  (_entries_barrier_9_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_9_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_10 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_2_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_2_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_2_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_2_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_2_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_2_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_2_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_2_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_2_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_2_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_2_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_2_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_2_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_2_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_10_io_y_u),
-    .io_y_ae  (_entries_barrier_10_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_10_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_11 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_3_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_3_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_3_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_3_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_3_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_3_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_3_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_3_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_3_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_3_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_3_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_3_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_3_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_3_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_11_io_y_u),
-    .io_y_ae  (_entries_barrier_11_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_11_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier entries_barrier_12 (	// package.scala:258:25
-    .io_x_ppn (special_entry_data_0[34:15]),	// TLB.scala:86:77, :167:56
-    .io_x_u   (special_entry_data_0[14]),	// TLB.scala:86:77, :167:56
-    .io_x_ae  (special_entry_data_0[12]),	// TLB.scala:86:77, :167:56
-    .io_x_sw  (special_entry_data_0[11]),	// TLB.scala:86:77, :167:56
-    .io_x_sx  (special_entry_data_0[10]),	// TLB.scala:86:77, :167:56
-    .io_x_sr  (special_entry_data_0[9]),	// TLB.scala:86:77, :167:56
-    .io_x_pw  (special_entry_data_0[8]),	// TLB.scala:86:77, :167:56
-    .io_x_px  (special_entry_data_0[7]),	// TLB.scala:86:77, :167:56
-    .io_x_pr  (special_entry_data_0[6]),	// TLB.scala:86:77, :167:56
-    .io_x_ppp (special_entry_data_0[5]),	// TLB.scala:86:77, :167:56
-    .io_x_pal (special_entry_data_0[4]),	// TLB.scala:86:77, :167:56
-    .io_x_paa (special_entry_data_0[3]),	// TLB.scala:86:77, :167:56
-    .io_x_eff (special_entry_data_0[2]),	// TLB.scala:86:77, :167:56
-    .io_x_c   (special_entry_data_0[1]),	// TLB.scala:86:77, :167:56
-    .io_y_ppn (/* unused */),
-    .io_y_u   (_entries_barrier_12_io_y_u),
-    .io_y_ae  (_entries_barrier_12_io_y_ae),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (_entries_barrier_12_io_y_sx),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (/* unused */),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_1[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_1[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_1[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_1[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_1[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_1[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_1[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_1[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_1[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_1[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_1[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_1[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_1[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_1[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_1 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_3[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_3[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_3[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_3[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_3[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_3[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_3[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_3[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_3[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_3[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_3[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_3[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_3[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_3[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_1_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_2 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_5[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_5[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_5[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_5[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_5[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_5[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_5[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_5[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_5[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_5[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_5[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_5[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_5[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_5[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_2_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_3 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_7[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_7[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_7[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_7[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_7[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_7[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_7[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_7[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_7[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_7[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_7[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_7[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_7[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_7[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_3_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_4 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_9[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_9[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_9[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_9[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_9[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_9[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_9[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_9[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_9[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_9[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_9[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_9[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_9[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_9[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_4_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_5 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_11[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_11[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_11[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_11[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_11[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_11[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_11[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_11[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_11[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_11[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_11[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_11[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_11[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_11[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_5_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_6 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_13[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_13[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_13[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_13[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_13[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_13[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_13[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_13[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_13[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_13[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_13[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_13[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_13[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_13[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_6_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_7 (	// package.scala:258:25
-    .io_x_ppn (_normal_entries_WIRE_15[34:15]),	// TLB.scala:86:77
-    .io_x_u   (_normal_entries_WIRE_15[14]),	// TLB.scala:86:77
-    .io_x_ae  (_normal_entries_WIRE_15[12]),	// TLB.scala:86:77
-    .io_x_sw  (_normal_entries_WIRE_15[11]),	// TLB.scala:86:77
-    .io_x_sx  (_normal_entries_WIRE_15[10]),	// TLB.scala:86:77
-    .io_x_sr  (_normal_entries_WIRE_15[9]),	// TLB.scala:86:77
-    .io_x_pw  (_normal_entries_WIRE_15[8]),	// TLB.scala:86:77
-    .io_x_px  (_normal_entries_WIRE_15[7]),	// TLB.scala:86:77
-    .io_x_pr  (_normal_entries_WIRE_15[6]),	// TLB.scala:86:77
-    .io_x_ppp (_normal_entries_WIRE_15[5]),	// TLB.scala:86:77
-    .io_x_pal (_normal_entries_WIRE_15[4]),	// TLB.scala:86:77
-    .io_x_paa (_normal_entries_WIRE_15[3]),	// TLB.scala:86:77
-    .io_x_eff (_normal_entries_WIRE_15[2]),	// TLB.scala:86:77
-    .io_x_c   (_normal_entries_WIRE_15[1]),	// TLB.scala:86:77
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_7_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_8 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_0_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_0_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_0_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_0_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_0_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_0_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_0_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_0_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_0_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_0_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_0_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_0_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_0_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_0_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_8_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_9 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_1_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_1_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_1_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_1_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_1_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_1_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_1_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_1_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_1_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_1_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_1_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_1_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_1_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_1_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_9_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_10 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_2_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_2_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_2_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_2_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_2_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_2_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_2_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_2_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_2_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_2_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_2_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_2_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_2_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_2_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_10_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
-  OptimizationBarrier normal_entries_barrier_11 (	// package.scala:258:25
-    .io_x_ppn (superpage_entries_3_data_0[34:15]),	// TLB.scala:86:77, :166:30
-    .io_x_u   (superpage_entries_3_data_0[14]),	// TLB.scala:86:77, :166:30
-    .io_x_ae  (superpage_entries_3_data_0[12]),	// TLB.scala:86:77, :166:30
-    .io_x_sw  (superpage_entries_3_data_0[11]),	// TLB.scala:86:77, :166:30
-    .io_x_sx  (superpage_entries_3_data_0[10]),	// TLB.scala:86:77, :166:30
-    .io_x_sr  (superpage_entries_3_data_0[9]),	// TLB.scala:86:77, :166:30
-    .io_x_pw  (superpage_entries_3_data_0[8]),	// TLB.scala:86:77, :166:30
-    .io_x_px  (superpage_entries_3_data_0[7]),	// TLB.scala:86:77, :166:30
-    .io_x_pr  (superpage_entries_3_data_0[6]),	// TLB.scala:86:77, :166:30
-    .io_x_ppp (superpage_entries_3_data_0[5]),	// TLB.scala:86:77, :166:30
-    .io_x_pal (superpage_entries_3_data_0[4]),	// TLB.scala:86:77, :166:30
-    .io_x_paa (superpage_entries_3_data_0[3]),	// TLB.scala:86:77, :166:30
-    .io_x_eff (superpage_entries_3_data_0[2]),	// TLB.scala:86:77, :166:30
-    .io_x_c   (superpage_entries_3_data_0[1]),	// TLB.scala:86:77, :166:30
-    .io_y_ppn (/* unused */),
-    .io_y_u   (/* unused */),
-    .io_y_ae  (/* unused */),
-    .io_y_sw  (/* unused */),
-    .io_y_sx  (/* unused */),
-    .io_y_sr  (/* unused */),
-    .io_y_pw  (/* unused */),
-    .io_y_px  (_normal_entries_barrier_11_io_y_px),
-    .io_y_pr  (/* unused */),
-    .io_y_ppp (/* unused */),
-    .io_y_pal (/* unused */),
-    .io_y_paa (/* unused */),
-    .io_y_eff (/* unused */),
-    .io_y_c   (/* unused */)
-  );
   assign io_resp_miss = io_ptw_resp_valid | tlb_miss | multipleHits;	// Misc.scala:182:49, TLB.scala:325:40, :354:41
   assign io_resp_paddr =
-    {(hitsVec_0 ? _ppn_data_barrier_io_y_ppn : 20'h0)
-       | (hitsVec_1 ? _ppn_data_barrier_1_io_y_ppn : 20'h0)
-       | (hitsVec_2 ? _ppn_data_barrier_2_io_y_ppn : 20'h0)
-       | (hitsVec_3 ? _ppn_data_barrier_3_io_y_ppn : 20'h0)
-       | (hitsVec_4 ? _ppn_data_barrier_4_io_y_ppn : 20'h0)
-       | (hitsVec_5 ? _ppn_data_barrier_5_io_y_ppn : 20'h0)
-       | (hitsVec_6 ? _ppn_data_barrier_6_io_y_ppn : 20'h0)
-       | (hitsVec_7 ? _ppn_data_barrier_7_io_y_ppn : 20'h0)
+    {(hitsVec_0 ? _normal_entries_WIRE_1[34:15] : 20'h0)
+       | (hitsVec_1 ? _normal_entries_WIRE_3[34:15] : 20'h0)
+       | (hitsVec_2 ? _normal_entries_WIRE_5[34:15] : 20'h0)
+       | (hitsVec_3 ? _normal_entries_WIRE_7[34:15] : 20'h0)
+       | (hitsVec_4 ? _normal_entries_WIRE_9[34:15] : 20'h0)
+       | (hitsVec_5 ? _normal_entries_WIRE_11[34:15] : 20'h0)
+       | (hitsVec_6 ? _normal_entries_WIRE_13[34:15] : 20'h0)
+       | (hitsVec_7 ? _normal_entries_WIRE_15[34:15] : 20'h0)
        | (hitsVec_8
-            ? {_ppn_data_barrier_8_io_y_ppn[19:18],
+            ? {superpage_entries_0_data_0[34:33],
                (ignore_1 ? io_req_bits_vaddr[29:21] : 9'h0)
-                 | _ppn_data_barrier_8_io_y_ppn[17:9],
-               io_req_bits_vaddr[20:12] | _ppn_data_barrier_8_io_y_ppn[8:0]}
+                 | superpage_entries_0_data_0[32:24],
+               io_req_bits_vaddr[20:12] | superpage_entries_0_data_0[23:15]}
             : 20'h0)
        | (hitsVec_9
-            ? {_ppn_data_barrier_9_io_y_ppn[19:18],
+            ? {superpage_entries_1_data_0[34:33],
                (ignore_4 ? io_req_bits_vaddr[29:21] : 9'h0)
-                 | _ppn_data_barrier_9_io_y_ppn[17:9],
-               io_req_bits_vaddr[20:12] | _ppn_data_barrier_9_io_y_ppn[8:0]}
+                 | superpage_entries_1_data_0[32:24],
+               io_req_bits_vaddr[20:12] | superpage_entries_1_data_0[23:15]}
             : 20'h0)
        | (hitsVec_10
-            ? {_ppn_data_barrier_10_io_y_ppn[19:18],
+            ? {superpage_entries_2_data_0[34:33],
                (ignore_7 ? io_req_bits_vaddr[29:21] : 9'h0)
-                 | _ppn_data_barrier_10_io_y_ppn[17:9],
-               io_req_bits_vaddr[20:12] | _ppn_data_barrier_10_io_y_ppn[8:0]}
+                 | superpage_entries_2_data_0[32:24],
+               io_req_bits_vaddr[20:12] | superpage_entries_2_data_0[23:15]}
             : 20'h0)
        | (hitsVec_11
-            ? {_ppn_data_barrier_11_io_y_ppn[19:18],
+            ? {superpage_entries_3_data_0[34:33],
                (ignore_10 ? io_req_bits_vaddr[29:21] : 9'h0)
-                 | _ppn_data_barrier_11_io_y_ppn[17:9],
-               io_req_bits_vaddr[20:12] | _ppn_data_barrier_11_io_y_ppn[8:0]}
+                 | superpage_entries_3_data_0[32:24],
+               io_req_bits_vaddr[20:12] | superpage_entries_3_data_0[23:15]}
             : 20'h0)
        | (hitsVec_12
-            ? {_ppn_data_barrier_12_io_y_ppn[19:18],
+            ? {special_entry_data_0[34:33],
                (ignore_13 ? io_req_bits_vaddr[29:21] : 9'h0)
-                 | _ppn_data_barrier_12_io_y_ppn[17:9],
+                 | special_entry_data_0[32:24],
                (special_entry_level[1] ? 9'h0 : io_req_bits_vaddr[20:12])
-                 | _ppn_data_barrier_12_io_y_ppn[8:0]}
+                 | special_entry_data_0[23:15]}
             : 20'h0) | (_vm_enabled_T_2 ? 20'h0 : io_req_bits_vaddr[31:12]),
-     io_req_bits_vaddr[11:0]};	// Cat.scala:30:58, Mux.scala:27:72, TLB.scala:94:28, :106:26, :108:28, :109:{28,47}, :135:61, :163:30, :167:56, :183:83, :191:52, :214:44, :217:77, package.scala:258:25
+     io_req_bits_vaddr[11:0]};	// Cat.scala:30:58, Mux.scala:27:72, TLB.scala:86:77, :94:28, :106:26, :108:28, :109:{28,47}, :135:61, :163:30, :166:30, :167:56, :183:83, :191:52, :214:44, :217:77
   assign io_resp_pf_inst =
     bad_va
-    | (|({~(x_array_lo_1[12] | _entries_barrier_12_io_y_ae),
-          ~(x_array_lo_1[11] | _entries_barrier_11_io_y_ae),
-          ~(x_array_lo_1[10] | _entries_barrier_10_io_y_ae),
-          ~(x_array_lo_1[9] | _entries_barrier_9_io_y_ae),
-          ~(x_array_lo_1[8] | _entries_barrier_8_io_y_ae),
-          ~(x_array_lo_1[7] | _entries_barrier_7_io_y_ae),
-          ~(x_array_lo_1[6] | _entries_barrier_6_io_y_ae),
-          ~(x_array_lo_1[5] | _entries_barrier_5_io_y_ae),
-          ~(x_array_lo_1[4] | _entries_barrier_4_io_y_ae),
-          ~(x_array_lo_1[3] | _entries_barrier_3_io_y_ae),
-          ~(x_array_lo_1[2] | _entries_barrier_2_io_y_ae),
-          ~(x_array_lo_1[1] | _entries_barrier_1_io_y_ae),
-          ~(x_array_lo_1[0] | _entries_barrier_io_y_ae)}
+    | (|({~(x_array_lo_1[12] | special_entry_data_0[12]),
+          ~(x_array_lo_1[11] | superpage_entries_3_data_0[12]),
+          ~(x_array_lo_1[10] | superpage_entries_2_data_0[12]),
+          ~(x_array_lo_1[9] | superpage_entries_1_data_0[12]),
+          ~(x_array_lo_1[8] | superpage_entries_0_data_0[12]),
+          ~(x_array_lo_1[7] | _normal_entries_WIRE_15[12]),
+          ~(x_array_lo_1[6] | _normal_entries_WIRE_13[12]),
+          ~(x_array_lo_1[5] | _normal_entries_WIRE_11[12]),
+          ~(x_array_lo_1[4] | _normal_entries_WIRE_9[12]),
+          ~(x_array_lo_1[3] | _normal_entries_WIRE_7[12]),
+          ~(x_array_lo_1[2] | _normal_entries_WIRE_5[12]),
+          ~(x_array_lo_1[1] | _normal_entries_WIRE_3[12]),
+          ~(x_array_lo_1[0] | _normal_entries_WIRE_1[12])}
          & {hitsVec_12,
             hitsVec_11,
             hitsVec_10,
@@ -3488,35 +2252,35 @@ module TLB_8(
             hitsVec_3,
             hitsVec_2,
             hitsVec_1,
-            hitsVec_0}));	// Cat.scala:30:58, TLB.scala:214:44, :269:39, :284:117, :322:{23,33}, :344:{29,47,55}, package.scala:258:25
+            hitsVec_0}));	// Cat.scala:30:58, TLB.scala:86:77, :166:30, :167:56, :214:44, :269:39, :284:117, :322:{23,33}, :344:{29,47,55}
   assign io_resp_ae_inst =
     |(~({{2{newEntry_px}},
-         _normal_entries_barrier_11_io_y_px,
-         _normal_entries_barrier_10_io_y_px,
-         _normal_entries_barrier_9_io_y_px,
-         _normal_entries_barrier_8_io_y_px,
-         _normal_entries_barrier_7_io_y_px,
-         _normal_entries_barrier_6_io_y_px,
-         _normal_entries_barrier_5_io_y_px,
-         _normal_entries_barrier_4_io_y_px,
-         _normal_entries_barrier_3_io_y_px,
-         _normal_entries_barrier_2_io_y_px,
-         _normal_entries_barrier_1_io_y_px,
-         _normal_entries_barrier_io_y_px}
+         superpage_entries_3_data_0[7],
+         superpage_entries_2_data_0[7],
+         superpage_entries_1_data_0[7],
+         superpage_entries_0_data_0[7],
+         _normal_entries_WIRE_15[7],
+         _normal_entries_WIRE_13[7],
+         _normal_entries_WIRE_11[7],
+         _normal_entries_WIRE_9[7],
+         _normal_entries_WIRE_7[7],
+         _normal_entries_WIRE_5[7],
+         _normal_entries_WIRE_3[7],
+         _normal_entries_WIRE_1[7]}
         & {1'h1,
-           ~_entries_barrier_12_io_y_ae,
-           ~_entries_barrier_11_io_y_ae,
-           ~_entries_barrier_10_io_y_ae,
-           ~_entries_barrier_9_io_y_ae,
-           ~_entries_barrier_8_io_y_ae,
-           ~_entries_barrier_7_io_y_ae,
-           ~_entries_barrier_6_io_y_ae,
-           ~_entries_barrier_5_io_y_ae,
-           ~_entries_barrier_4_io_y_ae,
-           ~_entries_barrier_3_io_y_ae,
-           ~_entries_barrier_2_io_y_ae,
-           ~_entries_barrier_1_io_y_ae,
-           ~_entries_barrier_io_y_ae})
+           ~(special_entry_data_0[12]),
+           ~(superpage_entries_3_data_0[12]),
+           ~(superpage_entries_2_data_0[12]),
+           ~(superpage_entries_1_data_0[12]),
+           ~(superpage_entries_0_data_0[12]),
+           ~(_normal_entries_WIRE_15[12]),
+           ~(_normal_entries_WIRE_13[12]),
+           ~(_normal_entries_WIRE_11[12]),
+           ~(_normal_entries_WIRE_9[12]),
+           ~(_normal_entries_WIRE_7[12]),
+           ~(_normal_entries_WIRE_5[12]),
+           ~(_normal_entries_WIRE_3[12]),
+           ~(_normal_entries_WIRE_1[12])})
       & {~_vm_enabled_T_2,
          hitsVec_12,
          hitsVec_11,
@@ -3530,7 +2294,7 @@ module TLB_8(
          hitsVec_3,
          hitsVec_2,
          hitsVec_1,
-         hitsVec_0});	// Bitwise.scala:72:12, Cat.scala:30:58, Consts.scala:81:75, TLB.scala:183:{83,102}, :209:65, :214:44, :216:18, :270:89, :272:87, :347:{23,33,41}, :358:28, package.scala:258:25
+         hitsVec_0});	// Bitwise.scala:72:12, Cat.scala:30:58, Consts.scala:81:75, TLB.scala:86:77, :166:30, :167:56, :183:{83,102}, :209:65, :214:44, :216:18, :270:89, :272:87, :347:{23,33,41}, :358:28
   assign io_ptw_req_valid = _io_ptw_req_valid_T;	// package.scala:15:47
   assign io_ptw_req_bits_bits_addr = r_refill_tag;	// TLB.scala:174:25
 endmodule

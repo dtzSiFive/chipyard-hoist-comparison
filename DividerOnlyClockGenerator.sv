@@ -84,21 +84,13 @@
 
 module DividerOnlyClockGenerator(
   input  auto_divider_only_clk_generator_in_clock,
-         auto_divider_only_clk_generator_in_reset,
   output auto_divider_only_clk_generator_out_member_allClocks_subsystem_cbus_0_clock,
-         auto_divider_only_clk_generator_out_member_allClocks_subsystem_cbus_0_reset,
          auto_divider_only_clk_generator_out_member_allClocks_subsystem_mbus_0_clock,
-         auto_divider_only_clk_generator_out_member_allClocks_subsystem_mbus_0_reset,
          auto_divider_only_clk_generator_out_member_allClocks_subsystem_fbus_0_clock,
-         auto_divider_only_clk_generator_out_member_allClocks_subsystem_fbus_0_reset,
          auto_divider_only_clk_generator_out_member_allClocks_subsystem_pbus_0_clock,
-         auto_divider_only_clk_generator_out_member_allClocks_subsystem_pbus_0_reset,
          auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_1_clock,
-         auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_1_reset,
          auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_0_clock,
-         auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_0_reset,
-         auto_divider_only_clk_generator_out_member_allClocks_implicit_clock_clock,
-         auto_divider_only_clk_generator_out_member_allClocks_implicit_clock_reset
+         auto_divider_only_clk_generator_out_member_allClocks_implicit_clock_clock
 );
 
   wire _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
@@ -110,31 +102,17 @@ module DividerOnlyClockGenerator(
   );
   assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_cbus_0_clock =
     _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
-  assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_cbus_0_reset =
-    auto_divider_only_clk_generator_in_reset;
   assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_mbus_0_clock =
     _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
-  assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_mbus_0_reset =
-    auto_divider_only_clk_generator_in_reset;
   assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_fbus_0_clock =
     _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
-  assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_fbus_0_reset =
-    auto_divider_only_clk_generator_in_reset;
   assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_pbus_0_clock =
     _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
-  assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_pbus_0_reset =
-    auto_divider_only_clk_generator_in_reset;
   assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_1_clock =
     _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
-  assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_1_reset =
-    auto_divider_only_clk_generator_in_reset;
   assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_0_clock =
     _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
-  assign auto_divider_only_clk_generator_out_member_allClocks_subsystem_sbus_0_reset =
-    auto_divider_only_clk_generator_in_reset;
   assign auto_divider_only_clk_generator_out_member_allClocks_implicit_clock_clock =
     _bundleOut_0_member_allClocks_implicit_clock_clock_ClockDivideBy1_clk_out;	// DividerOnlyClockGenerator.scala:133:27
-  assign auto_divider_only_clk_generator_out_member_allClocks_implicit_clock_reset =
-    auto_divider_only_clk_generator_in_reset;
 endmodule
 

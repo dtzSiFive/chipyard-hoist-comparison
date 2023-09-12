@@ -98,14 +98,10 @@ module TLBusBypass(
                 auto_node_in_in_a_valid,
   input  [2:0]  auto_node_in_in_a_bits_opcode,
   input  [8:0]  auto_node_in_in_a_bits_address,
-  input  [31:0] auto_node_in_in_a_bits_data,
   input         auto_node_in_in_d_ready,
                 io_bypass,
   output        auto_node_out_out_a_valid,
-  output [2:0]  auto_node_out_out_a_bits_opcode,
-  output [8:0]  auto_node_out_out_a_bits_address,
-  output [31:0] auto_node_out_out_a_bits_data,
-  output        auto_node_out_out_d_ready,
+                auto_node_out_out_d_ready,
                 auto_node_in_in_a_ready,
                 auto_node_in_in_d_valid,
   output [2:0]  auto_node_in_in_d_bits_opcode,
@@ -124,7 +120,6 @@ module TLBusBypass(
   wire         _error_auto_in_d_bits_denied;	// BusBypass.scala:27:40
   wire         _error_auto_in_d_bits_corrupt;	// BusBypass.scala:27:40
   wire         _bar_auto_out_0_a_valid;	// BusBypass.scala:17:33
-  wire [2:0]   _bar_auto_out_0_a_bits_opcode;	// BusBypass.scala:17:33
   wire [127:0] _bar_auto_out_0_a_bits_address;	// BusBypass.scala:17:33
   wire         _bar_auto_out_0_d_ready;	// BusBypass.scala:17:33
   TLBusBypassBar bar (	// BusBypass.scala:17:33
@@ -133,7 +128,6 @@ module TLBusBypass(
     .auto_in_a_valid           (auto_node_in_in_a_valid),
     .auto_in_a_bits_opcode     (auto_node_in_in_a_bits_opcode),
     .auto_in_a_bits_address    (auto_node_in_in_a_bits_address),
-    .auto_in_a_bits_data       (auto_node_in_in_a_bits_data),
     .auto_in_d_ready           (auto_node_in_in_d_ready),
     .auto_out_1_a_ready        (auto_node_out_out_a_ready),
     .auto_out_1_d_valid        (auto_node_out_out_d_valid),
@@ -162,12 +156,8 @@ module TLBusBypass(
     .auto_in_d_bits_data       (auto_node_in_in_d_bits_data),
     .auto_in_d_bits_corrupt    (auto_node_in_in_d_bits_corrupt),
     .auto_out_1_a_valid        (auto_node_out_out_a_valid),
-    .auto_out_1_a_bits_opcode  (auto_node_out_out_a_bits_opcode),
-    .auto_out_1_a_bits_address (auto_node_out_out_a_bits_address),
-    .auto_out_1_a_bits_data    (auto_node_out_out_a_bits_data),
     .auto_out_1_d_ready        (auto_node_out_out_d_ready),
     .auto_out_0_a_valid        (_bar_auto_out_0_a_valid),
-    .auto_out_0_a_bits_opcode  (_bar_auto_out_0_a_bits_opcode),
     .auto_out_0_a_bits_address (_bar_auto_out_0_a_bits_address),
     .auto_out_0_d_ready        (_bar_auto_out_0_d_ready)
   );
@@ -175,7 +165,7 @@ module TLBusBypass(
     .clock                  (clock),
     .reset                  (reset),
     .auto_in_a_valid        (_bar_auto_out_0_a_valid),	// BusBypass.scala:17:33
-    .auto_in_a_bits_opcode  (_bar_auto_out_0_a_bits_opcode),	// BusBypass.scala:17:33
+    .auto_in_a_bits_opcode  (auto_node_in_in_a_bits_opcode),
     .auto_in_a_bits_address (_bar_auto_out_0_a_bits_address),	// BusBypass.scala:17:33
     .auto_in_d_ready        (_bar_auto_out_0_d_ready),	// BusBypass.scala:17:33
     .auto_in_a_ready        (_error_auto_in_a_ready),

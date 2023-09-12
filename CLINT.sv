@@ -108,11 +108,7 @@ module CLINT(
                 auto_int_out_1_1,
                 auto_int_out_0_0,
                 auto_int_out_0_1,
-                auto_in_a_ready,
-                auto_in_d_valid,
   output [2:0]  auto_in_d_bits_opcode,
-  output [1:0]  auto_in_d_bits_size,
-  output [11:0] auto_in_d_bits_source,
   output [63:0] auto_in_d_bits_data
 );
 
@@ -420,11 +416,7 @@ module CLINT(
   assign auto_int_out_1_1 = time_0 >= pad_1;	// CLINT.scala:69:23, :73:41, :79:43
   assign auto_int_out_0_0 = ipi_0;	// CLINT.scala:74:41
   assign auto_int_out_0_1 = time_0 >= pad;	// CLINT.scala:69:23, :73:41, :79:43
-  assign auto_in_a_ready = auto_in_d_ready;
-  assign auto_in_d_valid = auto_in_a_valid;
   assign auto_in_d_bits_opcode = bundleIn_0_d_bits_opcode;	// RegisterRouter.scala:94:19
-  assign auto_in_d_bits_size = auto_in_a_bits_size;
-  assign auto_in_d_bits_source = auto_in_a_bits_source;
   assign auto_in_d_bits_data = _GEN_1[out_oindex] ? _GEN_2[out_oindex] : 64'h0;	// CLINT.scala:69:23, Cat.scala:30:58, MuxLiteral.scala:48:10, RegisterRouter.scala:79:24
 endmodule
 

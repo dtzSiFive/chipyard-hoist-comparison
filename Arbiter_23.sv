@@ -89,15 +89,13 @@ module Arbiter_23(
   input         io_in_1_valid,
   input  [26:0] io_in_1_bits_bits_addr,
   input         io_out_ready,
-  output        io_in_0_ready,
-                io_in_1_ready,
+  output        io_in_1_ready,
                 io_out_valid,
                 io_out_bits_valid,
   output [26:0] io_out_bits_bits_addr,
   output [1:0]  io_chosen
 );
 
-  assign io_in_0_ready = io_out_ready;
   assign io_in_1_ready = ~io_in_0_valid & io_out_ready;	// Arbiter.scala:31:78, :134:19
   assign io_out_valid = io_in_0_valid | io_in_1_valid;	// Arbiter.scala:31:68
   assign io_out_bits_valid = io_in_0_valid ? io_in_0_bits_valid : io_in_1_valid;	// Arbiter.scala:126:27, :128:19

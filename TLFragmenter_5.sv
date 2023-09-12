@@ -92,7 +92,6 @@ module TLFragmenter_5(
   input  [7:0]  auto_in_a_bits_source,
   input  [25:0] auto_in_a_bits_address,
   input  [7:0]  auto_in_a_bits_mask,
-  input  [63:0] auto_in_a_bits_data,
   input         auto_in_a_bits_corrupt,
                 auto_in_d_ready,
                 auto_out_a_ready,
@@ -100,13 +99,10 @@ module TLFragmenter_5(
   input  [2:0]  auto_out_d_bits_opcode,
   input  [1:0]  auto_out_d_bits_size,
   input  [11:0] auto_out_d_bits_source,
-  input  [63:0] auto_out_d_bits_data,
   output        auto_in_a_ready,
                 auto_in_d_valid,
-  output [2:0]  auto_in_d_bits_opcode,
-                auto_in_d_bits_size,
+  output [2:0]  auto_in_d_bits_size,
   output [7:0]  auto_in_d_bits_source,
-  output [63:0] auto_in_d_bits_data,
   output        auto_out_a_valid,
   output [2:0]  auto_out_a_bits_opcode,
                 auto_out_a_bits_param,
@@ -114,7 +110,6 @@ module TLFragmenter_5(
   output [11:0] auto_out_a_bits_source,
   output [25:0] auto_out_a_bits_address,
   output [7:0]  auto_out_a_bits_mask,
-  output [63:0] auto_out_a_bits_data,
   output        auto_out_a_bits_corrupt,
                 auto_out_d_ready
 );
@@ -263,10 +258,8 @@ module TLFragmenter_5(
   );
   assign auto_in_a_ready = _repeater_io_enq_ready;	// Fragmenter.scala:262:30
   assign auto_in_d_valid = bundleIn_0_d_valid;	// Fragmenter.scala:224:36
-  assign auto_in_d_bits_opcode = auto_out_d_bits_opcode;
   assign auto_in_d_bits_size = bundleIn_0_d_bits_size;	// Fragmenter.scala:227:32
   assign auto_in_d_bits_source = auto_out_d_bits_source[11:4];	// Fragmenter.scala:226:47
-  assign auto_in_d_bits_data = auto_out_d_bits_data;
   assign auto_out_a_valid = _repeater_io_deq_valid;	// Fragmenter.scala:262:30
   assign auto_out_a_bits_opcode = _repeater_io_deq_bits_opcode;	// Fragmenter.scala:262:30
   assign auto_out_a_bits_size =
@@ -277,7 +270,6 @@ module TLFragmenter_5(
     {_repeater_io_deq_bits_address[25:6],
      _repeater_io_deq_bits_address[5:0] | {~(new_gennum | _aOrigOH1_T_1[5:3]), 3'h0}};	// Fragmenter.scala:189:29, :262:30, :293:30, :304:{49,51,88,111}, package.scala:234:{77,82}
   assign auto_out_a_bits_mask = _repeater_io_full ? 8'hFF : auto_in_a_bits_mask;	// Fragmenter.scala:262:30, :312:53, :313:31
-  assign auto_out_a_bits_data = auto_in_a_bits_data;
   assign auto_out_d_ready = bundleOut_0_d_ready;	// Fragmenter.scala:223:35
 endmodule
 

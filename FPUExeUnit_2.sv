@@ -201,7 +201,6 @@ module FPUExeUnit_2(
 
   wire        _fpiu_busy_T;	// execution-unit.scala:559:35
   wire        fdiv_busy;	// execution-unit.scala:507:41
-  wire        _resp_arb_io_in_0_ready;	// execution-unit.scala:554:26
   wire        _resp_arb_io_in_1_ready;	// execution-unit.scala:554:26
   wire        _fp_sdq_io_enq_ready;	// execution-unit.scala:542:24
   wire        _fp_sdq_io_deq_valid;	// execution-unit.scala:542:24
@@ -1061,7 +1060,7 @@ module FPUExeUnit_2(
     .io_enq_bits_fflags_bits_uop_debug_tsrc
       (_fpu_io_resp_bits_fflags_bits_uop_debug_tsrc),	// execution-unit.scala:468:17
     .io_enq_bits_fflags_bits_flags               (_fpu_io_resp_bits_fflags_bits_flags),	// execution-unit.scala:468:17
-    .io_deq_ready                                (_resp_arb_io_in_0_ready),	// execution-unit.scala:554:26
+    .io_deq_ready                                (io_ll_iresp_ready),
     .io_brupdate_b1_resolve_mask                 (io_brupdate_b1_resolve_mask),
     .io_brupdate_b1_mispredict_mask              (io_brupdate_b1_mispredict_mask),
     .io_flush                                    (io_req_bits_kill),
@@ -1244,7 +1243,6 @@ module FPUExeUnit_2(
     .io_in_1_bits_fflags_bits_uop_rob_idx (_fp_sdq_io_deq_bits_fflags_bits_uop_rob_idx),	// execution-unit.scala:542:24
     .io_in_1_bits_fflags_bits_flags       (_fp_sdq_io_deq_bits_fflags_bits_flags),	// execution-unit.scala:542:24
     .io_out_ready                         (io_ll_iresp_ready),
-    .io_in_0_ready                        (_resp_arb_io_in_0_ready),
     .io_in_1_ready                        (_resp_arb_io_in_1_ready),
     .io_out_valid                         (io_ll_iresp_valid),
     .io_out_bits_uop_uopc                 (io_ll_iresp_bits_uop_uopc),

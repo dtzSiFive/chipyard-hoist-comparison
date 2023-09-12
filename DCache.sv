@@ -97,8 +97,7 @@ module DCache(
   input  [1:0]  auto_out_d_bits_param,
   input  [3:0]  auto_out_d_bits_size,
   input         auto_out_d_bits_source,
-  input  [2:0]  auto_out_d_bits_sink,
-  input         auto_out_d_bits_denied,
+                auto_out_d_bits_denied,
   input  [63:0] auto_out_d_bits_data,
   input         auto_out_e_ready,
                 io_cpu_req_valid,
@@ -203,8 +202,7 @@ module DCache(
   output [63:0] auto_out_c_bits_data,
   output        auto_out_d_ready,
                 auto_out_e_valid,
-  output [2:0]  auto_out_e_bits_sink,
-  output        io_cpu_req_ready,
+                io_cpu_req_ready,
                 io_cpu_s2_nack,
                 io_cpu_resp_valid,
   output [6:0]  io_cpu_resp_bits_tag,
@@ -2301,7 +2299,6 @@ module DCache(
   assign auto_out_c_bits_data = s2_data;	// Reg.scala:15:16
   assign auto_out_d_ready = tl_out_d_ready;	// DCache.scala:643:18, :694:51, :696:20, :724:68, :725:22
   assign auto_out_e_valid = tl_out_e_valid;	// DCache.scala:686:18, :694:51, :695:20
-  assign auto_out_e_bits_sink = auto_out_d_bits_sink;
   assign io_cpu_req_ready = _io_cpu_req_ready_output;	// DCache.scala:254:79, :724:68, :727:29
   assign io_cpu_s2_nack = _io_cpu_s2_nack_output;	// DCache.scala:417:86
   assign io_cpu_resp_valid = s2_valid_hit | doUncachedResp;	// DCache.scala:392:69, :918:27, :919:51

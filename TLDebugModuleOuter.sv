@@ -98,8 +98,6 @@ module TLDebugModuleOuter(
                 io_hgDebugInt_3,
                 io_hgDebugInt_4,
                 io_hgDebugInt_5,
-  output        auto_dmi_in_a_ready,
-                auto_dmi_in_d_valid,
   output [2:0]  auto_dmi_in_d_bits_opcode,
   output [31:0] auto_dmi_in_d_bits_data,
   output        auto_int_out_5_0,
@@ -416,8 +414,6 @@ module TLDebugModuleOuter(
     .io_in_d_valid        (auto_dmi_in_a_valid),
     .io_in_d_bits_opcode  (bundleIn_0_d_bits_opcode)	// RegisterRouter.scala:94:19
   );
-  assign auto_dmi_in_a_ready = auto_dmi_in_d_ready;
-  assign auto_dmi_in_d_valid = auto_dmi_in_a_valid;
   assign auto_dmi_in_d_bits_opcode = bundleIn_0_d_bits_opcode;	// RegisterRouter.scala:94:19
   assign auto_dmi_in_d_bits_data =
     _GEN_9[auto_dmi_in_a_bits_address[4:3]]

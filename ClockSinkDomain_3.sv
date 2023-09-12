@@ -97,11 +97,7 @@ module ClockSinkDomain_3(
                 auto_clock_in_clock,
                 auto_clock_in_reset,
   output        auto_uart_0_int_xing_out_sync_0,
-                auto_uart_0_control_xing_in_a_ready,
-                auto_uart_0_control_xing_in_d_valid,
   output [2:0]  auto_uart_0_control_xing_in_d_bits_opcode,
-  output [1:0]  auto_uart_0_control_xing_in_d_bits_size,
-  output [11:0] auto_uart_0_control_xing_in_d_bits_source,
   output [63:0] auto_uart_0_control_xing_in_d_bits_data,
   output        auto_uart_0_io_out_txd
 );
@@ -121,11 +117,7 @@ module ClockSinkDomain_3(
     .auto_control_xing_in_d_ready        (auto_uart_0_control_xing_in_d_ready),
     .auto_io_out_rxd                     (auto_uart_0_io_out_rxd),
     .auto_int_xing_out_sync_0            (auto_uart_0_int_xing_out_sync_0),
-    .auto_control_xing_in_a_ready        (auto_uart_0_control_xing_in_a_ready),
-    .auto_control_xing_in_d_valid        (auto_uart_0_control_xing_in_d_valid),
     .auto_control_xing_in_d_bits_opcode  (auto_uart_0_control_xing_in_d_bits_opcode),
-    .auto_control_xing_in_d_bits_size    (auto_uart_0_control_xing_in_d_bits_size),
-    .auto_control_xing_in_d_bits_source  (auto_uart_0_control_xing_in_d_bits_source),
     .auto_control_xing_in_d_bits_data    (auto_uart_0_control_xing_in_d_bits_data),
     .auto_io_out_txd                     (auto_uart_0_io_out_txd)
   );

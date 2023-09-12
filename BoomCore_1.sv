@@ -463,8 +463,6 @@ module BoomCore_1(
   output [19:0] io_lsu_dis_uops_0_bits_imm_packed,
   output [11:0] io_lsu_dis_uops_0_bits_csr_addr,
   output [6:0]  io_lsu_dis_uops_0_bits_rob_idx,
-  output [4:0]  io_lsu_dis_uops_0_bits_ldq_idx,
-                io_lsu_dis_uops_0_bits_stq_idx,
   output [1:0]  io_lsu_dis_uops_0_bits_rxq_idx,
   output [6:0]  io_lsu_dis_uops_0_bits_pdst,
                 io_lsu_dis_uops_0_bits_prs1,
@@ -541,8 +539,6 @@ module BoomCore_1(
   output [19:0] io_lsu_dis_uops_1_bits_imm_packed,
   output [11:0] io_lsu_dis_uops_1_bits_csr_addr,
   output [6:0]  io_lsu_dis_uops_1_bits_rob_idx,
-  output [4:0]  io_lsu_dis_uops_1_bits_ldq_idx,
-                io_lsu_dis_uops_1_bits_stq_idx,
   output [1:0]  io_lsu_dis_uops_1_bits_rxq_idx,
   output [6:0]  io_lsu_dis_uops_1_bits_pdst,
                 io_lsu_dis_uops_1_bits_prs1,
@@ -619,8 +615,6 @@ module BoomCore_1(
   output [19:0] io_lsu_dis_uops_2_bits_imm_packed,
   output [11:0] io_lsu_dis_uops_2_bits_csr_addr,
   output [6:0]  io_lsu_dis_uops_2_bits_rob_idx,
-  output [4:0]  io_lsu_dis_uops_2_bits_ldq_idx,
-                io_lsu_dis_uops_2_bits_stq_idx,
   output [1:0]  io_lsu_dis_uops_2_bits_rxq_idx,
   output [6:0]  io_lsu_dis_uops_2_bits_pdst,
                 io_lsu_dis_uops_2_bits_prs1,
@@ -767,91 +761,15 @@ module BoomCore_1(
   wire            _rob_io_empty;	// core.scala:140:32
   wire            _rob_io_ready;	// core.scala:140:32
   wire            _rob_io_flush_frontend;	// core.scala:140:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_0_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_1_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_2_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_3_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_4_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_5_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_6_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_rf_read_ports_7_addr;	// core.scala:132:32
   wire            _iregister_read_io_exe_reqs_0_valid;	// core.scala:132:32
   wire [6:0]      _iregister_read_io_exe_reqs_0_bits_uop_uopc;	// core.scala:132:32
-  wire [31:0]     _iregister_read_io_exe_reqs_0_bits_uop_inst;	// core.scala:132:32
-  wire [31:0]     _iregister_read_io_exe_reqs_0_bits_uop_debug_inst;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_rvc;	// core.scala:132:32
-  wire [39:0]     _iregister_read_io_exe_reqs_0_bits_uop_debug_pc;	// core.scala:132:32
-  wire [2:0]      _iregister_read_io_exe_reqs_0_bits_uop_iq_type;	// core.scala:132:32
   wire [9:0]      _iregister_read_io_exe_reqs_0_bits_uop_fu_code;	// core.scala:132:32
-  wire [3:0]      _iregister_read_io_exe_reqs_0_bits_uop_ctrl_br_type;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_ctrl_op1_sel;	// core.scala:132:32
-  wire [2:0]      _iregister_read_io_exe_reqs_0_bits_uop_ctrl_op2_sel;	// core.scala:132:32
-  wire [2:0]      _iregister_read_io_exe_reqs_0_bits_uop_ctrl_imm_sel;	// core.scala:132:32
-  wire [3:0]      _iregister_read_io_exe_reqs_0_bits_uop_ctrl_op_fcn;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_ctrl_fcn_dw;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_load;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_sta;	// core.scala:132:32
   wire            _iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_std;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_iw_state;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_br;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_jalr;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_jal;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_sfb;	// core.scala:132:32
   wire [15:0]     _iregister_read_io_exe_reqs_0_bits_uop_br_mask;	// core.scala:132:32
-  wire [3:0]      _iregister_read_io_exe_reqs_0_bits_uop_br_tag;	// core.scala:132:32
-  wire [4:0]      _iregister_read_io_exe_reqs_0_bits_uop_ftq_idx;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_edge_inst;	// core.scala:132:32
-  wire [5:0]      _iregister_read_io_exe_reqs_0_bits_uop_pc_lob;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_taken;	// core.scala:132:32
   wire [19:0]     _iregister_read_io_exe_reqs_0_bits_uop_imm_packed;	// core.scala:132:32
-  wire [11:0]     _iregister_read_io_exe_reqs_0_bits_uop_csr_addr;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_exe_reqs_0_bits_uop_rob_idx;	// core.scala:132:32
-  wire [4:0]      _iregister_read_io_exe_reqs_0_bits_uop_ldq_idx;	// core.scala:132:32
-  wire [4:0]      _iregister_read_io_exe_reqs_0_bits_uop_stq_idx;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_rxq_idx;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_exe_reqs_0_bits_uop_pdst;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_exe_reqs_0_bits_uop_prs1;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_exe_reqs_0_bits_uop_prs2;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_exe_reqs_0_bits_uop_prs3;	// core.scala:132:32
-  wire [4:0]      _iregister_read_io_exe_reqs_0_bits_uop_ppred;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_prs1_busy;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_prs2_busy;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_prs3_busy;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_ppred_busy;	// core.scala:132:32
-  wire [6:0]      _iregister_read_io_exe_reqs_0_bits_uop_stale_pdst;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_exception;	// core.scala:132:32
-  wire [63:0]     _iregister_read_io_exe_reqs_0_bits_uop_exc_cause;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_bypassable;	// core.scala:132:32
   wire [4:0]      _iregister_read_io_exe_reqs_0_bits_uop_mem_cmd;	// core.scala:132:32
   wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_mem_size;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_mem_signed;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_fence;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_fencei;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_amo;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_uses_ldq;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_uses_stq;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_sys_pc2epc;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_is_unique;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_flush_on_commit;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_ldst_is_rs1;	// core.scala:132:32
-  wire [5:0]      _iregister_read_io_exe_reqs_0_bits_uop_ldst;	// core.scala:132:32
-  wire [5:0]      _iregister_read_io_exe_reqs_0_bits_uop_lrs1;	// core.scala:132:32
-  wire [5:0]      _iregister_read_io_exe_reqs_0_bits_uop_lrs2;	// core.scala:132:32
-  wire [5:0]      _iregister_read_io_exe_reqs_0_bits_uop_lrs3;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_ldst_val;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_dst_rtype;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_lrs1_rtype;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_lrs2_rtype;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_frs3_en;	// core.scala:132:32
   wire            _iregister_read_io_exe_reqs_0_bits_uop_fp_val;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_fp_single;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_xcpt_pf_if;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_xcpt_ae_if;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_xcpt_ma_if;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_bp_debug_if;	// core.scala:132:32
-  wire            _iregister_read_io_exe_reqs_0_bits_uop_bp_xcpt_if;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_debug_fsrc;	// core.scala:132:32
-  wire [1:0]      _iregister_read_io_exe_reqs_0_bits_uop_debug_tsrc;	// core.scala:132:32
   wire [63:0]     _iregister_read_io_exe_reqs_0_bits_rs1_data;	// core.scala:132:32
   wire [63:0]     _iregister_read_io_exe_reqs_0_bits_rs2_data;	// core.scala:132:32
   wire            _iregister_read_io_exe_reqs_1_valid;	// core.scala:132:32
@@ -1019,584 +937,14 @@ module BoomCore_1(
   wire            _dispatcher_io_ren_uops_1_ready;	// core.scala:111:32
   wire            _dispatcher_io_ren_uops_2_ready;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_2_0_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_0_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_2_0_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_2_0_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_2_0_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_2_0_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_2_0_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_2_0_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_2_0_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_0_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_0_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_2_0_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_2_0_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_0_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_0_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_0_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_0_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_0_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_0_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_0_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_0_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_prs2_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_prs3_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_0_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_2_0_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_0_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_0_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_0_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_0_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_0_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_0_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_0_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_0_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_0_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_0_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_0_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_0_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_2_1_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_1_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_2_1_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_2_1_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_2_1_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_2_1_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_2_1_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_2_1_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_2_1_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_1_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_1_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_2_1_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_2_1_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_1_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_1_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_1_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_1_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_1_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_1_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_1_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_1_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_prs2_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_prs3_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_1_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_2_1_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_1_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_1_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_1_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_1_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_1_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_1_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_1_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_1_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_1_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_1_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_1_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_1_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_2_2_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_2_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_2_2_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_2_2_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_2_2_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_2_2_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_2_2_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_2_2_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_2_2_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_2_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_2_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_2_2_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_2_2_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_2_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_2_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_2_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_2_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_2_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_2_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_2_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_2_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_prs2_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_prs3_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_2_2_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_2_2_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_2_2_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_2_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_2_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_2_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_2_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_2_2_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_2_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_2_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_2_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_2_2_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_2_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_2_2_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_1_0_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_0_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_1_0_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_1_0_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_1_0_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_1_0_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_1_0_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_1_0_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_1_0_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_0_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_0_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_1_0_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_1_0_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_0_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_0_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_0_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_0_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_0_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_0_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_0_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_0_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_prs2_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_0_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_1_0_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_0_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_0_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_0_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_0_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_0_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_0_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_0_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_0_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_0_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_0_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_0_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_0_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_1_1_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_1_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_1_1_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_1_1_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_1_1_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_1_1_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_1_1_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_1_1_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_1_1_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_1_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_1_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_1_1_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_1_1_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_1_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_1_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_1_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_1_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_1_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_1_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_1_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_1_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_prs2_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_1_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_1_1_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_1_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_1_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_1_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_1_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_1_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_1_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_1_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_1_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_1_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_1_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_1_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_1_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_1_2_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_2_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_1_2_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_1_2_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_1_2_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_1_2_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_1_2_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_1_2_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_1_2_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_2_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_2_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_1_2_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_1_2_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_2_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_2_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_2_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_2_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_2_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_2_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_2_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_2_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_prs2_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_1_2_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_1_2_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_1_2_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_2_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_2_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_2_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_2_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_1_2_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_2_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_2_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_2_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_1_2_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_2_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_1_2_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_0_0_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_0_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_0_0_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_0_0_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_0_0_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_0_0_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_0_0_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_0_0_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_0_0_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_0_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_0_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_0_0_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_0_0_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_0_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_0_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_0_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_0_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_0_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_0_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_0_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_0_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_prs2_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_0_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_0_0_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_0_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_0_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_0_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_0_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_0_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_0_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_0_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_0_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_0_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_0_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_0_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_0_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_0_1_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_1_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_0_1_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_0_1_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_0_1_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_0_1_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_0_1_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_0_1_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_0_1_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_1_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_1_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_0_1_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_0_1_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_1_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_1_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_1_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_1_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_1_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_1_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_1_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_1_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_prs2_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_1_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_0_1_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_1_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_1_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_1_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_1_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_1_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_1_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_1_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_1_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_1_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_1_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_1_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_1_bits_debug_tsrc;	// core.scala:111:32
   wire            _dispatcher_io_dis_uops_0_2_valid;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_2_bits_uopc;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_0_2_bits_inst;	// core.scala:111:32
-  wire [31:0]     _dispatcher_io_dis_uops_0_2_bits_debug_inst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_rvc;	// core.scala:111:32
-  wire [39:0]     _dispatcher_io_dis_uops_0_2_bits_debug_pc;	// core.scala:111:32
-  wire [2:0]      _dispatcher_io_dis_uops_0_2_bits_iq_type;	// core.scala:111:32
-  wire [9:0]      _dispatcher_io_dis_uops_0_2_bits_fu_code;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_br;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_jalr;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_jal;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_sfb;	// core.scala:111:32
-  wire [15:0]     _dispatcher_io_dis_uops_0_2_bits_br_mask;	// core.scala:111:32
-  wire [3:0]      _dispatcher_io_dis_uops_0_2_bits_br_tag;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_2_bits_ftq_idx;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_edge_inst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_2_bits_pc_lob;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_taken;	// core.scala:111:32
-  wire [19:0]     _dispatcher_io_dis_uops_0_2_bits_imm_packed;	// core.scala:111:32
-  wire [11:0]     _dispatcher_io_dis_uops_0_2_bits_csr_addr;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_2_bits_rob_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_2_bits_ldq_idx;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_2_bits_stq_idx;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_2_bits_rxq_idx;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_2_bits_pdst;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_2_bits_prs1;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_2_bits_prs2;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_2_bits_prs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_prs1_busy;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_prs2_busy;	// core.scala:111:32
-  wire [6:0]      _dispatcher_io_dis_uops_0_2_bits_stale_pdst;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_exception;	// core.scala:111:32
-  wire [63:0]     _dispatcher_io_dis_uops_0_2_bits_exc_cause;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_bypassable;	// core.scala:111:32
-  wire [4:0]      _dispatcher_io_dis_uops_0_2_bits_mem_cmd;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_2_bits_mem_size;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_mem_signed;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_fence;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_fencei;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_amo;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_uses_ldq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_uses_stq;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_sys_pc2epc;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_is_unique;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_flush_on_commit;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_ldst_is_rs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_2_bits_ldst;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_2_bits_lrs1;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_2_bits_lrs2;	// core.scala:111:32
-  wire [5:0]      _dispatcher_io_dis_uops_0_2_bits_lrs3;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_ldst_val;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_2_bits_dst_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_2_bits_lrs1_rtype;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_2_bits_lrs2_rtype;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_frs3_en;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_fp_val;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_fp_single;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_xcpt_pf_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_xcpt_ae_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_xcpt_ma_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_bp_debug_if;	// core.scala:111:32
-  wire            _dispatcher_io_dis_uops_0_2_bits_bp_xcpt_if;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_2_bits_debug_fsrc;	// core.scala:111:32
-  wire [1:0]      _dispatcher_io_dis_uops_0_2_bits_debug_tsrc;	// core.scala:111:32
   wire            _int_issue_unit_io_dis_uops_0_ready;	// core.scala:107:32
   wire            _int_issue_unit_io_dis_uops_1_ready;	// core.scala:107:32
   wire            _int_issue_unit_io_dis_uops_2_ready;	// core.scala:107:32
@@ -2025,36 +1373,12 @@ module BoomCore_1(
   wire            _dec_brmask_logic_io_is_full_1;	// core.scala:99:32
   wire            _dec_brmask_logic_io_is_full_2;	// core.scala:99:32
   wire [6:0]      _decode_units_2_io_deq_uop_uopc;	// core.scala:98:79
-  wire [31:0]     _decode_units_2_io_deq_uop_inst;	// core.scala:98:79
-  wire [31:0]     _decode_units_2_io_deq_uop_debug_inst;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_is_rvc;	// core.scala:98:79
-  wire [39:0]     _decode_units_2_io_deq_uop_debug_pc;	// core.scala:98:79
   wire [2:0]      _decode_units_2_io_deq_uop_iq_type;	// core.scala:98:79
   wire [9:0]      _decode_units_2_io_deq_uop_fu_code;	// core.scala:98:79
-  wire [3:0]      _decode_units_2_io_deq_uop_ctrl_br_type;	// core.scala:98:79
-  wire [1:0]      _decode_units_2_io_deq_uop_ctrl_op1_sel;	// core.scala:98:79
-  wire [2:0]      _decode_units_2_io_deq_uop_ctrl_op2_sel;	// core.scala:98:79
-  wire [2:0]      _decode_units_2_io_deq_uop_ctrl_imm_sel;	// core.scala:98:79
-  wire [3:0]      _decode_units_2_io_deq_uop_ctrl_op_fcn;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_ctrl_fcn_dw;	// core.scala:98:79
-  wire [2:0]      _decode_units_2_io_deq_uop_ctrl_csr_cmd;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_ctrl_is_load;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_ctrl_is_sta;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_ctrl_is_std;	// core.scala:98:79
-  wire [1:0]      _decode_units_2_io_deq_uop_iw_state;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_iw_p1_poisoned;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_iw_p2_poisoned;	// core.scala:98:79
   wire            _decode_units_2_io_deq_uop_is_br;	// core.scala:98:79
   wire            _decode_units_2_io_deq_uop_is_jalr;	// core.scala:98:79
   wire            _decode_units_2_io_deq_uop_is_jal;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_is_sfb;	// core.scala:98:79
-  wire [4:0]      _decode_units_2_io_deq_uop_ftq_idx;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_edge_inst;	// core.scala:98:79
-  wire [5:0]      _decode_units_2_io_deq_uop_pc_lob;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_taken;	// core.scala:98:79
   wire [19:0]     _decode_units_2_io_deq_uop_imm_packed;	// core.scala:98:79
-  wire [11:0]     _decode_units_2_io_deq_uop_csr_addr;	// core.scala:98:79
-  wire [1:0]      _decode_units_2_io_deq_uop_rxq_idx;	// core.scala:98:79
   wire            _decode_units_2_io_deq_uop_exception;	// core.scala:98:79
   wire [63:0]     _decode_units_2_io_deq_uop_exc_cause;	// core.scala:98:79
   wire            _decode_units_2_io_deq_uop_bypassable;	// core.scala:98:79
@@ -2080,45 +1404,14 @@ module BoomCore_1(
   wire            _decode_units_2_io_deq_uop_frs3_en;	// core.scala:98:79
   wire            _decode_units_2_io_deq_uop_fp_val;	// core.scala:98:79
   wire            _decode_units_2_io_deq_uop_fp_single;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_xcpt_pf_if;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_xcpt_ae_if;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_xcpt_ma_if;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_bp_debug_if;	// core.scala:98:79
-  wire            _decode_units_2_io_deq_uop_bp_xcpt_if;	// core.scala:98:79
-  wire [1:0]      _decode_units_2_io_deq_uop_debug_fsrc;	// core.scala:98:79
-  wire [1:0]      _decode_units_2_io_deq_uop_debug_tsrc;	// core.scala:98:79
   wire [11:0]     _decode_units_2_io_csr_decode_csr;	// core.scala:98:79
   wire [6:0]      _decode_units_1_io_deq_uop_uopc;	// core.scala:98:79
-  wire [31:0]     _decode_units_1_io_deq_uop_inst;	// core.scala:98:79
-  wire [31:0]     _decode_units_1_io_deq_uop_debug_inst;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_is_rvc;	// core.scala:98:79
-  wire [39:0]     _decode_units_1_io_deq_uop_debug_pc;	// core.scala:98:79
   wire [2:0]      _decode_units_1_io_deq_uop_iq_type;	// core.scala:98:79
   wire [9:0]      _decode_units_1_io_deq_uop_fu_code;	// core.scala:98:79
-  wire [3:0]      _decode_units_1_io_deq_uop_ctrl_br_type;	// core.scala:98:79
-  wire [1:0]      _decode_units_1_io_deq_uop_ctrl_op1_sel;	// core.scala:98:79
-  wire [2:0]      _decode_units_1_io_deq_uop_ctrl_op2_sel;	// core.scala:98:79
-  wire [2:0]      _decode_units_1_io_deq_uop_ctrl_imm_sel;	// core.scala:98:79
-  wire [3:0]      _decode_units_1_io_deq_uop_ctrl_op_fcn;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_ctrl_fcn_dw;	// core.scala:98:79
-  wire [2:0]      _decode_units_1_io_deq_uop_ctrl_csr_cmd;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_ctrl_is_load;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_ctrl_is_sta;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_ctrl_is_std;	// core.scala:98:79
-  wire [1:0]      _decode_units_1_io_deq_uop_iw_state;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_iw_p1_poisoned;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_iw_p2_poisoned;	// core.scala:98:79
   wire            _decode_units_1_io_deq_uop_is_br;	// core.scala:98:79
   wire            _decode_units_1_io_deq_uop_is_jalr;	// core.scala:98:79
   wire            _decode_units_1_io_deq_uop_is_jal;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_is_sfb;	// core.scala:98:79
-  wire [4:0]      _decode_units_1_io_deq_uop_ftq_idx;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_edge_inst;	// core.scala:98:79
-  wire [5:0]      _decode_units_1_io_deq_uop_pc_lob;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_taken;	// core.scala:98:79
   wire [19:0]     _decode_units_1_io_deq_uop_imm_packed;	// core.scala:98:79
-  wire [11:0]     _decode_units_1_io_deq_uop_csr_addr;	// core.scala:98:79
-  wire [1:0]      _decode_units_1_io_deq_uop_rxq_idx;	// core.scala:98:79
   wire            _decode_units_1_io_deq_uop_exception;	// core.scala:98:79
   wire [63:0]     _decode_units_1_io_deq_uop_exc_cause;	// core.scala:98:79
   wire            _decode_units_1_io_deq_uop_bypassable;	// core.scala:98:79
@@ -2144,45 +1437,14 @@ module BoomCore_1(
   wire            _decode_units_1_io_deq_uop_frs3_en;	// core.scala:98:79
   wire            _decode_units_1_io_deq_uop_fp_val;	// core.scala:98:79
   wire            _decode_units_1_io_deq_uop_fp_single;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_xcpt_pf_if;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_xcpt_ae_if;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_xcpt_ma_if;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_bp_debug_if;	// core.scala:98:79
-  wire            _decode_units_1_io_deq_uop_bp_xcpt_if;	// core.scala:98:79
-  wire [1:0]      _decode_units_1_io_deq_uop_debug_fsrc;	// core.scala:98:79
-  wire [1:0]      _decode_units_1_io_deq_uop_debug_tsrc;	// core.scala:98:79
   wire [11:0]     _decode_units_1_io_csr_decode_csr;	// core.scala:98:79
   wire [6:0]      _decode_units_0_io_deq_uop_uopc;	// core.scala:98:79
-  wire [31:0]     _decode_units_0_io_deq_uop_inst;	// core.scala:98:79
-  wire [31:0]     _decode_units_0_io_deq_uop_debug_inst;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_is_rvc;	// core.scala:98:79
-  wire [39:0]     _decode_units_0_io_deq_uop_debug_pc;	// core.scala:98:79
   wire [2:0]      _decode_units_0_io_deq_uop_iq_type;	// core.scala:98:79
   wire [9:0]      _decode_units_0_io_deq_uop_fu_code;	// core.scala:98:79
-  wire [3:0]      _decode_units_0_io_deq_uop_ctrl_br_type;	// core.scala:98:79
-  wire [1:0]      _decode_units_0_io_deq_uop_ctrl_op1_sel;	// core.scala:98:79
-  wire [2:0]      _decode_units_0_io_deq_uop_ctrl_op2_sel;	// core.scala:98:79
-  wire [2:0]      _decode_units_0_io_deq_uop_ctrl_imm_sel;	// core.scala:98:79
-  wire [3:0]      _decode_units_0_io_deq_uop_ctrl_op_fcn;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_ctrl_fcn_dw;	// core.scala:98:79
-  wire [2:0]      _decode_units_0_io_deq_uop_ctrl_csr_cmd;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_ctrl_is_load;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_ctrl_is_sta;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_ctrl_is_std;	// core.scala:98:79
-  wire [1:0]      _decode_units_0_io_deq_uop_iw_state;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_iw_p1_poisoned;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_iw_p2_poisoned;	// core.scala:98:79
   wire            _decode_units_0_io_deq_uop_is_br;	// core.scala:98:79
   wire            _decode_units_0_io_deq_uop_is_jalr;	// core.scala:98:79
   wire            _decode_units_0_io_deq_uop_is_jal;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_is_sfb;	// core.scala:98:79
-  wire [4:0]      _decode_units_0_io_deq_uop_ftq_idx;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_edge_inst;	// core.scala:98:79
-  wire [5:0]      _decode_units_0_io_deq_uop_pc_lob;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_taken;	// core.scala:98:79
   wire [19:0]     _decode_units_0_io_deq_uop_imm_packed;	// core.scala:98:79
-  wire [11:0]     _decode_units_0_io_deq_uop_csr_addr;	// core.scala:98:79
-  wire [1:0]      _decode_units_0_io_deq_uop_rxq_idx;	// core.scala:98:79
   wire            _decode_units_0_io_deq_uop_exception;	// core.scala:98:79
   wire [63:0]     _decode_units_0_io_deq_uop_exc_cause;	// core.scala:98:79
   wire            _decode_units_0_io_deq_uop_bypassable;	// core.scala:98:79
@@ -2208,13 +1470,6 @@ module BoomCore_1(
   wire            _decode_units_0_io_deq_uop_frs3_en;	// core.scala:98:79
   wire            _decode_units_0_io_deq_uop_fp_val;	// core.scala:98:79
   wire            _decode_units_0_io_deq_uop_fp_single;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_xcpt_pf_if;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_xcpt_ae_if;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_xcpt_ma_if;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_bp_debug_if;	// core.scala:98:79
-  wire            _decode_units_0_io_deq_uop_bp_xcpt_if;	// core.scala:98:79
-  wire [1:0]      _decode_units_0_io_deq_uop_debug_fsrc;	// core.scala:98:79
-  wire [1:0]      _decode_units_0_io_deq_uop_debug_tsrc;	// core.scala:98:79
   wire [11:0]     _decode_units_0_io_csr_decode_csr;	// core.scala:98:79
   wire            _fp_pipeline_io_dis_uops_0_ready;	// core.scala:77:37
   wire            _fp_pipeline_io_dis_uops_1_ready;	// core.scala:77:37
@@ -2254,8 +1509,6 @@ module BoomCore_1(
   wire [1:0]      _alu_exe_unit_io_iresp_bits_uop_dst_rtype;	// execution-units.scala:119:32
   wire [64:0]     _alu_exe_unit_io_iresp_bits_data;	// execution-units.scala:119:32
   wire            _alu_exe_unit_io_bypass_0_valid;	// execution-units.scala:119:32
-  wire [6:0]      _alu_exe_unit_io_bypass_0_bits_uop_pdst;	// execution-units.scala:119:32
-  wire [1:0]      _alu_exe_unit_io_bypass_0_bits_uop_dst_rtype;	// execution-units.scala:119:32
   wire [64:0]     _alu_exe_unit_io_bypass_0_bits_data;	// execution-units.scala:119:32
   wire            _alu_exe_unit_io_bypass_1_valid;	// execution-units.scala:119:32
   wire [6:0]      _alu_exe_unit_io_bypass_1_bits_uop_pdst;	// execution-units.scala:119:32
@@ -2265,15 +1518,6 @@ module BoomCore_1(
   wire [6:0]      _alu_exe_unit_io_bypass_2_bits_uop_pdst;	// execution-units.scala:119:32
   wire [1:0]      _alu_exe_unit_io_bypass_2_bits_uop_dst_rtype;	// execution-units.scala:119:32
   wire [64:0]     _alu_exe_unit_io_bypass_2_bits_data;	// execution-units.scala:119:32
-  wire            _alu_exe_unit_io_brinfo_uop_is_rvc;	// execution-units.scala:119:32
-  wire [15:0]     _alu_exe_unit_io_brinfo_uop_br_mask;	// execution-units.scala:119:32
-  wire [3:0]      _alu_exe_unit_io_brinfo_uop_br_tag;	// execution-units.scala:119:32
-  wire [4:0]      _alu_exe_unit_io_brinfo_uop_ftq_idx;	// execution-units.scala:119:32
-  wire            _alu_exe_unit_io_brinfo_uop_edge_inst;	// execution-units.scala:119:32
-  wire [5:0]      _alu_exe_unit_io_brinfo_uop_pc_lob;	// execution-units.scala:119:32
-  wire [6:0]      _alu_exe_unit_io_brinfo_uop_rob_idx;	// execution-units.scala:119:32
-  wire [4:0]      _alu_exe_unit_io_brinfo_uop_ldq_idx;	// execution-units.scala:119:32
-  wire [4:0]      _alu_exe_unit_io_brinfo_uop_stq_idx;	// execution-units.scala:119:32
   wire            _alu_exe_unit_io_brinfo_valid;	// execution-units.scala:119:32
   wire            _alu_exe_unit_io_brinfo_mispredict;	// execution-units.scala:119:32
   wire            _alu_exe_unit_io_brinfo_taken;	// execution-units.scala:119:32
@@ -2307,18 +1551,7 @@ module BoomCore_1(
   wire [6:0]      _csr_exe_unit_io_ll_fresp_bits_fflags_bits_uop_rob_idx;	// execution-units.scala:119:32
   wire [4:0]      _csr_exe_unit_io_ll_fresp_bits_fflags_bits_flags;	// execution-units.scala:119:32
   wire            _csr_exe_unit_io_bypass_0_valid;	// execution-units.scala:119:32
-  wire [6:0]      _csr_exe_unit_io_bypass_0_bits_uop_pdst;	// execution-units.scala:119:32
-  wire [1:0]      _csr_exe_unit_io_bypass_0_bits_uop_dst_rtype;	// execution-units.scala:119:32
   wire [64:0]     _csr_exe_unit_io_bypass_0_bits_data;	// execution-units.scala:119:32
-  wire            _csr_exe_unit_io_brinfo_uop_is_rvc;	// execution-units.scala:119:32
-  wire [15:0]     _csr_exe_unit_io_brinfo_uop_br_mask;	// execution-units.scala:119:32
-  wire [3:0]      _csr_exe_unit_io_brinfo_uop_br_tag;	// execution-units.scala:119:32
-  wire [4:0]      _csr_exe_unit_io_brinfo_uop_ftq_idx;	// execution-units.scala:119:32
-  wire            _csr_exe_unit_io_brinfo_uop_edge_inst;	// execution-units.scala:119:32
-  wire [5:0]      _csr_exe_unit_io_brinfo_uop_pc_lob;	// execution-units.scala:119:32
-  wire [6:0]      _csr_exe_unit_io_brinfo_uop_rob_idx;	// execution-units.scala:119:32
-  wire [4:0]      _csr_exe_unit_io_brinfo_uop_ldq_idx;	// execution-units.scala:119:32
-  wire [4:0]      _csr_exe_unit_io_brinfo_uop_stq_idx;	// execution-units.scala:119:32
   wire            _csr_exe_unit_io_brinfo_valid;	// execution-units.scala:119:32
   wire            _csr_exe_unit_io_brinfo_mispredict;	// execution-units.scala:119:32
   wire            _csr_exe_unit_io_brinfo_taken;	// execution-units.scala:119:32
@@ -2335,18 +1568,7 @@ module BoomCore_1(
   wire [1:0]      _jmp_unit_io_iresp_bits_uop_dst_rtype;	// execution-units.scala:119:32
   wire [64:0]     _jmp_unit_io_iresp_bits_data;	// execution-units.scala:119:32
   wire            _jmp_unit_io_bypass_0_valid;	// execution-units.scala:119:32
-  wire [6:0]      _jmp_unit_io_bypass_0_bits_uop_pdst;	// execution-units.scala:119:32
-  wire [1:0]      _jmp_unit_io_bypass_0_bits_uop_dst_rtype;	// execution-units.scala:119:32
   wire [64:0]     _jmp_unit_io_bypass_0_bits_data;	// execution-units.scala:119:32
-  wire            _jmp_unit_io_brinfo_uop_is_rvc;	// execution-units.scala:119:32
-  wire [15:0]     _jmp_unit_io_brinfo_uop_br_mask;	// execution-units.scala:119:32
-  wire [3:0]      _jmp_unit_io_brinfo_uop_br_tag;	// execution-units.scala:119:32
-  wire [4:0]      _jmp_unit_io_brinfo_uop_ftq_idx;	// execution-units.scala:119:32
-  wire            _jmp_unit_io_brinfo_uop_edge_inst;	// execution-units.scala:119:32
-  wire [5:0]      _jmp_unit_io_brinfo_uop_pc_lob;	// execution-units.scala:119:32
-  wire [6:0]      _jmp_unit_io_brinfo_uop_rob_idx;	// execution-units.scala:119:32
-  wire [4:0]      _jmp_unit_io_brinfo_uop_ldq_idx;	// execution-units.scala:119:32
-  wire [4:0]      _jmp_unit_io_brinfo_uop_stq_idx;	// execution-units.scala:119:32
   wire            _jmp_unit_io_brinfo_valid;	// execution-units.scala:119:32
   wire            _jmp_unit_io_brinfo_mispredict;	// execution-units.scala:119:32
   wire            _jmp_unit_io_brinfo_taken;	// execution-units.scala:119:32
@@ -2354,25 +1576,7 @@ module BoomCore_1(
   wire [1:0]      _jmp_unit_io_brinfo_pc_sel;	// execution-units.scala:119:32
   wire [39:0]     _jmp_unit_io_brinfo_jalr_target;	// execution-units.scala:119:32
   wire [20:0]     _jmp_unit_io_brinfo_target_offset;	// execution-units.scala:119:32
-  wire            _mem_units_0_io_ll_iresp_valid;	// execution-units.scala:108:30
-  wire [6:0]      _mem_units_0_io_ll_iresp_bits_uop_rob_idx;	// execution-units.scala:108:30
-  wire [6:0]      _mem_units_0_io_ll_iresp_bits_uop_pdst;	// execution-units.scala:108:30
-  wire            _mem_units_0_io_ll_iresp_bits_uop_is_amo;	// execution-units.scala:108:30
-  wire            _mem_units_0_io_ll_iresp_bits_uop_uses_stq;	// execution-units.scala:108:30
-  wire [1:0]      _mem_units_0_io_ll_iresp_bits_uop_dst_rtype;	// execution-units.scala:108:30
   wire [64:0]     _mem_units_0_io_ll_iresp_bits_data;	// execution-units.scala:108:30
-  wire            _mem_units_0_io_ll_fresp_valid;	// execution-units.scala:108:30
-  wire [6:0]      _mem_units_0_io_ll_fresp_bits_uop_uopc;	// execution-units.scala:108:30
-  wire [15:0]     _mem_units_0_io_ll_fresp_bits_uop_br_mask;	// execution-units.scala:108:30
-  wire [6:0]      _mem_units_0_io_ll_fresp_bits_uop_rob_idx;	// execution-units.scala:108:30
-  wire [4:0]      _mem_units_0_io_ll_fresp_bits_uop_stq_idx;	// execution-units.scala:108:30
-  wire [6:0]      _mem_units_0_io_ll_fresp_bits_uop_pdst;	// execution-units.scala:108:30
-  wire [1:0]      _mem_units_0_io_ll_fresp_bits_uop_mem_size;	// execution-units.scala:108:30
-  wire            _mem_units_0_io_ll_fresp_bits_uop_is_amo;	// execution-units.scala:108:30
-  wire            _mem_units_0_io_ll_fresp_bits_uop_uses_stq;	// execution-units.scala:108:30
-  wire [1:0]      _mem_units_0_io_ll_fresp_bits_uop_dst_rtype;	// execution-units.scala:108:30
-  wire            _mem_units_0_io_ll_fresp_bits_uop_fp_val;	// execution-units.scala:108:30
-  wire [64:0]     _mem_units_0_io_ll_fresp_bits_data;	// execution-units.scala:108:30
   wire            _mem_units_0_io_lsu_io_req_bits_sfence_valid;	// execution-units.scala:108:30
   wire            _mem_units_0_io_lsu_io_req_bits_sfence_bits_rs1;	// execution-units.scala:108:30
   wire            _mem_units_0_io_lsu_io_req_bits_sfence_bits_rs2;	// execution-units.scala:108:30
@@ -2534,10 +1738,10 @@ module BoomCore_1(
   reg             jmp_pc_req_valid_REG;	// core.scala:533:30
   reg  [4:0]      jmp_pc_req_bits_REG;	// core.scala:534:30
   wire [3:0][4:0] _GEN_17 =
-    {{_decode_units_0_io_deq_uop_ftq_idx},
-     {_decode_units_2_io_deq_uop_ftq_idx},
-     {_decode_units_1_io_deq_uop_ftq_idx},
-     {_decode_units_0_io_deq_uop_ftq_idx}};	// core.scala:98:79, :546:24
+    {{io_ifu_fetchpacket_bits_uops_0_bits_ftq_idx},
+     {io_ifu_fetchpacket_bits_uops_2_bits_ftq_idx},
+     {io_ifu_fetchpacket_bits_uops_1_bits_ftq_idx},
+     {io_ifu_fetchpacket_bits_uops_0_bits_ftq_idx}};	// core.scala:546:24
   assign dec_xcpts_0 = _decode_units_0_io_deq_uop_exception & dec_valids_0;	// core.scala:98:79, :502:97, :560:71
   assign dec_xcpts_1 = _decode_units_1_io_deq_uop_exception & dec_valids_1;	// core.scala:98:79, :502:97, :560:71
   wire            dec_xcpt_stall =
@@ -2944,45 +2148,45 @@ module BoomCore_1(
        {_rename_stage_io_ren2_uops_0_ftq_idx}};	// core.scala:100:32, :734:35
     loads_saturating =
       _mem_issue_unit_io_iss_valids_0 & _mem_issue_unit_io_iss_uops_0_uses_ldq;	// core.scala:105:32, :902:57
-    brinfos_0_uop_is_rvc <= _jmp_unit_io_brinfo_uop_is_rvc;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_br_mask <= _jmp_unit_io_brinfo_uop_br_mask;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_br_tag <= _jmp_unit_io_brinfo_uop_br_tag;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_ftq_idx <= _jmp_unit_io_brinfo_uop_ftq_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_edge_inst <= _jmp_unit_io_brinfo_uop_edge_inst;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_pc_lob <= _jmp_unit_io_brinfo_uop_pc_lob;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_rob_idx <= _jmp_unit_io_brinfo_uop_rob_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_ldq_idx <= _jmp_unit_io_brinfo_uop_ldq_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_0_uop_stq_idx <= _jmp_unit_io_brinfo_uop_stq_idx;	// core.scala:179:20, execution-units.scala:119:32
+    brinfos_0_uop_is_rvc <= _iregister_read_io_exe_reqs_1_bits_uop_is_rvc;	// core.scala:132:32, :179:20
+    brinfos_0_uop_br_mask <= _iregister_read_io_exe_reqs_1_bits_uop_br_mask;	// core.scala:132:32, :179:20
+    brinfos_0_uop_br_tag <= _iregister_read_io_exe_reqs_1_bits_uop_br_tag;	// core.scala:132:32, :179:20
+    brinfos_0_uop_ftq_idx <= _iregister_read_io_exe_reqs_1_bits_uop_ftq_idx;	// core.scala:132:32, :179:20
+    brinfos_0_uop_edge_inst <= _iregister_read_io_exe_reqs_1_bits_uop_edge_inst;	// core.scala:132:32, :179:20
+    brinfos_0_uop_pc_lob <= _iregister_read_io_exe_reqs_1_bits_uop_pc_lob;	// core.scala:132:32, :179:20
+    brinfos_0_uop_rob_idx <= _iregister_read_io_exe_reqs_1_bits_uop_rob_idx;	// core.scala:132:32, :179:20
+    brinfos_0_uop_ldq_idx <= _iregister_read_io_exe_reqs_1_bits_uop_ldq_idx;	// core.scala:132:32, :179:20
+    brinfos_0_uop_stq_idx <= _iregister_read_io_exe_reqs_1_bits_uop_stq_idx;	// core.scala:132:32, :179:20
     brinfos_0_valid <= _jmp_unit_io_brinfo_valid & ~_rob_io_flush_valid;	// core.scala:140:32, :179:20, :194:{34,37}, execution-units.scala:119:32
     brinfos_0_mispredict <= _jmp_unit_io_brinfo_mispredict;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_0_taken <= _jmp_unit_io_brinfo_taken;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_0_cfi_type <= _jmp_unit_io_brinfo_cfi_type;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_0_pc_sel <= _jmp_unit_io_brinfo_pc_sel;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_0_target_offset <= _jmp_unit_io_brinfo_target_offset;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_is_rvc <= _csr_exe_unit_io_brinfo_uop_is_rvc;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_br_mask <= _csr_exe_unit_io_brinfo_uop_br_mask;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_br_tag <= _csr_exe_unit_io_brinfo_uop_br_tag;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_ftq_idx <= _csr_exe_unit_io_brinfo_uop_ftq_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_edge_inst <= _csr_exe_unit_io_brinfo_uop_edge_inst;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_pc_lob <= _csr_exe_unit_io_brinfo_uop_pc_lob;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_rob_idx <= _csr_exe_unit_io_brinfo_uop_rob_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_ldq_idx <= _csr_exe_unit_io_brinfo_uop_ldq_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_1_uop_stq_idx <= _csr_exe_unit_io_brinfo_uop_stq_idx;	// core.scala:179:20, execution-units.scala:119:32
+    brinfos_1_uop_is_rvc <= _iregister_read_io_exe_reqs_2_bits_uop_is_rvc;	// core.scala:132:32, :179:20
+    brinfos_1_uop_br_mask <= _iregister_read_io_exe_reqs_2_bits_uop_br_mask;	// core.scala:132:32, :179:20
+    brinfos_1_uop_br_tag <= _iregister_read_io_exe_reqs_2_bits_uop_br_tag;	// core.scala:132:32, :179:20
+    brinfos_1_uop_ftq_idx <= _iregister_read_io_exe_reqs_2_bits_uop_ftq_idx;	// core.scala:132:32, :179:20
+    brinfos_1_uop_edge_inst <= _iregister_read_io_exe_reqs_2_bits_uop_edge_inst;	// core.scala:132:32, :179:20
+    brinfos_1_uop_pc_lob <= _iregister_read_io_exe_reqs_2_bits_uop_pc_lob;	// core.scala:132:32, :179:20
+    brinfos_1_uop_rob_idx <= _iregister_read_io_exe_reqs_2_bits_uop_rob_idx;	// core.scala:132:32, :179:20
+    brinfos_1_uop_ldq_idx <= _iregister_read_io_exe_reqs_2_bits_uop_ldq_idx;	// core.scala:132:32, :179:20
+    brinfos_1_uop_stq_idx <= _iregister_read_io_exe_reqs_2_bits_uop_stq_idx;	// core.scala:132:32, :179:20
     brinfos_1_valid <= _csr_exe_unit_io_brinfo_valid & ~_rob_io_flush_valid;	// core.scala:140:32, :179:20, :194:{34,37}, execution-units.scala:119:32
     brinfos_1_mispredict <= _csr_exe_unit_io_brinfo_mispredict;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_1_taken <= _csr_exe_unit_io_brinfo_taken;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_1_cfi_type <= _csr_exe_unit_io_brinfo_cfi_type;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_1_pc_sel <= _csr_exe_unit_io_brinfo_pc_sel;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_1_target_offset <= _csr_exe_unit_io_brinfo_target_offset;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_is_rvc <= _alu_exe_unit_io_brinfo_uop_is_rvc;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_br_mask <= _alu_exe_unit_io_brinfo_uop_br_mask;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_br_tag <= _alu_exe_unit_io_brinfo_uop_br_tag;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_ftq_idx <= _alu_exe_unit_io_brinfo_uop_ftq_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_edge_inst <= _alu_exe_unit_io_brinfo_uop_edge_inst;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_pc_lob <= _alu_exe_unit_io_brinfo_uop_pc_lob;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_rob_idx <= _alu_exe_unit_io_brinfo_uop_rob_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_ldq_idx <= _alu_exe_unit_io_brinfo_uop_ldq_idx;	// core.scala:179:20, execution-units.scala:119:32
-    brinfos_2_uop_stq_idx <= _alu_exe_unit_io_brinfo_uop_stq_idx;	// core.scala:179:20, execution-units.scala:119:32
+    brinfos_2_uop_is_rvc <= _iregister_read_io_exe_reqs_3_bits_uop_is_rvc;	// core.scala:132:32, :179:20
+    brinfos_2_uop_br_mask <= _iregister_read_io_exe_reqs_3_bits_uop_br_mask;	// core.scala:132:32, :179:20
+    brinfos_2_uop_br_tag <= _iregister_read_io_exe_reqs_3_bits_uop_br_tag;	// core.scala:132:32, :179:20
+    brinfos_2_uop_ftq_idx <= _iregister_read_io_exe_reqs_3_bits_uop_ftq_idx;	// core.scala:132:32, :179:20
+    brinfos_2_uop_edge_inst <= _iregister_read_io_exe_reqs_3_bits_uop_edge_inst;	// core.scala:132:32, :179:20
+    brinfos_2_uop_pc_lob <= _iregister_read_io_exe_reqs_3_bits_uop_pc_lob;	// core.scala:132:32, :179:20
+    brinfos_2_uop_rob_idx <= _iregister_read_io_exe_reqs_3_bits_uop_rob_idx;	// core.scala:132:32, :179:20
+    brinfos_2_uop_ldq_idx <= _iregister_read_io_exe_reqs_3_bits_uop_ldq_idx;	// core.scala:132:32, :179:20
+    brinfos_2_uop_stq_idx <= _iregister_read_io_exe_reqs_3_bits_uop_stq_idx;	// core.scala:132:32, :179:20
     brinfos_2_valid <= _alu_exe_unit_io_brinfo_valid & ~_rob_io_flush_valid;	// core.scala:140:32, :179:20, :194:{34,37}, execution-units.scala:119:32
     brinfos_2_mispredict <= _alu_exe_unit_io_brinfo_mispredict;	// core.scala:179:20, execution-units.scala:119:32
     brinfos_2_taken <= _alu_exe_unit_io_brinfo_taken;	// core.scala:179:20, execution-units.scala:119:32
@@ -3251,283 +2455,34 @@ module BoomCore_1(
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
   ALUExeUnit_6 mem_units_0 (	// execution-units.scala:108:30
-    .clock                                  (clock),
-    .reset                                  (reset),
-    .io_req_valid                           (_iregister_read_io_exe_reqs_0_valid),	// core.scala:132:32
-    .io_req_bits_uop_uopc                   (_iregister_read_io_exe_reqs_0_bits_uop_uopc),	// core.scala:132:32
-    .io_req_bits_uop_inst                   (_iregister_read_io_exe_reqs_0_bits_uop_inst),	// core.scala:132:32
-    .io_req_bits_uop_debug_inst
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_inst),	// core.scala:132:32
-    .io_req_bits_uop_is_rvc
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_rvc),	// core.scala:132:32
-    .io_req_bits_uop_debug_pc
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_pc),	// core.scala:132:32
-    .io_req_bits_uop_iq_type
-      (_iregister_read_io_exe_reqs_0_bits_uop_iq_type),	// core.scala:132:32
-    .io_req_bits_uop_fu_code
-      (_iregister_read_io_exe_reqs_0_bits_uop_fu_code),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_br_type
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_br_type),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_op1_sel
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_op1_sel),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_op2_sel
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_op2_sel),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_imm_sel
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_imm_sel),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_op_fcn
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_op_fcn),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_fcn_dw
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_fcn_dw),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_csr_cmd           (3'h0),	// core.scala:490:34
-    .io_req_bits_uop_ctrl_is_load
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_load),	// core.scala:132:32
-    .io_req_bits_uop_ctrl_is_sta
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_sta),	// core.scala:132:32
+    .clock                               (clock),
+    .reset                               (reset),
+    .io_req_valid                        (_iregister_read_io_exe_reqs_0_valid),	// core.scala:132:32
+    .io_req_bits_uop_uopc                (_iregister_read_io_exe_reqs_0_bits_uop_uopc),	// core.scala:132:32
+    .io_req_bits_uop_fu_code             (_iregister_read_io_exe_reqs_0_bits_uop_fu_code),	// core.scala:132:32
     .io_req_bits_uop_ctrl_is_std
       (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_std),	// core.scala:132:32
-    .io_req_bits_uop_iw_state
-      (_iregister_read_io_exe_reqs_0_bits_uop_iw_state),	// core.scala:132:32
-    .io_req_bits_uop_iw_p1_poisoned         (1'h0),	// core.scala:77:37, :98:79, :100:32, :101:46, :102:33, :105:32, :107:32, :111:32, :119:32, :129:32, :132:32, :140:32, :155:24, :171:24, :172:27, :268:19, :683:73, execution-units.scala:108:30, :119:32
-    .io_req_bits_uop_iw_p2_poisoned         (1'h0),	// core.scala:77:37, :98:79, :100:32, :101:46, :102:33, :105:32, :107:32, :111:32, :119:32, :129:32, :132:32, :140:32, :155:24, :171:24, :172:27, :268:19, :683:73, execution-units.scala:108:30, :119:32
-    .io_req_bits_uop_is_br
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_br),	// core.scala:132:32
-    .io_req_bits_uop_is_jalr
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_jalr),	// core.scala:132:32
-    .io_req_bits_uop_is_jal
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_jal),	// core.scala:132:32
-    .io_req_bits_uop_is_sfb
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_sfb),	// core.scala:132:32
-    .io_req_bits_uop_br_mask
-      (_iregister_read_io_exe_reqs_0_bits_uop_br_mask),	// core.scala:132:32
-    .io_req_bits_uop_br_tag
-      (_iregister_read_io_exe_reqs_0_bits_uop_br_tag),	// core.scala:132:32
-    .io_req_bits_uop_ftq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_ftq_idx),	// core.scala:132:32
-    .io_req_bits_uop_edge_inst
-      (_iregister_read_io_exe_reqs_0_bits_uop_edge_inst),	// core.scala:132:32
-    .io_req_bits_uop_pc_lob
-      (_iregister_read_io_exe_reqs_0_bits_uop_pc_lob),	// core.scala:132:32
-    .io_req_bits_uop_taken
-      (_iregister_read_io_exe_reqs_0_bits_uop_taken),	// core.scala:132:32
+    .io_req_bits_uop_br_mask             (_iregister_read_io_exe_reqs_0_bits_uop_br_mask),	// core.scala:132:32
     .io_req_bits_uop_imm_packed
       (_iregister_read_io_exe_reqs_0_bits_uop_imm_packed),	// core.scala:132:32
-    .io_req_bits_uop_csr_addr
-      (_iregister_read_io_exe_reqs_0_bits_uop_csr_addr),	// core.scala:132:32
-    .io_req_bits_uop_rob_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_rob_idx),	// core.scala:132:32
-    .io_req_bits_uop_ldq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_ldq_idx),	// core.scala:132:32
-    .io_req_bits_uop_stq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_stq_idx),	// core.scala:132:32
-    .io_req_bits_uop_rxq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_rxq_idx),	// core.scala:132:32
-    .io_req_bits_uop_pdst                   (_iregister_read_io_exe_reqs_0_bits_uop_pdst),	// core.scala:132:32
-    .io_req_bits_uop_prs1                   (_iregister_read_io_exe_reqs_0_bits_uop_prs1),	// core.scala:132:32
-    .io_req_bits_uop_prs2                   (_iregister_read_io_exe_reqs_0_bits_uop_prs2),	// core.scala:132:32
-    .io_req_bits_uop_prs3                   (_iregister_read_io_exe_reqs_0_bits_uop_prs3),	// core.scala:132:32
-    .io_req_bits_uop_ppred
-      (_iregister_read_io_exe_reqs_0_bits_uop_ppred),	// core.scala:132:32
-    .io_req_bits_uop_prs1_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_prs1_busy),	// core.scala:132:32
-    .io_req_bits_uop_prs2_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_prs2_busy),	// core.scala:132:32
-    .io_req_bits_uop_prs3_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_prs3_busy),	// core.scala:132:32
-    .io_req_bits_uop_ppred_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_ppred_busy),	// core.scala:132:32
-    .io_req_bits_uop_stale_pdst
-      (_iregister_read_io_exe_reqs_0_bits_uop_stale_pdst),	// core.scala:132:32
-    .io_req_bits_uop_exception
-      (_iregister_read_io_exe_reqs_0_bits_uop_exception),	// core.scala:132:32
-    .io_req_bits_uop_exc_cause
-      (_iregister_read_io_exe_reqs_0_bits_uop_exc_cause),	// core.scala:132:32
-    .io_req_bits_uop_bypassable
-      (_iregister_read_io_exe_reqs_0_bits_uop_bypassable),	// core.scala:132:32
-    .io_req_bits_uop_mem_cmd
-      (_iregister_read_io_exe_reqs_0_bits_uop_mem_cmd),	// core.scala:132:32
+    .io_req_bits_uop_mem_cmd             (_iregister_read_io_exe_reqs_0_bits_uop_mem_cmd),	// core.scala:132:32
     .io_req_bits_uop_mem_size
       (_iregister_read_io_exe_reqs_0_bits_uop_mem_size),	// core.scala:132:32
-    .io_req_bits_uop_mem_signed
-      (_iregister_read_io_exe_reqs_0_bits_uop_mem_signed),	// core.scala:132:32
-    .io_req_bits_uop_is_fence
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_fence),	// core.scala:132:32
-    .io_req_bits_uop_is_fencei
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_fencei),	// core.scala:132:32
-    .io_req_bits_uop_is_amo
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_amo),	// core.scala:132:32
-    .io_req_bits_uop_uses_ldq
-      (_iregister_read_io_exe_reqs_0_bits_uop_uses_ldq),	// core.scala:132:32
-    .io_req_bits_uop_uses_stq
-      (_iregister_read_io_exe_reqs_0_bits_uop_uses_stq),	// core.scala:132:32
-    .io_req_bits_uop_is_sys_pc2epc
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_sys_pc2epc),	// core.scala:132:32
-    .io_req_bits_uop_is_unique
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_unique),	// core.scala:132:32
-    .io_req_bits_uop_flush_on_commit
-      (_iregister_read_io_exe_reqs_0_bits_uop_flush_on_commit),	// core.scala:132:32
-    .io_req_bits_uop_ldst_is_rs1
-      (_iregister_read_io_exe_reqs_0_bits_uop_ldst_is_rs1),	// core.scala:132:32
-    .io_req_bits_uop_ldst                   (_iregister_read_io_exe_reqs_0_bits_uop_ldst),	// core.scala:132:32
-    .io_req_bits_uop_lrs1                   (_iregister_read_io_exe_reqs_0_bits_uop_lrs1),	// core.scala:132:32
-    .io_req_bits_uop_lrs2                   (_iregister_read_io_exe_reqs_0_bits_uop_lrs2),	// core.scala:132:32
-    .io_req_bits_uop_lrs3                   (_iregister_read_io_exe_reqs_0_bits_uop_lrs3),	// core.scala:132:32
-    .io_req_bits_uop_ldst_val
-      (_iregister_read_io_exe_reqs_0_bits_uop_ldst_val),	// core.scala:132:32
-    .io_req_bits_uop_dst_rtype
-      (_iregister_read_io_exe_reqs_0_bits_uop_dst_rtype),	// core.scala:132:32
-    .io_req_bits_uop_lrs1_rtype
-      (_iregister_read_io_exe_reqs_0_bits_uop_lrs1_rtype),	// core.scala:132:32
-    .io_req_bits_uop_lrs2_rtype
-      (_iregister_read_io_exe_reqs_0_bits_uop_lrs2_rtype),	// core.scala:132:32
-    .io_req_bits_uop_frs3_en
-      (_iregister_read_io_exe_reqs_0_bits_uop_frs3_en),	// core.scala:132:32
-    .io_req_bits_uop_fp_val
-      (_iregister_read_io_exe_reqs_0_bits_uop_fp_val),	// core.scala:132:32
-    .io_req_bits_uop_fp_single
-      (_iregister_read_io_exe_reqs_0_bits_uop_fp_single),	// core.scala:132:32
-    .io_req_bits_uop_xcpt_pf_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_xcpt_pf_if),	// core.scala:132:32
-    .io_req_bits_uop_xcpt_ae_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_xcpt_ae_if),	// core.scala:132:32
-    .io_req_bits_uop_xcpt_ma_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_xcpt_ma_if),	// core.scala:132:32
-    .io_req_bits_uop_bp_debug_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_bp_debug_if),	// core.scala:132:32
-    .io_req_bits_uop_bp_xcpt_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_bp_xcpt_if),	// core.scala:132:32
-    .io_req_bits_uop_debug_fsrc
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_fsrc),	// core.scala:132:32
-    .io_req_bits_uop_debug_tsrc
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_tsrc),	// core.scala:132:32
+    .io_req_bits_uop_fp_val              (_iregister_read_io_exe_reqs_0_bits_uop_fp_val),	// core.scala:132:32
     .io_req_bits_rs1_data
       ({1'h0, _iregister_read_io_exe_reqs_0_bits_rs1_data}),	// core.scala:77:37, :98:79, :100:32, :101:46, :102:33, :105:32, :107:32, :111:32, :119:32, :129:32, :132:32, :140:32, :155:24, :171:24, :172:27, :268:19, :683:73, :1074:23, execution-units.scala:108:30, :119:32
     .io_req_bits_rs2_data
       ({1'h0, _iregister_read_io_exe_reqs_0_bits_rs2_data}),	// core.scala:77:37, :98:79, :100:32, :101:46, :102:33, :105:32, :107:32, :111:32, :119:32, :129:32, :132:32, :140:32, :155:24, :171:24, :172:27, :268:19, :683:73, :1074:23, execution-units.scala:108:30, :119:32
-    .io_brupdate_b1_resolve_mask            (b1_resolve_mask),	// core.scala:196:72
-    .io_brupdate_b1_mispredict_mask         (b1_mispredict_mask),	// core.scala:197:93
-    .io_lsu_io_iresp_valid                  (io_lsu_exe_0_iresp_valid),
-    .io_lsu_io_iresp_bits_uop_rob_idx       (io_lsu_exe_0_iresp_bits_uop_rob_idx),
-    .io_lsu_io_iresp_bits_uop_pdst          (io_lsu_exe_0_iresp_bits_uop_pdst),
-    .io_lsu_io_iresp_bits_uop_is_amo        (io_lsu_exe_0_iresp_bits_uop_is_amo),
-    .io_lsu_io_iresp_bits_uop_uses_stq      (io_lsu_exe_0_iresp_bits_uop_uses_stq),
-    .io_lsu_io_iresp_bits_uop_dst_rtype     (io_lsu_exe_0_iresp_bits_uop_dst_rtype),
-    .io_lsu_io_iresp_bits_data              (io_lsu_exe_0_iresp_bits_data),
-    .io_lsu_io_fresp_valid                  (io_lsu_exe_0_fresp_valid),
-    .io_lsu_io_fresp_bits_uop_uopc          (io_lsu_exe_0_fresp_bits_uop_uopc),
-    .io_lsu_io_fresp_bits_uop_br_mask       (io_lsu_exe_0_fresp_bits_uop_br_mask),
-    .io_lsu_io_fresp_bits_uop_rob_idx       (io_lsu_exe_0_fresp_bits_uop_rob_idx),
-    .io_lsu_io_fresp_bits_uop_stq_idx       (io_lsu_exe_0_fresp_bits_uop_stq_idx),
-    .io_lsu_io_fresp_bits_uop_pdst          (io_lsu_exe_0_fresp_bits_uop_pdst),
-    .io_lsu_io_fresp_bits_uop_mem_size      (io_lsu_exe_0_fresp_bits_uop_mem_size),
-    .io_lsu_io_fresp_bits_uop_is_amo        (io_lsu_exe_0_fresp_bits_uop_is_amo),
-    .io_lsu_io_fresp_bits_uop_uses_stq      (io_lsu_exe_0_fresp_bits_uop_uses_stq),
-    .io_lsu_io_fresp_bits_uop_dst_rtype     (io_lsu_exe_0_fresp_bits_uop_dst_rtype),
-    .io_lsu_io_fresp_bits_uop_fp_val        (io_lsu_exe_0_fresp_bits_uop_fp_val),
-    .io_lsu_io_fresp_bits_data              (io_lsu_exe_0_fresp_bits_data),
-    .io_ll_iresp_valid                      (_mem_units_0_io_ll_iresp_valid),
-    .io_ll_iresp_bits_uop_rob_idx           (_mem_units_0_io_ll_iresp_bits_uop_rob_idx),
-    .io_ll_iresp_bits_uop_pdst              (_mem_units_0_io_ll_iresp_bits_uop_pdst),
-    .io_ll_iresp_bits_uop_is_amo            (_mem_units_0_io_ll_iresp_bits_uop_is_amo),
-    .io_ll_iresp_bits_uop_uses_stq          (_mem_units_0_io_ll_iresp_bits_uop_uses_stq),
-    .io_ll_iresp_bits_uop_dst_rtype         (_mem_units_0_io_ll_iresp_bits_uop_dst_rtype),
-    .io_ll_iresp_bits_data                  (_mem_units_0_io_ll_iresp_bits_data),
-    .io_ll_fresp_valid                      (_mem_units_0_io_ll_fresp_valid),
-    .io_ll_fresp_bits_uop_uopc              (_mem_units_0_io_ll_fresp_bits_uop_uopc),
-    .io_ll_fresp_bits_uop_br_mask           (_mem_units_0_io_ll_fresp_bits_uop_br_mask),
-    .io_ll_fresp_bits_uop_rob_idx           (_mem_units_0_io_ll_fresp_bits_uop_rob_idx),
-    .io_ll_fresp_bits_uop_stq_idx           (_mem_units_0_io_ll_fresp_bits_uop_stq_idx),
-    .io_ll_fresp_bits_uop_pdst              (_mem_units_0_io_ll_fresp_bits_uop_pdst),
-    .io_ll_fresp_bits_uop_mem_size          (_mem_units_0_io_ll_fresp_bits_uop_mem_size),
-    .io_ll_fresp_bits_uop_is_amo            (_mem_units_0_io_ll_fresp_bits_uop_is_amo),
-    .io_ll_fresp_bits_uop_uses_stq          (_mem_units_0_io_ll_fresp_bits_uop_uses_stq),
-    .io_ll_fresp_bits_uop_dst_rtype         (_mem_units_0_io_ll_fresp_bits_uop_dst_rtype),
-    .io_ll_fresp_bits_uop_fp_val            (_mem_units_0_io_ll_fresp_bits_uop_fp_val),
-    .io_ll_fresp_bits_data                  (_mem_units_0_io_ll_fresp_bits_data),
-    .io_lsu_io_req_valid                    (io_lsu_exe_0_req_valid),
-    .io_lsu_io_req_bits_uop_uopc            (io_lsu_exe_0_req_bits_uop_uopc),
-    .io_lsu_io_req_bits_uop_inst            (io_lsu_exe_0_req_bits_uop_inst),
-    .io_lsu_io_req_bits_uop_debug_inst      (io_lsu_exe_0_req_bits_uop_debug_inst),
-    .io_lsu_io_req_bits_uop_is_rvc          (io_lsu_exe_0_req_bits_uop_is_rvc),
-    .io_lsu_io_req_bits_uop_debug_pc        (io_lsu_exe_0_req_bits_uop_debug_pc),
-    .io_lsu_io_req_bits_uop_iq_type         (io_lsu_exe_0_req_bits_uop_iq_type),
-    .io_lsu_io_req_bits_uop_fu_code         (io_lsu_exe_0_req_bits_uop_fu_code),
-    .io_lsu_io_req_bits_uop_ctrl_br_type    (io_lsu_exe_0_req_bits_uop_ctrl_br_type),
-    .io_lsu_io_req_bits_uop_ctrl_op1_sel    (io_lsu_exe_0_req_bits_uop_ctrl_op1_sel),
-    .io_lsu_io_req_bits_uop_ctrl_op2_sel    (io_lsu_exe_0_req_bits_uop_ctrl_op2_sel),
-    .io_lsu_io_req_bits_uop_ctrl_imm_sel    (io_lsu_exe_0_req_bits_uop_ctrl_imm_sel),
-    .io_lsu_io_req_bits_uop_ctrl_op_fcn     (io_lsu_exe_0_req_bits_uop_ctrl_op_fcn),
-    .io_lsu_io_req_bits_uop_ctrl_fcn_dw     (io_lsu_exe_0_req_bits_uop_ctrl_fcn_dw),
-    .io_lsu_io_req_bits_uop_ctrl_csr_cmd    (io_lsu_exe_0_req_bits_uop_ctrl_csr_cmd),
-    .io_lsu_io_req_bits_uop_ctrl_is_load    (io_lsu_exe_0_req_bits_uop_ctrl_is_load),
-    .io_lsu_io_req_bits_uop_ctrl_is_sta     (io_lsu_exe_0_req_bits_uop_ctrl_is_sta),
-    .io_lsu_io_req_bits_uop_ctrl_is_std     (io_lsu_exe_0_req_bits_uop_ctrl_is_std),
-    .io_lsu_io_req_bits_uop_iw_state        (io_lsu_exe_0_req_bits_uop_iw_state),
-    .io_lsu_io_req_bits_uop_iw_p1_poisoned  (io_lsu_exe_0_req_bits_uop_iw_p1_poisoned),
-    .io_lsu_io_req_bits_uop_iw_p2_poisoned  (io_lsu_exe_0_req_bits_uop_iw_p2_poisoned),
-    .io_lsu_io_req_bits_uop_is_br           (io_lsu_exe_0_req_bits_uop_is_br),
-    .io_lsu_io_req_bits_uop_is_jalr         (io_lsu_exe_0_req_bits_uop_is_jalr),
-    .io_lsu_io_req_bits_uop_is_jal          (io_lsu_exe_0_req_bits_uop_is_jal),
-    .io_lsu_io_req_bits_uop_is_sfb          (io_lsu_exe_0_req_bits_uop_is_sfb),
-    .io_lsu_io_req_bits_uop_br_mask         (io_lsu_exe_0_req_bits_uop_br_mask),
-    .io_lsu_io_req_bits_uop_br_tag          (io_lsu_exe_0_req_bits_uop_br_tag),
-    .io_lsu_io_req_bits_uop_ftq_idx         (io_lsu_exe_0_req_bits_uop_ftq_idx),
-    .io_lsu_io_req_bits_uop_edge_inst       (io_lsu_exe_0_req_bits_uop_edge_inst),
-    .io_lsu_io_req_bits_uop_pc_lob          (io_lsu_exe_0_req_bits_uop_pc_lob),
-    .io_lsu_io_req_bits_uop_taken           (io_lsu_exe_0_req_bits_uop_taken),
-    .io_lsu_io_req_bits_uop_imm_packed      (io_lsu_exe_0_req_bits_uop_imm_packed),
-    .io_lsu_io_req_bits_uop_csr_addr        (io_lsu_exe_0_req_bits_uop_csr_addr),
-    .io_lsu_io_req_bits_uop_rob_idx         (io_lsu_exe_0_req_bits_uop_rob_idx),
-    .io_lsu_io_req_bits_uop_ldq_idx         (io_lsu_exe_0_req_bits_uop_ldq_idx),
-    .io_lsu_io_req_bits_uop_stq_idx         (io_lsu_exe_0_req_bits_uop_stq_idx),
-    .io_lsu_io_req_bits_uop_rxq_idx         (io_lsu_exe_0_req_bits_uop_rxq_idx),
-    .io_lsu_io_req_bits_uop_pdst            (io_lsu_exe_0_req_bits_uop_pdst),
-    .io_lsu_io_req_bits_uop_prs1            (io_lsu_exe_0_req_bits_uop_prs1),
-    .io_lsu_io_req_bits_uop_prs2            (io_lsu_exe_0_req_bits_uop_prs2),
-    .io_lsu_io_req_bits_uop_prs3            (io_lsu_exe_0_req_bits_uop_prs3),
-    .io_lsu_io_req_bits_uop_ppred           (io_lsu_exe_0_req_bits_uop_ppred),
-    .io_lsu_io_req_bits_uop_prs1_busy       (io_lsu_exe_0_req_bits_uop_prs1_busy),
-    .io_lsu_io_req_bits_uop_prs2_busy       (io_lsu_exe_0_req_bits_uop_prs2_busy),
-    .io_lsu_io_req_bits_uop_prs3_busy       (io_lsu_exe_0_req_bits_uop_prs3_busy),
-    .io_lsu_io_req_bits_uop_ppred_busy      (io_lsu_exe_0_req_bits_uop_ppred_busy),
-    .io_lsu_io_req_bits_uop_stale_pdst      (io_lsu_exe_0_req_bits_uop_stale_pdst),
-    .io_lsu_io_req_bits_uop_exception       (io_lsu_exe_0_req_bits_uop_exception),
-    .io_lsu_io_req_bits_uop_exc_cause       (io_lsu_exe_0_req_bits_uop_exc_cause),
-    .io_lsu_io_req_bits_uop_bypassable      (io_lsu_exe_0_req_bits_uop_bypassable),
-    .io_lsu_io_req_bits_uop_mem_cmd         (io_lsu_exe_0_req_bits_uop_mem_cmd),
-    .io_lsu_io_req_bits_uop_mem_size        (io_lsu_exe_0_req_bits_uop_mem_size),
-    .io_lsu_io_req_bits_uop_mem_signed      (io_lsu_exe_0_req_bits_uop_mem_signed),
-    .io_lsu_io_req_bits_uop_is_fence        (io_lsu_exe_0_req_bits_uop_is_fence),
-    .io_lsu_io_req_bits_uop_is_fencei       (io_lsu_exe_0_req_bits_uop_is_fencei),
-    .io_lsu_io_req_bits_uop_is_amo          (io_lsu_exe_0_req_bits_uop_is_amo),
-    .io_lsu_io_req_bits_uop_uses_ldq        (io_lsu_exe_0_req_bits_uop_uses_ldq),
-    .io_lsu_io_req_bits_uop_uses_stq        (io_lsu_exe_0_req_bits_uop_uses_stq),
-    .io_lsu_io_req_bits_uop_is_sys_pc2epc   (io_lsu_exe_0_req_bits_uop_is_sys_pc2epc),
-    .io_lsu_io_req_bits_uop_is_unique       (io_lsu_exe_0_req_bits_uop_is_unique),
-    .io_lsu_io_req_bits_uop_flush_on_commit (io_lsu_exe_0_req_bits_uop_flush_on_commit),
-    .io_lsu_io_req_bits_uop_ldst_is_rs1     (io_lsu_exe_0_req_bits_uop_ldst_is_rs1),
-    .io_lsu_io_req_bits_uop_ldst            (io_lsu_exe_0_req_bits_uop_ldst),
-    .io_lsu_io_req_bits_uop_lrs1            (io_lsu_exe_0_req_bits_uop_lrs1),
-    .io_lsu_io_req_bits_uop_lrs2            (io_lsu_exe_0_req_bits_uop_lrs2),
-    .io_lsu_io_req_bits_uop_lrs3            (io_lsu_exe_0_req_bits_uop_lrs3),
-    .io_lsu_io_req_bits_uop_ldst_val        (io_lsu_exe_0_req_bits_uop_ldst_val),
-    .io_lsu_io_req_bits_uop_dst_rtype       (io_lsu_exe_0_req_bits_uop_dst_rtype),
-    .io_lsu_io_req_bits_uop_lrs1_rtype      (io_lsu_exe_0_req_bits_uop_lrs1_rtype),
-    .io_lsu_io_req_bits_uop_lrs2_rtype      (io_lsu_exe_0_req_bits_uop_lrs2_rtype),
-    .io_lsu_io_req_bits_uop_frs3_en         (io_lsu_exe_0_req_bits_uop_frs3_en),
-    .io_lsu_io_req_bits_uop_fp_val          (io_lsu_exe_0_req_bits_uop_fp_val),
-    .io_lsu_io_req_bits_uop_fp_single       (io_lsu_exe_0_req_bits_uop_fp_single),
-    .io_lsu_io_req_bits_uop_xcpt_pf_if      (io_lsu_exe_0_req_bits_uop_xcpt_pf_if),
-    .io_lsu_io_req_bits_uop_xcpt_ae_if      (io_lsu_exe_0_req_bits_uop_xcpt_ae_if),
-    .io_lsu_io_req_bits_uop_xcpt_ma_if      (io_lsu_exe_0_req_bits_uop_xcpt_ma_if),
-    .io_lsu_io_req_bits_uop_bp_debug_if     (io_lsu_exe_0_req_bits_uop_bp_debug_if),
-    .io_lsu_io_req_bits_uop_bp_xcpt_if      (io_lsu_exe_0_req_bits_uop_bp_xcpt_if),
-    .io_lsu_io_req_bits_uop_debug_fsrc      (io_lsu_exe_0_req_bits_uop_debug_fsrc),
-    .io_lsu_io_req_bits_uop_debug_tsrc      (io_lsu_exe_0_req_bits_uop_debug_tsrc),
-    .io_lsu_io_req_bits_data                (io_lsu_exe_0_req_bits_data),
-    .io_lsu_io_req_bits_addr                (io_lsu_exe_0_req_bits_addr),
-    .io_lsu_io_req_bits_mxcpt_valid         (io_lsu_exe_0_req_bits_mxcpt_valid),
-    .io_lsu_io_req_bits_sfence_valid
-      (_mem_units_0_io_lsu_io_req_bits_sfence_valid),
+    .io_brupdate_b1_resolve_mask         (b1_resolve_mask),	// core.scala:196:72
+    .io_brupdate_b1_mispredict_mask      (b1_mispredict_mask),	// core.scala:197:93
+    .io_lsu_io_iresp_bits_data           (io_lsu_exe_0_iresp_bits_data),
+    .io_ll_iresp_bits_data               (_mem_units_0_io_ll_iresp_bits_data),
+    .io_lsu_io_req_valid                 (io_lsu_exe_0_req_valid),
+    .io_lsu_io_req_bits_uop_br_mask      (io_lsu_exe_0_req_bits_uop_br_mask),
+    .io_lsu_io_req_bits_data             (io_lsu_exe_0_req_bits_data),
+    .io_lsu_io_req_bits_addr             (io_lsu_exe_0_req_bits_addr),
+    .io_lsu_io_req_bits_mxcpt_valid      (io_lsu_exe_0_req_bits_mxcpt_valid),
+    .io_lsu_io_req_bits_sfence_valid     (_mem_units_0_io_lsu_io_req_bits_sfence_valid),
     .io_lsu_io_req_bits_sfence_bits_rs1
       (_mem_units_0_io_lsu_io_req_bits_sfence_bits_rs1),
     .io_lsu_io_req_bits_sfence_bits_rs2
@@ -3559,16 +2514,12 @@ module BoomCore_1(
     .io_req_bits_uop_is_jal            (_iregister_read_io_exe_reqs_1_bits_uop_is_jal),	// core.scala:132:32
     .io_req_bits_uop_is_sfb            (_iregister_read_io_exe_reqs_1_bits_uop_is_sfb),	// core.scala:132:32
     .io_req_bits_uop_br_mask           (_iregister_read_io_exe_reqs_1_bits_uop_br_mask),	// core.scala:132:32
-    .io_req_bits_uop_br_tag            (_iregister_read_io_exe_reqs_1_bits_uop_br_tag),	// core.scala:132:32
-    .io_req_bits_uop_ftq_idx           (_iregister_read_io_exe_reqs_1_bits_uop_ftq_idx),	// core.scala:132:32
     .io_req_bits_uop_edge_inst         (_iregister_read_io_exe_reqs_1_bits_uop_edge_inst),	// core.scala:132:32
     .io_req_bits_uop_pc_lob            (_iregister_read_io_exe_reqs_1_bits_uop_pc_lob),	// core.scala:132:32
     .io_req_bits_uop_taken             (_iregister_read_io_exe_reqs_1_bits_uop_taken),	// core.scala:132:32
     .io_req_bits_uop_imm_packed
       (_iregister_read_io_exe_reqs_1_bits_uop_imm_packed),	// core.scala:132:32
     .io_req_bits_uop_rob_idx           (_iregister_read_io_exe_reqs_1_bits_uop_rob_idx),	// core.scala:132:32
-    .io_req_bits_uop_ldq_idx           (_iregister_read_io_exe_reqs_1_bits_uop_ldq_idx),	// core.scala:132:32
-    .io_req_bits_uop_stq_idx           (_iregister_read_io_exe_reqs_1_bits_uop_stq_idx),	// core.scala:132:32
     .io_req_bits_uop_pdst              (_iregister_read_io_exe_reqs_1_bits_uop_pdst),	// core.scala:132:32
     .io_req_bits_uop_prs1              (_iregister_read_io_exe_reqs_1_bits_uop_prs1),	// core.scala:132:32
     .io_req_bits_uop_bypassable
@@ -3599,18 +2550,7 @@ module BoomCore_1(
     .io_iresp_bits_uop_dst_rtype       (_jmp_unit_io_iresp_bits_uop_dst_rtype),
     .io_iresp_bits_data                (_jmp_unit_io_iresp_bits_data),
     .io_bypass_0_valid                 (_jmp_unit_io_bypass_0_valid),
-    .io_bypass_0_bits_uop_pdst         (_jmp_unit_io_bypass_0_bits_uop_pdst),
-    .io_bypass_0_bits_uop_dst_rtype    (_jmp_unit_io_bypass_0_bits_uop_dst_rtype),
     .io_bypass_0_bits_data             (_jmp_unit_io_bypass_0_bits_data),
-    .io_brinfo_uop_is_rvc              (_jmp_unit_io_brinfo_uop_is_rvc),
-    .io_brinfo_uop_br_mask             (_jmp_unit_io_brinfo_uop_br_mask),
-    .io_brinfo_uop_br_tag              (_jmp_unit_io_brinfo_uop_br_tag),
-    .io_brinfo_uop_ftq_idx             (_jmp_unit_io_brinfo_uop_ftq_idx),
-    .io_brinfo_uop_edge_inst           (_jmp_unit_io_brinfo_uop_edge_inst),
-    .io_brinfo_uop_pc_lob              (_jmp_unit_io_brinfo_uop_pc_lob),
-    .io_brinfo_uop_rob_idx             (_jmp_unit_io_brinfo_uop_rob_idx),
-    .io_brinfo_uop_ldq_idx             (_jmp_unit_io_brinfo_uop_ldq_idx),
-    .io_brinfo_uop_stq_idx             (_jmp_unit_io_brinfo_uop_stq_idx),
     .io_brinfo_valid                   (_jmp_unit_io_brinfo_valid),
     .io_brinfo_mispredict              (_jmp_unit_io_brinfo_mispredict),
     .io_brinfo_taken                   (_jmp_unit_io_brinfo_taken),
@@ -3825,19 +2765,7 @@ module BoomCore_1(
     .io_ll_fresp_bits_fflags_bits_flags
       (_csr_exe_unit_io_ll_fresp_bits_fflags_bits_flags),
     .io_bypass_0_valid                        (_csr_exe_unit_io_bypass_0_valid),
-    .io_bypass_0_bits_uop_pdst                (_csr_exe_unit_io_bypass_0_bits_uop_pdst),
-    .io_bypass_0_bits_uop_dst_rtype
-      (_csr_exe_unit_io_bypass_0_bits_uop_dst_rtype),
     .io_bypass_0_bits_data                    (_csr_exe_unit_io_bypass_0_bits_data),
-    .io_brinfo_uop_is_rvc                     (_csr_exe_unit_io_brinfo_uop_is_rvc),
-    .io_brinfo_uop_br_mask                    (_csr_exe_unit_io_brinfo_uop_br_mask),
-    .io_brinfo_uop_br_tag                     (_csr_exe_unit_io_brinfo_uop_br_tag),
-    .io_brinfo_uop_ftq_idx                    (_csr_exe_unit_io_brinfo_uop_ftq_idx),
-    .io_brinfo_uop_edge_inst                  (_csr_exe_unit_io_brinfo_uop_edge_inst),
-    .io_brinfo_uop_pc_lob                     (_csr_exe_unit_io_brinfo_uop_pc_lob),
-    .io_brinfo_uop_rob_idx                    (_csr_exe_unit_io_brinfo_uop_rob_idx),
-    .io_brinfo_uop_ldq_idx                    (_csr_exe_unit_io_brinfo_uop_ldq_idx),
-    .io_brinfo_uop_stq_idx                    (_csr_exe_unit_io_brinfo_uop_stq_idx),
     .io_brinfo_valid                          (_csr_exe_unit_io_brinfo_valid),
     .io_brinfo_mispredict                     (_csr_exe_unit_io_brinfo_mispredict),
     .io_brinfo_taken                          (_csr_exe_unit_io_brinfo_taken),
@@ -3863,15 +2791,9 @@ module BoomCore_1(
     .io_req_bits_uop_is_jal         (_iregister_read_io_exe_reqs_3_bits_uop_is_jal),	// core.scala:132:32
     .io_req_bits_uop_is_sfb         (_iregister_read_io_exe_reqs_3_bits_uop_is_sfb),	// core.scala:132:32
     .io_req_bits_uop_br_mask        (_iregister_read_io_exe_reqs_3_bits_uop_br_mask),	// core.scala:132:32
-    .io_req_bits_uop_br_tag         (_iregister_read_io_exe_reqs_3_bits_uop_br_tag),	// core.scala:132:32
-    .io_req_bits_uop_ftq_idx        (_iregister_read_io_exe_reqs_3_bits_uop_ftq_idx),	// core.scala:132:32
-    .io_req_bits_uop_edge_inst      (_iregister_read_io_exe_reqs_3_bits_uop_edge_inst),	// core.scala:132:32
-    .io_req_bits_uop_pc_lob         (_iregister_read_io_exe_reqs_3_bits_uop_pc_lob),	// core.scala:132:32
     .io_req_bits_uop_taken          (_iregister_read_io_exe_reqs_3_bits_uop_taken),	// core.scala:132:32
     .io_req_bits_uop_imm_packed     (_iregister_read_io_exe_reqs_3_bits_uop_imm_packed),	// core.scala:132:32
     .io_req_bits_uop_rob_idx        (_iregister_read_io_exe_reqs_3_bits_uop_rob_idx),	// core.scala:132:32
-    .io_req_bits_uop_ldq_idx        (_iregister_read_io_exe_reqs_3_bits_uop_ldq_idx),	// core.scala:132:32
-    .io_req_bits_uop_stq_idx        (_iregister_read_io_exe_reqs_3_bits_uop_stq_idx),	// core.scala:132:32
     .io_req_bits_uop_pdst           (_iregister_read_io_exe_reqs_3_bits_uop_pdst),	// core.scala:132:32
     .io_req_bits_uop_prs1           (_iregister_read_io_exe_reqs_3_bits_uop_prs1),	// core.scala:132:32
     .io_req_bits_uop_bypassable     (_iregister_read_io_exe_reqs_3_bits_uop_bypassable),	// core.scala:132:32
@@ -3892,8 +2814,6 @@ module BoomCore_1(
     .io_iresp_bits_uop_dst_rtype    (_alu_exe_unit_io_iresp_bits_uop_dst_rtype),
     .io_iresp_bits_data             (_alu_exe_unit_io_iresp_bits_data),
     .io_bypass_0_valid              (_alu_exe_unit_io_bypass_0_valid),
-    .io_bypass_0_bits_uop_pdst      (_alu_exe_unit_io_bypass_0_bits_uop_pdst),
-    .io_bypass_0_bits_uop_dst_rtype (_alu_exe_unit_io_bypass_0_bits_uop_dst_rtype),
     .io_bypass_0_bits_data          (_alu_exe_unit_io_bypass_0_bits_data),
     .io_bypass_1_valid              (_alu_exe_unit_io_bypass_1_valid),
     .io_bypass_1_bits_uop_pdst      (_alu_exe_unit_io_bypass_1_bits_uop_pdst),
@@ -3903,15 +2823,6 @@ module BoomCore_1(
     .io_bypass_2_bits_uop_pdst      (_alu_exe_unit_io_bypass_2_bits_uop_pdst),
     .io_bypass_2_bits_uop_dst_rtype (_alu_exe_unit_io_bypass_2_bits_uop_dst_rtype),
     .io_bypass_2_bits_data          (_alu_exe_unit_io_bypass_2_bits_data),
-    .io_brinfo_uop_is_rvc           (_alu_exe_unit_io_brinfo_uop_is_rvc),
-    .io_brinfo_uop_br_mask          (_alu_exe_unit_io_brinfo_uop_br_mask),
-    .io_brinfo_uop_br_tag           (_alu_exe_unit_io_brinfo_uop_br_tag),
-    .io_brinfo_uop_ftq_idx          (_alu_exe_unit_io_brinfo_uop_ftq_idx),
-    .io_brinfo_uop_edge_inst        (_alu_exe_unit_io_brinfo_uop_edge_inst),
-    .io_brinfo_uop_pc_lob           (_alu_exe_unit_io_brinfo_uop_pc_lob),
-    .io_brinfo_uop_rob_idx          (_alu_exe_unit_io_brinfo_uop_rob_idx),
-    .io_brinfo_uop_ldq_idx          (_alu_exe_unit_io_brinfo_uop_ldq_idx),
-    .io_brinfo_uop_stq_idx          (_alu_exe_unit_io_brinfo_uop_stq_idx),
     .io_brinfo_valid                (_alu_exe_unit_io_brinfo_valid),
     .io_brinfo_mispredict           (_alu_exe_unit_io_brinfo_mispredict),
     .io_brinfo_taken                (_alu_exe_unit_io_brinfo_taken),
@@ -3927,320 +2838,218 @@ module BoomCore_1(
     .io_flush_pipeline                         (REG_6),	// core.scala:1291:45
     .io_fcsr_rm                                (_csr_io_fcsr_rm),	// core.scala:268:19
     .io_dis_uops_0_valid                       (_dispatcher_io_dis_uops_2_0_valid),	// core.scala:111:32
-    .io_dis_uops_0_bits_uopc                   (_dispatcher_io_dis_uops_2_0_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_0_bits_inst                   (_dispatcher_io_dis_uops_2_0_bits_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_inst
-      (_dispatcher_io_dis_uops_2_0_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_rvc                 (_dispatcher_io_dis_uops_2_0_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_pc
-      (_dispatcher_io_dis_uops_2_0_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_0_bits_iq_type                (_dispatcher_io_dis_uops_2_0_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_0_bits_fu_code                (_dispatcher_io_dis_uops_2_0_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_br                  (_dispatcher_io_dis_uops_2_0_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_jalr                (_dispatcher_io_dis_uops_2_0_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_jal                 (_dispatcher_io_dis_uops_2_0_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_sfb                 (_dispatcher_io_dis_uops_2_0_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_0_bits_br_mask                (_dispatcher_io_dis_uops_2_0_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_0_bits_br_tag                 (_dispatcher_io_dis_uops_2_0_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_0_bits_ftq_idx                (_dispatcher_io_dis_uops_2_0_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_edge_inst
-      (_dispatcher_io_dis_uops_2_0_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_pc_lob                 (_dispatcher_io_dis_uops_2_0_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_0_bits_taken                  (_dispatcher_io_dis_uops_2_0_bits_taken),	// core.scala:111:32
-    .io_dis_uops_0_bits_imm_packed
-      (_dispatcher_io_dis_uops_2_0_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_0_bits_csr_addr
-      (_dispatcher_io_dis_uops_2_0_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_0_bits_rob_idx                (_dispatcher_io_dis_uops_2_0_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldq_idx                (_dispatcher_io_dis_uops_2_0_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_stq_idx                (_dispatcher_io_dis_uops_2_0_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_rxq_idx                (_dispatcher_io_dis_uops_2_0_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_pdst                   (_dispatcher_io_dis_uops_2_0_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs1                   (_dispatcher_io_dis_uops_2_0_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs2                   (_dispatcher_io_dis_uops_2_0_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs3                   (_dispatcher_io_dis_uops_2_0_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs1_busy
-      (_dispatcher_io_dis_uops_2_0_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs2_busy
-      (_dispatcher_io_dis_uops_2_0_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs3_busy
-      (_dispatcher_io_dis_uops_2_0_bits_prs3_busy),	// core.scala:111:32
-    .io_dis_uops_0_bits_stale_pdst
-      (_dispatcher_io_dis_uops_2_0_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_0_bits_exception
-      (_dispatcher_io_dis_uops_2_0_bits_exception),	// core.scala:111:32
-    .io_dis_uops_0_bits_exc_cause
-      (_dispatcher_io_dis_uops_2_0_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_0_bits_bypassable
-      (_dispatcher_io_dis_uops_2_0_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_cmd                (_dispatcher_io_dis_uops_2_0_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_size
-      (_dispatcher_io_dis_uops_2_0_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_signed
-      (_dispatcher_io_dis_uops_2_0_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_fence
-      (_dispatcher_io_dis_uops_2_0_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_fencei
-      (_dispatcher_io_dis_uops_2_0_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_amo                 (_dispatcher_io_dis_uops_2_0_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_0_bits_uses_ldq
-      (_dispatcher_io_dis_uops_2_0_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_0_bits_uses_stq
-      (_dispatcher_io_dis_uops_2_0_bits_uses_stq),	// core.scala:111:32
+    .io_dis_uops_0_bits_uopc                   (_rename_stage_io_ren2_uops_0_uopc),	// core.scala:100:32
+    .io_dis_uops_0_bits_inst                   (_rename_stage_io_ren2_uops_0_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_inst             (_rename_stage_io_ren2_uops_0_debug_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_rvc                 (_rename_stage_io_ren2_uops_0_is_rvc),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_pc               (_rename_stage_io_ren2_uops_0_debug_pc),	// core.scala:100:32
+    .io_dis_uops_0_bits_iq_type                (_rename_stage_io_ren2_uops_0_iq_type),	// core.scala:100:32
+    .io_dis_uops_0_bits_fu_code                (_rename_stage_io_ren2_uops_0_fu_code),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_br                  (_rename_stage_io_ren2_uops_0_is_br),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_jalr                (_rename_stage_io_ren2_uops_0_is_jalr),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_jal                 (_rename_stage_io_ren2_uops_0_is_jal),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_sfb                 (_rename_stage_io_ren2_uops_0_is_sfb),	// core.scala:100:32
+    .io_dis_uops_0_bits_br_mask                (_rename_stage_io_ren2_uops_0_br_mask),	// core.scala:100:32
+    .io_dis_uops_0_bits_br_tag                 (_rename_stage_io_ren2_uops_0_br_tag),	// core.scala:100:32
+    .io_dis_uops_0_bits_ftq_idx                (_rename_stage_io_ren2_uops_0_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_0_bits_edge_inst              (_rename_stage_io_ren2_uops_0_edge_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_pc_lob                 (_rename_stage_io_ren2_uops_0_pc_lob),	// core.scala:100:32
+    .io_dis_uops_0_bits_taken                  (_rename_stage_io_ren2_uops_0_taken),	// core.scala:100:32
+    .io_dis_uops_0_bits_imm_packed             (_rename_stage_io_ren2_uops_0_imm_packed),	// core.scala:100:32
+    .io_dis_uops_0_bits_csr_addr               (_rename_stage_io_ren2_uops_0_csr_addr),	// core.scala:100:32
+    .io_dis_uops_0_bits_rob_idx                (dis_uops_0_rob_idx),	// core.scala:743:27
+    .io_dis_uops_0_bits_ldq_idx                (io_lsu_dis_ldq_idx_0),
+    .io_dis_uops_0_bits_stq_idx                (io_lsu_dis_stq_idx_0),
+    .io_dis_uops_0_bits_rxq_idx                (_rename_stage_io_ren2_uops_0_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_0_bits_pdst                   (dis_uops_0_pdst),	// core.scala:653:28
+    .io_dis_uops_0_bits_prs1                   (dis_uops_0_prs1),	// core.scala:648:28
+    .io_dis_uops_0_bits_prs2                   (dis_uops_0_prs2),	// core.scala:650:28
+    .io_dis_uops_0_bits_prs3                   (_fp_rename_stage_io_ren2_uops_0_prs3),	// core.scala:101:46
+    .io_dis_uops_0_bits_prs1_busy              (dis_uops_0_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_0_bits_prs2_busy              (dis_uops_0_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_0_bits_prs3_busy              (dis_uops_0_prs3_busy),	// core.scala:662:46
+    .io_dis_uops_0_bits_stale_pdst             (dis_uops_0_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_0_bits_exception              (_rename_stage_io_ren2_uops_0_exception),	// core.scala:100:32
+    .io_dis_uops_0_bits_exc_cause              (_rename_stage_io_ren2_uops_0_exc_cause),	// core.scala:100:32
+    .io_dis_uops_0_bits_bypassable             (_rename_stage_io_ren2_uops_0_bypassable),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_cmd                (_rename_stage_io_ren2_uops_0_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_size               (_rename_stage_io_ren2_uops_0_mem_size),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_signed             (_rename_stage_io_ren2_uops_0_mem_signed),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_fence               (_rename_stage_io_ren2_uops_0_is_fence),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_fencei              (_rename_stage_io_ren2_uops_0_is_fencei),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_amo                 (_rename_stage_io_ren2_uops_0_is_amo),	// core.scala:100:32
+    .io_dis_uops_0_bits_uses_ldq               (_rename_stage_io_ren2_uops_0_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_0_bits_uses_stq               (_rename_stage_io_ren2_uops_0_uses_stq),	// core.scala:100:32
     .io_dis_uops_0_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_2_0_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_unique
-      (_dispatcher_io_dis_uops_2_0_bits_is_unique),	// core.scala:111:32
+      (_rename_stage_io_ren2_uops_0_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_unique              (_rename_stage_io_ren2_uops_0_is_unique),	// core.scala:100:32
     .io_dis_uops_0_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_2_0_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst_is_rs1
-      (_dispatcher_io_dis_uops_2_0_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst                   (_dispatcher_io_dis_uops_2_0_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs1                   (_dispatcher_io_dis_uops_2_0_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs2                   (_dispatcher_io_dis_uops_2_0_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs3                   (_dispatcher_io_dis_uops_2_0_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst_val
-      (_dispatcher_io_dis_uops_2_0_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_0_bits_dst_rtype
-      (_dispatcher_io_dis_uops_2_0_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs1_rtype
-      (_dispatcher_io_dis_uops_2_0_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs2_rtype
-      (_dispatcher_io_dis_uops_2_0_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_frs3_en                (_dispatcher_io_dis_uops_2_0_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_0_bits_fp_val                 (_dispatcher_io_dis_uops_2_0_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_0_bits_fp_single
-      (_dispatcher_io_dis_uops_2_0_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_pf_if
-      (_dispatcher_io_dis_uops_2_0_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_ae_if
-      (_dispatcher_io_dis_uops_2_0_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_ma_if
-      (_dispatcher_io_dis_uops_2_0_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_bp_debug_if
-      (_dispatcher_io_dis_uops_2_0_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_bp_xcpt_if
-      (_dispatcher_io_dis_uops_2_0_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_fsrc
-      (_dispatcher_io_dis_uops_2_0_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_tsrc
-      (_dispatcher_io_dis_uops_2_0_bits_debug_tsrc),	// core.scala:111:32
+      (_rename_stage_io_ren2_uops_0_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst_is_rs1            (_rename_stage_io_ren2_uops_0_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst                   (_rename_stage_io_ren2_uops_0_ldst),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs1                   (_rename_stage_io_ren2_uops_0_lrs1),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs2                   (_rename_stage_io_ren2_uops_0_lrs2),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs3                   (_rename_stage_io_ren2_uops_0_lrs3),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst_val               (_rename_stage_io_ren2_uops_0_ldst_val),	// core.scala:100:32
+    .io_dis_uops_0_bits_dst_rtype              (_rename_stage_io_ren2_uops_0_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs1_rtype             (_rename_stage_io_ren2_uops_0_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs2_rtype             (_rename_stage_io_ren2_uops_0_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_frs3_en                (_rename_stage_io_ren2_uops_0_frs3_en),	// core.scala:100:32
+    .io_dis_uops_0_bits_fp_val                 (_rename_stage_io_ren2_uops_0_fp_val),	// core.scala:100:32
+    .io_dis_uops_0_bits_fp_single              (_rename_stage_io_ren2_uops_0_fp_single),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_pf_if             (_rename_stage_io_ren2_uops_0_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_ae_if             (_rename_stage_io_ren2_uops_0_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_ma_if             (_rename_stage_io_ren2_uops_0_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_bp_debug_if            (_rename_stage_io_ren2_uops_0_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_bp_xcpt_if             (_rename_stage_io_ren2_uops_0_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_fsrc             (_rename_stage_io_ren2_uops_0_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_tsrc             (_rename_stage_io_ren2_uops_0_debug_tsrc),	// core.scala:100:32
     .io_dis_uops_1_valid                       (_dispatcher_io_dis_uops_2_1_valid),	// core.scala:111:32
-    .io_dis_uops_1_bits_uopc                   (_dispatcher_io_dis_uops_2_1_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_1_bits_inst                   (_dispatcher_io_dis_uops_2_1_bits_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_inst
-      (_dispatcher_io_dis_uops_2_1_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_rvc                 (_dispatcher_io_dis_uops_2_1_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_pc
-      (_dispatcher_io_dis_uops_2_1_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_1_bits_iq_type                (_dispatcher_io_dis_uops_2_1_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_1_bits_fu_code                (_dispatcher_io_dis_uops_2_1_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_br                  (_dispatcher_io_dis_uops_2_1_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_jalr                (_dispatcher_io_dis_uops_2_1_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_jal                 (_dispatcher_io_dis_uops_2_1_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_sfb                 (_dispatcher_io_dis_uops_2_1_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_1_bits_br_mask                (_dispatcher_io_dis_uops_2_1_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_1_bits_br_tag                 (_dispatcher_io_dis_uops_2_1_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_1_bits_ftq_idx                (_dispatcher_io_dis_uops_2_1_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_edge_inst
-      (_dispatcher_io_dis_uops_2_1_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_pc_lob                 (_dispatcher_io_dis_uops_2_1_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_1_bits_taken                  (_dispatcher_io_dis_uops_2_1_bits_taken),	// core.scala:111:32
-    .io_dis_uops_1_bits_imm_packed
-      (_dispatcher_io_dis_uops_2_1_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_1_bits_csr_addr
-      (_dispatcher_io_dis_uops_2_1_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_1_bits_rob_idx                (_dispatcher_io_dis_uops_2_1_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldq_idx                (_dispatcher_io_dis_uops_2_1_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_stq_idx                (_dispatcher_io_dis_uops_2_1_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_rxq_idx                (_dispatcher_io_dis_uops_2_1_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_pdst                   (_dispatcher_io_dis_uops_2_1_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs1                   (_dispatcher_io_dis_uops_2_1_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs2                   (_dispatcher_io_dis_uops_2_1_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs3                   (_dispatcher_io_dis_uops_2_1_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs1_busy
-      (_dispatcher_io_dis_uops_2_1_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs2_busy
-      (_dispatcher_io_dis_uops_2_1_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs3_busy
-      (_dispatcher_io_dis_uops_2_1_bits_prs3_busy),	// core.scala:111:32
-    .io_dis_uops_1_bits_stale_pdst
-      (_dispatcher_io_dis_uops_2_1_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_1_bits_exception
-      (_dispatcher_io_dis_uops_2_1_bits_exception),	// core.scala:111:32
-    .io_dis_uops_1_bits_exc_cause
-      (_dispatcher_io_dis_uops_2_1_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_1_bits_bypassable
-      (_dispatcher_io_dis_uops_2_1_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_cmd                (_dispatcher_io_dis_uops_2_1_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_size
-      (_dispatcher_io_dis_uops_2_1_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_signed
-      (_dispatcher_io_dis_uops_2_1_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_fence
-      (_dispatcher_io_dis_uops_2_1_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_fencei
-      (_dispatcher_io_dis_uops_2_1_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_amo                 (_dispatcher_io_dis_uops_2_1_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_1_bits_uses_ldq
-      (_dispatcher_io_dis_uops_2_1_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_1_bits_uses_stq
-      (_dispatcher_io_dis_uops_2_1_bits_uses_stq),	// core.scala:111:32
+    .io_dis_uops_1_bits_uopc                   (_rename_stage_io_ren2_uops_1_uopc),	// core.scala:100:32
+    .io_dis_uops_1_bits_inst                   (_rename_stage_io_ren2_uops_1_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_inst             (_rename_stage_io_ren2_uops_1_debug_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_rvc                 (_rename_stage_io_ren2_uops_1_is_rvc),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_pc               (_rename_stage_io_ren2_uops_1_debug_pc),	// core.scala:100:32
+    .io_dis_uops_1_bits_iq_type                (_rename_stage_io_ren2_uops_1_iq_type),	// core.scala:100:32
+    .io_dis_uops_1_bits_fu_code                (_rename_stage_io_ren2_uops_1_fu_code),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_br                  (_rename_stage_io_ren2_uops_1_is_br),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_jalr                (_rename_stage_io_ren2_uops_1_is_jalr),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_jal                 (_rename_stage_io_ren2_uops_1_is_jal),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_sfb                 (_rename_stage_io_ren2_uops_1_is_sfb),	// core.scala:100:32
+    .io_dis_uops_1_bits_br_mask                (_rename_stage_io_ren2_uops_1_br_mask),	// core.scala:100:32
+    .io_dis_uops_1_bits_br_tag                 (_rename_stage_io_ren2_uops_1_br_tag),	// core.scala:100:32
+    .io_dis_uops_1_bits_ftq_idx                (_rename_stage_io_ren2_uops_1_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_1_bits_edge_inst              (_rename_stage_io_ren2_uops_1_edge_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_pc_lob                 (_rename_stage_io_ren2_uops_1_pc_lob),	// core.scala:100:32
+    .io_dis_uops_1_bits_taken                  (_rename_stage_io_ren2_uops_1_taken),	// core.scala:100:32
+    .io_dis_uops_1_bits_imm_packed             (_rename_stage_io_ren2_uops_1_imm_packed),	// core.scala:100:32
+    .io_dis_uops_1_bits_csr_addr               (_rename_stage_io_ren2_uops_1_csr_addr),	// core.scala:100:32
+    .io_dis_uops_1_bits_rob_idx                (dis_uops_1_rob_idx),	// core.scala:743:27
+    .io_dis_uops_1_bits_ldq_idx                (io_lsu_dis_ldq_idx_1),
+    .io_dis_uops_1_bits_stq_idx                (io_lsu_dis_stq_idx_1),
+    .io_dis_uops_1_bits_rxq_idx                (_rename_stage_io_ren2_uops_1_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_1_bits_pdst                   (dis_uops_1_pdst),	// core.scala:653:28
+    .io_dis_uops_1_bits_prs1                   (dis_uops_1_prs1),	// core.scala:648:28
+    .io_dis_uops_1_bits_prs2                   (dis_uops_1_prs2),	// core.scala:650:28
+    .io_dis_uops_1_bits_prs3                   (_fp_rename_stage_io_ren2_uops_1_prs3),	// core.scala:101:46
+    .io_dis_uops_1_bits_prs1_busy              (dis_uops_1_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_1_bits_prs2_busy              (dis_uops_1_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_1_bits_prs3_busy              (dis_uops_1_prs3_busy),	// core.scala:662:46
+    .io_dis_uops_1_bits_stale_pdst             (dis_uops_1_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_1_bits_exception              (_rename_stage_io_ren2_uops_1_exception),	// core.scala:100:32
+    .io_dis_uops_1_bits_exc_cause              (_rename_stage_io_ren2_uops_1_exc_cause),	// core.scala:100:32
+    .io_dis_uops_1_bits_bypassable             (_rename_stage_io_ren2_uops_1_bypassable),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_cmd                (_rename_stage_io_ren2_uops_1_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_size               (_rename_stage_io_ren2_uops_1_mem_size),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_signed             (_rename_stage_io_ren2_uops_1_mem_signed),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_fence               (_rename_stage_io_ren2_uops_1_is_fence),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_fencei              (_rename_stage_io_ren2_uops_1_is_fencei),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_amo                 (_rename_stage_io_ren2_uops_1_is_amo),	// core.scala:100:32
+    .io_dis_uops_1_bits_uses_ldq               (_rename_stage_io_ren2_uops_1_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_1_bits_uses_stq               (_rename_stage_io_ren2_uops_1_uses_stq),	// core.scala:100:32
     .io_dis_uops_1_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_2_1_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_unique
-      (_dispatcher_io_dis_uops_2_1_bits_is_unique),	// core.scala:111:32
+      (_rename_stage_io_ren2_uops_1_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_unique              (_rename_stage_io_ren2_uops_1_is_unique),	// core.scala:100:32
     .io_dis_uops_1_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_2_1_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst_is_rs1
-      (_dispatcher_io_dis_uops_2_1_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst                   (_dispatcher_io_dis_uops_2_1_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs1                   (_dispatcher_io_dis_uops_2_1_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs2                   (_dispatcher_io_dis_uops_2_1_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs3                   (_dispatcher_io_dis_uops_2_1_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst_val
-      (_dispatcher_io_dis_uops_2_1_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_1_bits_dst_rtype
-      (_dispatcher_io_dis_uops_2_1_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs1_rtype
-      (_dispatcher_io_dis_uops_2_1_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs2_rtype
-      (_dispatcher_io_dis_uops_2_1_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_frs3_en                (_dispatcher_io_dis_uops_2_1_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_1_bits_fp_val                 (_dispatcher_io_dis_uops_2_1_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_1_bits_fp_single
-      (_dispatcher_io_dis_uops_2_1_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_pf_if
-      (_dispatcher_io_dis_uops_2_1_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_ae_if
-      (_dispatcher_io_dis_uops_2_1_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_ma_if
-      (_dispatcher_io_dis_uops_2_1_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_bp_debug_if
-      (_dispatcher_io_dis_uops_2_1_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_bp_xcpt_if
-      (_dispatcher_io_dis_uops_2_1_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_fsrc
-      (_dispatcher_io_dis_uops_2_1_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_tsrc
-      (_dispatcher_io_dis_uops_2_1_bits_debug_tsrc),	// core.scala:111:32
+      (_rename_stage_io_ren2_uops_1_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst_is_rs1            (_rename_stage_io_ren2_uops_1_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst                   (_rename_stage_io_ren2_uops_1_ldst),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs1                   (_rename_stage_io_ren2_uops_1_lrs1),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs2                   (_rename_stage_io_ren2_uops_1_lrs2),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs3                   (_rename_stage_io_ren2_uops_1_lrs3),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst_val               (_rename_stage_io_ren2_uops_1_ldst_val),	// core.scala:100:32
+    .io_dis_uops_1_bits_dst_rtype              (_rename_stage_io_ren2_uops_1_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs1_rtype             (_rename_stage_io_ren2_uops_1_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs2_rtype             (_rename_stage_io_ren2_uops_1_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_frs3_en                (_rename_stage_io_ren2_uops_1_frs3_en),	// core.scala:100:32
+    .io_dis_uops_1_bits_fp_val                 (_rename_stage_io_ren2_uops_1_fp_val),	// core.scala:100:32
+    .io_dis_uops_1_bits_fp_single              (_rename_stage_io_ren2_uops_1_fp_single),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_pf_if             (_rename_stage_io_ren2_uops_1_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_ae_if             (_rename_stage_io_ren2_uops_1_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_ma_if             (_rename_stage_io_ren2_uops_1_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_bp_debug_if            (_rename_stage_io_ren2_uops_1_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_bp_xcpt_if             (_rename_stage_io_ren2_uops_1_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_fsrc             (_rename_stage_io_ren2_uops_1_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_tsrc             (_rename_stage_io_ren2_uops_1_debug_tsrc),	// core.scala:100:32
     .io_dis_uops_2_valid                       (_dispatcher_io_dis_uops_2_2_valid),	// core.scala:111:32
-    .io_dis_uops_2_bits_uopc                   (_dispatcher_io_dis_uops_2_2_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_2_bits_inst                   (_dispatcher_io_dis_uops_2_2_bits_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_inst
-      (_dispatcher_io_dis_uops_2_2_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_rvc                 (_dispatcher_io_dis_uops_2_2_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_pc
-      (_dispatcher_io_dis_uops_2_2_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_2_bits_iq_type                (_dispatcher_io_dis_uops_2_2_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_2_bits_fu_code                (_dispatcher_io_dis_uops_2_2_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_br                  (_dispatcher_io_dis_uops_2_2_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_jalr                (_dispatcher_io_dis_uops_2_2_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_jal                 (_dispatcher_io_dis_uops_2_2_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_sfb                 (_dispatcher_io_dis_uops_2_2_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_2_bits_br_mask                (_dispatcher_io_dis_uops_2_2_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_2_bits_br_tag                 (_dispatcher_io_dis_uops_2_2_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_2_bits_ftq_idx                (_dispatcher_io_dis_uops_2_2_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_edge_inst
-      (_dispatcher_io_dis_uops_2_2_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_pc_lob                 (_dispatcher_io_dis_uops_2_2_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_2_bits_taken                  (_dispatcher_io_dis_uops_2_2_bits_taken),	// core.scala:111:32
-    .io_dis_uops_2_bits_imm_packed
-      (_dispatcher_io_dis_uops_2_2_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_2_bits_csr_addr
-      (_dispatcher_io_dis_uops_2_2_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_2_bits_rob_idx                (_dispatcher_io_dis_uops_2_2_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldq_idx                (_dispatcher_io_dis_uops_2_2_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_stq_idx                (_dispatcher_io_dis_uops_2_2_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_rxq_idx                (_dispatcher_io_dis_uops_2_2_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_pdst                   (_dispatcher_io_dis_uops_2_2_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs1                   (_dispatcher_io_dis_uops_2_2_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs2                   (_dispatcher_io_dis_uops_2_2_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs3                   (_dispatcher_io_dis_uops_2_2_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs1_busy
-      (_dispatcher_io_dis_uops_2_2_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs2_busy
-      (_dispatcher_io_dis_uops_2_2_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs3_busy
-      (_dispatcher_io_dis_uops_2_2_bits_prs3_busy),	// core.scala:111:32
-    .io_dis_uops_2_bits_stale_pdst
-      (_dispatcher_io_dis_uops_2_2_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_2_bits_exception
-      (_dispatcher_io_dis_uops_2_2_bits_exception),	// core.scala:111:32
-    .io_dis_uops_2_bits_exc_cause
-      (_dispatcher_io_dis_uops_2_2_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_2_bits_bypassable
-      (_dispatcher_io_dis_uops_2_2_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_cmd                (_dispatcher_io_dis_uops_2_2_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_size
-      (_dispatcher_io_dis_uops_2_2_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_signed
-      (_dispatcher_io_dis_uops_2_2_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_fence
-      (_dispatcher_io_dis_uops_2_2_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_fencei
-      (_dispatcher_io_dis_uops_2_2_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_amo                 (_dispatcher_io_dis_uops_2_2_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_2_bits_uses_ldq
-      (_dispatcher_io_dis_uops_2_2_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_2_bits_uses_stq
-      (_dispatcher_io_dis_uops_2_2_bits_uses_stq),	// core.scala:111:32
+    .io_dis_uops_2_bits_uopc                   (_rename_stage_io_ren2_uops_2_uopc),	// core.scala:100:32
+    .io_dis_uops_2_bits_inst                   (_rename_stage_io_ren2_uops_2_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_inst             (_rename_stage_io_ren2_uops_2_debug_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_rvc                 (_rename_stage_io_ren2_uops_2_is_rvc),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_pc               (_rename_stage_io_ren2_uops_2_debug_pc),	// core.scala:100:32
+    .io_dis_uops_2_bits_iq_type                (_rename_stage_io_ren2_uops_2_iq_type),	// core.scala:100:32
+    .io_dis_uops_2_bits_fu_code                (_rename_stage_io_ren2_uops_2_fu_code),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_br                  (_rename_stage_io_ren2_uops_2_is_br),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_jalr                (_rename_stage_io_ren2_uops_2_is_jalr),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_jal                 (_rename_stage_io_ren2_uops_2_is_jal),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_sfb                 (_rename_stage_io_ren2_uops_2_is_sfb),	// core.scala:100:32
+    .io_dis_uops_2_bits_br_mask                (_rename_stage_io_ren2_uops_2_br_mask),	// core.scala:100:32
+    .io_dis_uops_2_bits_br_tag                 (_rename_stage_io_ren2_uops_2_br_tag),	// core.scala:100:32
+    .io_dis_uops_2_bits_ftq_idx                (_rename_stage_io_ren2_uops_2_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_2_bits_edge_inst              (_rename_stage_io_ren2_uops_2_edge_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_pc_lob                 (_rename_stage_io_ren2_uops_2_pc_lob),	// core.scala:100:32
+    .io_dis_uops_2_bits_taken                  (_rename_stage_io_ren2_uops_2_taken),	// core.scala:100:32
+    .io_dis_uops_2_bits_imm_packed             (_rename_stage_io_ren2_uops_2_imm_packed),	// core.scala:100:32
+    .io_dis_uops_2_bits_csr_addr               (_rename_stage_io_ren2_uops_2_csr_addr),	// core.scala:100:32
+    .io_dis_uops_2_bits_rob_idx                (dis_uops_2_rob_idx),	// core.scala:743:27
+    .io_dis_uops_2_bits_ldq_idx                (io_lsu_dis_ldq_idx_2),
+    .io_dis_uops_2_bits_stq_idx                (io_lsu_dis_stq_idx_2),
+    .io_dis_uops_2_bits_rxq_idx                (_rename_stage_io_ren2_uops_2_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_2_bits_pdst                   (dis_uops_2_pdst),	// core.scala:653:28
+    .io_dis_uops_2_bits_prs1                   (dis_uops_2_prs1),	// core.scala:648:28
+    .io_dis_uops_2_bits_prs2                   (dis_uops_2_prs2),	// core.scala:650:28
+    .io_dis_uops_2_bits_prs3                   (_fp_rename_stage_io_ren2_uops_2_prs3),	// core.scala:101:46
+    .io_dis_uops_2_bits_prs1_busy              (dis_uops_2_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_2_bits_prs2_busy              (dis_uops_2_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_2_bits_prs3_busy              (dis_uops_2_prs3_busy),	// core.scala:662:46
+    .io_dis_uops_2_bits_stale_pdst             (dis_uops_2_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_2_bits_exception              (_rename_stage_io_ren2_uops_2_exception),	// core.scala:100:32
+    .io_dis_uops_2_bits_exc_cause              (_rename_stage_io_ren2_uops_2_exc_cause),	// core.scala:100:32
+    .io_dis_uops_2_bits_bypassable             (_rename_stage_io_ren2_uops_2_bypassable),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_cmd                (_rename_stage_io_ren2_uops_2_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_size               (_rename_stage_io_ren2_uops_2_mem_size),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_signed             (_rename_stage_io_ren2_uops_2_mem_signed),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_fence               (_rename_stage_io_ren2_uops_2_is_fence),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_fencei              (_rename_stage_io_ren2_uops_2_is_fencei),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_amo                 (_rename_stage_io_ren2_uops_2_is_amo),	// core.scala:100:32
+    .io_dis_uops_2_bits_uses_ldq               (_rename_stage_io_ren2_uops_2_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_2_bits_uses_stq               (_rename_stage_io_ren2_uops_2_uses_stq),	// core.scala:100:32
     .io_dis_uops_2_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_2_2_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_unique
-      (_dispatcher_io_dis_uops_2_2_bits_is_unique),	// core.scala:111:32
+      (_rename_stage_io_ren2_uops_2_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_unique              (_rename_stage_io_ren2_uops_2_is_unique),	// core.scala:100:32
     .io_dis_uops_2_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_2_2_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst_is_rs1
-      (_dispatcher_io_dis_uops_2_2_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst                   (_dispatcher_io_dis_uops_2_2_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs1                   (_dispatcher_io_dis_uops_2_2_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs2                   (_dispatcher_io_dis_uops_2_2_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs3                   (_dispatcher_io_dis_uops_2_2_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst_val
-      (_dispatcher_io_dis_uops_2_2_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_2_bits_dst_rtype
-      (_dispatcher_io_dis_uops_2_2_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs1_rtype
-      (_dispatcher_io_dis_uops_2_2_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs2_rtype
-      (_dispatcher_io_dis_uops_2_2_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_frs3_en                (_dispatcher_io_dis_uops_2_2_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_2_bits_fp_val                 (_dispatcher_io_dis_uops_2_2_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_2_bits_fp_single
-      (_dispatcher_io_dis_uops_2_2_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_pf_if
-      (_dispatcher_io_dis_uops_2_2_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_ae_if
-      (_dispatcher_io_dis_uops_2_2_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_ma_if
-      (_dispatcher_io_dis_uops_2_2_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_bp_debug_if
-      (_dispatcher_io_dis_uops_2_2_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_bp_xcpt_if
-      (_dispatcher_io_dis_uops_2_2_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_fsrc
-      (_dispatcher_io_dis_uops_2_2_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_tsrc
-      (_dispatcher_io_dis_uops_2_2_bits_debug_tsrc),	// core.scala:111:32
-    .io_ll_wports_0_valid                      (_mem_units_0_io_ll_fresp_valid),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_uopc              (_mem_units_0_io_ll_fresp_bits_uop_uopc),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_br_mask
-      (_mem_units_0_io_ll_fresp_bits_uop_br_mask),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_rob_idx
-      (_mem_units_0_io_ll_fresp_bits_uop_rob_idx),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_stq_idx
-      (_mem_units_0_io_ll_fresp_bits_uop_stq_idx),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_pdst              (_mem_units_0_io_ll_fresp_bits_uop_pdst),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_mem_size
-      (_mem_units_0_io_ll_fresp_bits_uop_mem_size),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_is_amo            (_mem_units_0_io_ll_fresp_bits_uop_is_amo),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_uses_stq
-      (_mem_units_0_io_ll_fresp_bits_uop_uses_stq),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_dst_rtype
-      (_mem_units_0_io_ll_fresp_bits_uop_dst_rtype),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_uop_fp_val            (_mem_units_0_io_ll_fresp_bits_uop_fp_val),	// execution-units.scala:108:30
-    .io_ll_wports_0_bits_data                  (_mem_units_0_io_ll_fresp_bits_data),	// execution-units.scala:108:30
+      (_rename_stage_io_ren2_uops_2_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst_is_rs1            (_rename_stage_io_ren2_uops_2_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst                   (_rename_stage_io_ren2_uops_2_ldst),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs1                   (_rename_stage_io_ren2_uops_2_lrs1),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs2                   (_rename_stage_io_ren2_uops_2_lrs2),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs3                   (_rename_stage_io_ren2_uops_2_lrs3),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst_val               (_rename_stage_io_ren2_uops_2_ldst_val),	// core.scala:100:32
+    .io_dis_uops_2_bits_dst_rtype              (_rename_stage_io_ren2_uops_2_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs1_rtype             (_rename_stage_io_ren2_uops_2_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs2_rtype             (_rename_stage_io_ren2_uops_2_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_frs3_en                (_rename_stage_io_ren2_uops_2_frs3_en),	// core.scala:100:32
+    .io_dis_uops_2_bits_fp_val                 (_rename_stage_io_ren2_uops_2_fp_val),	// core.scala:100:32
+    .io_dis_uops_2_bits_fp_single              (_rename_stage_io_ren2_uops_2_fp_single),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_pf_if             (_rename_stage_io_ren2_uops_2_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_ae_if             (_rename_stage_io_ren2_uops_2_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_ma_if             (_rename_stage_io_ren2_uops_2_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_bp_debug_if            (_rename_stage_io_ren2_uops_2_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_bp_xcpt_if             (_rename_stage_io_ren2_uops_2_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_fsrc             (_rename_stage_io_ren2_uops_2_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_tsrc             (_rename_stage_io_ren2_uops_2_debug_tsrc),	// core.scala:100:32
+    .io_ll_wports_0_valid                      (io_lsu_exe_0_fresp_valid),
+    .io_ll_wports_0_bits_uop_uopc              (io_lsu_exe_0_fresp_bits_uop_uopc),
+    .io_ll_wports_0_bits_uop_br_mask           (io_lsu_exe_0_fresp_bits_uop_br_mask),
+    .io_ll_wports_0_bits_uop_rob_idx           (io_lsu_exe_0_fresp_bits_uop_rob_idx),
+    .io_ll_wports_0_bits_uop_stq_idx           (io_lsu_exe_0_fresp_bits_uop_stq_idx),
+    .io_ll_wports_0_bits_uop_pdst              (io_lsu_exe_0_fresp_bits_uop_pdst),
+    .io_ll_wports_0_bits_uop_mem_size          (io_lsu_exe_0_fresp_bits_uop_mem_size),
+    .io_ll_wports_0_bits_uop_is_amo            (io_lsu_exe_0_fresp_bits_uop_is_amo),
+    .io_ll_wports_0_bits_uop_uses_stq          (io_lsu_exe_0_fresp_bits_uop_uses_stq),
+    .io_ll_wports_0_bits_uop_dst_rtype         (io_lsu_exe_0_fresp_bits_uop_dst_rtype),
+    .io_ll_wports_0_bits_uop_fp_val            (io_lsu_exe_0_fresp_bits_uop_fp_val),
+    .io_ll_wports_0_bits_data                  (io_lsu_exe_0_fresp_bits_data),
     .io_from_int_valid                         (_csr_exe_unit_io_ll_fresp_valid),	// execution-units.scala:119:32
     .io_from_int_bits_uop_uopc                 (_csr_exe_unit_io_ll_fresp_bits_uop_uopc),	// execution-units.scala:119:32
     .io_from_int_bits_uop_br_mask
@@ -4320,36 +3129,11 @@ module BoomCore_1(
   );
   DecodeUnit_4 decode_units_0 (	// core.scala:98:79
     .io_enq_uop_inst              (io_ifu_fetchpacket_bits_uops_0_bits_inst),
-    .io_enq_uop_debug_inst        (io_ifu_fetchpacket_bits_uops_0_bits_debug_inst),
-    .io_enq_uop_is_rvc            (io_ifu_fetchpacket_bits_uops_0_bits_is_rvc),
-    .io_enq_uop_debug_pc          (io_ifu_fetchpacket_bits_uops_0_bits_debug_pc),
-    .io_enq_uop_ctrl_br_type      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_br_type),
-    .io_enq_uop_ctrl_op1_sel      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_op1_sel),
-    .io_enq_uop_ctrl_op2_sel      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_op2_sel),
-    .io_enq_uop_ctrl_imm_sel      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_imm_sel),
-    .io_enq_uop_ctrl_op_fcn       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_op_fcn),
-    .io_enq_uop_ctrl_fcn_dw       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_fcn_dw),
-    .io_enq_uop_ctrl_csr_cmd      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_csr_cmd),
-    .io_enq_uop_ctrl_is_load      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_is_load),
-    .io_enq_uop_ctrl_is_sta       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_is_sta),
-    .io_enq_uop_ctrl_is_std       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_is_std),
-    .io_enq_uop_iw_state          (io_ifu_fetchpacket_bits_uops_0_bits_iw_state),
-    .io_enq_uop_iw_p1_poisoned    (io_ifu_fetchpacket_bits_uops_0_bits_iw_p1_poisoned),
-    .io_enq_uop_iw_p2_poisoned    (io_ifu_fetchpacket_bits_uops_0_bits_iw_p2_poisoned),
     .io_enq_uop_is_sfb            (io_ifu_fetchpacket_bits_uops_0_bits_is_sfb),
-    .io_enq_uop_ftq_idx           (io_ifu_fetchpacket_bits_uops_0_bits_ftq_idx),
-    .io_enq_uop_edge_inst         (io_ifu_fetchpacket_bits_uops_0_bits_edge_inst),
-    .io_enq_uop_pc_lob            (io_ifu_fetchpacket_bits_uops_0_bits_pc_lob),
-    .io_enq_uop_taken             (io_ifu_fetchpacket_bits_uops_0_bits_taken),
-    .io_enq_uop_csr_addr          (io_ifu_fetchpacket_bits_uops_0_bits_csr_addr),
-    .io_enq_uop_rxq_idx           (io_ifu_fetchpacket_bits_uops_0_bits_rxq_idx),
     .io_enq_uop_xcpt_pf_if        (io_ifu_fetchpacket_bits_uops_0_bits_xcpt_pf_if),
     .io_enq_uop_xcpt_ae_if        (io_ifu_fetchpacket_bits_uops_0_bits_xcpt_ae_if),
-    .io_enq_uop_xcpt_ma_if        (io_ifu_fetchpacket_bits_uops_0_bits_xcpt_ma_if),
     .io_enq_uop_bp_debug_if       (io_ifu_fetchpacket_bits_uops_0_bits_bp_debug_if),
     .io_enq_uop_bp_xcpt_if        (io_ifu_fetchpacket_bits_uops_0_bits_bp_xcpt_if),
-    .io_enq_uop_debug_fsrc        (io_ifu_fetchpacket_bits_uops_0_bits_debug_fsrc),
-    .io_enq_uop_debug_tsrc        (io_ifu_fetchpacket_bits_uops_0_bits_debug_tsrc),
     .io_status_isa                (_csr_io_status_isa),	// core.scala:268:19
     .io_csr_decode_fp_illegal     (_csr_io_decode_0_fp_illegal),	// core.scala:268:19
     .io_csr_decode_read_illegal   (_csr_io_decode_0_read_illegal),	// core.scala:268:19
@@ -4359,36 +3143,12 @@ module BoomCore_1(
     .io_interrupt                 (_csr_io_interrupt),	// core.scala:268:19
     .io_interrupt_cause           (_csr_io_interrupt_cause),	// core.scala:268:19
     .io_deq_uop_uopc              (_decode_units_0_io_deq_uop_uopc),
-    .io_deq_uop_inst              (_decode_units_0_io_deq_uop_inst),
-    .io_deq_uop_debug_inst        (_decode_units_0_io_deq_uop_debug_inst),
-    .io_deq_uop_is_rvc            (_decode_units_0_io_deq_uop_is_rvc),
-    .io_deq_uop_debug_pc          (_decode_units_0_io_deq_uop_debug_pc),
     .io_deq_uop_iq_type           (_decode_units_0_io_deq_uop_iq_type),
     .io_deq_uop_fu_code           (_decode_units_0_io_deq_uop_fu_code),
-    .io_deq_uop_ctrl_br_type      (_decode_units_0_io_deq_uop_ctrl_br_type),
-    .io_deq_uop_ctrl_op1_sel      (_decode_units_0_io_deq_uop_ctrl_op1_sel),
-    .io_deq_uop_ctrl_op2_sel      (_decode_units_0_io_deq_uop_ctrl_op2_sel),
-    .io_deq_uop_ctrl_imm_sel      (_decode_units_0_io_deq_uop_ctrl_imm_sel),
-    .io_deq_uop_ctrl_op_fcn       (_decode_units_0_io_deq_uop_ctrl_op_fcn),
-    .io_deq_uop_ctrl_fcn_dw       (_decode_units_0_io_deq_uop_ctrl_fcn_dw),
-    .io_deq_uop_ctrl_csr_cmd      (_decode_units_0_io_deq_uop_ctrl_csr_cmd),
-    .io_deq_uop_ctrl_is_load      (_decode_units_0_io_deq_uop_ctrl_is_load),
-    .io_deq_uop_ctrl_is_sta       (_decode_units_0_io_deq_uop_ctrl_is_sta),
-    .io_deq_uop_ctrl_is_std       (_decode_units_0_io_deq_uop_ctrl_is_std),
-    .io_deq_uop_iw_state          (_decode_units_0_io_deq_uop_iw_state),
-    .io_deq_uop_iw_p1_poisoned    (_decode_units_0_io_deq_uop_iw_p1_poisoned),
-    .io_deq_uop_iw_p2_poisoned    (_decode_units_0_io_deq_uop_iw_p2_poisoned),
     .io_deq_uop_is_br             (_decode_units_0_io_deq_uop_is_br),
     .io_deq_uop_is_jalr           (_decode_units_0_io_deq_uop_is_jalr),
     .io_deq_uop_is_jal            (_decode_units_0_io_deq_uop_is_jal),
-    .io_deq_uop_is_sfb            (_decode_units_0_io_deq_uop_is_sfb),
-    .io_deq_uop_ftq_idx           (_decode_units_0_io_deq_uop_ftq_idx),
-    .io_deq_uop_edge_inst         (_decode_units_0_io_deq_uop_edge_inst),
-    .io_deq_uop_pc_lob            (_decode_units_0_io_deq_uop_pc_lob),
-    .io_deq_uop_taken             (_decode_units_0_io_deq_uop_taken),
     .io_deq_uop_imm_packed        (_decode_units_0_io_deq_uop_imm_packed),
-    .io_deq_uop_csr_addr          (_decode_units_0_io_deq_uop_csr_addr),
-    .io_deq_uop_rxq_idx           (_decode_units_0_io_deq_uop_rxq_idx),
     .io_deq_uop_exception         (_decode_units_0_io_deq_uop_exception),
     .io_deq_uop_exc_cause         (_decode_units_0_io_deq_uop_exc_cause),
     .io_deq_uop_bypassable        (_decode_units_0_io_deq_uop_bypassable),
@@ -4414,47 +3174,15 @@ module BoomCore_1(
     .io_deq_uop_frs3_en           (_decode_units_0_io_deq_uop_frs3_en),
     .io_deq_uop_fp_val            (_decode_units_0_io_deq_uop_fp_val),
     .io_deq_uop_fp_single         (_decode_units_0_io_deq_uop_fp_single),
-    .io_deq_uop_xcpt_pf_if        (_decode_units_0_io_deq_uop_xcpt_pf_if),
-    .io_deq_uop_xcpt_ae_if        (_decode_units_0_io_deq_uop_xcpt_ae_if),
-    .io_deq_uop_xcpt_ma_if        (_decode_units_0_io_deq_uop_xcpt_ma_if),
-    .io_deq_uop_bp_debug_if       (_decode_units_0_io_deq_uop_bp_debug_if),
-    .io_deq_uop_bp_xcpt_if        (_decode_units_0_io_deq_uop_bp_xcpt_if),
-    .io_deq_uop_debug_fsrc        (_decode_units_0_io_deq_uop_debug_fsrc),
-    .io_deq_uop_debug_tsrc        (_decode_units_0_io_deq_uop_debug_tsrc),
     .io_csr_decode_csr            (_decode_units_0_io_csr_decode_csr)
   );
   DecodeUnit_4 decode_units_1 (	// core.scala:98:79
     .io_enq_uop_inst              (io_ifu_fetchpacket_bits_uops_1_bits_inst),
-    .io_enq_uop_debug_inst        (io_ifu_fetchpacket_bits_uops_1_bits_debug_inst),
-    .io_enq_uop_is_rvc            (io_ifu_fetchpacket_bits_uops_1_bits_is_rvc),
-    .io_enq_uop_debug_pc          (io_ifu_fetchpacket_bits_uops_1_bits_debug_pc),
-    .io_enq_uop_ctrl_br_type      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_br_type),
-    .io_enq_uop_ctrl_op1_sel      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_op1_sel),
-    .io_enq_uop_ctrl_op2_sel      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_op2_sel),
-    .io_enq_uop_ctrl_imm_sel      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_imm_sel),
-    .io_enq_uop_ctrl_op_fcn       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_op_fcn),
-    .io_enq_uop_ctrl_fcn_dw       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_fcn_dw),
-    .io_enq_uop_ctrl_csr_cmd      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_csr_cmd),
-    .io_enq_uop_ctrl_is_load      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_is_load),
-    .io_enq_uop_ctrl_is_sta       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_is_sta),
-    .io_enq_uop_ctrl_is_std       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_is_std),
-    .io_enq_uop_iw_state          (io_ifu_fetchpacket_bits_uops_1_bits_iw_state),
-    .io_enq_uop_iw_p1_poisoned    (io_ifu_fetchpacket_bits_uops_1_bits_iw_p1_poisoned),
-    .io_enq_uop_iw_p2_poisoned    (io_ifu_fetchpacket_bits_uops_1_bits_iw_p2_poisoned),
     .io_enq_uop_is_sfb            (io_ifu_fetchpacket_bits_uops_1_bits_is_sfb),
-    .io_enq_uop_ftq_idx           (io_ifu_fetchpacket_bits_uops_1_bits_ftq_idx),
-    .io_enq_uop_edge_inst         (io_ifu_fetchpacket_bits_uops_1_bits_edge_inst),
-    .io_enq_uop_pc_lob            (io_ifu_fetchpacket_bits_uops_1_bits_pc_lob),
-    .io_enq_uop_taken             (io_ifu_fetchpacket_bits_uops_1_bits_taken),
-    .io_enq_uop_csr_addr          (io_ifu_fetchpacket_bits_uops_1_bits_csr_addr),
-    .io_enq_uop_rxq_idx           (io_ifu_fetchpacket_bits_uops_1_bits_rxq_idx),
     .io_enq_uop_xcpt_pf_if        (io_ifu_fetchpacket_bits_uops_1_bits_xcpt_pf_if),
     .io_enq_uop_xcpt_ae_if        (io_ifu_fetchpacket_bits_uops_1_bits_xcpt_ae_if),
-    .io_enq_uop_xcpt_ma_if        (io_ifu_fetchpacket_bits_uops_1_bits_xcpt_ma_if),
     .io_enq_uop_bp_debug_if       (io_ifu_fetchpacket_bits_uops_1_bits_bp_debug_if),
     .io_enq_uop_bp_xcpt_if        (io_ifu_fetchpacket_bits_uops_1_bits_bp_xcpt_if),
-    .io_enq_uop_debug_fsrc        (io_ifu_fetchpacket_bits_uops_1_bits_debug_fsrc),
-    .io_enq_uop_debug_tsrc        (io_ifu_fetchpacket_bits_uops_1_bits_debug_tsrc),
     .io_status_isa                (_csr_io_status_isa),	// core.scala:268:19
     .io_csr_decode_fp_illegal     (_csr_io_decode_1_fp_illegal),	// core.scala:268:19
     .io_csr_decode_read_illegal   (_csr_io_decode_1_read_illegal),	// core.scala:268:19
@@ -4464,36 +3192,12 @@ module BoomCore_1(
     .io_interrupt                 (_csr_io_interrupt),	// core.scala:268:19
     .io_interrupt_cause           (_csr_io_interrupt_cause),	// core.scala:268:19
     .io_deq_uop_uopc              (_decode_units_1_io_deq_uop_uopc),
-    .io_deq_uop_inst              (_decode_units_1_io_deq_uop_inst),
-    .io_deq_uop_debug_inst        (_decode_units_1_io_deq_uop_debug_inst),
-    .io_deq_uop_is_rvc            (_decode_units_1_io_deq_uop_is_rvc),
-    .io_deq_uop_debug_pc          (_decode_units_1_io_deq_uop_debug_pc),
     .io_deq_uop_iq_type           (_decode_units_1_io_deq_uop_iq_type),
     .io_deq_uop_fu_code           (_decode_units_1_io_deq_uop_fu_code),
-    .io_deq_uop_ctrl_br_type      (_decode_units_1_io_deq_uop_ctrl_br_type),
-    .io_deq_uop_ctrl_op1_sel      (_decode_units_1_io_deq_uop_ctrl_op1_sel),
-    .io_deq_uop_ctrl_op2_sel      (_decode_units_1_io_deq_uop_ctrl_op2_sel),
-    .io_deq_uop_ctrl_imm_sel      (_decode_units_1_io_deq_uop_ctrl_imm_sel),
-    .io_deq_uop_ctrl_op_fcn       (_decode_units_1_io_deq_uop_ctrl_op_fcn),
-    .io_deq_uop_ctrl_fcn_dw       (_decode_units_1_io_deq_uop_ctrl_fcn_dw),
-    .io_deq_uop_ctrl_csr_cmd      (_decode_units_1_io_deq_uop_ctrl_csr_cmd),
-    .io_deq_uop_ctrl_is_load      (_decode_units_1_io_deq_uop_ctrl_is_load),
-    .io_deq_uop_ctrl_is_sta       (_decode_units_1_io_deq_uop_ctrl_is_sta),
-    .io_deq_uop_ctrl_is_std       (_decode_units_1_io_deq_uop_ctrl_is_std),
-    .io_deq_uop_iw_state          (_decode_units_1_io_deq_uop_iw_state),
-    .io_deq_uop_iw_p1_poisoned    (_decode_units_1_io_deq_uop_iw_p1_poisoned),
-    .io_deq_uop_iw_p2_poisoned    (_decode_units_1_io_deq_uop_iw_p2_poisoned),
     .io_deq_uop_is_br             (_decode_units_1_io_deq_uop_is_br),
     .io_deq_uop_is_jalr           (_decode_units_1_io_deq_uop_is_jalr),
     .io_deq_uop_is_jal            (_decode_units_1_io_deq_uop_is_jal),
-    .io_deq_uop_is_sfb            (_decode_units_1_io_deq_uop_is_sfb),
-    .io_deq_uop_ftq_idx           (_decode_units_1_io_deq_uop_ftq_idx),
-    .io_deq_uop_edge_inst         (_decode_units_1_io_deq_uop_edge_inst),
-    .io_deq_uop_pc_lob            (_decode_units_1_io_deq_uop_pc_lob),
-    .io_deq_uop_taken             (_decode_units_1_io_deq_uop_taken),
     .io_deq_uop_imm_packed        (_decode_units_1_io_deq_uop_imm_packed),
-    .io_deq_uop_csr_addr          (_decode_units_1_io_deq_uop_csr_addr),
-    .io_deq_uop_rxq_idx           (_decode_units_1_io_deq_uop_rxq_idx),
     .io_deq_uop_exception         (_decode_units_1_io_deq_uop_exception),
     .io_deq_uop_exc_cause         (_decode_units_1_io_deq_uop_exc_cause),
     .io_deq_uop_bypassable        (_decode_units_1_io_deq_uop_bypassable),
@@ -4519,47 +3223,15 @@ module BoomCore_1(
     .io_deq_uop_frs3_en           (_decode_units_1_io_deq_uop_frs3_en),
     .io_deq_uop_fp_val            (_decode_units_1_io_deq_uop_fp_val),
     .io_deq_uop_fp_single         (_decode_units_1_io_deq_uop_fp_single),
-    .io_deq_uop_xcpt_pf_if        (_decode_units_1_io_deq_uop_xcpt_pf_if),
-    .io_deq_uop_xcpt_ae_if        (_decode_units_1_io_deq_uop_xcpt_ae_if),
-    .io_deq_uop_xcpt_ma_if        (_decode_units_1_io_deq_uop_xcpt_ma_if),
-    .io_deq_uop_bp_debug_if       (_decode_units_1_io_deq_uop_bp_debug_if),
-    .io_deq_uop_bp_xcpt_if        (_decode_units_1_io_deq_uop_bp_xcpt_if),
-    .io_deq_uop_debug_fsrc        (_decode_units_1_io_deq_uop_debug_fsrc),
-    .io_deq_uop_debug_tsrc        (_decode_units_1_io_deq_uop_debug_tsrc),
     .io_csr_decode_csr            (_decode_units_1_io_csr_decode_csr)
   );
   DecodeUnit_4 decode_units_2 (	// core.scala:98:79
     .io_enq_uop_inst              (io_ifu_fetchpacket_bits_uops_2_bits_inst),
-    .io_enq_uop_debug_inst        (io_ifu_fetchpacket_bits_uops_2_bits_debug_inst),
-    .io_enq_uop_is_rvc            (io_ifu_fetchpacket_bits_uops_2_bits_is_rvc),
-    .io_enq_uop_debug_pc          (io_ifu_fetchpacket_bits_uops_2_bits_debug_pc),
-    .io_enq_uop_ctrl_br_type      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_br_type),
-    .io_enq_uop_ctrl_op1_sel      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_op1_sel),
-    .io_enq_uop_ctrl_op2_sel      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_op2_sel),
-    .io_enq_uop_ctrl_imm_sel      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_imm_sel),
-    .io_enq_uop_ctrl_op_fcn       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_op_fcn),
-    .io_enq_uop_ctrl_fcn_dw       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_fcn_dw),
-    .io_enq_uop_ctrl_csr_cmd      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_csr_cmd),
-    .io_enq_uop_ctrl_is_load      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_is_load),
-    .io_enq_uop_ctrl_is_sta       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_is_sta),
-    .io_enq_uop_ctrl_is_std       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_is_std),
-    .io_enq_uop_iw_state          (io_ifu_fetchpacket_bits_uops_2_bits_iw_state),
-    .io_enq_uop_iw_p1_poisoned    (io_ifu_fetchpacket_bits_uops_2_bits_iw_p1_poisoned),
-    .io_enq_uop_iw_p2_poisoned    (io_ifu_fetchpacket_bits_uops_2_bits_iw_p2_poisoned),
     .io_enq_uop_is_sfb            (io_ifu_fetchpacket_bits_uops_2_bits_is_sfb),
-    .io_enq_uop_ftq_idx           (io_ifu_fetchpacket_bits_uops_2_bits_ftq_idx),
-    .io_enq_uop_edge_inst         (io_ifu_fetchpacket_bits_uops_2_bits_edge_inst),
-    .io_enq_uop_pc_lob            (io_ifu_fetchpacket_bits_uops_2_bits_pc_lob),
-    .io_enq_uop_taken             (io_ifu_fetchpacket_bits_uops_2_bits_taken),
-    .io_enq_uop_csr_addr          (io_ifu_fetchpacket_bits_uops_2_bits_csr_addr),
-    .io_enq_uop_rxq_idx           (io_ifu_fetchpacket_bits_uops_2_bits_rxq_idx),
     .io_enq_uop_xcpt_pf_if        (io_ifu_fetchpacket_bits_uops_2_bits_xcpt_pf_if),
     .io_enq_uop_xcpt_ae_if        (io_ifu_fetchpacket_bits_uops_2_bits_xcpt_ae_if),
-    .io_enq_uop_xcpt_ma_if        (io_ifu_fetchpacket_bits_uops_2_bits_xcpt_ma_if),
     .io_enq_uop_bp_debug_if       (io_ifu_fetchpacket_bits_uops_2_bits_bp_debug_if),
     .io_enq_uop_bp_xcpt_if        (io_ifu_fetchpacket_bits_uops_2_bits_bp_xcpt_if),
-    .io_enq_uop_debug_fsrc        (io_ifu_fetchpacket_bits_uops_2_bits_debug_fsrc),
-    .io_enq_uop_debug_tsrc        (io_ifu_fetchpacket_bits_uops_2_bits_debug_tsrc),
     .io_status_isa                (_csr_io_status_isa),	// core.scala:268:19
     .io_csr_decode_fp_illegal     (_csr_io_decode_2_fp_illegal),	// core.scala:268:19
     .io_csr_decode_read_illegal   (_csr_io_decode_2_read_illegal),	// core.scala:268:19
@@ -4569,36 +3241,12 @@ module BoomCore_1(
     .io_interrupt                 (_csr_io_interrupt),	// core.scala:268:19
     .io_interrupt_cause           (_csr_io_interrupt_cause),	// core.scala:268:19
     .io_deq_uop_uopc              (_decode_units_2_io_deq_uop_uopc),
-    .io_deq_uop_inst              (_decode_units_2_io_deq_uop_inst),
-    .io_deq_uop_debug_inst        (_decode_units_2_io_deq_uop_debug_inst),
-    .io_deq_uop_is_rvc            (_decode_units_2_io_deq_uop_is_rvc),
-    .io_deq_uop_debug_pc          (_decode_units_2_io_deq_uop_debug_pc),
     .io_deq_uop_iq_type           (_decode_units_2_io_deq_uop_iq_type),
     .io_deq_uop_fu_code           (_decode_units_2_io_deq_uop_fu_code),
-    .io_deq_uop_ctrl_br_type      (_decode_units_2_io_deq_uop_ctrl_br_type),
-    .io_deq_uop_ctrl_op1_sel      (_decode_units_2_io_deq_uop_ctrl_op1_sel),
-    .io_deq_uop_ctrl_op2_sel      (_decode_units_2_io_deq_uop_ctrl_op2_sel),
-    .io_deq_uop_ctrl_imm_sel      (_decode_units_2_io_deq_uop_ctrl_imm_sel),
-    .io_deq_uop_ctrl_op_fcn       (_decode_units_2_io_deq_uop_ctrl_op_fcn),
-    .io_deq_uop_ctrl_fcn_dw       (_decode_units_2_io_deq_uop_ctrl_fcn_dw),
-    .io_deq_uop_ctrl_csr_cmd      (_decode_units_2_io_deq_uop_ctrl_csr_cmd),
-    .io_deq_uop_ctrl_is_load      (_decode_units_2_io_deq_uop_ctrl_is_load),
-    .io_deq_uop_ctrl_is_sta       (_decode_units_2_io_deq_uop_ctrl_is_sta),
-    .io_deq_uop_ctrl_is_std       (_decode_units_2_io_deq_uop_ctrl_is_std),
-    .io_deq_uop_iw_state          (_decode_units_2_io_deq_uop_iw_state),
-    .io_deq_uop_iw_p1_poisoned    (_decode_units_2_io_deq_uop_iw_p1_poisoned),
-    .io_deq_uop_iw_p2_poisoned    (_decode_units_2_io_deq_uop_iw_p2_poisoned),
     .io_deq_uop_is_br             (_decode_units_2_io_deq_uop_is_br),
     .io_deq_uop_is_jalr           (_decode_units_2_io_deq_uop_is_jalr),
     .io_deq_uop_is_jal            (_decode_units_2_io_deq_uop_is_jal),
-    .io_deq_uop_is_sfb            (_decode_units_2_io_deq_uop_is_sfb),
-    .io_deq_uop_ftq_idx           (_decode_units_2_io_deq_uop_ftq_idx),
-    .io_deq_uop_edge_inst         (_decode_units_2_io_deq_uop_edge_inst),
-    .io_deq_uop_pc_lob            (_decode_units_2_io_deq_uop_pc_lob),
-    .io_deq_uop_taken             (_decode_units_2_io_deq_uop_taken),
     .io_deq_uop_imm_packed        (_decode_units_2_io_deq_uop_imm_packed),
-    .io_deq_uop_csr_addr          (_decode_units_2_io_deq_uop_csr_addr),
-    .io_deq_uop_rxq_idx           (_decode_units_2_io_deq_uop_rxq_idx),
     .io_deq_uop_exception         (_decode_units_2_io_deq_uop_exception),
     .io_deq_uop_exc_cause         (_decode_units_2_io_deq_uop_exc_cause),
     .io_deq_uop_bypassable        (_decode_units_2_io_deq_uop_bypassable),
@@ -4624,13 +3272,6 @@ module BoomCore_1(
     .io_deq_uop_frs3_en           (_decode_units_2_io_deq_uop_frs3_en),
     .io_deq_uop_fp_val            (_decode_units_2_io_deq_uop_fp_val),
     .io_deq_uop_fp_single         (_decode_units_2_io_deq_uop_fp_single),
-    .io_deq_uop_xcpt_pf_if        (_decode_units_2_io_deq_uop_xcpt_pf_if),
-    .io_deq_uop_xcpt_ae_if        (_decode_units_2_io_deq_uop_xcpt_ae_if),
-    .io_deq_uop_xcpt_ma_if        (_decode_units_2_io_deq_uop_xcpt_ma_if),
-    .io_deq_uop_bp_debug_if       (_decode_units_2_io_deq_uop_bp_debug_if),
-    .io_deq_uop_bp_xcpt_if        (_decode_units_2_io_deq_uop_bp_xcpt_if),
-    .io_deq_uop_debug_fsrc        (_decode_units_2_io_deq_uop_debug_fsrc),
-    .io_deq_uop_debug_tsrc        (_decode_units_2_io_deq_uop_debug_tsrc),
     .io_csr_decode_csr            (_decode_units_2_io_csr_decode_csr)
   );
   BranchMaskGenerationLogic_1 dec_brmask_logic (	// core.scala:99:32
@@ -4638,27 +3279,27 @@ module BoomCore_1(
     .reset                       (reset),
     .io_is_branch_0
       (~(dec_finished_mask[0])
-       & (_decode_units_0_io_deq_uop_is_br & ~_decode_units_0_io_deq_uop_is_sfb
+       & (_decode_units_0_io_deq_uop_is_br & ~io_ifu_fetchpacket_bits_uops_0_bits_is_sfb
           | _decode_units_0_io_deq_uop_is_jalr)),	// core.scala:98:79, :490:34, :503:61, :594:{41,63}, micro-op.scala:146:{33,36,45}
     .io_is_branch_1
       (~(dec_finished_mask[1])
-       & (_decode_units_1_io_deq_uop_is_br & ~_decode_units_1_io_deq_uop_is_sfb
+       & (_decode_units_1_io_deq_uop_is_br & ~io_ifu_fetchpacket_bits_uops_1_bits_is_sfb
           | _decode_units_1_io_deq_uop_is_jalr)),	// core.scala:98:79, :490:34, :503:61, :594:{41,63}, micro-op.scala:146:{33,36,45}
     .io_is_branch_2
       (~(dec_finished_mask[2])
-       & (_decode_units_2_io_deq_uop_is_br & ~_decode_units_2_io_deq_uop_is_sfb
+       & (_decode_units_2_io_deq_uop_is_br & ~io_ifu_fetchpacket_bits_uops_2_bits_is_sfb
           | _decode_units_2_io_deq_uop_is_jalr)),	// core.scala:98:79, :490:34, :503:61, :594:{41,63}, micro-op.scala:146:{33,36,45}
     .io_will_fire_0
       (dec_fire_0
-       & (_decode_units_0_io_deq_uop_is_br & ~_decode_units_0_io_deq_uop_is_sfb
+       & (_decode_units_0_io_deq_uop_is_br & ~io_ifu_fetchpacket_bits_uops_0_bits_is_sfb
           | _decode_units_0_io_deq_uop_is_jalr)),	// core.scala:98:79, :576:58, :595:54, micro-op.scala:146:{33,36,45}
     .io_will_fire_1
       (dec_fire_1
-       & (_decode_units_1_io_deq_uop_is_br & ~_decode_units_1_io_deq_uop_is_sfb
+       & (_decode_units_1_io_deq_uop_is_br & ~io_ifu_fetchpacket_bits_uops_1_bits_is_sfb
           | _decode_units_1_io_deq_uop_is_jalr)),	// core.scala:98:79, :576:58, :595:54, micro-op.scala:146:{33,36,45}
     .io_will_fire_2
       (dec_ready
-       & (_decode_units_2_io_deq_uop_is_br & ~_decode_units_2_io_deq_uop_is_sfb
+       & (_decode_units_2_io_deq_uop_is_br & ~io_ifu_fetchpacket_bits_uops_2_bits_is_sfb
           | _decode_units_2_io_deq_uop_is_jalr)),	// core.scala:98:79, :576:58, :595:54, micro-op.scala:146:{33,36,45}
     .io_brupdate_b1_resolve_mask (b1_resolve_mask),	// core.scala:196:72
     .io_brupdate_b2_uop_br_mask  (b2_uop_br_mask),	// core.scala:187:18
@@ -4682,38 +3323,38 @@ module BoomCore_1(
     .io_dec_fire_1                   (dec_fire_1),	// core.scala:576:58
     .io_dec_fire_2                   (dec_ready),	// core.scala:576:58
     .io_dec_uops_0_uopc              (_decode_units_0_io_deq_uop_uopc),	// core.scala:98:79
-    .io_dec_uops_0_inst              (_decode_units_0_io_deq_uop_inst),	// core.scala:98:79
-    .io_dec_uops_0_debug_inst        (_decode_units_0_io_deq_uop_debug_inst),	// core.scala:98:79
-    .io_dec_uops_0_is_rvc            (_decode_units_0_io_deq_uop_is_rvc),	// core.scala:98:79
-    .io_dec_uops_0_debug_pc          (_decode_units_0_io_deq_uop_debug_pc),	// core.scala:98:79
+    .io_dec_uops_0_inst              (io_ifu_fetchpacket_bits_uops_0_bits_inst),
+    .io_dec_uops_0_debug_inst        (io_ifu_fetchpacket_bits_uops_0_bits_debug_inst),
+    .io_dec_uops_0_is_rvc            (io_ifu_fetchpacket_bits_uops_0_bits_is_rvc),
+    .io_dec_uops_0_debug_pc          (io_ifu_fetchpacket_bits_uops_0_bits_debug_pc),
     .io_dec_uops_0_iq_type           (_decode_units_0_io_deq_uop_iq_type),	// core.scala:98:79
     .io_dec_uops_0_fu_code           (_decode_units_0_io_deq_uop_fu_code),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_br_type      (_decode_units_0_io_deq_uop_ctrl_br_type),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_op1_sel      (_decode_units_0_io_deq_uop_ctrl_op1_sel),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_op2_sel      (_decode_units_0_io_deq_uop_ctrl_op2_sel),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_imm_sel      (_decode_units_0_io_deq_uop_ctrl_imm_sel),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_op_fcn       (_decode_units_0_io_deq_uop_ctrl_op_fcn),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_fcn_dw       (_decode_units_0_io_deq_uop_ctrl_fcn_dw),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_csr_cmd      (_decode_units_0_io_deq_uop_ctrl_csr_cmd),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_is_load      (_decode_units_0_io_deq_uop_ctrl_is_load),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_is_sta       (_decode_units_0_io_deq_uop_ctrl_is_sta),	// core.scala:98:79
-    .io_dec_uops_0_ctrl_is_std       (_decode_units_0_io_deq_uop_ctrl_is_std),	// core.scala:98:79
-    .io_dec_uops_0_iw_state          (_decode_units_0_io_deq_uop_iw_state),	// core.scala:98:79
-    .io_dec_uops_0_iw_p1_poisoned    (_decode_units_0_io_deq_uop_iw_p1_poisoned),	// core.scala:98:79
-    .io_dec_uops_0_iw_p2_poisoned    (_decode_units_0_io_deq_uop_iw_p2_poisoned),	// core.scala:98:79
+    .io_dec_uops_0_ctrl_br_type      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_br_type),
+    .io_dec_uops_0_ctrl_op1_sel      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_op1_sel),
+    .io_dec_uops_0_ctrl_op2_sel      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_op2_sel),
+    .io_dec_uops_0_ctrl_imm_sel      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_imm_sel),
+    .io_dec_uops_0_ctrl_op_fcn       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_op_fcn),
+    .io_dec_uops_0_ctrl_fcn_dw       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_fcn_dw),
+    .io_dec_uops_0_ctrl_csr_cmd      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_csr_cmd),
+    .io_dec_uops_0_ctrl_is_load      (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_is_load),
+    .io_dec_uops_0_ctrl_is_sta       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_is_sta),
+    .io_dec_uops_0_ctrl_is_std       (io_ifu_fetchpacket_bits_uops_0_bits_ctrl_is_std),
+    .io_dec_uops_0_iw_state          (io_ifu_fetchpacket_bits_uops_0_bits_iw_state),
+    .io_dec_uops_0_iw_p1_poisoned    (io_ifu_fetchpacket_bits_uops_0_bits_iw_p1_poisoned),
+    .io_dec_uops_0_iw_p2_poisoned    (io_ifu_fetchpacket_bits_uops_0_bits_iw_p2_poisoned),
     .io_dec_uops_0_is_br             (_decode_units_0_io_deq_uop_is_br),	// core.scala:98:79
     .io_dec_uops_0_is_jalr           (_decode_units_0_io_deq_uop_is_jalr),	// core.scala:98:79
     .io_dec_uops_0_is_jal            (_decode_units_0_io_deq_uop_is_jal),	// core.scala:98:79
-    .io_dec_uops_0_is_sfb            (_decode_units_0_io_deq_uop_is_sfb),	// core.scala:98:79
+    .io_dec_uops_0_is_sfb            (io_ifu_fetchpacket_bits_uops_0_bits_is_sfb),
     .io_dec_uops_0_br_mask           (_dec_brmask_logic_io_br_mask_0),	// core.scala:99:32
     .io_dec_uops_0_br_tag            (_dec_brmask_logic_io_br_tag_0),	// core.scala:99:32
-    .io_dec_uops_0_ftq_idx           (_decode_units_0_io_deq_uop_ftq_idx),	// core.scala:98:79
-    .io_dec_uops_0_edge_inst         (_decode_units_0_io_deq_uop_edge_inst),	// core.scala:98:79
-    .io_dec_uops_0_pc_lob            (_decode_units_0_io_deq_uop_pc_lob),	// core.scala:98:79
-    .io_dec_uops_0_taken             (_decode_units_0_io_deq_uop_taken),	// core.scala:98:79
+    .io_dec_uops_0_ftq_idx           (io_ifu_fetchpacket_bits_uops_0_bits_ftq_idx),
+    .io_dec_uops_0_edge_inst         (io_ifu_fetchpacket_bits_uops_0_bits_edge_inst),
+    .io_dec_uops_0_pc_lob            (io_ifu_fetchpacket_bits_uops_0_bits_pc_lob),
+    .io_dec_uops_0_taken             (io_ifu_fetchpacket_bits_uops_0_bits_taken),
     .io_dec_uops_0_imm_packed        (_decode_units_0_io_deq_uop_imm_packed),	// core.scala:98:79
-    .io_dec_uops_0_csr_addr          (_decode_units_0_io_deq_uop_csr_addr),	// core.scala:98:79
-    .io_dec_uops_0_rxq_idx           (_decode_units_0_io_deq_uop_rxq_idx),	// core.scala:98:79
+    .io_dec_uops_0_csr_addr          (io_ifu_fetchpacket_bits_uops_0_bits_csr_addr),
+    .io_dec_uops_0_rxq_idx           (io_ifu_fetchpacket_bits_uops_0_bits_rxq_idx),
     .io_dec_uops_0_exception         (_decode_units_0_io_deq_uop_exception),	// core.scala:98:79
     .io_dec_uops_0_exc_cause         (_decode_units_0_io_deq_uop_exc_cause),	// core.scala:98:79
     .io_dec_uops_0_bypassable        (_decode_units_0_io_deq_uop_bypassable),	// core.scala:98:79
@@ -4739,46 +3380,46 @@ module BoomCore_1(
     .io_dec_uops_0_frs3_en           (_decode_units_0_io_deq_uop_frs3_en),	// core.scala:98:79
     .io_dec_uops_0_fp_val            (_decode_units_0_io_deq_uop_fp_val),	// core.scala:98:79
     .io_dec_uops_0_fp_single         (_decode_units_0_io_deq_uop_fp_single),	// core.scala:98:79
-    .io_dec_uops_0_xcpt_pf_if        (_decode_units_0_io_deq_uop_xcpt_pf_if),	// core.scala:98:79
-    .io_dec_uops_0_xcpt_ae_if        (_decode_units_0_io_deq_uop_xcpt_ae_if),	// core.scala:98:79
-    .io_dec_uops_0_xcpt_ma_if        (_decode_units_0_io_deq_uop_xcpt_ma_if),	// core.scala:98:79
-    .io_dec_uops_0_bp_debug_if       (_decode_units_0_io_deq_uop_bp_debug_if),	// core.scala:98:79
-    .io_dec_uops_0_bp_xcpt_if        (_decode_units_0_io_deq_uop_bp_xcpt_if),	// core.scala:98:79
-    .io_dec_uops_0_debug_fsrc        (_decode_units_0_io_deq_uop_debug_fsrc),	// core.scala:98:79
-    .io_dec_uops_0_debug_tsrc        (_decode_units_0_io_deq_uop_debug_tsrc),	// core.scala:98:79
+    .io_dec_uops_0_xcpt_pf_if        (io_ifu_fetchpacket_bits_uops_0_bits_xcpt_pf_if),
+    .io_dec_uops_0_xcpt_ae_if        (io_ifu_fetchpacket_bits_uops_0_bits_xcpt_ae_if),
+    .io_dec_uops_0_xcpt_ma_if        (io_ifu_fetchpacket_bits_uops_0_bits_xcpt_ma_if),
+    .io_dec_uops_0_bp_debug_if       (io_ifu_fetchpacket_bits_uops_0_bits_bp_debug_if),
+    .io_dec_uops_0_bp_xcpt_if        (io_ifu_fetchpacket_bits_uops_0_bits_bp_xcpt_if),
+    .io_dec_uops_0_debug_fsrc        (io_ifu_fetchpacket_bits_uops_0_bits_debug_fsrc),
+    .io_dec_uops_0_debug_tsrc        (io_ifu_fetchpacket_bits_uops_0_bits_debug_tsrc),
     .io_dec_uops_1_uopc              (_decode_units_1_io_deq_uop_uopc),	// core.scala:98:79
-    .io_dec_uops_1_inst              (_decode_units_1_io_deq_uop_inst),	// core.scala:98:79
-    .io_dec_uops_1_debug_inst        (_decode_units_1_io_deq_uop_debug_inst),	// core.scala:98:79
-    .io_dec_uops_1_is_rvc            (_decode_units_1_io_deq_uop_is_rvc),	// core.scala:98:79
-    .io_dec_uops_1_debug_pc          (_decode_units_1_io_deq_uop_debug_pc),	// core.scala:98:79
+    .io_dec_uops_1_inst              (io_ifu_fetchpacket_bits_uops_1_bits_inst),
+    .io_dec_uops_1_debug_inst        (io_ifu_fetchpacket_bits_uops_1_bits_debug_inst),
+    .io_dec_uops_1_is_rvc            (io_ifu_fetchpacket_bits_uops_1_bits_is_rvc),
+    .io_dec_uops_1_debug_pc          (io_ifu_fetchpacket_bits_uops_1_bits_debug_pc),
     .io_dec_uops_1_iq_type           (_decode_units_1_io_deq_uop_iq_type),	// core.scala:98:79
     .io_dec_uops_1_fu_code           (_decode_units_1_io_deq_uop_fu_code),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_br_type      (_decode_units_1_io_deq_uop_ctrl_br_type),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_op1_sel      (_decode_units_1_io_deq_uop_ctrl_op1_sel),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_op2_sel      (_decode_units_1_io_deq_uop_ctrl_op2_sel),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_imm_sel      (_decode_units_1_io_deq_uop_ctrl_imm_sel),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_op_fcn       (_decode_units_1_io_deq_uop_ctrl_op_fcn),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_fcn_dw       (_decode_units_1_io_deq_uop_ctrl_fcn_dw),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_csr_cmd      (_decode_units_1_io_deq_uop_ctrl_csr_cmd),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_is_load      (_decode_units_1_io_deq_uop_ctrl_is_load),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_is_sta       (_decode_units_1_io_deq_uop_ctrl_is_sta),	// core.scala:98:79
-    .io_dec_uops_1_ctrl_is_std       (_decode_units_1_io_deq_uop_ctrl_is_std),	// core.scala:98:79
-    .io_dec_uops_1_iw_state          (_decode_units_1_io_deq_uop_iw_state),	// core.scala:98:79
-    .io_dec_uops_1_iw_p1_poisoned    (_decode_units_1_io_deq_uop_iw_p1_poisoned),	// core.scala:98:79
-    .io_dec_uops_1_iw_p2_poisoned    (_decode_units_1_io_deq_uop_iw_p2_poisoned),	// core.scala:98:79
+    .io_dec_uops_1_ctrl_br_type      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_br_type),
+    .io_dec_uops_1_ctrl_op1_sel      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_op1_sel),
+    .io_dec_uops_1_ctrl_op2_sel      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_op2_sel),
+    .io_dec_uops_1_ctrl_imm_sel      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_imm_sel),
+    .io_dec_uops_1_ctrl_op_fcn       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_op_fcn),
+    .io_dec_uops_1_ctrl_fcn_dw       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_fcn_dw),
+    .io_dec_uops_1_ctrl_csr_cmd      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_csr_cmd),
+    .io_dec_uops_1_ctrl_is_load      (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_is_load),
+    .io_dec_uops_1_ctrl_is_sta       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_is_sta),
+    .io_dec_uops_1_ctrl_is_std       (io_ifu_fetchpacket_bits_uops_1_bits_ctrl_is_std),
+    .io_dec_uops_1_iw_state          (io_ifu_fetchpacket_bits_uops_1_bits_iw_state),
+    .io_dec_uops_1_iw_p1_poisoned    (io_ifu_fetchpacket_bits_uops_1_bits_iw_p1_poisoned),
+    .io_dec_uops_1_iw_p2_poisoned    (io_ifu_fetchpacket_bits_uops_1_bits_iw_p2_poisoned),
     .io_dec_uops_1_is_br             (_decode_units_1_io_deq_uop_is_br),	// core.scala:98:79
     .io_dec_uops_1_is_jalr           (_decode_units_1_io_deq_uop_is_jalr),	// core.scala:98:79
     .io_dec_uops_1_is_jal            (_decode_units_1_io_deq_uop_is_jal),	// core.scala:98:79
-    .io_dec_uops_1_is_sfb            (_decode_units_1_io_deq_uop_is_sfb),	// core.scala:98:79
+    .io_dec_uops_1_is_sfb            (io_ifu_fetchpacket_bits_uops_1_bits_is_sfb),
     .io_dec_uops_1_br_mask           (_dec_brmask_logic_io_br_mask_1),	// core.scala:99:32
     .io_dec_uops_1_br_tag            (_dec_brmask_logic_io_br_tag_1),	// core.scala:99:32
-    .io_dec_uops_1_ftq_idx           (_decode_units_1_io_deq_uop_ftq_idx),	// core.scala:98:79
-    .io_dec_uops_1_edge_inst         (_decode_units_1_io_deq_uop_edge_inst),	// core.scala:98:79
-    .io_dec_uops_1_pc_lob            (_decode_units_1_io_deq_uop_pc_lob),	// core.scala:98:79
-    .io_dec_uops_1_taken             (_decode_units_1_io_deq_uop_taken),	// core.scala:98:79
+    .io_dec_uops_1_ftq_idx           (io_ifu_fetchpacket_bits_uops_1_bits_ftq_idx),
+    .io_dec_uops_1_edge_inst         (io_ifu_fetchpacket_bits_uops_1_bits_edge_inst),
+    .io_dec_uops_1_pc_lob            (io_ifu_fetchpacket_bits_uops_1_bits_pc_lob),
+    .io_dec_uops_1_taken             (io_ifu_fetchpacket_bits_uops_1_bits_taken),
     .io_dec_uops_1_imm_packed        (_decode_units_1_io_deq_uop_imm_packed),	// core.scala:98:79
-    .io_dec_uops_1_csr_addr          (_decode_units_1_io_deq_uop_csr_addr),	// core.scala:98:79
-    .io_dec_uops_1_rxq_idx           (_decode_units_1_io_deq_uop_rxq_idx),	// core.scala:98:79
+    .io_dec_uops_1_csr_addr          (io_ifu_fetchpacket_bits_uops_1_bits_csr_addr),
+    .io_dec_uops_1_rxq_idx           (io_ifu_fetchpacket_bits_uops_1_bits_rxq_idx),
     .io_dec_uops_1_exception         (_decode_units_1_io_deq_uop_exception),	// core.scala:98:79
     .io_dec_uops_1_exc_cause         (_decode_units_1_io_deq_uop_exc_cause),	// core.scala:98:79
     .io_dec_uops_1_bypassable        (_decode_units_1_io_deq_uop_bypassable),	// core.scala:98:79
@@ -4804,46 +3445,46 @@ module BoomCore_1(
     .io_dec_uops_1_frs3_en           (_decode_units_1_io_deq_uop_frs3_en),	// core.scala:98:79
     .io_dec_uops_1_fp_val            (_decode_units_1_io_deq_uop_fp_val),	// core.scala:98:79
     .io_dec_uops_1_fp_single         (_decode_units_1_io_deq_uop_fp_single),	// core.scala:98:79
-    .io_dec_uops_1_xcpt_pf_if        (_decode_units_1_io_deq_uop_xcpt_pf_if),	// core.scala:98:79
-    .io_dec_uops_1_xcpt_ae_if        (_decode_units_1_io_deq_uop_xcpt_ae_if),	// core.scala:98:79
-    .io_dec_uops_1_xcpt_ma_if        (_decode_units_1_io_deq_uop_xcpt_ma_if),	// core.scala:98:79
-    .io_dec_uops_1_bp_debug_if       (_decode_units_1_io_deq_uop_bp_debug_if),	// core.scala:98:79
-    .io_dec_uops_1_bp_xcpt_if        (_decode_units_1_io_deq_uop_bp_xcpt_if),	// core.scala:98:79
-    .io_dec_uops_1_debug_fsrc        (_decode_units_1_io_deq_uop_debug_fsrc),	// core.scala:98:79
-    .io_dec_uops_1_debug_tsrc        (_decode_units_1_io_deq_uop_debug_tsrc),	// core.scala:98:79
+    .io_dec_uops_1_xcpt_pf_if        (io_ifu_fetchpacket_bits_uops_1_bits_xcpt_pf_if),
+    .io_dec_uops_1_xcpt_ae_if        (io_ifu_fetchpacket_bits_uops_1_bits_xcpt_ae_if),
+    .io_dec_uops_1_xcpt_ma_if        (io_ifu_fetchpacket_bits_uops_1_bits_xcpt_ma_if),
+    .io_dec_uops_1_bp_debug_if       (io_ifu_fetchpacket_bits_uops_1_bits_bp_debug_if),
+    .io_dec_uops_1_bp_xcpt_if        (io_ifu_fetchpacket_bits_uops_1_bits_bp_xcpt_if),
+    .io_dec_uops_1_debug_fsrc        (io_ifu_fetchpacket_bits_uops_1_bits_debug_fsrc),
+    .io_dec_uops_1_debug_tsrc        (io_ifu_fetchpacket_bits_uops_1_bits_debug_tsrc),
     .io_dec_uops_2_uopc              (_decode_units_2_io_deq_uop_uopc),	// core.scala:98:79
-    .io_dec_uops_2_inst              (_decode_units_2_io_deq_uop_inst),	// core.scala:98:79
-    .io_dec_uops_2_debug_inst        (_decode_units_2_io_deq_uop_debug_inst),	// core.scala:98:79
-    .io_dec_uops_2_is_rvc            (_decode_units_2_io_deq_uop_is_rvc),	// core.scala:98:79
-    .io_dec_uops_2_debug_pc          (_decode_units_2_io_deq_uop_debug_pc),	// core.scala:98:79
+    .io_dec_uops_2_inst              (io_ifu_fetchpacket_bits_uops_2_bits_inst),
+    .io_dec_uops_2_debug_inst        (io_ifu_fetchpacket_bits_uops_2_bits_debug_inst),
+    .io_dec_uops_2_is_rvc            (io_ifu_fetchpacket_bits_uops_2_bits_is_rvc),
+    .io_dec_uops_2_debug_pc          (io_ifu_fetchpacket_bits_uops_2_bits_debug_pc),
     .io_dec_uops_2_iq_type           (_decode_units_2_io_deq_uop_iq_type),	// core.scala:98:79
     .io_dec_uops_2_fu_code           (_decode_units_2_io_deq_uop_fu_code),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_br_type      (_decode_units_2_io_deq_uop_ctrl_br_type),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_op1_sel      (_decode_units_2_io_deq_uop_ctrl_op1_sel),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_op2_sel      (_decode_units_2_io_deq_uop_ctrl_op2_sel),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_imm_sel      (_decode_units_2_io_deq_uop_ctrl_imm_sel),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_op_fcn       (_decode_units_2_io_deq_uop_ctrl_op_fcn),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_fcn_dw       (_decode_units_2_io_deq_uop_ctrl_fcn_dw),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_csr_cmd      (_decode_units_2_io_deq_uop_ctrl_csr_cmd),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_is_load      (_decode_units_2_io_deq_uop_ctrl_is_load),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_is_sta       (_decode_units_2_io_deq_uop_ctrl_is_sta),	// core.scala:98:79
-    .io_dec_uops_2_ctrl_is_std       (_decode_units_2_io_deq_uop_ctrl_is_std),	// core.scala:98:79
-    .io_dec_uops_2_iw_state          (_decode_units_2_io_deq_uop_iw_state),	// core.scala:98:79
-    .io_dec_uops_2_iw_p1_poisoned    (_decode_units_2_io_deq_uop_iw_p1_poisoned),	// core.scala:98:79
-    .io_dec_uops_2_iw_p2_poisoned    (_decode_units_2_io_deq_uop_iw_p2_poisoned),	// core.scala:98:79
+    .io_dec_uops_2_ctrl_br_type      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_br_type),
+    .io_dec_uops_2_ctrl_op1_sel      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_op1_sel),
+    .io_dec_uops_2_ctrl_op2_sel      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_op2_sel),
+    .io_dec_uops_2_ctrl_imm_sel      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_imm_sel),
+    .io_dec_uops_2_ctrl_op_fcn       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_op_fcn),
+    .io_dec_uops_2_ctrl_fcn_dw       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_fcn_dw),
+    .io_dec_uops_2_ctrl_csr_cmd      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_csr_cmd),
+    .io_dec_uops_2_ctrl_is_load      (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_is_load),
+    .io_dec_uops_2_ctrl_is_sta       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_is_sta),
+    .io_dec_uops_2_ctrl_is_std       (io_ifu_fetchpacket_bits_uops_2_bits_ctrl_is_std),
+    .io_dec_uops_2_iw_state          (io_ifu_fetchpacket_bits_uops_2_bits_iw_state),
+    .io_dec_uops_2_iw_p1_poisoned    (io_ifu_fetchpacket_bits_uops_2_bits_iw_p1_poisoned),
+    .io_dec_uops_2_iw_p2_poisoned    (io_ifu_fetchpacket_bits_uops_2_bits_iw_p2_poisoned),
     .io_dec_uops_2_is_br             (_decode_units_2_io_deq_uop_is_br),	// core.scala:98:79
     .io_dec_uops_2_is_jalr           (_decode_units_2_io_deq_uop_is_jalr),	// core.scala:98:79
     .io_dec_uops_2_is_jal            (_decode_units_2_io_deq_uop_is_jal),	// core.scala:98:79
-    .io_dec_uops_2_is_sfb            (_decode_units_2_io_deq_uop_is_sfb),	// core.scala:98:79
+    .io_dec_uops_2_is_sfb            (io_ifu_fetchpacket_bits_uops_2_bits_is_sfb),
     .io_dec_uops_2_br_mask           (_dec_brmask_logic_io_br_mask_2),	// core.scala:99:32
     .io_dec_uops_2_br_tag            (_dec_brmask_logic_io_br_tag_2),	// core.scala:99:32
-    .io_dec_uops_2_ftq_idx           (_decode_units_2_io_deq_uop_ftq_idx),	// core.scala:98:79
-    .io_dec_uops_2_edge_inst         (_decode_units_2_io_deq_uop_edge_inst),	// core.scala:98:79
-    .io_dec_uops_2_pc_lob            (_decode_units_2_io_deq_uop_pc_lob),	// core.scala:98:79
-    .io_dec_uops_2_taken             (_decode_units_2_io_deq_uop_taken),	// core.scala:98:79
+    .io_dec_uops_2_ftq_idx           (io_ifu_fetchpacket_bits_uops_2_bits_ftq_idx),
+    .io_dec_uops_2_edge_inst         (io_ifu_fetchpacket_bits_uops_2_bits_edge_inst),
+    .io_dec_uops_2_pc_lob            (io_ifu_fetchpacket_bits_uops_2_bits_pc_lob),
+    .io_dec_uops_2_taken             (io_ifu_fetchpacket_bits_uops_2_bits_taken),
     .io_dec_uops_2_imm_packed        (_decode_units_2_io_deq_uop_imm_packed),	// core.scala:98:79
-    .io_dec_uops_2_csr_addr          (_decode_units_2_io_deq_uop_csr_addr),	// core.scala:98:79
-    .io_dec_uops_2_rxq_idx           (_decode_units_2_io_deq_uop_rxq_idx),	// core.scala:98:79
+    .io_dec_uops_2_csr_addr          (io_ifu_fetchpacket_bits_uops_2_bits_csr_addr),
+    .io_dec_uops_2_rxq_idx           (io_ifu_fetchpacket_bits_uops_2_bits_rxq_idx),
     .io_dec_uops_2_exception         (_decode_units_2_io_deq_uop_exception),	// core.scala:98:79
     .io_dec_uops_2_exc_cause         (_decode_units_2_io_deq_uop_exc_cause),	// core.scala:98:79
     .io_dec_uops_2_bypassable        (_decode_units_2_io_deq_uop_bypassable),	// core.scala:98:79
@@ -4869,13 +3510,13 @@ module BoomCore_1(
     .io_dec_uops_2_frs3_en           (_decode_units_2_io_deq_uop_frs3_en),	// core.scala:98:79
     .io_dec_uops_2_fp_val            (_decode_units_2_io_deq_uop_fp_val),	// core.scala:98:79
     .io_dec_uops_2_fp_single         (_decode_units_2_io_deq_uop_fp_single),	// core.scala:98:79
-    .io_dec_uops_2_xcpt_pf_if        (_decode_units_2_io_deq_uop_xcpt_pf_if),	// core.scala:98:79
-    .io_dec_uops_2_xcpt_ae_if        (_decode_units_2_io_deq_uop_xcpt_ae_if),	// core.scala:98:79
-    .io_dec_uops_2_xcpt_ma_if        (_decode_units_2_io_deq_uop_xcpt_ma_if),	// core.scala:98:79
-    .io_dec_uops_2_bp_debug_if       (_decode_units_2_io_deq_uop_bp_debug_if),	// core.scala:98:79
-    .io_dec_uops_2_bp_xcpt_if        (_decode_units_2_io_deq_uop_bp_xcpt_if),	// core.scala:98:79
-    .io_dec_uops_2_debug_fsrc        (_decode_units_2_io_deq_uop_debug_fsrc),	// core.scala:98:79
-    .io_dec_uops_2_debug_tsrc        (_decode_units_2_io_deq_uop_debug_tsrc),	// core.scala:98:79
+    .io_dec_uops_2_xcpt_pf_if        (io_ifu_fetchpacket_bits_uops_2_bits_xcpt_pf_if),
+    .io_dec_uops_2_xcpt_ae_if        (io_ifu_fetchpacket_bits_uops_2_bits_xcpt_ae_if),
+    .io_dec_uops_2_xcpt_ma_if        (io_ifu_fetchpacket_bits_uops_2_bits_xcpt_ma_if),
+    .io_dec_uops_2_bp_debug_if       (io_ifu_fetchpacket_bits_uops_2_bits_bp_debug_if),
+    .io_dec_uops_2_bp_xcpt_if        (io_ifu_fetchpacket_bits_uops_2_bits_bp_xcpt_if),
+    .io_dec_uops_2_debug_fsrc        (io_ifu_fetchpacket_bits_uops_2_bits_debug_fsrc),
+    .io_dec_uops_2_debug_tsrc        (io_ifu_fetchpacket_bits_uops_2_bits_debug_tsrc),
     .io_brupdate_b1_resolve_mask     (b1_resolve_mask),	// core.scala:196:72
     .io_brupdate_b2_uop_br_tag       (b2_uop_br_tag),	// core.scala:187:18
     .io_brupdate_b2_mispredict       (b2_mispredict),	// core.scala:187:18
@@ -5157,7 +3798,7 @@ module BoomCore_1(
     .io_kill                         (_io_ifu_redirect_flush_output),	// core.scala:395:38, :397:27, :418:72, :429:29, :454:78
     .io_dec_uops_0_is_br             (_decode_units_0_io_deq_uop_is_br),	// core.scala:98:79
     .io_dec_uops_0_is_jalr           (_decode_units_0_io_deq_uop_is_jalr),	// core.scala:98:79
-    .io_dec_uops_0_is_sfb            (_decode_units_0_io_deq_uop_is_sfb),	// core.scala:98:79
+    .io_dec_uops_0_is_sfb            (io_ifu_fetchpacket_bits_uops_0_bits_is_sfb),
     .io_dec_uops_0_br_tag            (_dec_brmask_logic_io_br_tag_0),	// core.scala:99:32
     .io_dec_uops_0_ldst              (_decode_units_0_io_deq_uop_ldst),	// core.scala:98:79
     .io_dec_uops_0_lrs1              (_decode_units_0_io_deq_uop_lrs1),	// core.scala:98:79
@@ -5170,7 +3811,7 @@ module BoomCore_1(
     .io_dec_uops_0_frs3_en           (_decode_units_0_io_deq_uop_frs3_en),	// core.scala:98:79
     .io_dec_uops_1_is_br             (_decode_units_1_io_deq_uop_is_br),	// core.scala:98:79
     .io_dec_uops_1_is_jalr           (_decode_units_1_io_deq_uop_is_jalr),	// core.scala:98:79
-    .io_dec_uops_1_is_sfb            (_decode_units_1_io_deq_uop_is_sfb),	// core.scala:98:79
+    .io_dec_uops_1_is_sfb            (io_ifu_fetchpacket_bits_uops_1_bits_is_sfb),
     .io_dec_uops_1_br_tag            (_dec_brmask_logic_io_br_tag_1),	// core.scala:99:32
     .io_dec_uops_1_ldst              (_decode_units_1_io_deq_uop_ldst),	// core.scala:98:79
     .io_dec_uops_1_lrs1              (_decode_units_1_io_deq_uop_lrs1),	// core.scala:98:79
@@ -5183,7 +3824,7 @@ module BoomCore_1(
     .io_dec_uops_1_frs3_en           (_decode_units_1_io_deq_uop_frs3_en),	// core.scala:98:79
     .io_dec_uops_2_is_br             (_decode_units_2_io_deq_uop_is_br),	// core.scala:98:79
     .io_dec_uops_2_is_jalr           (_decode_units_2_io_deq_uop_is_jalr),	// core.scala:98:79
-    .io_dec_uops_2_is_sfb            (_decode_units_2_io_deq_uop_is_sfb),	// core.scala:98:79
+    .io_dec_uops_2_is_sfb            (io_ifu_fetchpacket_bits_uops_2_bits_is_sfb),
     .io_dec_uops_2_br_tag            (_dec_brmask_logic_io_br_tag_2),	// core.scala:99:32
     .io_dec_uops_2_ldst              (_decode_units_2_io_deq_uop_ldst),	// core.scala:98:79
     .io_dec_uops_2_lrs1              (_decode_units_2_io_deq_uop_lrs1),	// core.scala:98:79
@@ -5261,200 +3902,197 @@ module BoomCore_1(
     .clock                              (clock),
     .reset                              (reset),
     .io_dis_uops_0_valid                (_dispatcher_io_dis_uops_0_0_valid),	// core.scala:111:32
-    .io_dis_uops_0_bits_uopc            (_dispatcher_io_dis_uops_0_0_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_0_bits_inst            (_dispatcher_io_dis_uops_0_0_bits_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_inst      (_dispatcher_io_dis_uops_0_0_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_rvc          (_dispatcher_io_dis_uops_0_0_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_pc        (_dispatcher_io_dis_uops_0_0_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_0_bits_iq_type         (_dispatcher_io_dis_uops_0_0_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_0_bits_fu_code         (_dispatcher_io_dis_uops_0_0_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_br           (_dispatcher_io_dis_uops_0_0_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_jalr         (_dispatcher_io_dis_uops_0_0_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_jal          (_dispatcher_io_dis_uops_0_0_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_sfb          (_dispatcher_io_dis_uops_0_0_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_0_bits_br_mask         (_dispatcher_io_dis_uops_0_0_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_0_bits_br_tag          (_dispatcher_io_dis_uops_0_0_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_0_bits_ftq_idx         (_dispatcher_io_dis_uops_0_0_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_edge_inst       (_dispatcher_io_dis_uops_0_0_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_pc_lob          (_dispatcher_io_dis_uops_0_0_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_0_bits_taken           (_dispatcher_io_dis_uops_0_0_bits_taken),	// core.scala:111:32
-    .io_dis_uops_0_bits_imm_packed      (_dispatcher_io_dis_uops_0_0_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_0_bits_csr_addr        (_dispatcher_io_dis_uops_0_0_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_0_bits_rob_idx         (_dispatcher_io_dis_uops_0_0_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldq_idx         (_dispatcher_io_dis_uops_0_0_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_stq_idx         (_dispatcher_io_dis_uops_0_0_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_rxq_idx         (_dispatcher_io_dis_uops_0_0_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_pdst            (_dispatcher_io_dis_uops_0_0_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs1            (_dispatcher_io_dis_uops_0_0_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs2            (_dispatcher_io_dis_uops_0_0_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs3            (_dispatcher_io_dis_uops_0_0_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs1_busy       (_dispatcher_io_dis_uops_0_0_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs2_busy       (_dispatcher_io_dis_uops_0_0_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_0_bits_stale_pdst      (_dispatcher_io_dis_uops_0_0_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_0_bits_exception       (_dispatcher_io_dis_uops_0_0_bits_exception),	// core.scala:111:32
-    .io_dis_uops_0_bits_exc_cause       (_dispatcher_io_dis_uops_0_0_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_0_bits_bypassable      (_dispatcher_io_dis_uops_0_0_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_cmd         (_dispatcher_io_dis_uops_0_0_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_size        (_dispatcher_io_dis_uops_0_0_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_signed      (_dispatcher_io_dis_uops_0_0_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_fence        (_dispatcher_io_dis_uops_0_0_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_fencei       (_dispatcher_io_dis_uops_0_0_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_amo          (_dispatcher_io_dis_uops_0_0_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_0_bits_uses_ldq        (_dispatcher_io_dis_uops_0_0_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_0_bits_uses_stq        (_dispatcher_io_dis_uops_0_0_bits_uses_stq),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_sys_pc2epc   (_dispatcher_io_dis_uops_0_0_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_unique       (_dispatcher_io_dis_uops_0_0_bits_is_unique),	// core.scala:111:32
-    .io_dis_uops_0_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_0_0_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_0_0_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst            (_dispatcher_io_dis_uops_0_0_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs1            (_dispatcher_io_dis_uops_0_0_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs2            (_dispatcher_io_dis_uops_0_0_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs3            (_dispatcher_io_dis_uops_0_0_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst_val        (_dispatcher_io_dis_uops_0_0_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_0_bits_dst_rtype       (_dispatcher_io_dis_uops_0_0_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs1_rtype      (_dispatcher_io_dis_uops_0_0_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs2_rtype      (_dispatcher_io_dis_uops_0_0_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_frs3_en         (_dispatcher_io_dis_uops_0_0_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_0_bits_fp_val          (_dispatcher_io_dis_uops_0_0_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_0_bits_fp_single       (_dispatcher_io_dis_uops_0_0_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_0_0_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_0_0_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_0_0_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_bp_debug_if     (_dispatcher_io_dis_uops_0_0_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_0_0_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_fsrc      (_dispatcher_io_dis_uops_0_0_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_tsrc      (_dispatcher_io_dis_uops_0_0_bits_debug_tsrc),	// core.scala:111:32
+    .io_dis_uops_0_bits_uopc            (_rename_stage_io_ren2_uops_0_uopc),	// core.scala:100:32
+    .io_dis_uops_0_bits_inst            (_rename_stage_io_ren2_uops_0_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_inst      (_rename_stage_io_ren2_uops_0_debug_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_rvc          (_rename_stage_io_ren2_uops_0_is_rvc),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_pc        (_rename_stage_io_ren2_uops_0_debug_pc),	// core.scala:100:32
+    .io_dis_uops_0_bits_iq_type         (_rename_stage_io_ren2_uops_0_iq_type),	// core.scala:100:32
+    .io_dis_uops_0_bits_fu_code         (_rename_stage_io_ren2_uops_0_fu_code),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_br           (_rename_stage_io_ren2_uops_0_is_br),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_jalr         (_rename_stage_io_ren2_uops_0_is_jalr),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_jal          (_rename_stage_io_ren2_uops_0_is_jal),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_sfb          (_rename_stage_io_ren2_uops_0_is_sfb),	// core.scala:100:32
+    .io_dis_uops_0_bits_br_mask         (_rename_stage_io_ren2_uops_0_br_mask),	// core.scala:100:32
+    .io_dis_uops_0_bits_br_tag          (_rename_stage_io_ren2_uops_0_br_tag),	// core.scala:100:32
+    .io_dis_uops_0_bits_ftq_idx         (_rename_stage_io_ren2_uops_0_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_0_bits_edge_inst       (_rename_stage_io_ren2_uops_0_edge_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_pc_lob          (_rename_stage_io_ren2_uops_0_pc_lob),	// core.scala:100:32
+    .io_dis_uops_0_bits_taken           (_rename_stage_io_ren2_uops_0_taken),	// core.scala:100:32
+    .io_dis_uops_0_bits_imm_packed      (_rename_stage_io_ren2_uops_0_imm_packed),	// core.scala:100:32
+    .io_dis_uops_0_bits_csr_addr        (_rename_stage_io_ren2_uops_0_csr_addr),	// core.scala:100:32
+    .io_dis_uops_0_bits_rob_idx         (dis_uops_0_rob_idx),	// core.scala:743:27
+    .io_dis_uops_0_bits_ldq_idx         (io_lsu_dis_ldq_idx_0),
+    .io_dis_uops_0_bits_stq_idx         (io_lsu_dis_stq_idx_0),
+    .io_dis_uops_0_bits_rxq_idx         (_rename_stage_io_ren2_uops_0_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_0_bits_pdst            (dis_uops_0_pdst),	// core.scala:653:28
+    .io_dis_uops_0_bits_prs1            (dis_uops_0_prs1),	// core.scala:648:28
+    .io_dis_uops_0_bits_prs2            (dis_uops_0_prs2),	// core.scala:650:28
+    .io_dis_uops_0_bits_prs3            (_fp_rename_stage_io_ren2_uops_0_prs3),	// core.scala:101:46
+    .io_dis_uops_0_bits_prs1_busy       (dis_uops_0_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_0_bits_prs2_busy       (dis_uops_0_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_0_bits_stale_pdst      (dis_uops_0_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_0_bits_exception       (_rename_stage_io_ren2_uops_0_exception),	// core.scala:100:32
+    .io_dis_uops_0_bits_exc_cause       (_rename_stage_io_ren2_uops_0_exc_cause),	// core.scala:100:32
+    .io_dis_uops_0_bits_bypassable      (_rename_stage_io_ren2_uops_0_bypassable),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_cmd         (_rename_stage_io_ren2_uops_0_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_size        (_rename_stage_io_ren2_uops_0_mem_size),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_signed      (_rename_stage_io_ren2_uops_0_mem_signed),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_fence        (_rename_stage_io_ren2_uops_0_is_fence),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_fencei       (_rename_stage_io_ren2_uops_0_is_fencei),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_amo          (_rename_stage_io_ren2_uops_0_is_amo),	// core.scala:100:32
+    .io_dis_uops_0_bits_uses_ldq        (_rename_stage_io_ren2_uops_0_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_0_bits_uses_stq        (_rename_stage_io_ren2_uops_0_uses_stq),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_sys_pc2epc   (_rename_stage_io_ren2_uops_0_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_unique       (_rename_stage_io_ren2_uops_0_is_unique),	// core.scala:100:32
+    .io_dis_uops_0_bits_flush_on_commit (_rename_stage_io_ren2_uops_0_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst_is_rs1     (_rename_stage_io_ren2_uops_0_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst            (_rename_stage_io_ren2_uops_0_ldst),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs1            (_rename_stage_io_ren2_uops_0_lrs1),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs2            (_rename_stage_io_ren2_uops_0_lrs2),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs3            (_rename_stage_io_ren2_uops_0_lrs3),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst_val        (_rename_stage_io_ren2_uops_0_ldst_val),	// core.scala:100:32
+    .io_dis_uops_0_bits_dst_rtype       (_rename_stage_io_ren2_uops_0_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs1_rtype      (_rename_stage_io_ren2_uops_0_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs2_rtype      (_rename_stage_io_ren2_uops_0_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_frs3_en         (_rename_stage_io_ren2_uops_0_frs3_en),	// core.scala:100:32
+    .io_dis_uops_0_bits_fp_val          (_rename_stage_io_ren2_uops_0_fp_val),	// core.scala:100:32
+    .io_dis_uops_0_bits_fp_single       (_rename_stage_io_ren2_uops_0_fp_single),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_pf_if      (_rename_stage_io_ren2_uops_0_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_ae_if      (_rename_stage_io_ren2_uops_0_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_ma_if      (_rename_stage_io_ren2_uops_0_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_bp_debug_if     (_rename_stage_io_ren2_uops_0_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_bp_xcpt_if      (_rename_stage_io_ren2_uops_0_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_fsrc      (_rename_stage_io_ren2_uops_0_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_tsrc      (_rename_stage_io_ren2_uops_0_debug_tsrc),	// core.scala:100:32
     .io_dis_uops_1_valid                (_dispatcher_io_dis_uops_0_1_valid),	// core.scala:111:32
-    .io_dis_uops_1_bits_uopc            (_dispatcher_io_dis_uops_0_1_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_1_bits_inst            (_dispatcher_io_dis_uops_0_1_bits_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_inst      (_dispatcher_io_dis_uops_0_1_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_rvc          (_dispatcher_io_dis_uops_0_1_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_pc        (_dispatcher_io_dis_uops_0_1_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_1_bits_iq_type         (_dispatcher_io_dis_uops_0_1_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_1_bits_fu_code         (_dispatcher_io_dis_uops_0_1_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_br           (_dispatcher_io_dis_uops_0_1_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_jalr         (_dispatcher_io_dis_uops_0_1_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_jal          (_dispatcher_io_dis_uops_0_1_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_sfb          (_dispatcher_io_dis_uops_0_1_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_1_bits_br_mask         (_dispatcher_io_dis_uops_0_1_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_1_bits_br_tag          (_dispatcher_io_dis_uops_0_1_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_1_bits_ftq_idx         (_dispatcher_io_dis_uops_0_1_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_edge_inst       (_dispatcher_io_dis_uops_0_1_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_pc_lob          (_dispatcher_io_dis_uops_0_1_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_1_bits_taken           (_dispatcher_io_dis_uops_0_1_bits_taken),	// core.scala:111:32
-    .io_dis_uops_1_bits_imm_packed      (_dispatcher_io_dis_uops_0_1_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_1_bits_csr_addr        (_dispatcher_io_dis_uops_0_1_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_1_bits_rob_idx         (_dispatcher_io_dis_uops_0_1_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldq_idx         (_dispatcher_io_dis_uops_0_1_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_stq_idx         (_dispatcher_io_dis_uops_0_1_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_rxq_idx         (_dispatcher_io_dis_uops_0_1_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_pdst            (_dispatcher_io_dis_uops_0_1_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs1            (_dispatcher_io_dis_uops_0_1_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs2            (_dispatcher_io_dis_uops_0_1_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs3            (_dispatcher_io_dis_uops_0_1_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs1_busy       (_dispatcher_io_dis_uops_0_1_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs2_busy       (_dispatcher_io_dis_uops_0_1_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_1_bits_stale_pdst      (_dispatcher_io_dis_uops_0_1_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_1_bits_exception       (_dispatcher_io_dis_uops_0_1_bits_exception),	// core.scala:111:32
-    .io_dis_uops_1_bits_exc_cause       (_dispatcher_io_dis_uops_0_1_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_1_bits_bypassable      (_dispatcher_io_dis_uops_0_1_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_cmd         (_dispatcher_io_dis_uops_0_1_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_size        (_dispatcher_io_dis_uops_0_1_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_signed      (_dispatcher_io_dis_uops_0_1_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_fence        (_dispatcher_io_dis_uops_0_1_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_fencei       (_dispatcher_io_dis_uops_0_1_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_amo          (_dispatcher_io_dis_uops_0_1_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_1_bits_uses_ldq        (_dispatcher_io_dis_uops_0_1_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_1_bits_uses_stq        (_dispatcher_io_dis_uops_0_1_bits_uses_stq),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_sys_pc2epc   (_dispatcher_io_dis_uops_0_1_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_unique       (_dispatcher_io_dis_uops_0_1_bits_is_unique),	// core.scala:111:32
-    .io_dis_uops_1_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_0_1_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_0_1_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst            (_dispatcher_io_dis_uops_0_1_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs1            (_dispatcher_io_dis_uops_0_1_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs2            (_dispatcher_io_dis_uops_0_1_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs3            (_dispatcher_io_dis_uops_0_1_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst_val        (_dispatcher_io_dis_uops_0_1_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_1_bits_dst_rtype       (_dispatcher_io_dis_uops_0_1_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs1_rtype      (_dispatcher_io_dis_uops_0_1_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs2_rtype      (_dispatcher_io_dis_uops_0_1_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_frs3_en         (_dispatcher_io_dis_uops_0_1_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_1_bits_fp_val          (_dispatcher_io_dis_uops_0_1_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_1_bits_fp_single       (_dispatcher_io_dis_uops_0_1_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_0_1_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_0_1_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_0_1_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_bp_debug_if     (_dispatcher_io_dis_uops_0_1_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_0_1_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_fsrc      (_dispatcher_io_dis_uops_0_1_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_tsrc      (_dispatcher_io_dis_uops_0_1_bits_debug_tsrc),	// core.scala:111:32
+    .io_dis_uops_1_bits_uopc            (_rename_stage_io_ren2_uops_1_uopc),	// core.scala:100:32
+    .io_dis_uops_1_bits_inst            (_rename_stage_io_ren2_uops_1_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_inst      (_rename_stage_io_ren2_uops_1_debug_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_rvc          (_rename_stage_io_ren2_uops_1_is_rvc),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_pc        (_rename_stage_io_ren2_uops_1_debug_pc),	// core.scala:100:32
+    .io_dis_uops_1_bits_iq_type         (_rename_stage_io_ren2_uops_1_iq_type),	// core.scala:100:32
+    .io_dis_uops_1_bits_fu_code         (_rename_stage_io_ren2_uops_1_fu_code),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_br           (_rename_stage_io_ren2_uops_1_is_br),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_jalr         (_rename_stage_io_ren2_uops_1_is_jalr),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_jal          (_rename_stage_io_ren2_uops_1_is_jal),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_sfb          (_rename_stage_io_ren2_uops_1_is_sfb),	// core.scala:100:32
+    .io_dis_uops_1_bits_br_mask         (_rename_stage_io_ren2_uops_1_br_mask),	// core.scala:100:32
+    .io_dis_uops_1_bits_br_tag          (_rename_stage_io_ren2_uops_1_br_tag),	// core.scala:100:32
+    .io_dis_uops_1_bits_ftq_idx         (_rename_stage_io_ren2_uops_1_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_1_bits_edge_inst       (_rename_stage_io_ren2_uops_1_edge_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_pc_lob          (_rename_stage_io_ren2_uops_1_pc_lob),	// core.scala:100:32
+    .io_dis_uops_1_bits_taken           (_rename_stage_io_ren2_uops_1_taken),	// core.scala:100:32
+    .io_dis_uops_1_bits_imm_packed      (_rename_stage_io_ren2_uops_1_imm_packed),	// core.scala:100:32
+    .io_dis_uops_1_bits_csr_addr        (_rename_stage_io_ren2_uops_1_csr_addr),	// core.scala:100:32
+    .io_dis_uops_1_bits_rob_idx         (dis_uops_1_rob_idx),	// core.scala:743:27
+    .io_dis_uops_1_bits_ldq_idx         (io_lsu_dis_ldq_idx_1),
+    .io_dis_uops_1_bits_stq_idx         (io_lsu_dis_stq_idx_1),
+    .io_dis_uops_1_bits_rxq_idx         (_rename_stage_io_ren2_uops_1_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_1_bits_pdst            (dis_uops_1_pdst),	// core.scala:653:28
+    .io_dis_uops_1_bits_prs1            (dis_uops_1_prs1),	// core.scala:648:28
+    .io_dis_uops_1_bits_prs2            (dis_uops_1_prs2),	// core.scala:650:28
+    .io_dis_uops_1_bits_prs3            (_fp_rename_stage_io_ren2_uops_1_prs3),	// core.scala:101:46
+    .io_dis_uops_1_bits_prs1_busy       (dis_uops_1_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_1_bits_prs2_busy       (dis_uops_1_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_1_bits_stale_pdst      (dis_uops_1_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_1_bits_exception       (_rename_stage_io_ren2_uops_1_exception),	// core.scala:100:32
+    .io_dis_uops_1_bits_exc_cause       (_rename_stage_io_ren2_uops_1_exc_cause),	// core.scala:100:32
+    .io_dis_uops_1_bits_bypassable      (_rename_stage_io_ren2_uops_1_bypassable),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_cmd         (_rename_stage_io_ren2_uops_1_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_size        (_rename_stage_io_ren2_uops_1_mem_size),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_signed      (_rename_stage_io_ren2_uops_1_mem_signed),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_fence        (_rename_stage_io_ren2_uops_1_is_fence),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_fencei       (_rename_stage_io_ren2_uops_1_is_fencei),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_amo          (_rename_stage_io_ren2_uops_1_is_amo),	// core.scala:100:32
+    .io_dis_uops_1_bits_uses_ldq        (_rename_stage_io_ren2_uops_1_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_1_bits_uses_stq        (_rename_stage_io_ren2_uops_1_uses_stq),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_sys_pc2epc   (_rename_stage_io_ren2_uops_1_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_unique       (_rename_stage_io_ren2_uops_1_is_unique),	// core.scala:100:32
+    .io_dis_uops_1_bits_flush_on_commit (_rename_stage_io_ren2_uops_1_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst_is_rs1     (_rename_stage_io_ren2_uops_1_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst            (_rename_stage_io_ren2_uops_1_ldst),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs1            (_rename_stage_io_ren2_uops_1_lrs1),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs2            (_rename_stage_io_ren2_uops_1_lrs2),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs3            (_rename_stage_io_ren2_uops_1_lrs3),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst_val        (_rename_stage_io_ren2_uops_1_ldst_val),	// core.scala:100:32
+    .io_dis_uops_1_bits_dst_rtype       (_rename_stage_io_ren2_uops_1_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs1_rtype      (_rename_stage_io_ren2_uops_1_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs2_rtype      (_rename_stage_io_ren2_uops_1_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_frs3_en         (_rename_stage_io_ren2_uops_1_frs3_en),	// core.scala:100:32
+    .io_dis_uops_1_bits_fp_val          (_rename_stage_io_ren2_uops_1_fp_val),	// core.scala:100:32
+    .io_dis_uops_1_bits_fp_single       (_rename_stage_io_ren2_uops_1_fp_single),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_pf_if      (_rename_stage_io_ren2_uops_1_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_ae_if      (_rename_stage_io_ren2_uops_1_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_ma_if      (_rename_stage_io_ren2_uops_1_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_bp_debug_if     (_rename_stage_io_ren2_uops_1_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_bp_xcpt_if      (_rename_stage_io_ren2_uops_1_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_fsrc      (_rename_stage_io_ren2_uops_1_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_tsrc      (_rename_stage_io_ren2_uops_1_debug_tsrc),	// core.scala:100:32
     .io_dis_uops_2_valid                (_dispatcher_io_dis_uops_0_2_valid),	// core.scala:111:32
-    .io_dis_uops_2_bits_uopc            (_dispatcher_io_dis_uops_0_2_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_2_bits_inst            (_dispatcher_io_dis_uops_0_2_bits_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_inst      (_dispatcher_io_dis_uops_0_2_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_rvc          (_dispatcher_io_dis_uops_0_2_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_pc        (_dispatcher_io_dis_uops_0_2_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_2_bits_iq_type         (_dispatcher_io_dis_uops_0_2_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_2_bits_fu_code         (_dispatcher_io_dis_uops_0_2_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_br           (_dispatcher_io_dis_uops_0_2_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_jalr         (_dispatcher_io_dis_uops_0_2_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_jal          (_dispatcher_io_dis_uops_0_2_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_sfb          (_dispatcher_io_dis_uops_0_2_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_2_bits_br_mask         (_dispatcher_io_dis_uops_0_2_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_2_bits_br_tag          (_dispatcher_io_dis_uops_0_2_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_2_bits_ftq_idx         (_dispatcher_io_dis_uops_0_2_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_edge_inst       (_dispatcher_io_dis_uops_0_2_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_pc_lob          (_dispatcher_io_dis_uops_0_2_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_2_bits_taken           (_dispatcher_io_dis_uops_0_2_bits_taken),	// core.scala:111:32
-    .io_dis_uops_2_bits_imm_packed      (_dispatcher_io_dis_uops_0_2_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_2_bits_csr_addr        (_dispatcher_io_dis_uops_0_2_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_2_bits_rob_idx         (_dispatcher_io_dis_uops_0_2_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldq_idx         (_dispatcher_io_dis_uops_0_2_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_stq_idx         (_dispatcher_io_dis_uops_0_2_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_rxq_idx         (_dispatcher_io_dis_uops_0_2_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_pdst            (_dispatcher_io_dis_uops_0_2_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs1            (_dispatcher_io_dis_uops_0_2_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs2            (_dispatcher_io_dis_uops_0_2_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs3            (_dispatcher_io_dis_uops_0_2_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs1_busy       (_dispatcher_io_dis_uops_0_2_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs2_busy       (_dispatcher_io_dis_uops_0_2_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_2_bits_stale_pdst      (_dispatcher_io_dis_uops_0_2_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_2_bits_exception       (_dispatcher_io_dis_uops_0_2_bits_exception),	// core.scala:111:32
-    .io_dis_uops_2_bits_exc_cause       (_dispatcher_io_dis_uops_0_2_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_2_bits_bypassable      (_dispatcher_io_dis_uops_0_2_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_cmd         (_dispatcher_io_dis_uops_0_2_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_size        (_dispatcher_io_dis_uops_0_2_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_signed      (_dispatcher_io_dis_uops_0_2_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_fence        (_dispatcher_io_dis_uops_0_2_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_fencei       (_dispatcher_io_dis_uops_0_2_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_amo          (_dispatcher_io_dis_uops_0_2_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_2_bits_uses_ldq        (_dispatcher_io_dis_uops_0_2_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_2_bits_uses_stq        (_dispatcher_io_dis_uops_0_2_bits_uses_stq),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_sys_pc2epc   (_dispatcher_io_dis_uops_0_2_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_unique       (_dispatcher_io_dis_uops_0_2_bits_is_unique),	// core.scala:111:32
-    .io_dis_uops_2_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_0_2_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_0_2_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst            (_dispatcher_io_dis_uops_0_2_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs1            (_dispatcher_io_dis_uops_0_2_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs2            (_dispatcher_io_dis_uops_0_2_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs3            (_dispatcher_io_dis_uops_0_2_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst_val        (_dispatcher_io_dis_uops_0_2_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_2_bits_dst_rtype       (_dispatcher_io_dis_uops_0_2_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs1_rtype      (_dispatcher_io_dis_uops_0_2_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs2_rtype      (_dispatcher_io_dis_uops_0_2_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_frs3_en         (_dispatcher_io_dis_uops_0_2_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_2_bits_fp_val          (_dispatcher_io_dis_uops_0_2_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_2_bits_fp_single       (_dispatcher_io_dis_uops_0_2_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_0_2_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_0_2_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_0_2_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_bp_debug_if     (_dispatcher_io_dis_uops_0_2_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_0_2_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_fsrc      (_dispatcher_io_dis_uops_0_2_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_tsrc      (_dispatcher_io_dis_uops_0_2_bits_debug_tsrc),	// core.scala:111:32
+    .io_dis_uops_2_bits_uopc            (_rename_stage_io_ren2_uops_2_uopc),	// core.scala:100:32
+    .io_dis_uops_2_bits_inst            (_rename_stage_io_ren2_uops_2_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_inst      (_rename_stage_io_ren2_uops_2_debug_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_rvc          (_rename_stage_io_ren2_uops_2_is_rvc),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_pc        (_rename_stage_io_ren2_uops_2_debug_pc),	// core.scala:100:32
+    .io_dis_uops_2_bits_iq_type         (_rename_stage_io_ren2_uops_2_iq_type),	// core.scala:100:32
+    .io_dis_uops_2_bits_fu_code         (_rename_stage_io_ren2_uops_2_fu_code),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_br           (_rename_stage_io_ren2_uops_2_is_br),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_jalr         (_rename_stage_io_ren2_uops_2_is_jalr),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_jal          (_rename_stage_io_ren2_uops_2_is_jal),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_sfb          (_rename_stage_io_ren2_uops_2_is_sfb),	// core.scala:100:32
+    .io_dis_uops_2_bits_br_mask         (_rename_stage_io_ren2_uops_2_br_mask),	// core.scala:100:32
+    .io_dis_uops_2_bits_br_tag          (_rename_stage_io_ren2_uops_2_br_tag),	// core.scala:100:32
+    .io_dis_uops_2_bits_ftq_idx         (_rename_stage_io_ren2_uops_2_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_2_bits_edge_inst       (_rename_stage_io_ren2_uops_2_edge_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_pc_lob          (_rename_stage_io_ren2_uops_2_pc_lob),	// core.scala:100:32
+    .io_dis_uops_2_bits_taken           (_rename_stage_io_ren2_uops_2_taken),	// core.scala:100:32
+    .io_dis_uops_2_bits_imm_packed      (_rename_stage_io_ren2_uops_2_imm_packed),	// core.scala:100:32
+    .io_dis_uops_2_bits_csr_addr        (_rename_stage_io_ren2_uops_2_csr_addr),	// core.scala:100:32
+    .io_dis_uops_2_bits_rob_idx         (dis_uops_2_rob_idx),	// core.scala:743:27
+    .io_dis_uops_2_bits_ldq_idx         (io_lsu_dis_ldq_idx_2),
+    .io_dis_uops_2_bits_stq_idx         (io_lsu_dis_stq_idx_2),
+    .io_dis_uops_2_bits_rxq_idx         (_rename_stage_io_ren2_uops_2_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_2_bits_pdst            (dis_uops_2_pdst),	// core.scala:653:28
+    .io_dis_uops_2_bits_prs1            (dis_uops_2_prs1),	// core.scala:648:28
+    .io_dis_uops_2_bits_prs2            (dis_uops_2_prs2),	// core.scala:650:28
+    .io_dis_uops_2_bits_prs3            (_fp_rename_stage_io_ren2_uops_2_prs3),	// core.scala:101:46
+    .io_dis_uops_2_bits_prs1_busy       (dis_uops_2_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_2_bits_prs2_busy       (dis_uops_2_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_2_bits_stale_pdst      (dis_uops_2_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_2_bits_exception       (_rename_stage_io_ren2_uops_2_exception),	// core.scala:100:32
+    .io_dis_uops_2_bits_exc_cause       (_rename_stage_io_ren2_uops_2_exc_cause),	// core.scala:100:32
+    .io_dis_uops_2_bits_bypassable      (_rename_stage_io_ren2_uops_2_bypassable),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_cmd         (_rename_stage_io_ren2_uops_2_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_size        (_rename_stage_io_ren2_uops_2_mem_size),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_signed      (_rename_stage_io_ren2_uops_2_mem_signed),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_fence        (_rename_stage_io_ren2_uops_2_is_fence),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_fencei       (_rename_stage_io_ren2_uops_2_is_fencei),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_amo          (_rename_stage_io_ren2_uops_2_is_amo),	// core.scala:100:32
+    .io_dis_uops_2_bits_uses_ldq        (_rename_stage_io_ren2_uops_2_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_2_bits_uses_stq        (_rename_stage_io_ren2_uops_2_uses_stq),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_sys_pc2epc   (_rename_stage_io_ren2_uops_2_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_unique       (_rename_stage_io_ren2_uops_2_is_unique),	// core.scala:100:32
+    .io_dis_uops_2_bits_flush_on_commit (_rename_stage_io_ren2_uops_2_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst_is_rs1     (_rename_stage_io_ren2_uops_2_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst            (_rename_stage_io_ren2_uops_2_ldst),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs1            (_rename_stage_io_ren2_uops_2_lrs1),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs2            (_rename_stage_io_ren2_uops_2_lrs2),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs3            (_rename_stage_io_ren2_uops_2_lrs3),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst_val        (_rename_stage_io_ren2_uops_2_ldst_val),	// core.scala:100:32
+    .io_dis_uops_2_bits_dst_rtype       (_rename_stage_io_ren2_uops_2_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs1_rtype      (_rename_stage_io_ren2_uops_2_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs2_rtype      (_rename_stage_io_ren2_uops_2_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_frs3_en         (_rename_stage_io_ren2_uops_2_frs3_en),	// core.scala:100:32
+    .io_dis_uops_2_bits_fp_val          (_rename_stage_io_ren2_uops_2_fp_val),	// core.scala:100:32
+    .io_dis_uops_2_bits_fp_single       (_rename_stage_io_ren2_uops_2_fp_single),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_pf_if      (_rename_stage_io_ren2_uops_2_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_ae_if      (_rename_stage_io_ren2_uops_2_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_ma_if      (_rename_stage_io_ren2_uops_2_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_bp_debug_if     (_rename_stage_io_ren2_uops_2_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_bp_xcpt_if      (_rename_stage_io_ren2_uops_2_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_fsrc      (_rename_stage_io_ren2_uops_2_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_tsrc      (_rename_stage_io_ren2_uops_2_debug_tsrc),	// core.scala:100:32
     .io_wakeup_ports_0_valid            (int_iss_wakeups_0_valid),	// core.scala:789:54
     .io_wakeup_ports_0_bits_pdst        (_ll_wbarb_io_out_bits_uop_pdst),	// core.scala:129:32
     .io_wakeup_ports_1_valid            (fast_wakeup_valid),	// core.scala:821:52
@@ -5555,200 +4193,197 @@ module BoomCore_1(
     .clock                              (clock),
     .reset                              (reset),
     .io_dis_uops_0_valid                (_dispatcher_io_dis_uops_1_0_valid),	// core.scala:111:32
-    .io_dis_uops_0_bits_uopc            (_dispatcher_io_dis_uops_1_0_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_0_bits_inst            (_dispatcher_io_dis_uops_1_0_bits_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_inst      (_dispatcher_io_dis_uops_1_0_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_rvc          (_dispatcher_io_dis_uops_1_0_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_pc        (_dispatcher_io_dis_uops_1_0_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_0_bits_iq_type         (_dispatcher_io_dis_uops_1_0_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_0_bits_fu_code         (_dispatcher_io_dis_uops_1_0_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_br           (_dispatcher_io_dis_uops_1_0_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_jalr         (_dispatcher_io_dis_uops_1_0_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_jal          (_dispatcher_io_dis_uops_1_0_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_sfb          (_dispatcher_io_dis_uops_1_0_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_0_bits_br_mask         (_dispatcher_io_dis_uops_1_0_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_0_bits_br_tag          (_dispatcher_io_dis_uops_1_0_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_0_bits_ftq_idx         (_dispatcher_io_dis_uops_1_0_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_edge_inst       (_dispatcher_io_dis_uops_1_0_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_0_bits_pc_lob          (_dispatcher_io_dis_uops_1_0_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_0_bits_taken           (_dispatcher_io_dis_uops_1_0_bits_taken),	// core.scala:111:32
-    .io_dis_uops_0_bits_imm_packed      (_dispatcher_io_dis_uops_1_0_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_0_bits_csr_addr        (_dispatcher_io_dis_uops_1_0_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_0_bits_rob_idx         (_dispatcher_io_dis_uops_1_0_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldq_idx         (_dispatcher_io_dis_uops_1_0_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_stq_idx         (_dispatcher_io_dis_uops_1_0_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_rxq_idx         (_dispatcher_io_dis_uops_1_0_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_0_bits_pdst            (_dispatcher_io_dis_uops_1_0_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs1            (_dispatcher_io_dis_uops_1_0_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs2            (_dispatcher_io_dis_uops_1_0_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs3            (_dispatcher_io_dis_uops_1_0_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs1_busy       (_dispatcher_io_dis_uops_1_0_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_0_bits_prs2_busy       (_dispatcher_io_dis_uops_1_0_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_0_bits_stale_pdst      (_dispatcher_io_dis_uops_1_0_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_0_bits_exception       (_dispatcher_io_dis_uops_1_0_bits_exception),	// core.scala:111:32
-    .io_dis_uops_0_bits_exc_cause       (_dispatcher_io_dis_uops_1_0_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_0_bits_bypassable      (_dispatcher_io_dis_uops_1_0_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_cmd         (_dispatcher_io_dis_uops_1_0_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_size        (_dispatcher_io_dis_uops_1_0_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_0_bits_mem_signed      (_dispatcher_io_dis_uops_1_0_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_fence        (_dispatcher_io_dis_uops_1_0_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_fencei       (_dispatcher_io_dis_uops_1_0_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_amo          (_dispatcher_io_dis_uops_1_0_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_0_bits_uses_ldq        (_dispatcher_io_dis_uops_1_0_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_0_bits_uses_stq        (_dispatcher_io_dis_uops_1_0_bits_uses_stq),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_sys_pc2epc   (_dispatcher_io_dis_uops_1_0_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_0_bits_is_unique       (_dispatcher_io_dis_uops_1_0_bits_is_unique),	// core.scala:111:32
-    .io_dis_uops_0_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_1_0_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_1_0_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst            (_dispatcher_io_dis_uops_1_0_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs1            (_dispatcher_io_dis_uops_1_0_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs2            (_dispatcher_io_dis_uops_1_0_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs3            (_dispatcher_io_dis_uops_1_0_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_0_bits_ldst_val        (_dispatcher_io_dis_uops_1_0_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_0_bits_dst_rtype       (_dispatcher_io_dis_uops_1_0_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs1_rtype      (_dispatcher_io_dis_uops_1_0_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_lrs2_rtype      (_dispatcher_io_dis_uops_1_0_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_0_bits_frs3_en         (_dispatcher_io_dis_uops_1_0_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_0_bits_fp_val          (_dispatcher_io_dis_uops_1_0_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_0_bits_fp_single       (_dispatcher_io_dis_uops_1_0_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_1_0_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_1_0_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_1_0_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_bp_debug_if     (_dispatcher_io_dis_uops_1_0_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_1_0_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_fsrc      (_dispatcher_io_dis_uops_1_0_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_0_bits_debug_tsrc      (_dispatcher_io_dis_uops_1_0_bits_debug_tsrc),	// core.scala:111:32
+    .io_dis_uops_0_bits_uopc            (_rename_stage_io_ren2_uops_0_uopc),	// core.scala:100:32
+    .io_dis_uops_0_bits_inst            (_rename_stage_io_ren2_uops_0_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_inst      (_rename_stage_io_ren2_uops_0_debug_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_rvc          (_rename_stage_io_ren2_uops_0_is_rvc),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_pc        (_rename_stage_io_ren2_uops_0_debug_pc),	// core.scala:100:32
+    .io_dis_uops_0_bits_iq_type         (_rename_stage_io_ren2_uops_0_iq_type),	// core.scala:100:32
+    .io_dis_uops_0_bits_fu_code         (_rename_stage_io_ren2_uops_0_fu_code),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_br           (_rename_stage_io_ren2_uops_0_is_br),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_jalr         (_rename_stage_io_ren2_uops_0_is_jalr),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_jal          (_rename_stage_io_ren2_uops_0_is_jal),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_sfb          (_rename_stage_io_ren2_uops_0_is_sfb),	// core.scala:100:32
+    .io_dis_uops_0_bits_br_mask         (_rename_stage_io_ren2_uops_0_br_mask),	// core.scala:100:32
+    .io_dis_uops_0_bits_br_tag          (_rename_stage_io_ren2_uops_0_br_tag),	// core.scala:100:32
+    .io_dis_uops_0_bits_ftq_idx         (_rename_stage_io_ren2_uops_0_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_0_bits_edge_inst       (_rename_stage_io_ren2_uops_0_edge_inst),	// core.scala:100:32
+    .io_dis_uops_0_bits_pc_lob          (_rename_stage_io_ren2_uops_0_pc_lob),	// core.scala:100:32
+    .io_dis_uops_0_bits_taken           (_rename_stage_io_ren2_uops_0_taken),	// core.scala:100:32
+    .io_dis_uops_0_bits_imm_packed      (_rename_stage_io_ren2_uops_0_imm_packed),	// core.scala:100:32
+    .io_dis_uops_0_bits_csr_addr        (_rename_stage_io_ren2_uops_0_csr_addr),	// core.scala:100:32
+    .io_dis_uops_0_bits_rob_idx         (dis_uops_0_rob_idx),	// core.scala:743:27
+    .io_dis_uops_0_bits_ldq_idx         (io_lsu_dis_ldq_idx_0),
+    .io_dis_uops_0_bits_stq_idx         (io_lsu_dis_stq_idx_0),
+    .io_dis_uops_0_bits_rxq_idx         (_rename_stage_io_ren2_uops_0_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_0_bits_pdst            (dis_uops_0_pdst),	// core.scala:653:28
+    .io_dis_uops_0_bits_prs1            (dis_uops_0_prs1),	// core.scala:648:28
+    .io_dis_uops_0_bits_prs2            (dis_uops_0_prs2),	// core.scala:650:28
+    .io_dis_uops_0_bits_prs3            (_fp_rename_stage_io_ren2_uops_0_prs3),	// core.scala:101:46
+    .io_dis_uops_0_bits_prs1_busy       (dis_uops_0_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_0_bits_prs2_busy       (dis_uops_0_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_0_bits_stale_pdst      (dis_uops_0_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_0_bits_exception       (_rename_stage_io_ren2_uops_0_exception),	// core.scala:100:32
+    .io_dis_uops_0_bits_exc_cause       (_rename_stage_io_ren2_uops_0_exc_cause),	// core.scala:100:32
+    .io_dis_uops_0_bits_bypassable      (_rename_stage_io_ren2_uops_0_bypassable),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_cmd         (_rename_stage_io_ren2_uops_0_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_size        (_rename_stage_io_ren2_uops_0_mem_size),	// core.scala:100:32
+    .io_dis_uops_0_bits_mem_signed      (_rename_stage_io_ren2_uops_0_mem_signed),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_fence        (_rename_stage_io_ren2_uops_0_is_fence),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_fencei       (_rename_stage_io_ren2_uops_0_is_fencei),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_amo          (_rename_stage_io_ren2_uops_0_is_amo),	// core.scala:100:32
+    .io_dis_uops_0_bits_uses_ldq        (_rename_stage_io_ren2_uops_0_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_0_bits_uses_stq        (_rename_stage_io_ren2_uops_0_uses_stq),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_sys_pc2epc   (_rename_stage_io_ren2_uops_0_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_0_bits_is_unique       (_rename_stage_io_ren2_uops_0_is_unique),	// core.scala:100:32
+    .io_dis_uops_0_bits_flush_on_commit (_rename_stage_io_ren2_uops_0_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst_is_rs1     (_rename_stage_io_ren2_uops_0_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst            (_rename_stage_io_ren2_uops_0_ldst),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs1            (_rename_stage_io_ren2_uops_0_lrs1),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs2            (_rename_stage_io_ren2_uops_0_lrs2),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs3            (_rename_stage_io_ren2_uops_0_lrs3),	// core.scala:100:32
+    .io_dis_uops_0_bits_ldst_val        (_rename_stage_io_ren2_uops_0_ldst_val),	// core.scala:100:32
+    .io_dis_uops_0_bits_dst_rtype       (_rename_stage_io_ren2_uops_0_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs1_rtype      (_rename_stage_io_ren2_uops_0_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_lrs2_rtype      (_rename_stage_io_ren2_uops_0_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_0_bits_frs3_en         (_rename_stage_io_ren2_uops_0_frs3_en),	// core.scala:100:32
+    .io_dis_uops_0_bits_fp_val          (_rename_stage_io_ren2_uops_0_fp_val),	// core.scala:100:32
+    .io_dis_uops_0_bits_fp_single       (_rename_stage_io_ren2_uops_0_fp_single),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_pf_if      (_rename_stage_io_ren2_uops_0_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_ae_if      (_rename_stage_io_ren2_uops_0_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_xcpt_ma_if      (_rename_stage_io_ren2_uops_0_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_bp_debug_if     (_rename_stage_io_ren2_uops_0_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_bp_xcpt_if      (_rename_stage_io_ren2_uops_0_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_fsrc      (_rename_stage_io_ren2_uops_0_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_0_bits_debug_tsrc      (_rename_stage_io_ren2_uops_0_debug_tsrc),	// core.scala:100:32
     .io_dis_uops_1_valid                (_dispatcher_io_dis_uops_1_1_valid),	// core.scala:111:32
-    .io_dis_uops_1_bits_uopc            (_dispatcher_io_dis_uops_1_1_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_1_bits_inst            (_dispatcher_io_dis_uops_1_1_bits_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_inst      (_dispatcher_io_dis_uops_1_1_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_rvc          (_dispatcher_io_dis_uops_1_1_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_pc        (_dispatcher_io_dis_uops_1_1_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_1_bits_iq_type         (_dispatcher_io_dis_uops_1_1_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_1_bits_fu_code         (_dispatcher_io_dis_uops_1_1_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_br           (_dispatcher_io_dis_uops_1_1_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_jalr         (_dispatcher_io_dis_uops_1_1_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_jal          (_dispatcher_io_dis_uops_1_1_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_sfb          (_dispatcher_io_dis_uops_1_1_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_1_bits_br_mask         (_dispatcher_io_dis_uops_1_1_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_1_bits_br_tag          (_dispatcher_io_dis_uops_1_1_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_1_bits_ftq_idx         (_dispatcher_io_dis_uops_1_1_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_edge_inst       (_dispatcher_io_dis_uops_1_1_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_1_bits_pc_lob          (_dispatcher_io_dis_uops_1_1_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_1_bits_taken           (_dispatcher_io_dis_uops_1_1_bits_taken),	// core.scala:111:32
-    .io_dis_uops_1_bits_imm_packed      (_dispatcher_io_dis_uops_1_1_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_1_bits_csr_addr        (_dispatcher_io_dis_uops_1_1_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_1_bits_rob_idx         (_dispatcher_io_dis_uops_1_1_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldq_idx         (_dispatcher_io_dis_uops_1_1_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_stq_idx         (_dispatcher_io_dis_uops_1_1_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_rxq_idx         (_dispatcher_io_dis_uops_1_1_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_1_bits_pdst            (_dispatcher_io_dis_uops_1_1_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs1            (_dispatcher_io_dis_uops_1_1_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs2            (_dispatcher_io_dis_uops_1_1_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs3            (_dispatcher_io_dis_uops_1_1_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs1_busy       (_dispatcher_io_dis_uops_1_1_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_1_bits_prs2_busy       (_dispatcher_io_dis_uops_1_1_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_1_bits_stale_pdst      (_dispatcher_io_dis_uops_1_1_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_1_bits_exception       (_dispatcher_io_dis_uops_1_1_bits_exception),	// core.scala:111:32
-    .io_dis_uops_1_bits_exc_cause       (_dispatcher_io_dis_uops_1_1_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_1_bits_bypassable      (_dispatcher_io_dis_uops_1_1_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_cmd         (_dispatcher_io_dis_uops_1_1_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_size        (_dispatcher_io_dis_uops_1_1_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_1_bits_mem_signed      (_dispatcher_io_dis_uops_1_1_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_fence        (_dispatcher_io_dis_uops_1_1_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_fencei       (_dispatcher_io_dis_uops_1_1_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_amo          (_dispatcher_io_dis_uops_1_1_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_1_bits_uses_ldq        (_dispatcher_io_dis_uops_1_1_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_1_bits_uses_stq        (_dispatcher_io_dis_uops_1_1_bits_uses_stq),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_sys_pc2epc   (_dispatcher_io_dis_uops_1_1_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_1_bits_is_unique       (_dispatcher_io_dis_uops_1_1_bits_is_unique),	// core.scala:111:32
-    .io_dis_uops_1_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_1_1_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_1_1_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst            (_dispatcher_io_dis_uops_1_1_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs1            (_dispatcher_io_dis_uops_1_1_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs2            (_dispatcher_io_dis_uops_1_1_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs3            (_dispatcher_io_dis_uops_1_1_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_1_bits_ldst_val        (_dispatcher_io_dis_uops_1_1_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_1_bits_dst_rtype       (_dispatcher_io_dis_uops_1_1_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs1_rtype      (_dispatcher_io_dis_uops_1_1_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_lrs2_rtype      (_dispatcher_io_dis_uops_1_1_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_1_bits_frs3_en         (_dispatcher_io_dis_uops_1_1_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_1_bits_fp_val          (_dispatcher_io_dis_uops_1_1_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_1_bits_fp_single       (_dispatcher_io_dis_uops_1_1_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_1_1_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_1_1_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_1_1_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_bp_debug_if     (_dispatcher_io_dis_uops_1_1_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_1_1_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_fsrc      (_dispatcher_io_dis_uops_1_1_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_1_bits_debug_tsrc      (_dispatcher_io_dis_uops_1_1_bits_debug_tsrc),	// core.scala:111:32
+    .io_dis_uops_1_bits_uopc            (_rename_stage_io_ren2_uops_1_uopc),	// core.scala:100:32
+    .io_dis_uops_1_bits_inst            (_rename_stage_io_ren2_uops_1_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_inst      (_rename_stage_io_ren2_uops_1_debug_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_rvc          (_rename_stage_io_ren2_uops_1_is_rvc),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_pc        (_rename_stage_io_ren2_uops_1_debug_pc),	// core.scala:100:32
+    .io_dis_uops_1_bits_iq_type         (_rename_stage_io_ren2_uops_1_iq_type),	// core.scala:100:32
+    .io_dis_uops_1_bits_fu_code         (_rename_stage_io_ren2_uops_1_fu_code),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_br           (_rename_stage_io_ren2_uops_1_is_br),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_jalr         (_rename_stage_io_ren2_uops_1_is_jalr),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_jal          (_rename_stage_io_ren2_uops_1_is_jal),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_sfb          (_rename_stage_io_ren2_uops_1_is_sfb),	// core.scala:100:32
+    .io_dis_uops_1_bits_br_mask         (_rename_stage_io_ren2_uops_1_br_mask),	// core.scala:100:32
+    .io_dis_uops_1_bits_br_tag          (_rename_stage_io_ren2_uops_1_br_tag),	// core.scala:100:32
+    .io_dis_uops_1_bits_ftq_idx         (_rename_stage_io_ren2_uops_1_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_1_bits_edge_inst       (_rename_stage_io_ren2_uops_1_edge_inst),	// core.scala:100:32
+    .io_dis_uops_1_bits_pc_lob          (_rename_stage_io_ren2_uops_1_pc_lob),	// core.scala:100:32
+    .io_dis_uops_1_bits_taken           (_rename_stage_io_ren2_uops_1_taken),	// core.scala:100:32
+    .io_dis_uops_1_bits_imm_packed      (_rename_stage_io_ren2_uops_1_imm_packed),	// core.scala:100:32
+    .io_dis_uops_1_bits_csr_addr        (_rename_stage_io_ren2_uops_1_csr_addr),	// core.scala:100:32
+    .io_dis_uops_1_bits_rob_idx         (dis_uops_1_rob_idx),	// core.scala:743:27
+    .io_dis_uops_1_bits_ldq_idx         (io_lsu_dis_ldq_idx_1),
+    .io_dis_uops_1_bits_stq_idx         (io_lsu_dis_stq_idx_1),
+    .io_dis_uops_1_bits_rxq_idx         (_rename_stage_io_ren2_uops_1_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_1_bits_pdst            (dis_uops_1_pdst),	// core.scala:653:28
+    .io_dis_uops_1_bits_prs1            (dis_uops_1_prs1),	// core.scala:648:28
+    .io_dis_uops_1_bits_prs2            (dis_uops_1_prs2),	// core.scala:650:28
+    .io_dis_uops_1_bits_prs3            (_fp_rename_stage_io_ren2_uops_1_prs3),	// core.scala:101:46
+    .io_dis_uops_1_bits_prs1_busy       (dis_uops_1_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_1_bits_prs2_busy       (dis_uops_1_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_1_bits_stale_pdst      (dis_uops_1_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_1_bits_exception       (_rename_stage_io_ren2_uops_1_exception),	// core.scala:100:32
+    .io_dis_uops_1_bits_exc_cause       (_rename_stage_io_ren2_uops_1_exc_cause),	// core.scala:100:32
+    .io_dis_uops_1_bits_bypassable      (_rename_stage_io_ren2_uops_1_bypassable),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_cmd         (_rename_stage_io_ren2_uops_1_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_size        (_rename_stage_io_ren2_uops_1_mem_size),	// core.scala:100:32
+    .io_dis_uops_1_bits_mem_signed      (_rename_stage_io_ren2_uops_1_mem_signed),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_fence        (_rename_stage_io_ren2_uops_1_is_fence),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_fencei       (_rename_stage_io_ren2_uops_1_is_fencei),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_amo          (_rename_stage_io_ren2_uops_1_is_amo),	// core.scala:100:32
+    .io_dis_uops_1_bits_uses_ldq        (_rename_stage_io_ren2_uops_1_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_1_bits_uses_stq        (_rename_stage_io_ren2_uops_1_uses_stq),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_sys_pc2epc   (_rename_stage_io_ren2_uops_1_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_1_bits_is_unique       (_rename_stage_io_ren2_uops_1_is_unique),	// core.scala:100:32
+    .io_dis_uops_1_bits_flush_on_commit (_rename_stage_io_ren2_uops_1_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst_is_rs1     (_rename_stage_io_ren2_uops_1_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst            (_rename_stage_io_ren2_uops_1_ldst),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs1            (_rename_stage_io_ren2_uops_1_lrs1),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs2            (_rename_stage_io_ren2_uops_1_lrs2),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs3            (_rename_stage_io_ren2_uops_1_lrs3),	// core.scala:100:32
+    .io_dis_uops_1_bits_ldst_val        (_rename_stage_io_ren2_uops_1_ldst_val),	// core.scala:100:32
+    .io_dis_uops_1_bits_dst_rtype       (_rename_stage_io_ren2_uops_1_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs1_rtype      (_rename_stage_io_ren2_uops_1_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_lrs2_rtype      (_rename_stage_io_ren2_uops_1_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_1_bits_frs3_en         (_rename_stage_io_ren2_uops_1_frs3_en),	// core.scala:100:32
+    .io_dis_uops_1_bits_fp_val          (_rename_stage_io_ren2_uops_1_fp_val),	// core.scala:100:32
+    .io_dis_uops_1_bits_fp_single       (_rename_stage_io_ren2_uops_1_fp_single),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_pf_if      (_rename_stage_io_ren2_uops_1_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_ae_if      (_rename_stage_io_ren2_uops_1_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_xcpt_ma_if      (_rename_stage_io_ren2_uops_1_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_bp_debug_if     (_rename_stage_io_ren2_uops_1_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_bp_xcpt_if      (_rename_stage_io_ren2_uops_1_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_fsrc      (_rename_stage_io_ren2_uops_1_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_1_bits_debug_tsrc      (_rename_stage_io_ren2_uops_1_debug_tsrc),	// core.scala:100:32
     .io_dis_uops_2_valid                (_dispatcher_io_dis_uops_1_2_valid),	// core.scala:111:32
-    .io_dis_uops_2_bits_uopc            (_dispatcher_io_dis_uops_1_2_bits_uopc),	// core.scala:111:32
-    .io_dis_uops_2_bits_inst            (_dispatcher_io_dis_uops_1_2_bits_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_inst      (_dispatcher_io_dis_uops_1_2_bits_debug_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_rvc          (_dispatcher_io_dis_uops_1_2_bits_is_rvc),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_pc        (_dispatcher_io_dis_uops_1_2_bits_debug_pc),	// core.scala:111:32
-    .io_dis_uops_2_bits_iq_type         (_dispatcher_io_dis_uops_1_2_bits_iq_type),	// core.scala:111:32
-    .io_dis_uops_2_bits_fu_code         (_dispatcher_io_dis_uops_1_2_bits_fu_code),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_br           (_dispatcher_io_dis_uops_1_2_bits_is_br),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_jalr         (_dispatcher_io_dis_uops_1_2_bits_is_jalr),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_jal          (_dispatcher_io_dis_uops_1_2_bits_is_jal),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_sfb          (_dispatcher_io_dis_uops_1_2_bits_is_sfb),	// core.scala:111:32
-    .io_dis_uops_2_bits_br_mask         (_dispatcher_io_dis_uops_1_2_bits_br_mask),	// core.scala:111:32
-    .io_dis_uops_2_bits_br_tag          (_dispatcher_io_dis_uops_1_2_bits_br_tag),	// core.scala:111:32
-    .io_dis_uops_2_bits_ftq_idx         (_dispatcher_io_dis_uops_1_2_bits_ftq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_edge_inst       (_dispatcher_io_dis_uops_1_2_bits_edge_inst),	// core.scala:111:32
-    .io_dis_uops_2_bits_pc_lob          (_dispatcher_io_dis_uops_1_2_bits_pc_lob),	// core.scala:111:32
-    .io_dis_uops_2_bits_taken           (_dispatcher_io_dis_uops_1_2_bits_taken),	// core.scala:111:32
-    .io_dis_uops_2_bits_imm_packed      (_dispatcher_io_dis_uops_1_2_bits_imm_packed),	// core.scala:111:32
-    .io_dis_uops_2_bits_csr_addr        (_dispatcher_io_dis_uops_1_2_bits_csr_addr),	// core.scala:111:32
-    .io_dis_uops_2_bits_rob_idx         (_dispatcher_io_dis_uops_1_2_bits_rob_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldq_idx         (_dispatcher_io_dis_uops_1_2_bits_ldq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_stq_idx         (_dispatcher_io_dis_uops_1_2_bits_stq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_rxq_idx         (_dispatcher_io_dis_uops_1_2_bits_rxq_idx),	// core.scala:111:32
-    .io_dis_uops_2_bits_pdst            (_dispatcher_io_dis_uops_1_2_bits_pdst),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs1            (_dispatcher_io_dis_uops_1_2_bits_prs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs2            (_dispatcher_io_dis_uops_1_2_bits_prs2),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs3            (_dispatcher_io_dis_uops_1_2_bits_prs3),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs1_busy       (_dispatcher_io_dis_uops_1_2_bits_prs1_busy),	// core.scala:111:32
-    .io_dis_uops_2_bits_prs2_busy       (_dispatcher_io_dis_uops_1_2_bits_prs2_busy),	// core.scala:111:32
-    .io_dis_uops_2_bits_stale_pdst      (_dispatcher_io_dis_uops_1_2_bits_stale_pdst),	// core.scala:111:32
-    .io_dis_uops_2_bits_exception       (_dispatcher_io_dis_uops_1_2_bits_exception),	// core.scala:111:32
-    .io_dis_uops_2_bits_exc_cause       (_dispatcher_io_dis_uops_1_2_bits_exc_cause),	// core.scala:111:32
-    .io_dis_uops_2_bits_bypassable      (_dispatcher_io_dis_uops_1_2_bits_bypassable),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_cmd         (_dispatcher_io_dis_uops_1_2_bits_mem_cmd),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_size        (_dispatcher_io_dis_uops_1_2_bits_mem_size),	// core.scala:111:32
-    .io_dis_uops_2_bits_mem_signed      (_dispatcher_io_dis_uops_1_2_bits_mem_signed),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_fence        (_dispatcher_io_dis_uops_1_2_bits_is_fence),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_fencei       (_dispatcher_io_dis_uops_1_2_bits_is_fencei),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_amo          (_dispatcher_io_dis_uops_1_2_bits_is_amo),	// core.scala:111:32
-    .io_dis_uops_2_bits_uses_ldq        (_dispatcher_io_dis_uops_1_2_bits_uses_ldq),	// core.scala:111:32
-    .io_dis_uops_2_bits_uses_stq        (_dispatcher_io_dis_uops_1_2_bits_uses_stq),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_sys_pc2epc   (_dispatcher_io_dis_uops_1_2_bits_is_sys_pc2epc),	// core.scala:111:32
-    .io_dis_uops_2_bits_is_unique       (_dispatcher_io_dis_uops_1_2_bits_is_unique),	// core.scala:111:32
-    .io_dis_uops_2_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_1_2_bits_flush_on_commit),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_1_2_bits_ldst_is_rs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst            (_dispatcher_io_dis_uops_1_2_bits_ldst),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs1            (_dispatcher_io_dis_uops_1_2_bits_lrs1),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs2            (_dispatcher_io_dis_uops_1_2_bits_lrs2),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs3            (_dispatcher_io_dis_uops_1_2_bits_lrs3),	// core.scala:111:32
-    .io_dis_uops_2_bits_ldst_val        (_dispatcher_io_dis_uops_1_2_bits_ldst_val),	// core.scala:111:32
-    .io_dis_uops_2_bits_dst_rtype       (_dispatcher_io_dis_uops_1_2_bits_dst_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs1_rtype      (_dispatcher_io_dis_uops_1_2_bits_lrs1_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_lrs2_rtype      (_dispatcher_io_dis_uops_1_2_bits_lrs2_rtype),	// core.scala:111:32
-    .io_dis_uops_2_bits_frs3_en         (_dispatcher_io_dis_uops_1_2_bits_frs3_en),	// core.scala:111:32
-    .io_dis_uops_2_bits_fp_val          (_dispatcher_io_dis_uops_1_2_bits_fp_val),	// core.scala:111:32
-    .io_dis_uops_2_bits_fp_single       (_dispatcher_io_dis_uops_1_2_bits_fp_single),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_1_2_bits_xcpt_pf_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_1_2_bits_xcpt_ae_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_1_2_bits_xcpt_ma_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_bp_debug_if     (_dispatcher_io_dis_uops_1_2_bits_bp_debug_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_1_2_bits_bp_xcpt_if),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_fsrc      (_dispatcher_io_dis_uops_1_2_bits_debug_fsrc),	// core.scala:111:32
-    .io_dis_uops_2_bits_debug_tsrc      (_dispatcher_io_dis_uops_1_2_bits_debug_tsrc),	// core.scala:111:32
+    .io_dis_uops_2_bits_uopc            (_rename_stage_io_ren2_uops_2_uopc),	// core.scala:100:32
+    .io_dis_uops_2_bits_inst            (_rename_stage_io_ren2_uops_2_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_inst      (_rename_stage_io_ren2_uops_2_debug_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_rvc          (_rename_stage_io_ren2_uops_2_is_rvc),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_pc        (_rename_stage_io_ren2_uops_2_debug_pc),	// core.scala:100:32
+    .io_dis_uops_2_bits_iq_type         (_rename_stage_io_ren2_uops_2_iq_type),	// core.scala:100:32
+    .io_dis_uops_2_bits_fu_code         (_rename_stage_io_ren2_uops_2_fu_code),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_br           (_rename_stage_io_ren2_uops_2_is_br),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_jalr         (_rename_stage_io_ren2_uops_2_is_jalr),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_jal          (_rename_stage_io_ren2_uops_2_is_jal),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_sfb          (_rename_stage_io_ren2_uops_2_is_sfb),	// core.scala:100:32
+    .io_dis_uops_2_bits_br_mask         (_rename_stage_io_ren2_uops_2_br_mask),	// core.scala:100:32
+    .io_dis_uops_2_bits_br_tag          (_rename_stage_io_ren2_uops_2_br_tag),	// core.scala:100:32
+    .io_dis_uops_2_bits_ftq_idx         (_rename_stage_io_ren2_uops_2_ftq_idx),	// core.scala:100:32
+    .io_dis_uops_2_bits_edge_inst       (_rename_stage_io_ren2_uops_2_edge_inst),	// core.scala:100:32
+    .io_dis_uops_2_bits_pc_lob          (_rename_stage_io_ren2_uops_2_pc_lob),	// core.scala:100:32
+    .io_dis_uops_2_bits_taken           (_rename_stage_io_ren2_uops_2_taken),	// core.scala:100:32
+    .io_dis_uops_2_bits_imm_packed      (_rename_stage_io_ren2_uops_2_imm_packed),	// core.scala:100:32
+    .io_dis_uops_2_bits_csr_addr        (_rename_stage_io_ren2_uops_2_csr_addr),	// core.scala:100:32
+    .io_dis_uops_2_bits_rob_idx         (dis_uops_2_rob_idx),	// core.scala:743:27
+    .io_dis_uops_2_bits_ldq_idx         (io_lsu_dis_ldq_idx_2),
+    .io_dis_uops_2_bits_stq_idx         (io_lsu_dis_stq_idx_2),
+    .io_dis_uops_2_bits_rxq_idx         (_rename_stage_io_ren2_uops_2_rxq_idx),	// core.scala:100:32
+    .io_dis_uops_2_bits_pdst            (dis_uops_2_pdst),	// core.scala:653:28
+    .io_dis_uops_2_bits_prs1            (dis_uops_2_prs1),	// core.scala:648:28
+    .io_dis_uops_2_bits_prs2            (dis_uops_2_prs2),	// core.scala:650:28
+    .io_dis_uops_2_bits_prs3            (_fp_rename_stage_io_ren2_uops_2_prs3),	// core.scala:101:46
+    .io_dis_uops_2_bits_prs1_busy       (dis_uops_2_prs1_busy),	// core.scala:658:85
+    .io_dis_uops_2_bits_prs2_busy       (dis_uops_2_prs2_busy),	// core.scala:660:85
+    .io_dis_uops_2_bits_stale_pdst      (dis_uops_2_stale_pdst),	// core.scala:656:34
+    .io_dis_uops_2_bits_exception       (_rename_stage_io_ren2_uops_2_exception),	// core.scala:100:32
+    .io_dis_uops_2_bits_exc_cause       (_rename_stage_io_ren2_uops_2_exc_cause),	// core.scala:100:32
+    .io_dis_uops_2_bits_bypassable      (_rename_stage_io_ren2_uops_2_bypassable),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_cmd         (_rename_stage_io_ren2_uops_2_mem_cmd),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_size        (_rename_stage_io_ren2_uops_2_mem_size),	// core.scala:100:32
+    .io_dis_uops_2_bits_mem_signed      (_rename_stage_io_ren2_uops_2_mem_signed),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_fence        (_rename_stage_io_ren2_uops_2_is_fence),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_fencei       (_rename_stage_io_ren2_uops_2_is_fencei),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_amo          (_rename_stage_io_ren2_uops_2_is_amo),	// core.scala:100:32
+    .io_dis_uops_2_bits_uses_ldq        (_rename_stage_io_ren2_uops_2_uses_ldq),	// core.scala:100:32
+    .io_dis_uops_2_bits_uses_stq        (_rename_stage_io_ren2_uops_2_uses_stq),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_sys_pc2epc   (_rename_stage_io_ren2_uops_2_is_sys_pc2epc),	// core.scala:100:32
+    .io_dis_uops_2_bits_is_unique       (_rename_stage_io_ren2_uops_2_is_unique),	// core.scala:100:32
+    .io_dis_uops_2_bits_flush_on_commit (_rename_stage_io_ren2_uops_2_flush_on_commit),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst_is_rs1     (_rename_stage_io_ren2_uops_2_ldst_is_rs1),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst            (_rename_stage_io_ren2_uops_2_ldst),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs1            (_rename_stage_io_ren2_uops_2_lrs1),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs2            (_rename_stage_io_ren2_uops_2_lrs2),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs3            (_rename_stage_io_ren2_uops_2_lrs3),	// core.scala:100:32
+    .io_dis_uops_2_bits_ldst_val        (_rename_stage_io_ren2_uops_2_ldst_val),	// core.scala:100:32
+    .io_dis_uops_2_bits_dst_rtype       (_rename_stage_io_ren2_uops_2_dst_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs1_rtype      (_rename_stage_io_ren2_uops_2_lrs1_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_lrs2_rtype      (_rename_stage_io_ren2_uops_2_lrs2_rtype),	// core.scala:100:32
+    .io_dis_uops_2_bits_frs3_en         (_rename_stage_io_ren2_uops_2_frs3_en),	// core.scala:100:32
+    .io_dis_uops_2_bits_fp_val          (_rename_stage_io_ren2_uops_2_fp_val),	// core.scala:100:32
+    .io_dis_uops_2_bits_fp_single       (_rename_stage_io_ren2_uops_2_fp_single),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_pf_if      (_rename_stage_io_ren2_uops_2_xcpt_pf_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_ae_if      (_rename_stage_io_ren2_uops_2_xcpt_ae_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_xcpt_ma_if      (_rename_stage_io_ren2_uops_2_xcpt_ma_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_bp_debug_if     (_rename_stage_io_ren2_uops_2_bp_debug_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_bp_xcpt_if      (_rename_stage_io_ren2_uops_2_bp_xcpt_if),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_fsrc      (_rename_stage_io_ren2_uops_2_debug_fsrc),	// core.scala:100:32
+    .io_dis_uops_2_bits_debug_tsrc      (_rename_stage_io_ren2_uops_2_debug_tsrc),	// core.scala:100:32
     .io_wakeup_ports_0_valid            (int_iss_wakeups_0_valid),	// core.scala:789:54
     .io_wakeup_ports_0_bits_pdst        (_ll_wbarb_io_out_bits_uop_pdst),	// core.scala:129:32
     .io_wakeup_ports_1_valid            (fast_wakeup_valid),	// core.scala:821:52
@@ -5909,822 +4544,45 @@ module BoomCore_1(
     .io_iss_uops_2_lrs2_rtype           (_int_issue_unit_io_iss_uops_2_lrs2_rtype)
   );
   BasicDispatcher_1 dispatcher (	// core.scala:111:32
-    .io_ren_uops_0_valid                  (dis_fire_0),	// core.scala:708:62
-    .io_ren_uops_0_bits_uopc              (_rename_stage_io_ren2_uops_0_uopc),	// core.scala:100:32
-    .io_ren_uops_0_bits_inst              (_rename_stage_io_ren2_uops_0_inst),	// core.scala:100:32
-    .io_ren_uops_0_bits_debug_inst        (_rename_stage_io_ren2_uops_0_debug_inst),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_rvc            (_rename_stage_io_ren2_uops_0_is_rvc),	// core.scala:100:32
-    .io_ren_uops_0_bits_debug_pc          (_rename_stage_io_ren2_uops_0_debug_pc),	// core.scala:100:32
-    .io_ren_uops_0_bits_iq_type           (_rename_stage_io_ren2_uops_0_iq_type),	// core.scala:100:32
-    .io_ren_uops_0_bits_fu_code           (_rename_stage_io_ren2_uops_0_fu_code),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_br             (_rename_stage_io_ren2_uops_0_is_br),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_jalr           (_rename_stage_io_ren2_uops_0_is_jalr),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_jal            (_rename_stage_io_ren2_uops_0_is_jal),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_sfb            (_rename_stage_io_ren2_uops_0_is_sfb),	// core.scala:100:32
-    .io_ren_uops_0_bits_br_mask           (_rename_stage_io_ren2_uops_0_br_mask),	// core.scala:100:32
-    .io_ren_uops_0_bits_br_tag            (_rename_stage_io_ren2_uops_0_br_tag),	// core.scala:100:32
-    .io_ren_uops_0_bits_ftq_idx           (_rename_stage_io_ren2_uops_0_ftq_idx),	// core.scala:100:32
-    .io_ren_uops_0_bits_edge_inst         (_rename_stage_io_ren2_uops_0_edge_inst),	// core.scala:100:32
-    .io_ren_uops_0_bits_pc_lob            (_rename_stage_io_ren2_uops_0_pc_lob),	// core.scala:100:32
-    .io_ren_uops_0_bits_taken             (_rename_stage_io_ren2_uops_0_taken),	// core.scala:100:32
-    .io_ren_uops_0_bits_imm_packed        (_rename_stage_io_ren2_uops_0_imm_packed),	// core.scala:100:32
-    .io_ren_uops_0_bits_csr_addr          (_rename_stage_io_ren2_uops_0_csr_addr),	// core.scala:100:32
-    .io_ren_uops_0_bits_rob_idx           (dis_uops_0_rob_idx),	// core.scala:743:27
-    .io_ren_uops_0_bits_ldq_idx           (io_lsu_dis_ldq_idx_0),
-    .io_ren_uops_0_bits_stq_idx           (io_lsu_dis_stq_idx_0),
-    .io_ren_uops_0_bits_rxq_idx           (_rename_stage_io_ren2_uops_0_rxq_idx),	// core.scala:100:32
-    .io_ren_uops_0_bits_pdst              (dis_uops_0_pdst),	// core.scala:653:28
-    .io_ren_uops_0_bits_prs1              (dis_uops_0_prs1),	// core.scala:648:28
-    .io_ren_uops_0_bits_prs2              (dis_uops_0_prs2),	// core.scala:650:28
-    .io_ren_uops_0_bits_prs3              (_fp_rename_stage_io_ren2_uops_0_prs3),	// core.scala:101:46
-    .io_ren_uops_0_bits_prs1_busy         (dis_uops_0_prs1_busy),	// core.scala:658:85
-    .io_ren_uops_0_bits_prs2_busy         (dis_uops_0_prs2_busy),	// core.scala:660:85
-    .io_ren_uops_0_bits_prs3_busy         (dis_uops_0_prs3_busy),	// core.scala:662:46
-    .io_ren_uops_0_bits_stale_pdst        (dis_uops_0_stale_pdst),	// core.scala:656:34
-    .io_ren_uops_0_bits_exception         (_rename_stage_io_ren2_uops_0_exception),	// core.scala:100:32
-    .io_ren_uops_0_bits_exc_cause         (_rename_stage_io_ren2_uops_0_exc_cause),	// core.scala:100:32
-    .io_ren_uops_0_bits_bypassable        (_rename_stage_io_ren2_uops_0_bypassable),	// core.scala:100:32
-    .io_ren_uops_0_bits_mem_cmd           (_rename_stage_io_ren2_uops_0_mem_cmd),	// core.scala:100:32
-    .io_ren_uops_0_bits_mem_size          (_rename_stage_io_ren2_uops_0_mem_size),	// core.scala:100:32
-    .io_ren_uops_0_bits_mem_signed        (_rename_stage_io_ren2_uops_0_mem_signed),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_fence          (_rename_stage_io_ren2_uops_0_is_fence),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_fencei         (_rename_stage_io_ren2_uops_0_is_fencei),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_amo            (_rename_stage_io_ren2_uops_0_is_amo),	// core.scala:100:32
-    .io_ren_uops_0_bits_uses_ldq          (_rename_stage_io_ren2_uops_0_uses_ldq),	// core.scala:100:32
-    .io_ren_uops_0_bits_uses_stq          (_rename_stage_io_ren2_uops_0_uses_stq),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_sys_pc2epc     (_rename_stage_io_ren2_uops_0_is_sys_pc2epc),	// core.scala:100:32
-    .io_ren_uops_0_bits_is_unique         (_rename_stage_io_ren2_uops_0_is_unique),	// core.scala:100:32
-    .io_ren_uops_0_bits_flush_on_commit   (_rename_stage_io_ren2_uops_0_flush_on_commit),	// core.scala:100:32
-    .io_ren_uops_0_bits_ldst_is_rs1       (_rename_stage_io_ren2_uops_0_ldst_is_rs1),	// core.scala:100:32
-    .io_ren_uops_0_bits_ldst              (_rename_stage_io_ren2_uops_0_ldst),	// core.scala:100:32
-    .io_ren_uops_0_bits_lrs1              (_rename_stage_io_ren2_uops_0_lrs1),	// core.scala:100:32
-    .io_ren_uops_0_bits_lrs2              (_rename_stage_io_ren2_uops_0_lrs2),	// core.scala:100:32
-    .io_ren_uops_0_bits_lrs3              (_rename_stage_io_ren2_uops_0_lrs3),	// core.scala:100:32
-    .io_ren_uops_0_bits_ldst_val          (_rename_stage_io_ren2_uops_0_ldst_val),	// core.scala:100:32
-    .io_ren_uops_0_bits_dst_rtype         (_rename_stage_io_ren2_uops_0_dst_rtype),	// core.scala:100:32
-    .io_ren_uops_0_bits_lrs1_rtype        (_rename_stage_io_ren2_uops_0_lrs1_rtype),	// core.scala:100:32
-    .io_ren_uops_0_bits_lrs2_rtype        (_rename_stage_io_ren2_uops_0_lrs2_rtype),	// core.scala:100:32
-    .io_ren_uops_0_bits_frs3_en           (_rename_stage_io_ren2_uops_0_frs3_en),	// core.scala:100:32
-    .io_ren_uops_0_bits_fp_val            (_rename_stage_io_ren2_uops_0_fp_val),	// core.scala:100:32
-    .io_ren_uops_0_bits_fp_single         (_rename_stage_io_ren2_uops_0_fp_single),	// core.scala:100:32
-    .io_ren_uops_0_bits_xcpt_pf_if        (_rename_stage_io_ren2_uops_0_xcpt_pf_if),	// core.scala:100:32
-    .io_ren_uops_0_bits_xcpt_ae_if        (_rename_stage_io_ren2_uops_0_xcpt_ae_if),	// core.scala:100:32
-    .io_ren_uops_0_bits_xcpt_ma_if        (_rename_stage_io_ren2_uops_0_xcpt_ma_if),	// core.scala:100:32
-    .io_ren_uops_0_bits_bp_debug_if       (_rename_stage_io_ren2_uops_0_bp_debug_if),	// core.scala:100:32
-    .io_ren_uops_0_bits_bp_xcpt_if        (_rename_stage_io_ren2_uops_0_bp_xcpt_if),	// core.scala:100:32
-    .io_ren_uops_0_bits_debug_fsrc        (_rename_stage_io_ren2_uops_0_debug_fsrc),	// core.scala:100:32
-    .io_ren_uops_0_bits_debug_tsrc        (_rename_stage_io_ren2_uops_0_debug_tsrc),	// core.scala:100:32
-    .io_ren_uops_1_valid                  (dis_fire_1),	// core.scala:708:62
-    .io_ren_uops_1_bits_uopc              (_rename_stage_io_ren2_uops_1_uopc),	// core.scala:100:32
-    .io_ren_uops_1_bits_inst              (_rename_stage_io_ren2_uops_1_inst),	// core.scala:100:32
-    .io_ren_uops_1_bits_debug_inst        (_rename_stage_io_ren2_uops_1_debug_inst),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_rvc            (_rename_stage_io_ren2_uops_1_is_rvc),	// core.scala:100:32
-    .io_ren_uops_1_bits_debug_pc          (_rename_stage_io_ren2_uops_1_debug_pc),	// core.scala:100:32
-    .io_ren_uops_1_bits_iq_type           (_rename_stage_io_ren2_uops_1_iq_type),	// core.scala:100:32
-    .io_ren_uops_1_bits_fu_code           (_rename_stage_io_ren2_uops_1_fu_code),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_br             (_rename_stage_io_ren2_uops_1_is_br),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_jalr           (_rename_stage_io_ren2_uops_1_is_jalr),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_jal            (_rename_stage_io_ren2_uops_1_is_jal),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_sfb            (_rename_stage_io_ren2_uops_1_is_sfb),	// core.scala:100:32
-    .io_ren_uops_1_bits_br_mask           (_rename_stage_io_ren2_uops_1_br_mask),	// core.scala:100:32
-    .io_ren_uops_1_bits_br_tag            (_rename_stage_io_ren2_uops_1_br_tag),	// core.scala:100:32
-    .io_ren_uops_1_bits_ftq_idx           (_rename_stage_io_ren2_uops_1_ftq_idx),	// core.scala:100:32
-    .io_ren_uops_1_bits_edge_inst         (_rename_stage_io_ren2_uops_1_edge_inst),	// core.scala:100:32
-    .io_ren_uops_1_bits_pc_lob            (_rename_stage_io_ren2_uops_1_pc_lob),	// core.scala:100:32
-    .io_ren_uops_1_bits_taken             (_rename_stage_io_ren2_uops_1_taken),	// core.scala:100:32
-    .io_ren_uops_1_bits_imm_packed        (_rename_stage_io_ren2_uops_1_imm_packed),	// core.scala:100:32
-    .io_ren_uops_1_bits_csr_addr          (_rename_stage_io_ren2_uops_1_csr_addr),	// core.scala:100:32
-    .io_ren_uops_1_bits_rob_idx           (dis_uops_1_rob_idx),	// core.scala:743:27
-    .io_ren_uops_1_bits_ldq_idx           (io_lsu_dis_ldq_idx_1),
-    .io_ren_uops_1_bits_stq_idx           (io_lsu_dis_stq_idx_1),
-    .io_ren_uops_1_bits_rxq_idx           (_rename_stage_io_ren2_uops_1_rxq_idx),	// core.scala:100:32
-    .io_ren_uops_1_bits_pdst              (dis_uops_1_pdst),	// core.scala:653:28
-    .io_ren_uops_1_bits_prs1              (dis_uops_1_prs1),	// core.scala:648:28
-    .io_ren_uops_1_bits_prs2              (dis_uops_1_prs2),	// core.scala:650:28
-    .io_ren_uops_1_bits_prs3              (_fp_rename_stage_io_ren2_uops_1_prs3),	// core.scala:101:46
-    .io_ren_uops_1_bits_prs1_busy         (dis_uops_1_prs1_busy),	// core.scala:658:85
-    .io_ren_uops_1_bits_prs2_busy         (dis_uops_1_prs2_busy),	// core.scala:660:85
-    .io_ren_uops_1_bits_prs3_busy         (dis_uops_1_prs3_busy),	// core.scala:662:46
-    .io_ren_uops_1_bits_stale_pdst        (dis_uops_1_stale_pdst),	// core.scala:656:34
-    .io_ren_uops_1_bits_exception         (_rename_stage_io_ren2_uops_1_exception),	// core.scala:100:32
-    .io_ren_uops_1_bits_exc_cause         (_rename_stage_io_ren2_uops_1_exc_cause),	// core.scala:100:32
-    .io_ren_uops_1_bits_bypassable        (_rename_stage_io_ren2_uops_1_bypassable),	// core.scala:100:32
-    .io_ren_uops_1_bits_mem_cmd           (_rename_stage_io_ren2_uops_1_mem_cmd),	// core.scala:100:32
-    .io_ren_uops_1_bits_mem_size          (_rename_stage_io_ren2_uops_1_mem_size),	// core.scala:100:32
-    .io_ren_uops_1_bits_mem_signed        (_rename_stage_io_ren2_uops_1_mem_signed),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_fence          (_rename_stage_io_ren2_uops_1_is_fence),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_fencei         (_rename_stage_io_ren2_uops_1_is_fencei),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_amo            (_rename_stage_io_ren2_uops_1_is_amo),	// core.scala:100:32
-    .io_ren_uops_1_bits_uses_ldq          (_rename_stage_io_ren2_uops_1_uses_ldq),	// core.scala:100:32
-    .io_ren_uops_1_bits_uses_stq          (_rename_stage_io_ren2_uops_1_uses_stq),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_sys_pc2epc     (_rename_stage_io_ren2_uops_1_is_sys_pc2epc),	// core.scala:100:32
-    .io_ren_uops_1_bits_is_unique         (_rename_stage_io_ren2_uops_1_is_unique),	// core.scala:100:32
-    .io_ren_uops_1_bits_flush_on_commit   (_rename_stage_io_ren2_uops_1_flush_on_commit),	// core.scala:100:32
-    .io_ren_uops_1_bits_ldst_is_rs1       (_rename_stage_io_ren2_uops_1_ldst_is_rs1),	// core.scala:100:32
-    .io_ren_uops_1_bits_ldst              (_rename_stage_io_ren2_uops_1_ldst),	// core.scala:100:32
-    .io_ren_uops_1_bits_lrs1              (_rename_stage_io_ren2_uops_1_lrs1),	// core.scala:100:32
-    .io_ren_uops_1_bits_lrs2              (_rename_stage_io_ren2_uops_1_lrs2),	// core.scala:100:32
-    .io_ren_uops_1_bits_lrs3              (_rename_stage_io_ren2_uops_1_lrs3),	// core.scala:100:32
-    .io_ren_uops_1_bits_ldst_val          (_rename_stage_io_ren2_uops_1_ldst_val),	// core.scala:100:32
-    .io_ren_uops_1_bits_dst_rtype         (_rename_stage_io_ren2_uops_1_dst_rtype),	// core.scala:100:32
-    .io_ren_uops_1_bits_lrs1_rtype        (_rename_stage_io_ren2_uops_1_lrs1_rtype),	// core.scala:100:32
-    .io_ren_uops_1_bits_lrs2_rtype        (_rename_stage_io_ren2_uops_1_lrs2_rtype),	// core.scala:100:32
-    .io_ren_uops_1_bits_frs3_en           (_rename_stage_io_ren2_uops_1_frs3_en),	// core.scala:100:32
-    .io_ren_uops_1_bits_fp_val            (_rename_stage_io_ren2_uops_1_fp_val),	// core.scala:100:32
-    .io_ren_uops_1_bits_fp_single         (_rename_stage_io_ren2_uops_1_fp_single),	// core.scala:100:32
-    .io_ren_uops_1_bits_xcpt_pf_if        (_rename_stage_io_ren2_uops_1_xcpt_pf_if),	// core.scala:100:32
-    .io_ren_uops_1_bits_xcpt_ae_if        (_rename_stage_io_ren2_uops_1_xcpt_ae_if),	// core.scala:100:32
-    .io_ren_uops_1_bits_xcpt_ma_if        (_rename_stage_io_ren2_uops_1_xcpt_ma_if),	// core.scala:100:32
-    .io_ren_uops_1_bits_bp_debug_if       (_rename_stage_io_ren2_uops_1_bp_debug_if),	// core.scala:100:32
-    .io_ren_uops_1_bits_bp_xcpt_if        (_rename_stage_io_ren2_uops_1_bp_xcpt_if),	// core.scala:100:32
-    .io_ren_uops_1_bits_debug_fsrc        (_rename_stage_io_ren2_uops_1_debug_fsrc),	// core.scala:100:32
-    .io_ren_uops_1_bits_debug_tsrc        (_rename_stage_io_ren2_uops_1_debug_tsrc),	// core.scala:100:32
-    .io_ren_uops_2_valid                  (dis_fire_2),	// core.scala:708:62
-    .io_ren_uops_2_bits_uopc              (_rename_stage_io_ren2_uops_2_uopc),	// core.scala:100:32
-    .io_ren_uops_2_bits_inst              (_rename_stage_io_ren2_uops_2_inst),	// core.scala:100:32
-    .io_ren_uops_2_bits_debug_inst        (_rename_stage_io_ren2_uops_2_debug_inst),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_rvc            (_rename_stage_io_ren2_uops_2_is_rvc),	// core.scala:100:32
-    .io_ren_uops_2_bits_debug_pc          (_rename_stage_io_ren2_uops_2_debug_pc),	// core.scala:100:32
-    .io_ren_uops_2_bits_iq_type           (_rename_stage_io_ren2_uops_2_iq_type),	// core.scala:100:32
-    .io_ren_uops_2_bits_fu_code           (_rename_stage_io_ren2_uops_2_fu_code),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_br             (_rename_stage_io_ren2_uops_2_is_br),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_jalr           (_rename_stage_io_ren2_uops_2_is_jalr),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_jal            (_rename_stage_io_ren2_uops_2_is_jal),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_sfb            (_rename_stage_io_ren2_uops_2_is_sfb),	// core.scala:100:32
-    .io_ren_uops_2_bits_br_mask           (_rename_stage_io_ren2_uops_2_br_mask),	// core.scala:100:32
-    .io_ren_uops_2_bits_br_tag            (_rename_stage_io_ren2_uops_2_br_tag),	// core.scala:100:32
-    .io_ren_uops_2_bits_ftq_idx           (_rename_stage_io_ren2_uops_2_ftq_idx),	// core.scala:100:32
-    .io_ren_uops_2_bits_edge_inst         (_rename_stage_io_ren2_uops_2_edge_inst),	// core.scala:100:32
-    .io_ren_uops_2_bits_pc_lob            (_rename_stage_io_ren2_uops_2_pc_lob),	// core.scala:100:32
-    .io_ren_uops_2_bits_taken             (_rename_stage_io_ren2_uops_2_taken),	// core.scala:100:32
-    .io_ren_uops_2_bits_imm_packed        (_rename_stage_io_ren2_uops_2_imm_packed),	// core.scala:100:32
-    .io_ren_uops_2_bits_csr_addr          (_rename_stage_io_ren2_uops_2_csr_addr),	// core.scala:100:32
-    .io_ren_uops_2_bits_rob_idx           (dis_uops_2_rob_idx),	// core.scala:743:27
-    .io_ren_uops_2_bits_ldq_idx           (io_lsu_dis_ldq_idx_2),
-    .io_ren_uops_2_bits_stq_idx           (io_lsu_dis_stq_idx_2),
-    .io_ren_uops_2_bits_rxq_idx           (_rename_stage_io_ren2_uops_2_rxq_idx),	// core.scala:100:32
-    .io_ren_uops_2_bits_pdst              (dis_uops_2_pdst),	// core.scala:653:28
-    .io_ren_uops_2_bits_prs1              (dis_uops_2_prs1),	// core.scala:648:28
-    .io_ren_uops_2_bits_prs2              (dis_uops_2_prs2),	// core.scala:650:28
-    .io_ren_uops_2_bits_prs3              (_fp_rename_stage_io_ren2_uops_2_prs3),	// core.scala:101:46
-    .io_ren_uops_2_bits_prs1_busy         (dis_uops_2_prs1_busy),	// core.scala:658:85
-    .io_ren_uops_2_bits_prs2_busy         (dis_uops_2_prs2_busy),	// core.scala:660:85
-    .io_ren_uops_2_bits_prs3_busy         (dis_uops_2_prs3_busy),	// core.scala:662:46
-    .io_ren_uops_2_bits_stale_pdst        (dis_uops_2_stale_pdst),	// core.scala:656:34
-    .io_ren_uops_2_bits_exception         (_rename_stage_io_ren2_uops_2_exception),	// core.scala:100:32
-    .io_ren_uops_2_bits_exc_cause         (_rename_stage_io_ren2_uops_2_exc_cause),	// core.scala:100:32
-    .io_ren_uops_2_bits_bypassable        (_rename_stage_io_ren2_uops_2_bypassable),	// core.scala:100:32
-    .io_ren_uops_2_bits_mem_cmd           (_rename_stage_io_ren2_uops_2_mem_cmd),	// core.scala:100:32
-    .io_ren_uops_2_bits_mem_size          (_rename_stage_io_ren2_uops_2_mem_size),	// core.scala:100:32
-    .io_ren_uops_2_bits_mem_signed        (_rename_stage_io_ren2_uops_2_mem_signed),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_fence          (_rename_stage_io_ren2_uops_2_is_fence),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_fencei         (_rename_stage_io_ren2_uops_2_is_fencei),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_amo            (_rename_stage_io_ren2_uops_2_is_amo),	// core.scala:100:32
-    .io_ren_uops_2_bits_uses_ldq          (_rename_stage_io_ren2_uops_2_uses_ldq),	// core.scala:100:32
-    .io_ren_uops_2_bits_uses_stq          (_rename_stage_io_ren2_uops_2_uses_stq),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_sys_pc2epc     (_rename_stage_io_ren2_uops_2_is_sys_pc2epc),	// core.scala:100:32
-    .io_ren_uops_2_bits_is_unique         (_rename_stage_io_ren2_uops_2_is_unique),	// core.scala:100:32
-    .io_ren_uops_2_bits_flush_on_commit   (_rename_stage_io_ren2_uops_2_flush_on_commit),	// core.scala:100:32
-    .io_ren_uops_2_bits_ldst_is_rs1       (_rename_stage_io_ren2_uops_2_ldst_is_rs1),	// core.scala:100:32
-    .io_ren_uops_2_bits_ldst              (_rename_stage_io_ren2_uops_2_ldst),	// core.scala:100:32
-    .io_ren_uops_2_bits_lrs1              (_rename_stage_io_ren2_uops_2_lrs1),	// core.scala:100:32
-    .io_ren_uops_2_bits_lrs2              (_rename_stage_io_ren2_uops_2_lrs2),	// core.scala:100:32
-    .io_ren_uops_2_bits_lrs3              (_rename_stage_io_ren2_uops_2_lrs3),	// core.scala:100:32
-    .io_ren_uops_2_bits_ldst_val          (_rename_stage_io_ren2_uops_2_ldst_val),	// core.scala:100:32
-    .io_ren_uops_2_bits_dst_rtype         (_rename_stage_io_ren2_uops_2_dst_rtype),	// core.scala:100:32
-    .io_ren_uops_2_bits_lrs1_rtype        (_rename_stage_io_ren2_uops_2_lrs1_rtype),	// core.scala:100:32
-    .io_ren_uops_2_bits_lrs2_rtype        (_rename_stage_io_ren2_uops_2_lrs2_rtype),	// core.scala:100:32
-    .io_ren_uops_2_bits_frs3_en           (_rename_stage_io_ren2_uops_2_frs3_en),	// core.scala:100:32
-    .io_ren_uops_2_bits_fp_val            (_rename_stage_io_ren2_uops_2_fp_val),	// core.scala:100:32
-    .io_ren_uops_2_bits_fp_single         (_rename_stage_io_ren2_uops_2_fp_single),	// core.scala:100:32
-    .io_ren_uops_2_bits_xcpt_pf_if        (_rename_stage_io_ren2_uops_2_xcpt_pf_if),	// core.scala:100:32
-    .io_ren_uops_2_bits_xcpt_ae_if        (_rename_stage_io_ren2_uops_2_xcpt_ae_if),	// core.scala:100:32
-    .io_ren_uops_2_bits_xcpt_ma_if        (_rename_stage_io_ren2_uops_2_xcpt_ma_if),	// core.scala:100:32
-    .io_ren_uops_2_bits_bp_debug_if       (_rename_stage_io_ren2_uops_2_bp_debug_if),	// core.scala:100:32
-    .io_ren_uops_2_bits_bp_xcpt_if        (_rename_stage_io_ren2_uops_2_bp_xcpt_if),	// core.scala:100:32
-    .io_ren_uops_2_bits_debug_fsrc        (_rename_stage_io_ren2_uops_2_debug_fsrc),	// core.scala:100:32
-    .io_ren_uops_2_bits_debug_tsrc        (_rename_stage_io_ren2_uops_2_debug_tsrc),	// core.scala:100:32
-    .io_dis_uops_2_0_ready                (_fp_pipeline_io_dis_uops_0_ready),	// core.scala:77:37
-    .io_dis_uops_2_1_ready                (_fp_pipeline_io_dis_uops_1_ready),	// core.scala:77:37
-    .io_dis_uops_2_2_ready                (_fp_pipeline_io_dis_uops_2_ready),	// core.scala:77:37
-    .io_dis_uops_1_0_ready                (_int_issue_unit_io_dis_uops_0_ready),	// core.scala:107:32
-    .io_dis_uops_1_1_ready                (_int_issue_unit_io_dis_uops_1_ready),	// core.scala:107:32
-    .io_dis_uops_1_2_ready                (_int_issue_unit_io_dis_uops_2_ready),	// core.scala:107:32
-    .io_dis_uops_0_0_ready                (_mem_issue_unit_io_dis_uops_0_ready),	// core.scala:105:32
-    .io_dis_uops_0_1_ready                (_mem_issue_unit_io_dis_uops_1_ready),	// core.scala:105:32
-    .io_dis_uops_0_2_ready                (_mem_issue_unit_io_dis_uops_2_ready),	// core.scala:105:32
-    .io_ren_uops_0_ready                  (_dispatcher_io_ren_uops_0_ready),
-    .io_ren_uops_1_ready                  (_dispatcher_io_ren_uops_1_ready),
-    .io_ren_uops_2_ready                  (_dispatcher_io_ren_uops_2_ready),
-    .io_dis_uops_2_0_valid                (_dispatcher_io_dis_uops_2_0_valid),
-    .io_dis_uops_2_0_bits_uopc            (_dispatcher_io_dis_uops_2_0_bits_uopc),
-    .io_dis_uops_2_0_bits_inst            (_dispatcher_io_dis_uops_2_0_bits_inst),
-    .io_dis_uops_2_0_bits_debug_inst      (_dispatcher_io_dis_uops_2_0_bits_debug_inst),
-    .io_dis_uops_2_0_bits_is_rvc          (_dispatcher_io_dis_uops_2_0_bits_is_rvc),
-    .io_dis_uops_2_0_bits_debug_pc        (_dispatcher_io_dis_uops_2_0_bits_debug_pc),
-    .io_dis_uops_2_0_bits_iq_type         (_dispatcher_io_dis_uops_2_0_bits_iq_type),
-    .io_dis_uops_2_0_bits_fu_code         (_dispatcher_io_dis_uops_2_0_bits_fu_code),
-    .io_dis_uops_2_0_bits_is_br           (_dispatcher_io_dis_uops_2_0_bits_is_br),
-    .io_dis_uops_2_0_bits_is_jalr         (_dispatcher_io_dis_uops_2_0_bits_is_jalr),
-    .io_dis_uops_2_0_bits_is_jal          (_dispatcher_io_dis_uops_2_0_bits_is_jal),
-    .io_dis_uops_2_0_bits_is_sfb          (_dispatcher_io_dis_uops_2_0_bits_is_sfb),
-    .io_dis_uops_2_0_bits_br_mask         (_dispatcher_io_dis_uops_2_0_bits_br_mask),
-    .io_dis_uops_2_0_bits_br_tag          (_dispatcher_io_dis_uops_2_0_bits_br_tag),
-    .io_dis_uops_2_0_bits_ftq_idx         (_dispatcher_io_dis_uops_2_0_bits_ftq_idx),
-    .io_dis_uops_2_0_bits_edge_inst       (_dispatcher_io_dis_uops_2_0_bits_edge_inst),
-    .io_dis_uops_2_0_bits_pc_lob          (_dispatcher_io_dis_uops_2_0_bits_pc_lob),
-    .io_dis_uops_2_0_bits_taken           (_dispatcher_io_dis_uops_2_0_bits_taken),
-    .io_dis_uops_2_0_bits_imm_packed      (_dispatcher_io_dis_uops_2_0_bits_imm_packed),
-    .io_dis_uops_2_0_bits_csr_addr        (_dispatcher_io_dis_uops_2_0_bits_csr_addr),
-    .io_dis_uops_2_0_bits_rob_idx         (_dispatcher_io_dis_uops_2_0_bits_rob_idx),
-    .io_dis_uops_2_0_bits_ldq_idx         (_dispatcher_io_dis_uops_2_0_bits_ldq_idx),
-    .io_dis_uops_2_0_bits_stq_idx         (_dispatcher_io_dis_uops_2_0_bits_stq_idx),
-    .io_dis_uops_2_0_bits_rxq_idx         (_dispatcher_io_dis_uops_2_0_bits_rxq_idx),
-    .io_dis_uops_2_0_bits_pdst            (_dispatcher_io_dis_uops_2_0_bits_pdst),
-    .io_dis_uops_2_0_bits_prs1            (_dispatcher_io_dis_uops_2_0_bits_prs1),
-    .io_dis_uops_2_0_bits_prs2            (_dispatcher_io_dis_uops_2_0_bits_prs2),
-    .io_dis_uops_2_0_bits_prs3            (_dispatcher_io_dis_uops_2_0_bits_prs3),
-    .io_dis_uops_2_0_bits_prs1_busy       (_dispatcher_io_dis_uops_2_0_bits_prs1_busy),
-    .io_dis_uops_2_0_bits_prs2_busy       (_dispatcher_io_dis_uops_2_0_bits_prs2_busy),
-    .io_dis_uops_2_0_bits_prs3_busy       (_dispatcher_io_dis_uops_2_0_bits_prs3_busy),
-    .io_dis_uops_2_0_bits_stale_pdst      (_dispatcher_io_dis_uops_2_0_bits_stale_pdst),
-    .io_dis_uops_2_0_bits_exception       (_dispatcher_io_dis_uops_2_0_bits_exception),
-    .io_dis_uops_2_0_bits_exc_cause       (_dispatcher_io_dis_uops_2_0_bits_exc_cause),
-    .io_dis_uops_2_0_bits_bypassable      (_dispatcher_io_dis_uops_2_0_bits_bypassable),
-    .io_dis_uops_2_0_bits_mem_cmd         (_dispatcher_io_dis_uops_2_0_bits_mem_cmd),
-    .io_dis_uops_2_0_bits_mem_size        (_dispatcher_io_dis_uops_2_0_bits_mem_size),
-    .io_dis_uops_2_0_bits_mem_signed      (_dispatcher_io_dis_uops_2_0_bits_mem_signed),
-    .io_dis_uops_2_0_bits_is_fence        (_dispatcher_io_dis_uops_2_0_bits_is_fence),
-    .io_dis_uops_2_0_bits_is_fencei       (_dispatcher_io_dis_uops_2_0_bits_is_fencei),
-    .io_dis_uops_2_0_bits_is_amo          (_dispatcher_io_dis_uops_2_0_bits_is_amo),
-    .io_dis_uops_2_0_bits_uses_ldq        (_dispatcher_io_dis_uops_2_0_bits_uses_ldq),
-    .io_dis_uops_2_0_bits_uses_stq        (_dispatcher_io_dis_uops_2_0_bits_uses_stq),
-    .io_dis_uops_2_0_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_2_0_bits_is_sys_pc2epc),
-    .io_dis_uops_2_0_bits_is_unique       (_dispatcher_io_dis_uops_2_0_bits_is_unique),
-    .io_dis_uops_2_0_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_2_0_bits_flush_on_commit),
-    .io_dis_uops_2_0_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_2_0_bits_ldst_is_rs1),
-    .io_dis_uops_2_0_bits_ldst            (_dispatcher_io_dis_uops_2_0_bits_ldst),
-    .io_dis_uops_2_0_bits_lrs1            (_dispatcher_io_dis_uops_2_0_bits_lrs1),
-    .io_dis_uops_2_0_bits_lrs2            (_dispatcher_io_dis_uops_2_0_bits_lrs2),
-    .io_dis_uops_2_0_bits_lrs3            (_dispatcher_io_dis_uops_2_0_bits_lrs3),
-    .io_dis_uops_2_0_bits_ldst_val        (_dispatcher_io_dis_uops_2_0_bits_ldst_val),
-    .io_dis_uops_2_0_bits_dst_rtype       (_dispatcher_io_dis_uops_2_0_bits_dst_rtype),
-    .io_dis_uops_2_0_bits_lrs1_rtype      (_dispatcher_io_dis_uops_2_0_bits_lrs1_rtype),
-    .io_dis_uops_2_0_bits_lrs2_rtype      (_dispatcher_io_dis_uops_2_0_bits_lrs2_rtype),
-    .io_dis_uops_2_0_bits_frs3_en         (_dispatcher_io_dis_uops_2_0_bits_frs3_en),
-    .io_dis_uops_2_0_bits_fp_val          (_dispatcher_io_dis_uops_2_0_bits_fp_val),
-    .io_dis_uops_2_0_bits_fp_single       (_dispatcher_io_dis_uops_2_0_bits_fp_single),
-    .io_dis_uops_2_0_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_2_0_bits_xcpt_pf_if),
-    .io_dis_uops_2_0_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_2_0_bits_xcpt_ae_if),
-    .io_dis_uops_2_0_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_2_0_bits_xcpt_ma_if),
-    .io_dis_uops_2_0_bits_bp_debug_if     (_dispatcher_io_dis_uops_2_0_bits_bp_debug_if),
-    .io_dis_uops_2_0_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_2_0_bits_bp_xcpt_if),
-    .io_dis_uops_2_0_bits_debug_fsrc      (_dispatcher_io_dis_uops_2_0_bits_debug_fsrc),
-    .io_dis_uops_2_0_bits_debug_tsrc      (_dispatcher_io_dis_uops_2_0_bits_debug_tsrc),
-    .io_dis_uops_2_1_valid                (_dispatcher_io_dis_uops_2_1_valid),
-    .io_dis_uops_2_1_bits_uopc            (_dispatcher_io_dis_uops_2_1_bits_uopc),
-    .io_dis_uops_2_1_bits_inst            (_dispatcher_io_dis_uops_2_1_bits_inst),
-    .io_dis_uops_2_1_bits_debug_inst      (_dispatcher_io_dis_uops_2_1_bits_debug_inst),
-    .io_dis_uops_2_1_bits_is_rvc          (_dispatcher_io_dis_uops_2_1_bits_is_rvc),
-    .io_dis_uops_2_1_bits_debug_pc        (_dispatcher_io_dis_uops_2_1_bits_debug_pc),
-    .io_dis_uops_2_1_bits_iq_type         (_dispatcher_io_dis_uops_2_1_bits_iq_type),
-    .io_dis_uops_2_1_bits_fu_code         (_dispatcher_io_dis_uops_2_1_bits_fu_code),
-    .io_dis_uops_2_1_bits_is_br           (_dispatcher_io_dis_uops_2_1_bits_is_br),
-    .io_dis_uops_2_1_bits_is_jalr         (_dispatcher_io_dis_uops_2_1_bits_is_jalr),
-    .io_dis_uops_2_1_bits_is_jal          (_dispatcher_io_dis_uops_2_1_bits_is_jal),
-    .io_dis_uops_2_1_bits_is_sfb          (_dispatcher_io_dis_uops_2_1_bits_is_sfb),
-    .io_dis_uops_2_1_bits_br_mask         (_dispatcher_io_dis_uops_2_1_bits_br_mask),
-    .io_dis_uops_2_1_bits_br_tag          (_dispatcher_io_dis_uops_2_1_bits_br_tag),
-    .io_dis_uops_2_1_bits_ftq_idx         (_dispatcher_io_dis_uops_2_1_bits_ftq_idx),
-    .io_dis_uops_2_1_bits_edge_inst       (_dispatcher_io_dis_uops_2_1_bits_edge_inst),
-    .io_dis_uops_2_1_bits_pc_lob          (_dispatcher_io_dis_uops_2_1_bits_pc_lob),
-    .io_dis_uops_2_1_bits_taken           (_dispatcher_io_dis_uops_2_1_bits_taken),
-    .io_dis_uops_2_1_bits_imm_packed      (_dispatcher_io_dis_uops_2_1_bits_imm_packed),
-    .io_dis_uops_2_1_bits_csr_addr        (_dispatcher_io_dis_uops_2_1_bits_csr_addr),
-    .io_dis_uops_2_1_bits_rob_idx         (_dispatcher_io_dis_uops_2_1_bits_rob_idx),
-    .io_dis_uops_2_1_bits_ldq_idx         (_dispatcher_io_dis_uops_2_1_bits_ldq_idx),
-    .io_dis_uops_2_1_bits_stq_idx         (_dispatcher_io_dis_uops_2_1_bits_stq_idx),
-    .io_dis_uops_2_1_bits_rxq_idx         (_dispatcher_io_dis_uops_2_1_bits_rxq_idx),
-    .io_dis_uops_2_1_bits_pdst            (_dispatcher_io_dis_uops_2_1_bits_pdst),
-    .io_dis_uops_2_1_bits_prs1            (_dispatcher_io_dis_uops_2_1_bits_prs1),
-    .io_dis_uops_2_1_bits_prs2            (_dispatcher_io_dis_uops_2_1_bits_prs2),
-    .io_dis_uops_2_1_bits_prs3            (_dispatcher_io_dis_uops_2_1_bits_prs3),
-    .io_dis_uops_2_1_bits_prs1_busy       (_dispatcher_io_dis_uops_2_1_bits_prs1_busy),
-    .io_dis_uops_2_1_bits_prs2_busy       (_dispatcher_io_dis_uops_2_1_bits_prs2_busy),
-    .io_dis_uops_2_1_bits_prs3_busy       (_dispatcher_io_dis_uops_2_1_bits_prs3_busy),
-    .io_dis_uops_2_1_bits_stale_pdst      (_dispatcher_io_dis_uops_2_1_bits_stale_pdst),
-    .io_dis_uops_2_1_bits_exception       (_dispatcher_io_dis_uops_2_1_bits_exception),
-    .io_dis_uops_2_1_bits_exc_cause       (_dispatcher_io_dis_uops_2_1_bits_exc_cause),
-    .io_dis_uops_2_1_bits_bypassable      (_dispatcher_io_dis_uops_2_1_bits_bypassable),
-    .io_dis_uops_2_1_bits_mem_cmd         (_dispatcher_io_dis_uops_2_1_bits_mem_cmd),
-    .io_dis_uops_2_1_bits_mem_size        (_dispatcher_io_dis_uops_2_1_bits_mem_size),
-    .io_dis_uops_2_1_bits_mem_signed      (_dispatcher_io_dis_uops_2_1_bits_mem_signed),
-    .io_dis_uops_2_1_bits_is_fence        (_dispatcher_io_dis_uops_2_1_bits_is_fence),
-    .io_dis_uops_2_1_bits_is_fencei       (_dispatcher_io_dis_uops_2_1_bits_is_fencei),
-    .io_dis_uops_2_1_bits_is_amo          (_dispatcher_io_dis_uops_2_1_bits_is_amo),
-    .io_dis_uops_2_1_bits_uses_ldq        (_dispatcher_io_dis_uops_2_1_bits_uses_ldq),
-    .io_dis_uops_2_1_bits_uses_stq        (_dispatcher_io_dis_uops_2_1_bits_uses_stq),
-    .io_dis_uops_2_1_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_2_1_bits_is_sys_pc2epc),
-    .io_dis_uops_2_1_bits_is_unique       (_dispatcher_io_dis_uops_2_1_bits_is_unique),
-    .io_dis_uops_2_1_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_2_1_bits_flush_on_commit),
-    .io_dis_uops_2_1_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_2_1_bits_ldst_is_rs1),
-    .io_dis_uops_2_1_bits_ldst            (_dispatcher_io_dis_uops_2_1_bits_ldst),
-    .io_dis_uops_2_1_bits_lrs1            (_dispatcher_io_dis_uops_2_1_bits_lrs1),
-    .io_dis_uops_2_1_bits_lrs2            (_dispatcher_io_dis_uops_2_1_bits_lrs2),
-    .io_dis_uops_2_1_bits_lrs3            (_dispatcher_io_dis_uops_2_1_bits_lrs3),
-    .io_dis_uops_2_1_bits_ldst_val        (_dispatcher_io_dis_uops_2_1_bits_ldst_val),
-    .io_dis_uops_2_1_bits_dst_rtype       (_dispatcher_io_dis_uops_2_1_bits_dst_rtype),
-    .io_dis_uops_2_1_bits_lrs1_rtype      (_dispatcher_io_dis_uops_2_1_bits_lrs1_rtype),
-    .io_dis_uops_2_1_bits_lrs2_rtype      (_dispatcher_io_dis_uops_2_1_bits_lrs2_rtype),
-    .io_dis_uops_2_1_bits_frs3_en         (_dispatcher_io_dis_uops_2_1_bits_frs3_en),
-    .io_dis_uops_2_1_bits_fp_val          (_dispatcher_io_dis_uops_2_1_bits_fp_val),
-    .io_dis_uops_2_1_bits_fp_single       (_dispatcher_io_dis_uops_2_1_bits_fp_single),
-    .io_dis_uops_2_1_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_2_1_bits_xcpt_pf_if),
-    .io_dis_uops_2_1_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_2_1_bits_xcpt_ae_if),
-    .io_dis_uops_2_1_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_2_1_bits_xcpt_ma_if),
-    .io_dis_uops_2_1_bits_bp_debug_if     (_dispatcher_io_dis_uops_2_1_bits_bp_debug_if),
-    .io_dis_uops_2_1_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_2_1_bits_bp_xcpt_if),
-    .io_dis_uops_2_1_bits_debug_fsrc      (_dispatcher_io_dis_uops_2_1_bits_debug_fsrc),
-    .io_dis_uops_2_1_bits_debug_tsrc      (_dispatcher_io_dis_uops_2_1_bits_debug_tsrc),
-    .io_dis_uops_2_2_valid                (_dispatcher_io_dis_uops_2_2_valid),
-    .io_dis_uops_2_2_bits_uopc            (_dispatcher_io_dis_uops_2_2_bits_uopc),
-    .io_dis_uops_2_2_bits_inst            (_dispatcher_io_dis_uops_2_2_bits_inst),
-    .io_dis_uops_2_2_bits_debug_inst      (_dispatcher_io_dis_uops_2_2_bits_debug_inst),
-    .io_dis_uops_2_2_bits_is_rvc          (_dispatcher_io_dis_uops_2_2_bits_is_rvc),
-    .io_dis_uops_2_2_bits_debug_pc        (_dispatcher_io_dis_uops_2_2_bits_debug_pc),
-    .io_dis_uops_2_2_bits_iq_type         (_dispatcher_io_dis_uops_2_2_bits_iq_type),
-    .io_dis_uops_2_2_bits_fu_code         (_dispatcher_io_dis_uops_2_2_bits_fu_code),
-    .io_dis_uops_2_2_bits_is_br           (_dispatcher_io_dis_uops_2_2_bits_is_br),
-    .io_dis_uops_2_2_bits_is_jalr         (_dispatcher_io_dis_uops_2_2_bits_is_jalr),
-    .io_dis_uops_2_2_bits_is_jal          (_dispatcher_io_dis_uops_2_2_bits_is_jal),
-    .io_dis_uops_2_2_bits_is_sfb          (_dispatcher_io_dis_uops_2_2_bits_is_sfb),
-    .io_dis_uops_2_2_bits_br_mask         (_dispatcher_io_dis_uops_2_2_bits_br_mask),
-    .io_dis_uops_2_2_bits_br_tag          (_dispatcher_io_dis_uops_2_2_bits_br_tag),
-    .io_dis_uops_2_2_bits_ftq_idx         (_dispatcher_io_dis_uops_2_2_bits_ftq_idx),
-    .io_dis_uops_2_2_bits_edge_inst       (_dispatcher_io_dis_uops_2_2_bits_edge_inst),
-    .io_dis_uops_2_2_bits_pc_lob          (_dispatcher_io_dis_uops_2_2_bits_pc_lob),
-    .io_dis_uops_2_2_bits_taken           (_dispatcher_io_dis_uops_2_2_bits_taken),
-    .io_dis_uops_2_2_bits_imm_packed      (_dispatcher_io_dis_uops_2_2_bits_imm_packed),
-    .io_dis_uops_2_2_bits_csr_addr        (_dispatcher_io_dis_uops_2_2_bits_csr_addr),
-    .io_dis_uops_2_2_bits_rob_idx         (_dispatcher_io_dis_uops_2_2_bits_rob_idx),
-    .io_dis_uops_2_2_bits_ldq_idx         (_dispatcher_io_dis_uops_2_2_bits_ldq_idx),
-    .io_dis_uops_2_2_bits_stq_idx         (_dispatcher_io_dis_uops_2_2_bits_stq_idx),
-    .io_dis_uops_2_2_bits_rxq_idx         (_dispatcher_io_dis_uops_2_2_bits_rxq_idx),
-    .io_dis_uops_2_2_bits_pdst            (_dispatcher_io_dis_uops_2_2_bits_pdst),
-    .io_dis_uops_2_2_bits_prs1            (_dispatcher_io_dis_uops_2_2_bits_prs1),
-    .io_dis_uops_2_2_bits_prs2            (_dispatcher_io_dis_uops_2_2_bits_prs2),
-    .io_dis_uops_2_2_bits_prs3            (_dispatcher_io_dis_uops_2_2_bits_prs3),
-    .io_dis_uops_2_2_bits_prs1_busy       (_dispatcher_io_dis_uops_2_2_bits_prs1_busy),
-    .io_dis_uops_2_2_bits_prs2_busy       (_dispatcher_io_dis_uops_2_2_bits_prs2_busy),
-    .io_dis_uops_2_2_bits_prs3_busy       (_dispatcher_io_dis_uops_2_2_bits_prs3_busy),
-    .io_dis_uops_2_2_bits_stale_pdst      (_dispatcher_io_dis_uops_2_2_bits_stale_pdst),
-    .io_dis_uops_2_2_bits_exception       (_dispatcher_io_dis_uops_2_2_bits_exception),
-    .io_dis_uops_2_2_bits_exc_cause       (_dispatcher_io_dis_uops_2_2_bits_exc_cause),
-    .io_dis_uops_2_2_bits_bypassable      (_dispatcher_io_dis_uops_2_2_bits_bypassable),
-    .io_dis_uops_2_2_bits_mem_cmd         (_dispatcher_io_dis_uops_2_2_bits_mem_cmd),
-    .io_dis_uops_2_2_bits_mem_size        (_dispatcher_io_dis_uops_2_2_bits_mem_size),
-    .io_dis_uops_2_2_bits_mem_signed      (_dispatcher_io_dis_uops_2_2_bits_mem_signed),
-    .io_dis_uops_2_2_bits_is_fence        (_dispatcher_io_dis_uops_2_2_bits_is_fence),
-    .io_dis_uops_2_2_bits_is_fencei       (_dispatcher_io_dis_uops_2_2_bits_is_fencei),
-    .io_dis_uops_2_2_bits_is_amo          (_dispatcher_io_dis_uops_2_2_bits_is_amo),
-    .io_dis_uops_2_2_bits_uses_ldq        (_dispatcher_io_dis_uops_2_2_bits_uses_ldq),
-    .io_dis_uops_2_2_bits_uses_stq        (_dispatcher_io_dis_uops_2_2_bits_uses_stq),
-    .io_dis_uops_2_2_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_2_2_bits_is_sys_pc2epc),
-    .io_dis_uops_2_2_bits_is_unique       (_dispatcher_io_dis_uops_2_2_bits_is_unique),
-    .io_dis_uops_2_2_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_2_2_bits_flush_on_commit),
-    .io_dis_uops_2_2_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_2_2_bits_ldst_is_rs1),
-    .io_dis_uops_2_2_bits_ldst            (_dispatcher_io_dis_uops_2_2_bits_ldst),
-    .io_dis_uops_2_2_bits_lrs1            (_dispatcher_io_dis_uops_2_2_bits_lrs1),
-    .io_dis_uops_2_2_bits_lrs2            (_dispatcher_io_dis_uops_2_2_bits_lrs2),
-    .io_dis_uops_2_2_bits_lrs3            (_dispatcher_io_dis_uops_2_2_bits_lrs3),
-    .io_dis_uops_2_2_bits_ldst_val        (_dispatcher_io_dis_uops_2_2_bits_ldst_val),
-    .io_dis_uops_2_2_bits_dst_rtype       (_dispatcher_io_dis_uops_2_2_bits_dst_rtype),
-    .io_dis_uops_2_2_bits_lrs1_rtype      (_dispatcher_io_dis_uops_2_2_bits_lrs1_rtype),
-    .io_dis_uops_2_2_bits_lrs2_rtype      (_dispatcher_io_dis_uops_2_2_bits_lrs2_rtype),
-    .io_dis_uops_2_2_bits_frs3_en         (_dispatcher_io_dis_uops_2_2_bits_frs3_en),
-    .io_dis_uops_2_2_bits_fp_val          (_dispatcher_io_dis_uops_2_2_bits_fp_val),
-    .io_dis_uops_2_2_bits_fp_single       (_dispatcher_io_dis_uops_2_2_bits_fp_single),
-    .io_dis_uops_2_2_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_2_2_bits_xcpt_pf_if),
-    .io_dis_uops_2_2_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_2_2_bits_xcpt_ae_if),
-    .io_dis_uops_2_2_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_2_2_bits_xcpt_ma_if),
-    .io_dis_uops_2_2_bits_bp_debug_if     (_dispatcher_io_dis_uops_2_2_bits_bp_debug_if),
-    .io_dis_uops_2_2_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_2_2_bits_bp_xcpt_if),
-    .io_dis_uops_2_2_bits_debug_fsrc      (_dispatcher_io_dis_uops_2_2_bits_debug_fsrc),
-    .io_dis_uops_2_2_bits_debug_tsrc      (_dispatcher_io_dis_uops_2_2_bits_debug_tsrc),
-    .io_dis_uops_1_0_valid                (_dispatcher_io_dis_uops_1_0_valid),
-    .io_dis_uops_1_0_bits_uopc            (_dispatcher_io_dis_uops_1_0_bits_uopc),
-    .io_dis_uops_1_0_bits_inst            (_dispatcher_io_dis_uops_1_0_bits_inst),
-    .io_dis_uops_1_0_bits_debug_inst      (_dispatcher_io_dis_uops_1_0_bits_debug_inst),
-    .io_dis_uops_1_0_bits_is_rvc          (_dispatcher_io_dis_uops_1_0_bits_is_rvc),
-    .io_dis_uops_1_0_bits_debug_pc        (_dispatcher_io_dis_uops_1_0_bits_debug_pc),
-    .io_dis_uops_1_0_bits_iq_type         (_dispatcher_io_dis_uops_1_0_bits_iq_type),
-    .io_dis_uops_1_0_bits_fu_code         (_dispatcher_io_dis_uops_1_0_bits_fu_code),
-    .io_dis_uops_1_0_bits_is_br           (_dispatcher_io_dis_uops_1_0_bits_is_br),
-    .io_dis_uops_1_0_bits_is_jalr         (_dispatcher_io_dis_uops_1_0_bits_is_jalr),
-    .io_dis_uops_1_0_bits_is_jal          (_dispatcher_io_dis_uops_1_0_bits_is_jal),
-    .io_dis_uops_1_0_bits_is_sfb          (_dispatcher_io_dis_uops_1_0_bits_is_sfb),
-    .io_dis_uops_1_0_bits_br_mask         (_dispatcher_io_dis_uops_1_0_bits_br_mask),
-    .io_dis_uops_1_0_bits_br_tag          (_dispatcher_io_dis_uops_1_0_bits_br_tag),
-    .io_dis_uops_1_0_bits_ftq_idx         (_dispatcher_io_dis_uops_1_0_bits_ftq_idx),
-    .io_dis_uops_1_0_bits_edge_inst       (_dispatcher_io_dis_uops_1_0_bits_edge_inst),
-    .io_dis_uops_1_0_bits_pc_lob          (_dispatcher_io_dis_uops_1_0_bits_pc_lob),
-    .io_dis_uops_1_0_bits_taken           (_dispatcher_io_dis_uops_1_0_bits_taken),
-    .io_dis_uops_1_0_bits_imm_packed      (_dispatcher_io_dis_uops_1_0_bits_imm_packed),
-    .io_dis_uops_1_0_bits_csr_addr        (_dispatcher_io_dis_uops_1_0_bits_csr_addr),
-    .io_dis_uops_1_0_bits_rob_idx         (_dispatcher_io_dis_uops_1_0_bits_rob_idx),
-    .io_dis_uops_1_0_bits_ldq_idx         (_dispatcher_io_dis_uops_1_0_bits_ldq_idx),
-    .io_dis_uops_1_0_bits_stq_idx         (_dispatcher_io_dis_uops_1_0_bits_stq_idx),
-    .io_dis_uops_1_0_bits_rxq_idx         (_dispatcher_io_dis_uops_1_0_bits_rxq_idx),
-    .io_dis_uops_1_0_bits_pdst            (_dispatcher_io_dis_uops_1_0_bits_pdst),
-    .io_dis_uops_1_0_bits_prs1            (_dispatcher_io_dis_uops_1_0_bits_prs1),
-    .io_dis_uops_1_0_bits_prs2            (_dispatcher_io_dis_uops_1_0_bits_prs2),
-    .io_dis_uops_1_0_bits_prs3            (_dispatcher_io_dis_uops_1_0_bits_prs3),
-    .io_dis_uops_1_0_bits_prs1_busy       (_dispatcher_io_dis_uops_1_0_bits_prs1_busy),
-    .io_dis_uops_1_0_bits_prs2_busy       (_dispatcher_io_dis_uops_1_0_bits_prs2_busy),
-    .io_dis_uops_1_0_bits_stale_pdst      (_dispatcher_io_dis_uops_1_0_bits_stale_pdst),
-    .io_dis_uops_1_0_bits_exception       (_dispatcher_io_dis_uops_1_0_bits_exception),
-    .io_dis_uops_1_0_bits_exc_cause       (_dispatcher_io_dis_uops_1_0_bits_exc_cause),
-    .io_dis_uops_1_0_bits_bypassable      (_dispatcher_io_dis_uops_1_0_bits_bypassable),
-    .io_dis_uops_1_0_bits_mem_cmd         (_dispatcher_io_dis_uops_1_0_bits_mem_cmd),
-    .io_dis_uops_1_0_bits_mem_size        (_dispatcher_io_dis_uops_1_0_bits_mem_size),
-    .io_dis_uops_1_0_bits_mem_signed      (_dispatcher_io_dis_uops_1_0_bits_mem_signed),
-    .io_dis_uops_1_0_bits_is_fence        (_dispatcher_io_dis_uops_1_0_bits_is_fence),
-    .io_dis_uops_1_0_bits_is_fencei       (_dispatcher_io_dis_uops_1_0_bits_is_fencei),
-    .io_dis_uops_1_0_bits_is_amo          (_dispatcher_io_dis_uops_1_0_bits_is_amo),
-    .io_dis_uops_1_0_bits_uses_ldq        (_dispatcher_io_dis_uops_1_0_bits_uses_ldq),
-    .io_dis_uops_1_0_bits_uses_stq        (_dispatcher_io_dis_uops_1_0_bits_uses_stq),
-    .io_dis_uops_1_0_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_1_0_bits_is_sys_pc2epc),
-    .io_dis_uops_1_0_bits_is_unique       (_dispatcher_io_dis_uops_1_0_bits_is_unique),
-    .io_dis_uops_1_0_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_1_0_bits_flush_on_commit),
-    .io_dis_uops_1_0_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_1_0_bits_ldst_is_rs1),
-    .io_dis_uops_1_0_bits_ldst            (_dispatcher_io_dis_uops_1_0_bits_ldst),
-    .io_dis_uops_1_0_bits_lrs1            (_dispatcher_io_dis_uops_1_0_bits_lrs1),
-    .io_dis_uops_1_0_bits_lrs2            (_dispatcher_io_dis_uops_1_0_bits_lrs2),
-    .io_dis_uops_1_0_bits_lrs3            (_dispatcher_io_dis_uops_1_0_bits_lrs3),
-    .io_dis_uops_1_0_bits_ldst_val        (_dispatcher_io_dis_uops_1_0_bits_ldst_val),
-    .io_dis_uops_1_0_bits_dst_rtype       (_dispatcher_io_dis_uops_1_0_bits_dst_rtype),
-    .io_dis_uops_1_0_bits_lrs1_rtype      (_dispatcher_io_dis_uops_1_0_bits_lrs1_rtype),
-    .io_dis_uops_1_0_bits_lrs2_rtype      (_dispatcher_io_dis_uops_1_0_bits_lrs2_rtype),
-    .io_dis_uops_1_0_bits_frs3_en         (_dispatcher_io_dis_uops_1_0_bits_frs3_en),
-    .io_dis_uops_1_0_bits_fp_val          (_dispatcher_io_dis_uops_1_0_bits_fp_val),
-    .io_dis_uops_1_0_bits_fp_single       (_dispatcher_io_dis_uops_1_0_bits_fp_single),
-    .io_dis_uops_1_0_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_1_0_bits_xcpt_pf_if),
-    .io_dis_uops_1_0_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_1_0_bits_xcpt_ae_if),
-    .io_dis_uops_1_0_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_1_0_bits_xcpt_ma_if),
-    .io_dis_uops_1_0_bits_bp_debug_if     (_dispatcher_io_dis_uops_1_0_bits_bp_debug_if),
-    .io_dis_uops_1_0_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_1_0_bits_bp_xcpt_if),
-    .io_dis_uops_1_0_bits_debug_fsrc      (_dispatcher_io_dis_uops_1_0_bits_debug_fsrc),
-    .io_dis_uops_1_0_bits_debug_tsrc      (_dispatcher_io_dis_uops_1_0_bits_debug_tsrc),
-    .io_dis_uops_1_1_valid                (_dispatcher_io_dis_uops_1_1_valid),
-    .io_dis_uops_1_1_bits_uopc            (_dispatcher_io_dis_uops_1_1_bits_uopc),
-    .io_dis_uops_1_1_bits_inst            (_dispatcher_io_dis_uops_1_1_bits_inst),
-    .io_dis_uops_1_1_bits_debug_inst      (_dispatcher_io_dis_uops_1_1_bits_debug_inst),
-    .io_dis_uops_1_1_bits_is_rvc          (_dispatcher_io_dis_uops_1_1_bits_is_rvc),
-    .io_dis_uops_1_1_bits_debug_pc        (_dispatcher_io_dis_uops_1_1_bits_debug_pc),
-    .io_dis_uops_1_1_bits_iq_type         (_dispatcher_io_dis_uops_1_1_bits_iq_type),
-    .io_dis_uops_1_1_bits_fu_code         (_dispatcher_io_dis_uops_1_1_bits_fu_code),
-    .io_dis_uops_1_1_bits_is_br           (_dispatcher_io_dis_uops_1_1_bits_is_br),
-    .io_dis_uops_1_1_bits_is_jalr         (_dispatcher_io_dis_uops_1_1_bits_is_jalr),
-    .io_dis_uops_1_1_bits_is_jal          (_dispatcher_io_dis_uops_1_1_bits_is_jal),
-    .io_dis_uops_1_1_bits_is_sfb          (_dispatcher_io_dis_uops_1_1_bits_is_sfb),
-    .io_dis_uops_1_1_bits_br_mask         (_dispatcher_io_dis_uops_1_1_bits_br_mask),
-    .io_dis_uops_1_1_bits_br_tag          (_dispatcher_io_dis_uops_1_1_bits_br_tag),
-    .io_dis_uops_1_1_bits_ftq_idx         (_dispatcher_io_dis_uops_1_1_bits_ftq_idx),
-    .io_dis_uops_1_1_bits_edge_inst       (_dispatcher_io_dis_uops_1_1_bits_edge_inst),
-    .io_dis_uops_1_1_bits_pc_lob          (_dispatcher_io_dis_uops_1_1_bits_pc_lob),
-    .io_dis_uops_1_1_bits_taken           (_dispatcher_io_dis_uops_1_1_bits_taken),
-    .io_dis_uops_1_1_bits_imm_packed      (_dispatcher_io_dis_uops_1_1_bits_imm_packed),
-    .io_dis_uops_1_1_bits_csr_addr        (_dispatcher_io_dis_uops_1_1_bits_csr_addr),
-    .io_dis_uops_1_1_bits_rob_idx         (_dispatcher_io_dis_uops_1_1_bits_rob_idx),
-    .io_dis_uops_1_1_bits_ldq_idx         (_dispatcher_io_dis_uops_1_1_bits_ldq_idx),
-    .io_dis_uops_1_1_bits_stq_idx         (_dispatcher_io_dis_uops_1_1_bits_stq_idx),
-    .io_dis_uops_1_1_bits_rxq_idx         (_dispatcher_io_dis_uops_1_1_bits_rxq_idx),
-    .io_dis_uops_1_1_bits_pdst            (_dispatcher_io_dis_uops_1_1_bits_pdst),
-    .io_dis_uops_1_1_bits_prs1            (_dispatcher_io_dis_uops_1_1_bits_prs1),
-    .io_dis_uops_1_1_bits_prs2            (_dispatcher_io_dis_uops_1_1_bits_prs2),
-    .io_dis_uops_1_1_bits_prs3            (_dispatcher_io_dis_uops_1_1_bits_prs3),
-    .io_dis_uops_1_1_bits_prs1_busy       (_dispatcher_io_dis_uops_1_1_bits_prs1_busy),
-    .io_dis_uops_1_1_bits_prs2_busy       (_dispatcher_io_dis_uops_1_1_bits_prs2_busy),
-    .io_dis_uops_1_1_bits_stale_pdst      (_dispatcher_io_dis_uops_1_1_bits_stale_pdst),
-    .io_dis_uops_1_1_bits_exception       (_dispatcher_io_dis_uops_1_1_bits_exception),
-    .io_dis_uops_1_1_bits_exc_cause       (_dispatcher_io_dis_uops_1_1_bits_exc_cause),
-    .io_dis_uops_1_1_bits_bypassable      (_dispatcher_io_dis_uops_1_1_bits_bypassable),
-    .io_dis_uops_1_1_bits_mem_cmd         (_dispatcher_io_dis_uops_1_1_bits_mem_cmd),
-    .io_dis_uops_1_1_bits_mem_size        (_dispatcher_io_dis_uops_1_1_bits_mem_size),
-    .io_dis_uops_1_1_bits_mem_signed      (_dispatcher_io_dis_uops_1_1_bits_mem_signed),
-    .io_dis_uops_1_1_bits_is_fence        (_dispatcher_io_dis_uops_1_1_bits_is_fence),
-    .io_dis_uops_1_1_bits_is_fencei       (_dispatcher_io_dis_uops_1_1_bits_is_fencei),
-    .io_dis_uops_1_1_bits_is_amo          (_dispatcher_io_dis_uops_1_1_bits_is_amo),
-    .io_dis_uops_1_1_bits_uses_ldq        (_dispatcher_io_dis_uops_1_1_bits_uses_ldq),
-    .io_dis_uops_1_1_bits_uses_stq        (_dispatcher_io_dis_uops_1_1_bits_uses_stq),
-    .io_dis_uops_1_1_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_1_1_bits_is_sys_pc2epc),
-    .io_dis_uops_1_1_bits_is_unique       (_dispatcher_io_dis_uops_1_1_bits_is_unique),
-    .io_dis_uops_1_1_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_1_1_bits_flush_on_commit),
-    .io_dis_uops_1_1_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_1_1_bits_ldst_is_rs1),
-    .io_dis_uops_1_1_bits_ldst            (_dispatcher_io_dis_uops_1_1_bits_ldst),
-    .io_dis_uops_1_1_bits_lrs1            (_dispatcher_io_dis_uops_1_1_bits_lrs1),
-    .io_dis_uops_1_1_bits_lrs2            (_dispatcher_io_dis_uops_1_1_bits_lrs2),
-    .io_dis_uops_1_1_bits_lrs3            (_dispatcher_io_dis_uops_1_1_bits_lrs3),
-    .io_dis_uops_1_1_bits_ldst_val        (_dispatcher_io_dis_uops_1_1_bits_ldst_val),
-    .io_dis_uops_1_1_bits_dst_rtype       (_dispatcher_io_dis_uops_1_1_bits_dst_rtype),
-    .io_dis_uops_1_1_bits_lrs1_rtype      (_dispatcher_io_dis_uops_1_1_bits_lrs1_rtype),
-    .io_dis_uops_1_1_bits_lrs2_rtype      (_dispatcher_io_dis_uops_1_1_bits_lrs2_rtype),
-    .io_dis_uops_1_1_bits_frs3_en         (_dispatcher_io_dis_uops_1_1_bits_frs3_en),
-    .io_dis_uops_1_1_bits_fp_val          (_dispatcher_io_dis_uops_1_1_bits_fp_val),
-    .io_dis_uops_1_1_bits_fp_single       (_dispatcher_io_dis_uops_1_1_bits_fp_single),
-    .io_dis_uops_1_1_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_1_1_bits_xcpt_pf_if),
-    .io_dis_uops_1_1_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_1_1_bits_xcpt_ae_if),
-    .io_dis_uops_1_1_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_1_1_bits_xcpt_ma_if),
-    .io_dis_uops_1_1_bits_bp_debug_if     (_dispatcher_io_dis_uops_1_1_bits_bp_debug_if),
-    .io_dis_uops_1_1_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_1_1_bits_bp_xcpt_if),
-    .io_dis_uops_1_1_bits_debug_fsrc      (_dispatcher_io_dis_uops_1_1_bits_debug_fsrc),
-    .io_dis_uops_1_1_bits_debug_tsrc      (_dispatcher_io_dis_uops_1_1_bits_debug_tsrc),
-    .io_dis_uops_1_2_valid                (_dispatcher_io_dis_uops_1_2_valid),
-    .io_dis_uops_1_2_bits_uopc            (_dispatcher_io_dis_uops_1_2_bits_uopc),
-    .io_dis_uops_1_2_bits_inst            (_dispatcher_io_dis_uops_1_2_bits_inst),
-    .io_dis_uops_1_2_bits_debug_inst      (_dispatcher_io_dis_uops_1_2_bits_debug_inst),
-    .io_dis_uops_1_2_bits_is_rvc          (_dispatcher_io_dis_uops_1_2_bits_is_rvc),
-    .io_dis_uops_1_2_bits_debug_pc        (_dispatcher_io_dis_uops_1_2_bits_debug_pc),
-    .io_dis_uops_1_2_bits_iq_type         (_dispatcher_io_dis_uops_1_2_bits_iq_type),
-    .io_dis_uops_1_2_bits_fu_code         (_dispatcher_io_dis_uops_1_2_bits_fu_code),
-    .io_dis_uops_1_2_bits_is_br           (_dispatcher_io_dis_uops_1_2_bits_is_br),
-    .io_dis_uops_1_2_bits_is_jalr         (_dispatcher_io_dis_uops_1_2_bits_is_jalr),
-    .io_dis_uops_1_2_bits_is_jal          (_dispatcher_io_dis_uops_1_2_bits_is_jal),
-    .io_dis_uops_1_2_bits_is_sfb          (_dispatcher_io_dis_uops_1_2_bits_is_sfb),
-    .io_dis_uops_1_2_bits_br_mask         (_dispatcher_io_dis_uops_1_2_bits_br_mask),
-    .io_dis_uops_1_2_bits_br_tag          (_dispatcher_io_dis_uops_1_2_bits_br_tag),
-    .io_dis_uops_1_2_bits_ftq_idx         (_dispatcher_io_dis_uops_1_2_bits_ftq_idx),
-    .io_dis_uops_1_2_bits_edge_inst       (_dispatcher_io_dis_uops_1_2_bits_edge_inst),
-    .io_dis_uops_1_2_bits_pc_lob          (_dispatcher_io_dis_uops_1_2_bits_pc_lob),
-    .io_dis_uops_1_2_bits_taken           (_dispatcher_io_dis_uops_1_2_bits_taken),
-    .io_dis_uops_1_2_bits_imm_packed      (_dispatcher_io_dis_uops_1_2_bits_imm_packed),
-    .io_dis_uops_1_2_bits_csr_addr        (_dispatcher_io_dis_uops_1_2_bits_csr_addr),
-    .io_dis_uops_1_2_bits_rob_idx         (_dispatcher_io_dis_uops_1_2_bits_rob_idx),
-    .io_dis_uops_1_2_bits_ldq_idx         (_dispatcher_io_dis_uops_1_2_bits_ldq_idx),
-    .io_dis_uops_1_2_bits_stq_idx         (_dispatcher_io_dis_uops_1_2_bits_stq_idx),
-    .io_dis_uops_1_2_bits_rxq_idx         (_dispatcher_io_dis_uops_1_2_bits_rxq_idx),
-    .io_dis_uops_1_2_bits_pdst            (_dispatcher_io_dis_uops_1_2_bits_pdst),
-    .io_dis_uops_1_2_bits_prs1            (_dispatcher_io_dis_uops_1_2_bits_prs1),
-    .io_dis_uops_1_2_bits_prs2            (_dispatcher_io_dis_uops_1_2_bits_prs2),
-    .io_dis_uops_1_2_bits_prs3            (_dispatcher_io_dis_uops_1_2_bits_prs3),
-    .io_dis_uops_1_2_bits_prs1_busy       (_dispatcher_io_dis_uops_1_2_bits_prs1_busy),
-    .io_dis_uops_1_2_bits_prs2_busy       (_dispatcher_io_dis_uops_1_2_bits_prs2_busy),
-    .io_dis_uops_1_2_bits_stale_pdst      (_dispatcher_io_dis_uops_1_2_bits_stale_pdst),
-    .io_dis_uops_1_2_bits_exception       (_dispatcher_io_dis_uops_1_2_bits_exception),
-    .io_dis_uops_1_2_bits_exc_cause       (_dispatcher_io_dis_uops_1_2_bits_exc_cause),
-    .io_dis_uops_1_2_bits_bypassable      (_dispatcher_io_dis_uops_1_2_bits_bypassable),
-    .io_dis_uops_1_2_bits_mem_cmd         (_dispatcher_io_dis_uops_1_2_bits_mem_cmd),
-    .io_dis_uops_1_2_bits_mem_size        (_dispatcher_io_dis_uops_1_2_bits_mem_size),
-    .io_dis_uops_1_2_bits_mem_signed      (_dispatcher_io_dis_uops_1_2_bits_mem_signed),
-    .io_dis_uops_1_2_bits_is_fence        (_dispatcher_io_dis_uops_1_2_bits_is_fence),
-    .io_dis_uops_1_2_bits_is_fencei       (_dispatcher_io_dis_uops_1_2_bits_is_fencei),
-    .io_dis_uops_1_2_bits_is_amo          (_dispatcher_io_dis_uops_1_2_bits_is_amo),
-    .io_dis_uops_1_2_bits_uses_ldq        (_dispatcher_io_dis_uops_1_2_bits_uses_ldq),
-    .io_dis_uops_1_2_bits_uses_stq        (_dispatcher_io_dis_uops_1_2_bits_uses_stq),
-    .io_dis_uops_1_2_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_1_2_bits_is_sys_pc2epc),
-    .io_dis_uops_1_2_bits_is_unique       (_dispatcher_io_dis_uops_1_2_bits_is_unique),
-    .io_dis_uops_1_2_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_1_2_bits_flush_on_commit),
-    .io_dis_uops_1_2_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_1_2_bits_ldst_is_rs1),
-    .io_dis_uops_1_2_bits_ldst            (_dispatcher_io_dis_uops_1_2_bits_ldst),
-    .io_dis_uops_1_2_bits_lrs1            (_dispatcher_io_dis_uops_1_2_bits_lrs1),
-    .io_dis_uops_1_2_bits_lrs2            (_dispatcher_io_dis_uops_1_2_bits_lrs2),
-    .io_dis_uops_1_2_bits_lrs3            (_dispatcher_io_dis_uops_1_2_bits_lrs3),
-    .io_dis_uops_1_2_bits_ldst_val        (_dispatcher_io_dis_uops_1_2_bits_ldst_val),
-    .io_dis_uops_1_2_bits_dst_rtype       (_dispatcher_io_dis_uops_1_2_bits_dst_rtype),
-    .io_dis_uops_1_2_bits_lrs1_rtype      (_dispatcher_io_dis_uops_1_2_bits_lrs1_rtype),
-    .io_dis_uops_1_2_bits_lrs2_rtype      (_dispatcher_io_dis_uops_1_2_bits_lrs2_rtype),
-    .io_dis_uops_1_2_bits_frs3_en         (_dispatcher_io_dis_uops_1_2_bits_frs3_en),
-    .io_dis_uops_1_2_bits_fp_val          (_dispatcher_io_dis_uops_1_2_bits_fp_val),
-    .io_dis_uops_1_2_bits_fp_single       (_dispatcher_io_dis_uops_1_2_bits_fp_single),
-    .io_dis_uops_1_2_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_1_2_bits_xcpt_pf_if),
-    .io_dis_uops_1_2_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_1_2_bits_xcpt_ae_if),
-    .io_dis_uops_1_2_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_1_2_bits_xcpt_ma_if),
-    .io_dis_uops_1_2_bits_bp_debug_if     (_dispatcher_io_dis_uops_1_2_bits_bp_debug_if),
-    .io_dis_uops_1_2_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_1_2_bits_bp_xcpt_if),
-    .io_dis_uops_1_2_bits_debug_fsrc      (_dispatcher_io_dis_uops_1_2_bits_debug_fsrc),
-    .io_dis_uops_1_2_bits_debug_tsrc      (_dispatcher_io_dis_uops_1_2_bits_debug_tsrc),
-    .io_dis_uops_0_0_valid                (_dispatcher_io_dis_uops_0_0_valid),
-    .io_dis_uops_0_0_bits_uopc            (_dispatcher_io_dis_uops_0_0_bits_uopc),
-    .io_dis_uops_0_0_bits_inst            (_dispatcher_io_dis_uops_0_0_bits_inst),
-    .io_dis_uops_0_0_bits_debug_inst      (_dispatcher_io_dis_uops_0_0_bits_debug_inst),
-    .io_dis_uops_0_0_bits_is_rvc          (_dispatcher_io_dis_uops_0_0_bits_is_rvc),
-    .io_dis_uops_0_0_bits_debug_pc        (_dispatcher_io_dis_uops_0_0_bits_debug_pc),
-    .io_dis_uops_0_0_bits_iq_type         (_dispatcher_io_dis_uops_0_0_bits_iq_type),
-    .io_dis_uops_0_0_bits_fu_code         (_dispatcher_io_dis_uops_0_0_bits_fu_code),
-    .io_dis_uops_0_0_bits_is_br           (_dispatcher_io_dis_uops_0_0_bits_is_br),
-    .io_dis_uops_0_0_bits_is_jalr         (_dispatcher_io_dis_uops_0_0_bits_is_jalr),
-    .io_dis_uops_0_0_bits_is_jal          (_dispatcher_io_dis_uops_0_0_bits_is_jal),
-    .io_dis_uops_0_0_bits_is_sfb          (_dispatcher_io_dis_uops_0_0_bits_is_sfb),
-    .io_dis_uops_0_0_bits_br_mask         (_dispatcher_io_dis_uops_0_0_bits_br_mask),
-    .io_dis_uops_0_0_bits_br_tag          (_dispatcher_io_dis_uops_0_0_bits_br_tag),
-    .io_dis_uops_0_0_bits_ftq_idx         (_dispatcher_io_dis_uops_0_0_bits_ftq_idx),
-    .io_dis_uops_0_0_bits_edge_inst       (_dispatcher_io_dis_uops_0_0_bits_edge_inst),
-    .io_dis_uops_0_0_bits_pc_lob          (_dispatcher_io_dis_uops_0_0_bits_pc_lob),
-    .io_dis_uops_0_0_bits_taken           (_dispatcher_io_dis_uops_0_0_bits_taken),
-    .io_dis_uops_0_0_bits_imm_packed      (_dispatcher_io_dis_uops_0_0_bits_imm_packed),
-    .io_dis_uops_0_0_bits_csr_addr        (_dispatcher_io_dis_uops_0_0_bits_csr_addr),
-    .io_dis_uops_0_0_bits_rob_idx         (_dispatcher_io_dis_uops_0_0_bits_rob_idx),
-    .io_dis_uops_0_0_bits_ldq_idx         (_dispatcher_io_dis_uops_0_0_bits_ldq_idx),
-    .io_dis_uops_0_0_bits_stq_idx         (_dispatcher_io_dis_uops_0_0_bits_stq_idx),
-    .io_dis_uops_0_0_bits_rxq_idx         (_dispatcher_io_dis_uops_0_0_bits_rxq_idx),
-    .io_dis_uops_0_0_bits_pdst            (_dispatcher_io_dis_uops_0_0_bits_pdst),
-    .io_dis_uops_0_0_bits_prs1            (_dispatcher_io_dis_uops_0_0_bits_prs1),
-    .io_dis_uops_0_0_bits_prs2            (_dispatcher_io_dis_uops_0_0_bits_prs2),
-    .io_dis_uops_0_0_bits_prs3            (_dispatcher_io_dis_uops_0_0_bits_prs3),
-    .io_dis_uops_0_0_bits_prs1_busy       (_dispatcher_io_dis_uops_0_0_bits_prs1_busy),
-    .io_dis_uops_0_0_bits_prs2_busy       (_dispatcher_io_dis_uops_0_0_bits_prs2_busy),
-    .io_dis_uops_0_0_bits_stale_pdst      (_dispatcher_io_dis_uops_0_0_bits_stale_pdst),
-    .io_dis_uops_0_0_bits_exception       (_dispatcher_io_dis_uops_0_0_bits_exception),
-    .io_dis_uops_0_0_bits_exc_cause       (_dispatcher_io_dis_uops_0_0_bits_exc_cause),
-    .io_dis_uops_0_0_bits_bypassable      (_dispatcher_io_dis_uops_0_0_bits_bypassable),
-    .io_dis_uops_0_0_bits_mem_cmd         (_dispatcher_io_dis_uops_0_0_bits_mem_cmd),
-    .io_dis_uops_0_0_bits_mem_size        (_dispatcher_io_dis_uops_0_0_bits_mem_size),
-    .io_dis_uops_0_0_bits_mem_signed      (_dispatcher_io_dis_uops_0_0_bits_mem_signed),
-    .io_dis_uops_0_0_bits_is_fence        (_dispatcher_io_dis_uops_0_0_bits_is_fence),
-    .io_dis_uops_0_0_bits_is_fencei       (_dispatcher_io_dis_uops_0_0_bits_is_fencei),
-    .io_dis_uops_0_0_bits_is_amo          (_dispatcher_io_dis_uops_0_0_bits_is_amo),
-    .io_dis_uops_0_0_bits_uses_ldq        (_dispatcher_io_dis_uops_0_0_bits_uses_ldq),
-    .io_dis_uops_0_0_bits_uses_stq        (_dispatcher_io_dis_uops_0_0_bits_uses_stq),
-    .io_dis_uops_0_0_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_0_0_bits_is_sys_pc2epc),
-    .io_dis_uops_0_0_bits_is_unique       (_dispatcher_io_dis_uops_0_0_bits_is_unique),
-    .io_dis_uops_0_0_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_0_0_bits_flush_on_commit),
-    .io_dis_uops_0_0_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_0_0_bits_ldst_is_rs1),
-    .io_dis_uops_0_0_bits_ldst            (_dispatcher_io_dis_uops_0_0_bits_ldst),
-    .io_dis_uops_0_0_bits_lrs1            (_dispatcher_io_dis_uops_0_0_bits_lrs1),
-    .io_dis_uops_0_0_bits_lrs2            (_dispatcher_io_dis_uops_0_0_bits_lrs2),
-    .io_dis_uops_0_0_bits_lrs3            (_dispatcher_io_dis_uops_0_0_bits_lrs3),
-    .io_dis_uops_0_0_bits_ldst_val        (_dispatcher_io_dis_uops_0_0_bits_ldst_val),
-    .io_dis_uops_0_0_bits_dst_rtype       (_dispatcher_io_dis_uops_0_0_bits_dst_rtype),
-    .io_dis_uops_0_0_bits_lrs1_rtype      (_dispatcher_io_dis_uops_0_0_bits_lrs1_rtype),
-    .io_dis_uops_0_0_bits_lrs2_rtype      (_dispatcher_io_dis_uops_0_0_bits_lrs2_rtype),
-    .io_dis_uops_0_0_bits_frs3_en         (_dispatcher_io_dis_uops_0_0_bits_frs3_en),
-    .io_dis_uops_0_0_bits_fp_val          (_dispatcher_io_dis_uops_0_0_bits_fp_val),
-    .io_dis_uops_0_0_bits_fp_single       (_dispatcher_io_dis_uops_0_0_bits_fp_single),
-    .io_dis_uops_0_0_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_0_0_bits_xcpt_pf_if),
-    .io_dis_uops_0_0_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_0_0_bits_xcpt_ae_if),
-    .io_dis_uops_0_0_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_0_0_bits_xcpt_ma_if),
-    .io_dis_uops_0_0_bits_bp_debug_if     (_dispatcher_io_dis_uops_0_0_bits_bp_debug_if),
-    .io_dis_uops_0_0_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_0_0_bits_bp_xcpt_if),
-    .io_dis_uops_0_0_bits_debug_fsrc      (_dispatcher_io_dis_uops_0_0_bits_debug_fsrc),
-    .io_dis_uops_0_0_bits_debug_tsrc      (_dispatcher_io_dis_uops_0_0_bits_debug_tsrc),
-    .io_dis_uops_0_1_valid                (_dispatcher_io_dis_uops_0_1_valid),
-    .io_dis_uops_0_1_bits_uopc            (_dispatcher_io_dis_uops_0_1_bits_uopc),
-    .io_dis_uops_0_1_bits_inst            (_dispatcher_io_dis_uops_0_1_bits_inst),
-    .io_dis_uops_0_1_bits_debug_inst      (_dispatcher_io_dis_uops_0_1_bits_debug_inst),
-    .io_dis_uops_0_1_bits_is_rvc          (_dispatcher_io_dis_uops_0_1_bits_is_rvc),
-    .io_dis_uops_0_1_bits_debug_pc        (_dispatcher_io_dis_uops_0_1_bits_debug_pc),
-    .io_dis_uops_0_1_bits_iq_type         (_dispatcher_io_dis_uops_0_1_bits_iq_type),
-    .io_dis_uops_0_1_bits_fu_code         (_dispatcher_io_dis_uops_0_1_bits_fu_code),
-    .io_dis_uops_0_1_bits_is_br           (_dispatcher_io_dis_uops_0_1_bits_is_br),
-    .io_dis_uops_0_1_bits_is_jalr         (_dispatcher_io_dis_uops_0_1_bits_is_jalr),
-    .io_dis_uops_0_1_bits_is_jal          (_dispatcher_io_dis_uops_0_1_bits_is_jal),
-    .io_dis_uops_0_1_bits_is_sfb          (_dispatcher_io_dis_uops_0_1_bits_is_sfb),
-    .io_dis_uops_0_1_bits_br_mask         (_dispatcher_io_dis_uops_0_1_bits_br_mask),
-    .io_dis_uops_0_1_bits_br_tag          (_dispatcher_io_dis_uops_0_1_bits_br_tag),
-    .io_dis_uops_0_1_bits_ftq_idx         (_dispatcher_io_dis_uops_0_1_bits_ftq_idx),
-    .io_dis_uops_0_1_bits_edge_inst       (_dispatcher_io_dis_uops_0_1_bits_edge_inst),
-    .io_dis_uops_0_1_bits_pc_lob          (_dispatcher_io_dis_uops_0_1_bits_pc_lob),
-    .io_dis_uops_0_1_bits_taken           (_dispatcher_io_dis_uops_0_1_bits_taken),
-    .io_dis_uops_0_1_bits_imm_packed      (_dispatcher_io_dis_uops_0_1_bits_imm_packed),
-    .io_dis_uops_0_1_bits_csr_addr        (_dispatcher_io_dis_uops_0_1_bits_csr_addr),
-    .io_dis_uops_0_1_bits_rob_idx         (_dispatcher_io_dis_uops_0_1_bits_rob_idx),
-    .io_dis_uops_0_1_bits_ldq_idx         (_dispatcher_io_dis_uops_0_1_bits_ldq_idx),
-    .io_dis_uops_0_1_bits_stq_idx         (_dispatcher_io_dis_uops_0_1_bits_stq_idx),
-    .io_dis_uops_0_1_bits_rxq_idx         (_dispatcher_io_dis_uops_0_1_bits_rxq_idx),
-    .io_dis_uops_0_1_bits_pdst            (_dispatcher_io_dis_uops_0_1_bits_pdst),
-    .io_dis_uops_0_1_bits_prs1            (_dispatcher_io_dis_uops_0_1_bits_prs1),
-    .io_dis_uops_0_1_bits_prs2            (_dispatcher_io_dis_uops_0_1_bits_prs2),
-    .io_dis_uops_0_1_bits_prs3            (_dispatcher_io_dis_uops_0_1_bits_prs3),
-    .io_dis_uops_0_1_bits_prs1_busy       (_dispatcher_io_dis_uops_0_1_bits_prs1_busy),
-    .io_dis_uops_0_1_bits_prs2_busy       (_dispatcher_io_dis_uops_0_1_bits_prs2_busy),
-    .io_dis_uops_0_1_bits_stale_pdst      (_dispatcher_io_dis_uops_0_1_bits_stale_pdst),
-    .io_dis_uops_0_1_bits_exception       (_dispatcher_io_dis_uops_0_1_bits_exception),
-    .io_dis_uops_0_1_bits_exc_cause       (_dispatcher_io_dis_uops_0_1_bits_exc_cause),
-    .io_dis_uops_0_1_bits_bypassable      (_dispatcher_io_dis_uops_0_1_bits_bypassable),
-    .io_dis_uops_0_1_bits_mem_cmd         (_dispatcher_io_dis_uops_0_1_bits_mem_cmd),
-    .io_dis_uops_0_1_bits_mem_size        (_dispatcher_io_dis_uops_0_1_bits_mem_size),
-    .io_dis_uops_0_1_bits_mem_signed      (_dispatcher_io_dis_uops_0_1_bits_mem_signed),
-    .io_dis_uops_0_1_bits_is_fence        (_dispatcher_io_dis_uops_0_1_bits_is_fence),
-    .io_dis_uops_0_1_bits_is_fencei       (_dispatcher_io_dis_uops_0_1_bits_is_fencei),
-    .io_dis_uops_0_1_bits_is_amo          (_dispatcher_io_dis_uops_0_1_bits_is_amo),
-    .io_dis_uops_0_1_bits_uses_ldq        (_dispatcher_io_dis_uops_0_1_bits_uses_ldq),
-    .io_dis_uops_0_1_bits_uses_stq        (_dispatcher_io_dis_uops_0_1_bits_uses_stq),
-    .io_dis_uops_0_1_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_0_1_bits_is_sys_pc2epc),
-    .io_dis_uops_0_1_bits_is_unique       (_dispatcher_io_dis_uops_0_1_bits_is_unique),
-    .io_dis_uops_0_1_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_0_1_bits_flush_on_commit),
-    .io_dis_uops_0_1_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_0_1_bits_ldst_is_rs1),
-    .io_dis_uops_0_1_bits_ldst            (_dispatcher_io_dis_uops_0_1_bits_ldst),
-    .io_dis_uops_0_1_bits_lrs1            (_dispatcher_io_dis_uops_0_1_bits_lrs1),
-    .io_dis_uops_0_1_bits_lrs2            (_dispatcher_io_dis_uops_0_1_bits_lrs2),
-    .io_dis_uops_0_1_bits_lrs3            (_dispatcher_io_dis_uops_0_1_bits_lrs3),
-    .io_dis_uops_0_1_bits_ldst_val        (_dispatcher_io_dis_uops_0_1_bits_ldst_val),
-    .io_dis_uops_0_1_bits_dst_rtype       (_dispatcher_io_dis_uops_0_1_bits_dst_rtype),
-    .io_dis_uops_0_1_bits_lrs1_rtype      (_dispatcher_io_dis_uops_0_1_bits_lrs1_rtype),
-    .io_dis_uops_0_1_bits_lrs2_rtype      (_dispatcher_io_dis_uops_0_1_bits_lrs2_rtype),
-    .io_dis_uops_0_1_bits_frs3_en         (_dispatcher_io_dis_uops_0_1_bits_frs3_en),
-    .io_dis_uops_0_1_bits_fp_val          (_dispatcher_io_dis_uops_0_1_bits_fp_val),
-    .io_dis_uops_0_1_bits_fp_single       (_dispatcher_io_dis_uops_0_1_bits_fp_single),
-    .io_dis_uops_0_1_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_0_1_bits_xcpt_pf_if),
-    .io_dis_uops_0_1_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_0_1_bits_xcpt_ae_if),
-    .io_dis_uops_0_1_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_0_1_bits_xcpt_ma_if),
-    .io_dis_uops_0_1_bits_bp_debug_if     (_dispatcher_io_dis_uops_0_1_bits_bp_debug_if),
-    .io_dis_uops_0_1_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_0_1_bits_bp_xcpt_if),
-    .io_dis_uops_0_1_bits_debug_fsrc      (_dispatcher_io_dis_uops_0_1_bits_debug_fsrc),
-    .io_dis_uops_0_1_bits_debug_tsrc      (_dispatcher_io_dis_uops_0_1_bits_debug_tsrc),
-    .io_dis_uops_0_2_valid                (_dispatcher_io_dis_uops_0_2_valid),
-    .io_dis_uops_0_2_bits_uopc            (_dispatcher_io_dis_uops_0_2_bits_uopc),
-    .io_dis_uops_0_2_bits_inst            (_dispatcher_io_dis_uops_0_2_bits_inst),
-    .io_dis_uops_0_2_bits_debug_inst      (_dispatcher_io_dis_uops_0_2_bits_debug_inst),
-    .io_dis_uops_0_2_bits_is_rvc          (_dispatcher_io_dis_uops_0_2_bits_is_rvc),
-    .io_dis_uops_0_2_bits_debug_pc        (_dispatcher_io_dis_uops_0_2_bits_debug_pc),
-    .io_dis_uops_0_2_bits_iq_type         (_dispatcher_io_dis_uops_0_2_bits_iq_type),
-    .io_dis_uops_0_2_bits_fu_code         (_dispatcher_io_dis_uops_0_2_bits_fu_code),
-    .io_dis_uops_0_2_bits_is_br           (_dispatcher_io_dis_uops_0_2_bits_is_br),
-    .io_dis_uops_0_2_bits_is_jalr         (_dispatcher_io_dis_uops_0_2_bits_is_jalr),
-    .io_dis_uops_0_2_bits_is_jal          (_dispatcher_io_dis_uops_0_2_bits_is_jal),
-    .io_dis_uops_0_2_bits_is_sfb          (_dispatcher_io_dis_uops_0_2_bits_is_sfb),
-    .io_dis_uops_0_2_bits_br_mask         (_dispatcher_io_dis_uops_0_2_bits_br_mask),
-    .io_dis_uops_0_2_bits_br_tag          (_dispatcher_io_dis_uops_0_2_bits_br_tag),
-    .io_dis_uops_0_2_bits_ftq_idx         (_dispatcher_io_dis_uops_0_2_bits_ftq_idx),
-    .io_dis_uops_0_2_bits_edge_inst       (_dispatcher_io_dis_uops_0_2_bits_edge_inst),
-    .io_dis_uops_0_2_bits_pc_lob          (_dispatcher_io_dis_uops_0_2_bits_pc_lob),
-    .io_dis_uops_0_2_bits_taken           (_dispatcher_io_dis_uops_0_2_bits_taken),
-    .io_dis_uops_0_2_bits_imm_packed      (_dispatcher_io_dis_uops_0_2_bits_imm_packed),
-    .io_dis_uops_0_2_bits_csr_addr        (_dispatcher_io_dis_uops_0_2_bits_csr_addr),
-    .io_dis_uops_0_2_bits_rob_idx         (_dispatcher_io_dis_uops_0_2_bits_rob_idx),
-    .io_dis_uops_0_2_bits_ldq_idx         (_dispatcher_io_dis_uops_0_2_bits_ldq_idx),
-    .io_dis_uops_0_2_bits_stq_idx         (_dispatcher_io_dis_uops_0_2_bits_stq_idx),
-    .io_dis_uops_0_2_bits_rxq_idx         (_dispatcher_io_dis_uops_0_2_bits_rxq_idx),
-    .io_dis_uops_0_2_bits_pdst            (_dispatcher_io_dis_uops_0_2_bits_pdst),
-    .io_dis_uops_0_2_bits_prs1            (_dispatcher_io_dis_uops_0_2_bits_prs1),
-    .io_dis_uops_0_2_bits_prs2            (_dispatcher_io_dis_uops_0_2_bits_prs2),
-    .io_dis_uops_0_2_bits_prs3            (_dispatcher_io_dis_uops_0_2_bits_prs3),
-    .io_dis_uops_0_2_bits_prs1_busy       (_dispatcher_io_dis_uops_0_2_bits_prs1_busy),
-    .io_dis_uops_0_2_bits_prs2_busy       (_dispatcher_io_dis_uops_0_2_bits_prs2_busy),
-    .io_dis_uops_0_2_bits_stale_pdst      (_dispatcher_io_dis_uops_0_2_bits_stale_pdst),
-    .io_dis_uops_0_2_bits_exception       (_dispatcher_io_dis_uops_0_2_bits_exception),
-    .io_dis_uops_0_2_bits_exc_cause       (_dispatcher_io_dis_uops_0_2_bits_exc_cause),
-    .io_dis_uops_0_2_bits_bypassable      (_dispatcher_io_dis_uops_0_2_bits_bypassable),
-    .io_dis_uops_0_2_bits_mem_cmd         (_dispatcher_io_dis_uops_0_2_bits_mem_cmd),
-    .io_dis_uops_0_2_bits_mem_size        (_dispatcher_io_dis_uops_0_2_bits_mem_size),
-    .io_dis_uops_0_2_bits_mem_signed      (_dispatcher_io_dis_uops_0_2_bits_mem_signed),
-    .io_dis_uops_0_2_bits_is_fence        (_dispatcher_io_dis_uops_0_2_bits_is_fence),
-    .io_dis_uops_0_2_bits_is_fencei       (_dispatcher_io_dis_uops_0_2_bits_is_fencei),
-    .io_dis_uops_0_2_bits_is_amo          (_dispatcher_io_dis_uops_0_2_bits_is_amo),
-    .io_dis_uops_0_2_bits_uses_ldq        (_dispatcher_io_dis_uops_0_2_bits_uses_ldq),
-    .io_dis_uops_0_2_bits_uses_stq        (_dispatcher_io_dis_uops_0_2_bits_uses_stq),
-    .io_dis_uops_0_2_bits_is_sys_pc2epc
-      (_dispatcher_io_dis_uops_0_2_bits_is_sys_pc2epc),
-    .io_dis_uops_0_2_bits_is_unique       (_dispatcher_io_dis_uops_0_2_bits_is_unique),
-    .io_dis_uops_0_2_bits_flush_on_commit
-      (_dispatcher_io_dis_uops_0_2_bits_flush_on_commit),
-    .io_dis_uops_0_2_bits_ldst_is_rs1     (_dispatcher_io_dis_uops_0_2_bits_ldst_is_rs1),
-    .io_dis_uops_0_2_bits_ldst            (_dispatcher_io_dis_uops_0_2_bits_ldst),
-    .io_dis_uops_0_2_bits_lrs1            (_dispatcher_io_dis_uops_0_2_bits_lrs1),
-    .io_dis_uops_0_2_bits_lrs2            (_dispatcher_io_dis_uops_0_2_bits_lrs2),
-    .io_dis_uops_0_2_bits_lrs3            (_dispatcher_io_dis_uops_0_2_bits_lrs3),
-    .io_dis_uops_0_2_bits_ldst_val        (_dispatcher_io_dis_uops_0_2_bits_ldst_val),
-    .io_dis_uops_0_2_bits_dst_rtype       (_dispatcher_io_dis_uops_0_2_bits_dst_rtype),
-    .io_dis_uops_0_2_bits_lrs1_rtype      (_dispatcher_io_dis_uops_0_2_bits_lrs1_rtype),
-    .io_dis_uops_0_2_bits_lrs2_rtype      (_dispatcher_io_dis_uops_0_2_bits_lrs2_rtype),
-    .io_dis_uops_0_2_bits_frs3_en         (_dispatcher_io_dis_uops_0_2_bits_frs3_en),
-    .io_dis_uops_0_2_bits_fp_val          (_dispatcher_io_dis_uops_0_2_bits_fp_val),
-    .io_dis_uops_0_2_bits_fp_single       (_dispatcher_io_dis_uops_0_2_bits_fp_single),
-    .io_dis_uops_0_2_bits_xcpt_pf_if      (_dispatcher_io_dis_uops_0_2_bits_xcpt_pf_if),
-    .io_dis_uops_0_2_bits_xcpt_ae_if      (_dispatcher_io_dis_uops_0_2_bits_xcpt_ae_if),
-    .io_dis_uops_0_2_bits_xcpt_ma_if      (_dispatcher_io_dis_uops_0_2_bits_xcpt_ma_if),
-    .io_dis_uops_0_2_bits_bp_debug_if     (_dispatcher_io_dis_uops_0_2_bits_bp_debug_if),
-    .io_dis_uops_0_2_bits_bp_xcpt_if      (_dispatcher_io_dis_uops_0_2_bits_bp_xcpt_if),
-    .io_dis_uops_0_2_bits_debug_fsrc      (_dispatcher_io_dis_uops_0_2_bits_debug_fsrc),
-    .io_dis_uops_0_2_bits_debug_tsrc      (_dispatcher_io_dis_uops_0_2_bits_debug_tsrc)
+    .io_ren_uops_0_valid        (dis_fire_0),	// core.scala:708:62
+    .io_ren_uops_0_bits_iq_type (_rename_stage_io_ren2_uops_0_iq_type),	// core.scala:100:32
+    .io_ren_uops_1_valid        (dis_fire_1),	// core.scala:708:62
+    .io_ren_uops_1_bits_iq_type (_rename_stage_io_ren2_uops_1_iq_type),	// core.scala:100:32
+    .io_ren_uops_2_valid        (dis_fire_2),	// core.scala:708:62
+    .io_ren_uops_2_bits_iq_type (_rename_stage_io_ren2_uops_2_iq_type),	// core.scala:100:32
+    .io_dis_uops_2_0_ready      (_fp_pipeline_io_dis_uops_0_ready),	// core.scala:77:37
+    .io_dis_uops_2_1_ready      (_fp_pipeline_io_dis_uops_1_ready),	// core.scala:77:37
+    .io_dis_uops_2_2_ready      (_fp_pipeline_io_dis_uops_2_ready),	// core.scala:77:37
+    .io_dis_uops_1_0_ready      (_int_issue_unit_io_dis_uops_0_ready),	// core.scala:107:32
+    .io_dis_uops_1_1_ready      (_int_issue_unit_io_dis_uops_1_ready),	// core.scala:107:32
+    .io_dis_uops_1_2_ready      (_int_issue_unit_io_dis_uops_2_ready),	// core.scala:107:32
+    .io_dis_uops_0_0_ready      (_mem_issue_unit_io_dis_uops_0_ready),	// core.scala:105:32
+    .io_dis_uops_0_1_ready      (_mem_issue_unit_io_dis_uops_1_ready),	// core.scala:105:32
+    .io_dis_uops_0_2_ready      (_mem_issue_unit_io_dis_uops_2_ready),	// core.scala:105:32
+    .io_ren_uops_0_ready        (_dispatcher_io_ren_uops_0_ready),
+    .io_ren_uops_1_ready        (_dispatcher_io_ren_uops_1_ready),
+    .io_ren_uops_2_ready        (_dispatcher_io_ren_uops_2_ready),
+    .io_dis_uops_2_0_valid      (_dispatcher_io_dis_uops_2_0_valid),
+    .io_dis_uops_2_1_valid      (_dispatcher_io_dis_uops_2_1_valid),
+    .io_dis_uops_2_2_valid      (_dispatcher_io_dis_uops_2_2_valid),
+    .io_dis_uops_1_0_valid      (_dispatcher_io_dis_uops_1_0_valid),
+    .io_dis_uops_1_1_valid      (_dispatcher_io_dis_uops_1_1_valid),
+    .io_dis_uops_1_2_valid      (_dispatcher_io_dis_uops_1_2_valid),
+    .io_dis_uops_0_0_valid      (_dispatcher_io_dis_uops_0_0_valid),
+    .io_dis_uops_0_1_valid      (_dispatcher_io_dis_uops_0_1_valid),
+    .io_dis_uops_0_2_valid      (_dispatcher_io_dis_uops_0_2_valid)
   );
   RegisterFileSynthesizable_4 iregfile (	// core.scala:113:32
     .clock                      (clock),
     .reset                      (reset),
-    .io_read_ports_0_addr       (_iregister_read_io_rf_read_ports_0_addr),	// core.scala:132:32
-    .io_read_ports_1_addr       (_iregister_read_io_rf_read_ports_1_addr),	// core.scala:132:32
-    .io_read_ports_2_addr       (_iregister_read_io_rf_read_ports_2_addr),	// core.scala:132:32
-    .io_read_ports_3_addr       (_iregister_read_io_rf_read_ports_3_addr),	// core.scala:132:32
-    .io_read_ports_4_addr       (_iregister_read_io_rf_read_ports_4_addr),	// core.scala:132:32
-    .io_read_ports_5_addr       (_iregister_read_io_rf_read_ports_5_addr),	// core.scala:132:32
-    .io_read_ports_6_addr       (_iregister_read_io_rf_read_ports_6_addr),	// core.scala:132:32
-    .io_read_ports_7_addr       (_iregister_read_io_rf_read_ports_7_addr),	// core.scala:132:32
+    .io_read_ports_0_addr       (_mem_issue_unit_io_iss_uops_0_prs1),	// core.scala:105:32
+    .io_read_ports_1_addr       (_mem_issue_unit_io_iss_uops_0_prs2),	// core.scala:105:32
+    .io_read_ports_2_addr       (_int_issue_unit_io_iss_uops_0_prs1),	// core.scala:107:32
+    .io_read_ports_3_addr       (_int_issue_unit_io_iss_uops_0_prs2),	// core.scala:107:32
+    .io_read_ports_4_addr       (_int_issue_unit_io_iss_uops_1_prs1),	// core.scala:107:32
+    .io_read_ports_5_addr       (_int_issue_unit_io_iss_uops_1_prs2),	// core.scala:107:32
+    .io_read_ports_6_addr       (_int_issue_unit_io_iss_uops_2_prs1),	// core.scala:107:32
+    .io_read_ports_7_addr       (_int_issue_unit_io_iss_uops_2_prs2),	// core.scala:107:32
     .io_write_ports_0_valid
       (_ll_wbarb_io_out_valid & _iregfile_io_write_ports_0_wport_valid_T),	// core.scala:129:32, :789:92, regfile.scala:57:35
     .io_write_ports_0_bits_addr (_ll_wbarb_io_out_bits_uop_pdst),	// core.scala:129:32
@@ -6757,12 +4615,12 @@ module BoomCore_1(
     .io_read_ports_7_data       (_iregfile_io_read_ports_7_data)
   );
   Arbiter_42 ll_wbarb (	// core.scala:129:32
-    .io_in_0_valid              (_mem_units_0_io_ll_iresp_valid),	// execution-units.scala:108:30
-    .io_in_0_bits_uop_rob_idx   (_mem_units_0_io_ll_iresp_bits_uop_rob_idx),	// execution-units.scala:108:30
-    .io_in_0_bits_uop_pdst      (_mem_units_0_io_ll_iresp_bits_uop_pdst),	// execution-units.scala:108:30
-    .io_in_0_bits_uop_is_amo    (_mem_units_0_io_ll_iresp_bits_uop_is_amo),	// execution-units.scala:108:30
-    .io_in_0_bits_uop_uses_stq  (_mem_units_0_io_ll_iresp_bits_uop_uses_stq),	// execution-units.scala:108:30
-    .io_in_0_bits_uop_dst_rtype (_mem_units_0_io_ll_iresp_bits_uop_dst_rtype),	// execution-units.scala:108:30
+    .io_in_0_valid              (io_lsu_exe_0_iresp_valid),
+    .io_in_0_bits_uop_rob_idx   (io_lsu_exe_0_iresp_bits_uop_rob_idx),
+    .io_in_0_bits_uop_pdst      (io_lsu_exe_0_iresp_bits_uop_pdst),
+    .io_in_0_bits_uop_is_amo    (io_lsu_exe_0_iresp_bits_uop_is_amo),
+    .io_in_0_bits_uop_uses_stq  (io_lsu_exe_0_iresp_bits_uop_uses_stq),
+    .io_in_0_bits_uop_dst_rtype (io_lsu_exe_0_iresp_bits_uop_dst_rtype),
     .io_in_0_bits_data          (_mem_units_0_io_ll_iresp_bits_data[63:0]),	// core.scala:1131:21, execution-units.scala:108:30
     .io_in_1_valid              (_fp_pipeline_io_to_int_valid),	// core.scala:77:37
     .io_in_1_bits_uop_rob_idx   (_fp_pipeline_io_to_int_bits_uop_rob_idx),	// core.scala:77:37
@@ -6998,18 +4856,19 @@ module BoomCore_1(
     .io_rf_read_ports_6_data                (_iregfile_io_read_ports_6_data),	// core.scala:113:32
     .io_rf_read_ports_7_data                (_iregfile_io_read_ports_7_data),	// core.scala:113:32
     .io_bypass_0_valid                      (_jmp_unit_io_bypass_0_valid),	// execution-units.scala:119:32
-    .io_bypass_0_bits_uop_pdst              (_jmp_unit_io_bypass_0_bits_uop_pdst),	// execution-units.scala:119:32
-    .io_bypass_0_bits_uop_dst_rtype         (_jmp_unit_io_bypass_0_bits_uop_dst_rtype),	// execution-units.scala:119:32
+    .io_bypass_0_bits_uop_pdst              (_iregister_read_io_exe_reqs_1_bits_uop_pdst),	// core.scala:132:32
+    .io_bypass_0_bits_uop_dst_rtype
+      (_iregister_read_io_exe_reqs_1_bits_uop_dst_rtype),	// core.scala:132:32
     .io_bypass_0_bits_data                  (_jmp_unit_io_bypass_0_bits_data[63:0]),	// core.scala:1078:32, execution-units.scala:119:32
     .io_bypass_1_valid                      (_csr_exe_unit_io_bypass_0_valid),	// execution-units.scala:119:32
-    .io_bypass_1_bits_uop_pdst              (_csr_exe_unit_io_bypass_0_bits_uop_pdst),	// execution-units.scala:119:32
+    .io_bypass_1_bits_uop_pdst              (_iregister_read_io_exe_reqs_2_bits_uop_pdst),	// core.scala:132:32
     .io_bypass_1_bits_uop_dst_rtype
-      (_csr_exe_unit_io_bypass_0_bits_uop_dst_rtype),	// execution-units.scala:119:32
+      (_iregister_read_io_exe_reqs_2_bits_uop_dst_rtype),	// core.scala:132:32
     .io_bypass_1_bits_data                  (_csr_exe_unit_io_bypass_0_bits_data[63:0]),	// core.scala:1078:32, execution-units.scala:119:32
     .io_bypass_2_valid                      (_alu_exe_unit_io_bypass_0_valid),	// execution-units.scala:119:32
-    .io_bypass_2_bits_uop_pdst              (_alu_exe_unit_io_bypass_0_bits_uop_pdst),	// execution-units.scala:119:32
+    .io_bypass_2_bits_uop_pdst              (_iregister_read_io_exe_reqs_3_bits_uop_pdst),	// core.scala:132:32
     .io_bypass_2_bits_uop_dst_rtype
-      (_alu_exe_unit_io_bypass_0_bits_uop_dst_rtype),	// execution-units.scala:119:32
+      (_iregister_read_io_exe_reqs_3_bits_uop_dst_rtype),	// core.scala:132:32
     .io_bypass_2_bits_data                  (_alu_exe_unit_io_bypass_0_bits_data[63:0]),	// core.scala:1078:32, execution-units.scala:119:32
     .io_bypass_3_valid                      (_alu_exe_unit_io_bypass_1_valid),	// execution-units.scala:119:32
     .io_bypass_3_bits_uop_pdst              (_alu_exe_unit_io_bypass_1_bits_uop_pdst),	// execution-units.scala:119:32
@@ -7024,157 +4883,90 @@ module BoomCore_1(
     .io_kill                                (iregister_read_io_kill_REG),	// core.scala:981:38
     .io_brupdate_b1_resolve_mask            (b1_resolve_mask),	// core.scala:196:72
     .io_brupdate_b1_mispredict_mask         (b1_mispredict_mask),	// core.scala:197:93
-    .io_rf_read_ports_0_addr                (_iregister_read_io_rf_read_ports_0_addr),
-    .io_rf_read_ports_1_addr                (_iregister_read_io_rf_read_ports_1_addr),
-    .io_rf_read_ports_2_addr                (_iregister_read_io_rf_read_ports_2_addr),
-    .io_rf_read_ports_3_addr                (_iregister_read_io_rf_read_ports_3_addr),
-    .io_rf_read_ports_4_addr                (_iregister_read_io_rf_read_ports_4_addr),
-    .io_rf_read_ports_5_addr                (_iregister_read_io_rf_read_ports_5_addr),
-    .io_rf_read_ports_6_addr                (_iregister_read_io_rf_read_ports_6_addr),
-    .io_rf_read_ports_7_addr                (_iregister_read_io_rf_read_ports_7_addr),
     .io_exe_reqs_0_valid                    (_iregister_read_io_exe_reqs_0_valid),
     .io_exe_reqs_0_bits_uop_uopc            (_iregister_read_io_exe_reqs_0_bits_uop_uopc),
-    .io_exe_reqs_0_bits_uop_inst            (_iregister_read_io_exe_reqs_0_bits_uop_inst),
-    .io_exe_reqs_0_bits_uop_debug_inst
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_inst),
-    .io_exe_reqs_0_bits_uop_is_rvc
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_rvc),
-    .io_exe_reqs_0_bits_uop_debug_pc
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_pc),
-    .io_exe_reqs_0_bits_uop_iq_type
-      (_iregister_read_io_exe_reqs_0_bits_uop_iq_type),
+    .io_exe_reqs_0_bits_uop_inst            (io_lsu_exe_0_req_bits_uop_inst),
+    .io_exe_reqs_0_bits_uop_debug_inst      (io_lsu_exe_0_req_bits_uop_debug_inst),
+    .io_exe_reqs_0_bits_uop_is_rvc          (io_lsu_exe_0_req_bits_uop_is_rvc),
+    .io_exe_reqs_0_bits_uop_debug_pc        (io_lsu_exe_0_req_bits_uop_debug_pc),
+    .io_exe_reqs_0_bits_uop_iq_type         (io_lsu_exe_0_req_bits_uop_iq_type),
     .io_exe_reqs_0_bits_uop_fu_code
       (_iregister_read_io_exe_reqs_0_bits_uop_fu_code),
-    .io_exe_reqs_0_bits_uop_ctrl_br_type
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_br_type),
-    .io_exe_reqs_0_bits_uop_ctrl_op1_sel
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_op1_sel),
-    .io_exe_reqs_0_bits_uop_ctrl_op2_sel
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_op2_sel),
-    .io_exe_reqs_0_bits_uop_ctrl_imm_sel
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_imm_sel),
-    .io_exe_reqs_0_bits_uop_ctrl_op_fcn
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_op_fcn),
-    .io_exe_reqs_0_bits_uop_ctrl_fcn_dw
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_fcn_dw),
-    .io_exe_reqs_0_bits_uop_ctrl_is_load
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_load),
-    .io_exe_reqs_0_bits_uop_ctrl_is_sta
-      (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_sta),
+    .io_exe_reqs_0_bits_uop_ctrl_br_type    (io_lsu_exe_0_req_bits_uop_ctrl_br_type),
+    .io_exe_reqs_0_bits_uop_ctrl_op1_sel    (io_lsu_exe_0_req_bits_uop_ctrl_op1_sel),
+    .io_exe_reqs_0_bits_uop_ctrl_op2_sel    (io_lsu_exe_0_req_bits_uop_ctrl_op2_sel),
+    .io_exe_reqs_0_bits_uop_ctrl_imm_sel    (io_lsu_exe_0_req_bits_uop_ctrl_imm_sel),
+    .io_exe_reqs_0_bits_uop_ctrl_op_fcn     (io_lsu_exe_0_req_bits_uop_ctrl_op_fcn),
+    .io_exe_reqs_0_bits_uop_ctrl_fcn_dw     (io_lsu_exe_0_req_bits_uop_ctrl_fcn_dw),
+    .io_exe_reqs_0_bits_uop_ctrl_is_load    (io_lsu_exe_0_req_bits_uop_ctrl_is_load),
+    .io_exe_reqs_0_bits_uop_ctrl_is_sta     (io_lsu_exe_0_req_bits_uop_ctrl_is_sta),
     .io_exe_reqs_0_bits_uop_ctrl_is_std
       (_iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_std),
-    .io_exe_reqs_0_bits_uop_iw_state
-      (_iregister_read_io_exe_reqs_0_bits_uop_iw_state),
-    .io_exe_reqs_0_bits_uop_is_br
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_br),
-    .io_exe_reqs_0_bits_uop_is_jalr
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_jalr),
-    .io_exe_reqs_0_bits_uop_is_jal
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_jal),
-    .io_exe_reqs_0_bits_uop_is_sfb
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_sfb),
+    .io_exe_reqs_0_bits_uop_iw_state        (io_lsu_exe_0_req_bits_uop_iw_state),
+    .io_exe_reqs_0_bits_uop_is_br           (io_lsu_exe_0_req_bits_uop_is_br),
+    .io_exe_reqs_0_bits_uop_is_jalr         (io_lsu_exe_0_req_bits_uop_is_jalr),
+    .io_exe_reqs_0_bits_uop_is_jal          (io_lsu_exe_0_req_bits_uop_is_jal),
+    .io_exe_reqs_0_bits_uop_is_sfb          (io_lsu_exe_0_req_bits_uop_is_sfb),
     .io_exe_reqs_0_bits_uop_br_mask
       (_iregister_read_io_exe_reqs_0_bits_uop_br_mask),
-    .io_exe_reqs_0_bits_uop_br_tag
-      (_iregister_read_io_exe_reqs_0_bits_uop_br_tag),
-    .io_exe_reqs_0_bits_uop_ftq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_ftq_idx),
-    .io_exe_reqs_0_bits_uop_edge_inst
-      (_iregister_read_io_exe_reqs_0_bits_uop_edge_inst),
-    .io_exe_reqs_0_bits_uop_pc_lob
-      (_iregister_read_io_exe_reqs_0_bits_uop_pc_lob),
-    .io_exe_reqs_0_bits_uop_taken
-      (_iregister_read_io_exe_reqs_0_bits_uop_taken),
+    .io_exe_reqs_0_bits_uop_br_tag          (io_lsu_exe_0_req_bits_uop_br_tag),
+    .io_exe_reqs_0_bits_uop_ftq_idx         (io_lsu_exe_0_req_bits_uop_ftq_idx),
+    .io_exe_reqs_0_bits_uop_edge_inst       (io_lsu_exe_0_req_bits_uop_edge_inst),
+    .io_exe_reqs_0_bits_uop_pc_lob          (io_lsu_exe_0_req_bits_uop_pc_lob),
+    .io_exe_reqs_0_bits_uop_taken           (io_lsu_exe_0_req_bits_uop_taken),
     .io_exe_reqs_0_bits_uop_imm_packed
       (_iregister_read_io_exe_reqs_0_bits_uop_imm_packed),
-    .io_exe_reqs_0_bits_uop_csr_addr
-      (_iregister_read_io_exe_reqs_0_bits_uop_csr_addr),
-    .io_exe_reqs_0_bits_uop_rob_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_rob_idx),
-    .io_exe_reqs_0_bits_uop_ldq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_ldq_idx),
-    .io_exe_reqs_0_bits_uop_stq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_stq_idx),
-    .io_exe_reqs_0_bits_uop_rxq_idx
-      (_iregister_read_io_exe_reqs_0_bits_uop_rxq_idx),
-    .io_exe_reqs_0_bits_uop_pdst            (_iregister_read_io_exe_reqs_0_bits_uop_pdst),
-    .io_exe_reqs_0_bits_uop_prs1            (_iregister_read_io_exe_reqs_0_bits_uop_prs1),
-    .io_exe_reqs_0_bits_uop_prs2            (_iregister_read_io_exe_reqs_0_bits_uop_prs2),
-    .io_exe_reqs_0_bits_uop_prs3            (_iregister_read_io_exe_reqs_0_bits_uop_prs3),
-    .io_exe_reqs_0_bits_uop_ppred
-      (_iregister_read_io_exe_reqs_0_bits_uop_ppred),
-    .io_exe_reqs_0_bits_uop_prs1_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_prs1_busy),
-    .io_exe_reqs_0_bits_uop_prs2_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_prs2_busy),
-    .io_exe_reqs_0_bits_uop_prs3_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_prs3_busy),
-    .io_exe_reqs_0_bits_uop_ppred_busy
-      (_iregister_read_io_exe_reqs_0_bits_uop_ppred_busy),
-    .io_exe_reqs_0_bits_uop_stale_pdst
-      (_iregister_read_io_exe_reqs_0_bits_uop_stale_pdst),
-    .io_exe_reqs_0_bits_uop_exception
-      (_iregister_read_io_exe_reqs_0_bits_uop_exception),
-    .io_exe_reqs_0_bits_uop_exc_cause
-      (_iregister_read_io_exe_reqs_0_bits_uop_exc_cause),
-    .io_exe_reqs_0_bits_uop_bypassable
-      (_iregister_read_io_exe_reqs_0_bits_uop_bypassable),
+    .io_exe_reqs_0_bits_uop_csr_addr        (io_lsu_exe_0_req_bits_uop_csr_addr),
+    .io_exe_reqs_0_bits_uop_rob_idx         (io_lsu_exe_0_req_bits_uop_rob_idx),
+    .io_exe_reqs_0_bits_uop_ldq_idx         (io_lsu_exe_0_req_bits_uop_ldq_idx),
+    .io_exe_reqs_0_bits_uop_stq_idx         (io_lsu_exe_0_req_bits_uop_stq_idx),
+    .io_exe_reqs_0_bits_uop_rxq_idx         (io_lsu_exe_0_req_bits_uop_rxq_idx),
+    .io_exe_reqs_0_bits_uop_pdst            (io_lsu_exe_0_req_bits_uop_pdst),
+    .io_exe_reqs_0_bits_uop_prs1            (io_lsu_exe_0_req_bits_uop_prs1),
+    .io_exe_reqs_0_bits_uop_prs2            (io_lsu_exe_0_req_bits_uop_prs2),
+    .io_exe_reqs_0_bits_uop_prs3            (io_lsu_exe_0_req_bits_uop_prs3),
+    .io_exe_reqs_0_bits_uop_ppred           (io_lsu_exe_0_req_bits_uop_ppred),
+    .io_exe_reqs_0_bits_uop_prs1_busy       (io_lsu_exe_0_req_bits_uop_prs1_busy),
+    .io_exe_reqs_0_bits_uop_prs2_busy       (io_lsu_exe_0_req_bits_uop_prs2_busy),
+    .io_exe_reqs_0_bits_uop_prs3_busy       (io_lsu_exe_0_req_bits_uop_prs3_busy),
+    .io_exe_reqs_0_bits_uop_ppred_busy      (io_lsu_exe_0_req_bits_uop_ppred_busy),
+    .io_exe_reqs_0_bits_uop_stale_pdst      (io_lsu_exe_0_req_bits_uop_stale_pdst),
+    .io_exe_reqs_0_bits_uop_exception       (io_lsu_exe_0_req_bits_uop_exception),
+    .io_exe_reqs_0_bits_uop_exc_cause       (io_lsu_exe_0_req_bits_uop_exc_cause),
+    .io_exe_reqs_0_bits_uop_bypassable      (io_lsu_exe_0_req_bits_uop_bypassable),
     .io_exe_reqs_0_bits_uop_mem_cmd
       (_iregister_read_io_exe_reqs_0_bits_uop_mem_cmd),
     .io_exe_reqs_0_bits_uop_mem_size
       (_iregister_read_io_exe_reqs_0_bits_uop_mem_size),
-    .io_exe_reqs_0_bits_uop_mem_signed
-      (_iregister_read_io_exe_reqs_0_bits_uop_mem_signed),
-    .io_exe_reqs_0_bits_uop_is_fence
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_fence),
-    .io_exe_reqs_0_bits_uop_is_fencei
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_fencei),
-    .io_exe_reqs_0_bits_uop_is_amo
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_amo),
-    .io_exe_reqs_0_bits_uop_uses_ldq
-      (_iregister_read_io_exe_reqs_0_bits_uop_uses_ldq),
-    .io_exe_reqs_0_bits_uop_uses_stq
-      (_iregister_read_io_exe_reqs_0_bits_uop_uses_stq),
-    .io_exe_reqs_0_bits_uop_is_sys_pc2epc
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_sys_pc2epc),
-    .io_exe_reqs_0_bits_uop_is_unique
-      (_iregister_read_io_exe_reqs_0_bits_uop_is_unique),
-    .io_exe_reqs_0_bits_uop_flush_on_commit
-      (_iregister_read_io_exe_reqs_0_bits_uop_flush_on_commit),
-    .io_exe_reqs_0_bits_uop_ldst_is_rs1
-      (_iregister_read_io_exe_reqs_0_bits_uop_ldst_is_rs1),
-    .io_exe_reqs_0_bits_uop_ldst            (_iregister_read_io_exe_reqs_0_bits_uop_ldst),
-    .io_exe_reqs_0_bits_uop_lrs1            (_iregister_read_io_exe_reqs_0_bits_uop_lrs1),
-    .io_exe_reqs_0_bits_uop_lrs2            (_iregister_read_io_exe_reqs_0_bits_uop_lrs2),
-    .io_exe_reqs_0_bits_uop_lrs3            (_iregister_read_io_exe_reqs_0_bits_uop_lrs3),
-    .io_exe_reqs_0_bits_uop_ldst_val
-      (_iregister_read_io_exe_reqs_0_bits_uop_ldst_val),
-    .io_exe_reqs_0_bits_uop_dst_rtype
-      (_iregister_read_io_exe_reqs_0_bits_uop_dst_rtype),
-    .io_exe_reqs_0_bits_uop_lrs1_rtype
-      (_iregister_read_io_exe_reqs_0_bits_uop_lrs1_rtype),
-    .io_exe_reqs_0_bits_uop_lrs2_rtype
-      (_iregister_read_io_exe_reqs_0_bits_uop_lrs2_rtype),
-    .io_exe_reqs_0_bits_uop_frs3_en
-      (_iregister_read_io_exe_reqs_0_bits_uop_frs3_en),
+    .io_exe_reqs_0_bits_uop_mem_signed      (io_lsu_exe_0_req_bits_uop_mem_signed),
+    .io_exe_reqs_0_bits_uop_is_fence        (io_lsu_exe_0_req_bits_uop_is_fence),
+    .io_exe_reqs_0_bits_uop_is_fencei       (io_lsu_exe_0_req_bits_uop_is_fencei),
+    .io_exe_reqs_0_bits_uop_is_amo          (io_lsu_exe_0_req_bits_uop_is_amo),
+    .io_exe_reqs_0_bits_uop_uses_ldq        (io_lsu_exe_0_req_bits_uop_uses_ldq),
+    .io_exe_reqs_0_bits_uop_uses_stq        (io_lsu_exe_0_req_bits_uop_uses_stq),
+    .io_exe_reqs_0_bits_uop_is_sys_pc2epc   (io_lsu_exe_0_req_bits_uop_is_sys_pc2epc),
+    .io_exe_reqs_0_bits_uop_is_unique       (io_lsu_exe_0_req_bits_uop_is_unique),
+    .io_exe_reqs_0_bits_uop_flush_on_commit (io_lsu_exe_0_req_bits_uop_flush_on_commit),
+    .io_exe_reqs_0_bits_uop_ldst_is_rs1     (io_lsu_exe_0_req_bits_uop_ldst_is_rs1),
+    .io_exe_reqs_0_bits_uop_ldst            (io_lsu_exe_0_req_bits_uop_ldst),
+    .io_exe_reqs_0_bits_uop_lrs1            (io_lsu_exe_0_req_bits_uop_lrs1),
+    .io_exe_reqs_0_bits_uop_lrs2            (io_lsu_exe_0_req_bits_uop_lrs2),
+    .io_exe_reqs_0_bits_uop_lrs3            (io_lsu_exe_0_req_bits_uop_lrs3),
+    .io_exe_reqs_0_bits_uop_ldst_val        (io_lsu_exe_0_req_bits_uop_ldst_val),
+    .io_exe_reqs_0_bits_uop_dst_rtype       (io_lsu_exe_0_req_bits_uop_dst_rtype),
+    .io_exe_reqs_0_bits_uop_lrs1_rtype      (io_lsu_exe_0_req_bits_uop_lrs1_rtype),
+    .io_exe_reqs_0_bits_uop_lrs2_rtype      (io_lsu_exe_0_req_bits_uop_lrs2_rtype),
+    .io_exe_reqs_0_bits_uop_frs3_en         (io_lsu_exe_0_req_bits_uop_frs3_en),
     .io_exe_reqs_0_bits_uop_fp_val
       (_iregister_read_io_exe_reqs_0_bits_uop_fp_val),
-    .io_exe_reqs_0_bits_uop_fp_single
-      (_iregister_read_io_exe_reqs_0_bits_uop_fp_single),
-    .io_exe_reqs_0_bits_uop_xcpt_pf_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_xcpt_pf_if),
-    .io_exe_reqs_0_bits_uop_xcpt_ae_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_xcpt_ae_if),
-    .io_exe_reqs_0_bits_uop_xcpt_ma_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_xcpt_ma_if),
-    .io_exe_reqs_0_bits_uop_bp_debug_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_bp_debug_if),
-    .io_exe_reqs_0_bits_uop_bp_xcpt_if
-      (_iregister_read_io_exe_reqs_0_bits_uop_bp_xcpt_if),
-    .io_exe_reqs_0_bits_uop_debug_fsrc
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_fsrc),
-    .io_exe_reqs_0_bits_uop_debug_tsrc
-      (_iregister_read_io_exe_reqs_0_bits_uop_debug_tsrc),
+    .io_exe_reqs_0_bits_uop_fp_single       (io_lsu_exe_0_req_bits_uop_fp_single),
+    .io_exe_reqs_0_bits_uop_xcpt_pf_if      (io_lsu_exe_0_req_bits_uop_xcpt_pf_if),
+    .io_exe_reqs_0_bits_uop_xcpt_ae_if      (io_lsu_exe_0_req_bits_uop_xcpt_ae_if),
+    .io_exe_reqs_0_bits_uop_xcpt_ma_if      (io_lsu_exe_0_req_bits_uop_xcpt_ma_if),
+    .io_exe_reqs_0_bits_uop_bp_debug_if     (io_lsu_exe_0_req_bits_uop_bp_debug_if),
+    .io_exe_reqs_0_bits_uop_bp_xcpt_if      (io_lsu_exe_0_req_bits_uop_bp_xcpt_if),
+    .io_exe_reqs_0_bits_uop_debug_fsrc      (io_lsu_exe_0_req_bits_uop_debug_fsrc),
+    .io_exe_reqs_0_bits_uop_debug_tsrc      (io_lsu_exe_0_req_bits_uop_debug_tsrc),
     .io_exe_reqs_0_bits_rs1_data            (_iregister_read_io_exe_reqs_0_bits_rs1_data),
     .io_exe_reqs_0_bits_rs2_data            (_iregister_read_io_exe_reqs_0_bits_rs2_data),
     .io_exe_reqs_1_valid                    (_iregister_read_io_exe_reqs_1_valid),
@@ -7871,6 +5663,21 @@ module BoomCore_1(
   assign io_ptw_sfence_bits_rs2 = io_ifu_sfence_REG_bits_rs2;	// core.scala:470:31
   assign io_ptw_sfence_bits_addr = io_ifu_sfence_REG_bits_addr;	// core.scala:470:31
   assign io_ptw_status_debug = _csr_io_status_debug;	// core.scala:268:19
+  assign io_lsu_exe_0_req_bits_uop_uopc = _iregister_read_io_exe_reqs_0_bits_uop_uopc;	// core.scala:132:32
+  assign io_lsu_exe_0_req_bits_uop_fu_code =
+    _iregister_read_io_exe_reqs_0_bits_uop_fu_code;	// core.scala:132:32
+  assign io_lsu_exe_0_req_bits_uop_ctrl_csr_cmd = 3'h0;	// core.scala:490:34
+  assign io_lsu_exe_0_req_bits_uop_ctrl_is_std =
+    _iregister_read_io_exe_reqs_0_bits_uop_ctrl_is_std;	// core.scala:132:32
+  assign io_lsu_exe_0_req_bits_uop_iw_p1_poisoned = 1'h0;	// core.scala:77:37, :98:79, :100:32, :101:46, :102:33, :105:32, :107:32, :111:32, :119:32, :129:32, :132:32, :140:32, :155:24, :171:24, :172:27, :268:19, :683:73, execution-units.scala:108:30, :119:32
+  assign io_lsu_exe_0_req_bits_uop_iw_p2_poisoned = 1'h0;	// core.scala:77:37, :98:79, :100:32, :101:46, :102:33, :105:32, :107:32, :111:32, :119:32, :129:32, :132:32, :140:32, :155:24, :171:24, :172:27, :268:19, :683:73, execution-units.scala:108:30, :119:32
+  assign io_lsu_exe_0_req_bits_uop_imm_packed =
+    _iregister_read_io_exe_reqs_0_bits_uop_imm_packed;	// core.scala:132:32
+  assign io_lsu_exe_0_req_bits_uop_mem_cmd =
+    _iregister_read_io_exe_reqs_0_bits_uop_mem_cmd;	// core.scala:132:32
+  assign io_lsu_exe_0_req_bits_uop_mem_size =
+    _iregister_read_io_exe_reqs_0_bits_uop_mem_size;	// core.scala:132:32
+  assign io_lsu_exe_0_req_bits_uop_fp_val = _iregister_read_io_exe_reqs_0_bits_uop_fp_val;	// core.scala:132:32
   assign io_lsu_exe_0_req_bits_sfence_valid =
     _mem_units_0_io_lsu_io_req_bits_sfence_valid;	// execution-units.scala:108:30
   assign io_lsu_exe_0_req_bits_sfence_bits_rs1 =
@@ -7900,8 +5707,6 @@ module BoomCore_1(
   assign io_lsu_dis_uops_0_bits_imm_packed = _rename_stage_io_ren2_uops_0_imm_packed;	// core.scala:100:32
   assign io_lsu_dis_uops_0_bits_csr_addr = _rename_stage_io_ren2_uops_0_csr_addr;	// core.scala:100:32
   assign io_lsu_dis_uops_0_bits_rob_idx = dis_uops_0_rob_idx;	// core.scala:743:27
-  assign io_lsu_dis_uops_0_bits_ldq_idx = io_lsu_dis_ldq_idx_0;
-  assign io_lsu_dis_uops_0_bits_stq_idx = io_lsu_dis_stq_idx_0;
   assign io_lsu_dis_uops_0_bits_rxq_idx = _rename_stage_io_ren2_uops_0_rxq_idx;	// core.scala:100:32
   assign io_lsu_dis_uops_0_bits_pdst = dis_uops_0_pdst;	// core.scala:653:28
   assign io_lsu_dis_uops_0_bits_prs1 = dis_uops_0_prs1;	// core.scala:648:28
@@ -7967,8 +5772,6 @@ module BoomCore_1(
   assign io_lsu_dis_uops_1_bits_imm_packed = _rename_stage_io_ren2_uops_1_imm_packed;	// core.scala:100:32
   assign io_lsu_dis_uops_1_bits_csr_addr = _rename_stage_io_ren2_uops_1_csr_addr;	// core.scala:100:32
   assign io_lsu_dis_uops_1_bits_rob_idx = dis_uops_1_rob_idx;	// core.scala:743:27
-  assign io_lsu_dis_uops_1_bits_ldq_idx = io_lsu_dis_ldq_idx_1;
-  assign io_lsu_dis_uops_1_bits_stq_idx = io_lsu_dis_stq_idx_1;
   assign io_lsu_dis_uops_1_bits_rxq_idx = _rename_stage_io_ren2_uops_1_rxq_idx;	// core.scala:100:32
   assign io_lsu_dis_uops_1_bits_pdst = dis_uops_1_pdst;	// core.scala:653:28
   assign io_lsu_dis_uops_1_bits_prs1 = dis_uops_1_prs1;	// core.scala:648:28
@@ -8034,8 +5837,6 @@ module BoomCore_1(
   assign io_lsu_dis_uops_2_bits_imm_packed = _rename_stage_io_ren2_uops_2_imm_packed;	// core.scala:100:32
   assign io_lsu_dis_uops_2_bits_csr_addr = _rename_stage_io_ren2_uops_2_csr_addr;	// core.scala:100:32
   assign io_lsu_dis_uops_2_bits_rob_idx = dis_uops_2_rob_idx;	// core.scala:743:27
-  assign io_lsu_dis_uops_2_bits_ldq_idx = io_lsu_dis_ldq_idx_2;
-  assign io_lsu_dis_uops_2_bits_stq_idx = io_lsu_dis_stq_idx_2;
   assign io_lsu_dis_uops_2_bits_rxq_idx = _rename_stage_io_ren2_uops_2_rxq_idx;	// core.scala:100:32
   assign io_lsu_dis_uops_2_bits_pdst = dis_uops_2_pdst;	// core.scala:653:28
   assign io_lsu_dis_uops_2_bits_prs1 = dis_uops_2_prs1;	// core.scala:648:28

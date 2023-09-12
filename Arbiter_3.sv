@@ -108,8 +108,7 @@ module Arbiter_3(
   input  [2:0] io_in_7_bits_id,
                io_in_7_bits_offset,
   input        io_out_ready,
-  output       io_in_0_ready,
-               io_in_1_ready,
+  output       io_in_1_ready,
                io_in_2_ready,
                io_in_3_ready,
                io_in_4_ready,
@@ -127,7 +126,6 @@ module Arbiter_3(
   wire _grant_T_3 = _grant_T_2 | io_in_4_valid;	// Arbiter.scala:31:68
   wire _grant_T_4 = _grant_T_3 | io_in_5_valid;	// Arbiter.scala:31:68
   wire _io_out_valid_T = _grant_T_4 | io_in_6_valid;	// Arbiter.scala:31:68
-  assign io_in_0_ready = io_out_ready;
   assign io_in_1_ready = ~io_in_0_valid & io_out_ready;	// Arbiter.scala:31:78, :134:19
   assign io_in_2_ready = ~_grant_T & io_out_ready;	// Arbiter.scala:31:{68,78}, :134:19
   assign io_in_3_ready = ~_grant_T_1 & io_out_ready;	// Arbiter.scala:31:{68,78}, :134:19

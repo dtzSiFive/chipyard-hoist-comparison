@@ -99,46 +99,13 @@ module HellaCacheArbiter(
                 io_mem_s2_nack,
                 io_mem_resp_valid,
   input  [6:0]  io_mem_resp_bits_tag,
-  input  [1:0]  io_mem_resp_bits_size,
-  input  [63:0] io_mem_resp_bits_data,
-  input         io_mem_resp_bits_replay,
-                io_mem_resp_bits_has_data,
-  input  [63:0] io_mem_resp_bits_data_word_bypass,
-  input         io_mem_replay_next,
-                io_mem_s2_xcpt_ma_ld,
-                io_mem_s2_xcpt_ma_st,
-                io_mem_s2_xcpt_pf_ld,
-                io_mem_s2_xcpt_pf_st,
-                io_mem_s2_xcpt_ae_ld,
-                io_mem_s2_xcpt_ae_st,
-                io_mem_ordered,
-                io_mem_perf_release,
-                io_mem_perf_grant,
-  output        io_requestor_0_req_ready,
-                io_requestor_0_s2_nack,
+  output        io_requestor_0_s2_nack,
                 io_requestor_0_resp_valid,
-  output [63:0] io_requestor_0_resp_bits_data,
-  output        io_requestor_0_s2_xcpt_ae_ld,
                 io_requestor_1_req_ready,
                 io_requestor_1_s2_nack,
                 io_requestor_1_resp_valid,
   output [6:0]  io_requestor_1_resp_bits_tag,
-  output [1:0]  io_requestor_1_resp_bits_size,
-  output [63:0] io_requestor_1_resp_bits_data,
-  output        io_requestor_1_resp_bits_replay,
-                io_requestor_1_resp_bits_has_data,
-  output [63:0] io_requestor_1_resp_bits_data_word_bypass,
-  output        io_requestor_1_replay_next,
-                io_requestor_1_s2_xcpt_ma_ld,
-                io_requestor_1_s2_xcpt_ma_st,
-                io_requestor_1_s2_xcpt_pf_ld,
-                io_requestor_1_s2_xcpt_pf_st,
-                io_requestor_1_s2_xcpt_ae_ld,
-                io_requestor_1_s2_xcpt_ae_st,
-                io_requestor_1_ordered,
-                io_requestor_1_perf_release,
-                io_requestor_1_perf_grant,
-                io_mem_req_valid,
+  output        io_mem_req_valid,
   output [39:0] io_mem_req_bits_addr,
   output [6:0]  io_mem_req_bits_tag,
   output [4:0]  io_mem_req_bits_cmd,
@@ -174,30 +141,12 @@ module HellaCacheArbiter(
       `FIRRTL_AFTER_INITIAL
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  assign io_requestor_0_req_ready = io_mem_req_ready;
   assign io_requestor_0_s2_nack = io_mem_s2_nack & ~s2_id;	// HellaCacheArbiter.scala:20:20, :51:21, :64:49
   assign io_requestor_0_resp_valid = io_mem_resp_valid & ~(io_mem_resp_bits_tag[0]);	// HellaCacheArbiter.scala:59:{41,57}, :60:39
-  assign io_requestor_0_resp_bits_data = io_mem_resp_bits_data;
-  assign io_requestor_0_s2_xcpt_ae_ld = io_mem_s2_xcpt_ae_ld;
   assign io_requestor_1_req_ready = io_mem_req_ready & ~io_requestor_0_req_valid;	// HellaCacheArbiter.scala:27:{64,67}
   assign io_requestor_1_s2_nack = io_mem_s2_nack & s2_id;	// HellaCacheArbiter.scala:20:20, :64:49
   assign io_requestor_1_resp_valid = io_mem_resp_valid & io_mem_resp_bits_tag[0];	// HellaCacheArbiter.scala:59:41, :60:39
   assign io_requestor_1_resp_bits_tag = {1'h0, io_mem_resp_bits_tag[6:1]};	// HellaCacheArbiter.scala:70:{21,45}
-  assign io_requestor_1_resp_bits_size = io_mem_resp_bits_size;
-  assign io_requestor_1_resp_bits_data = io_mem_resp_bits_data;
-  assign io_requestor_1_resp_bits_replay = io_mem_resp_bits_replay;
-  assign io_requestor_1_resp_bits_has_data = io_mem_resp_bits_has_data;
-  assign io_requestor_1_resp_bits_data_word_bypass = io_mem_resp_bits_data_word_bypass;
-  assign io_requestor_1_replay_next = io_mem_replay_next;
-  assign io_requestor_1_s2_xcpt_ma_ld = io_mem_s2_xcpt_ma_ld;
-  assign io_requestor_1_s2_xcpt_ma_st = io_mem_s2_xcpt_ma_st;
-  assign io_requestor_1_s2_xcpt_pf_ld = io_mem_s2_xcpt_pf_ld;
-  assign io_requestor_1_s2_xcpt_pf_st = io_mem_s2_xcpt_pf_st;
-  assign io_requestor_1_s2_xcpt_ae_ld = io_mem_s2_xcpt_ae_ld;
-  assign io_requestor_1_s2_xcpt_ae_st = io_mem_s2_xcpt_ae_st;
-  assign io_requestor_1_ordered = io_mem_ordered;
-  assign io_requestor_1_perf_release = io_mem_perf_release;
-  assign io_requestor_1_perf_grant = io_mem_perf_grant;
   assign io_mem_req_valid = io_requestor_0_req_valid | io_requestor_1_req_valid;	// HellaCacheArbiter.scala:24:63
   assign io_mem_req_bits_addr =
     io_requestor_0_req_valid

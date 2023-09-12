@@ -84,20 +84,6 @@
 
 module ClockSinkDomain_4(
   input         auto_resetCtrl_async_reset_sink_in_reset,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_cbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_cbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_mbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_mbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_fbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_fbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_pbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_pbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_1_clock,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_1_reset,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_implicit_clock_clock,
-                auto_resetCtrl_tile_reset_provider_in_member_allClocks_implicit_clock_reset,
                 auto_resetCtrl_in_a_valid,
   input  [2:0]  auto_resetCtrl_in_a_bits_opcode,
                 auto_resetCtrl_in_a_bits_param,
@@ -110,123 +96,26 @@ module ClockSinkDomain_4(
                 auto_resetCtrl_in_d_ready,
                 auto_clock_in_clock,
                 auto_clock_in_reset,
-  output        auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_cbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_cbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_mbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_mbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_fbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_fbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_pbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_pbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_1_clock,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_1_reset,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_0_clock,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_0_reset,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_implicit_clock_clock,
-                auto_resetCtrl_tile_reset_provider_out_member_allClocks_implicit_clock_reset,
-                auto_resetCtrl_in_a_ready,
-                auto_resetCtrl_in_d_valid,
   output [2:0]  auto_resetCtrl_in_d_bits_opcode,
-  output [1:0]  auto_resetCtrl_in_d_bits_size,
-  output [11:0] auto_resetCtrl_in_d_bits_source,
   output [63:0] auto_resetCtrl_in_d_bits_data
 );
 
   TLTileResetCtrl resetCtrl (	// TileResetCtrl.scala:26:17
-    .clock
-      (auto_clock_in_clock),
-    .reset
-      (auto_clock_in_reset),
-    .auto_async_reset_sink_in_reset
-      (auto_resetCtrl_async_reset_sink_in_reset),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_cbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_cbus_0_clock),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_cbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_cbus_0_reset),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_mbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_mbus_0_clock),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_mbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_mbus_0_reset),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_fbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_fbus_0_clock),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_fbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_fbus_0_reset),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_pbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_pbus_0_clock),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_pbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_pbus_0_reset),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_sbus_1_clock
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_1_clock),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_sbus_1_reset
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_1_reset),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_sbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_0_clock),
-    .auto_tile_reset_provider_in_member_allClocks_subsystem_sbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_subsystem_sbus_0_reset),
-    .auto_tile_reset_provider_in_member_allClocks_implicit_clock_clock
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_implicit_clock_clock),
-    .auto_tile_reset_provider_in_member_allClocks_implicit_clock_reset
-      (auto_resetCtrl_tile_reset_provider_in_member_allClocks_implicit_clock_reset),
-    .auto_in_a_valid
-      (auto_resetCtrl_in_a_valid),
-    .auto_in_a_bits_opcode
-      (auto_resetCtrl_in_a_bits_opcode),
-    .auto_in_a_bits_param
-      (auto_resetCtrl_in_a_bits_param),
-    .auto_in_a_bits_size
-      (auto_resetCtrl_in_a_bits_size),
-    .auto_in_a_bits_source
-      (auto_resetCtrl_in_a_bits_source),
-    .auto_in_a_bits_address
-      (auto_resetCtrl_in_a_bits_address),
-    .auto_in_a_bits_mask
-      (auto_resetCtrl_in_a_bits_mask),
-    .auto_in_a_bits_data
-      (auto_resetCtrl_in_a_bits_data),
-    .auto_in_a_bits_corrupt
-      (auto_resetCtrl_in_a_bits_corrupt),
-    .auto_in_d_ready
-      (auto_resetCtrl_in_d_ready),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_cbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_cbus_0_clock),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_cbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_cbus_0_reset),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_mbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_mbus_0_clock),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_mbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_mbus_0_reset),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_fbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_fbus_0_clock),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_fbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_fbus_0_reset),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_pbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_pbus_0_clock),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_pbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_pbus_0_reset),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_sbus_1_clock
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_1_clock),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_sbus_1_reset
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_1_reset),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_sbus_0_clock
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_0_clock),
-    .auto_tile_reset_provider_out_member_allClocks_subsystem_sbus_0_reset
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_subsystem_sbus_0_reset),
-    .auto_tile_reset_provider_out_member_allClocks_implicit_clock_clock
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_implicit_clock_clock),
-    .auto_tile_reset_provider_out_member_allClocks_implicit_clock_reset
-      (auto_resetCtrl_tile_reset_provider_out_member_allClocks_implicit_clock_reset),
-    .auto_in_a_ready
-      (auto_resetCtrl_in_a_ready),
-    .auto_in_d_valid
-      (auto_resetCtrl_in_d_valid),
-    .auto_in_d_bits_opcode
-      (auto_resetCtrl_in_d_bits_opcode),
-    .auto_in_d_bits_size
-      (auto_resetCtrl_in_d_bits_size),
-    .auto_in_d_bits_source
-      (auto_resetCtrl_in_d_bits_source),
-    .auto_in_d_bits_data
-      (auto_resetCtrl_in_d_bits_data)
+    .clock                          (auto_clock_in_clock),
+    .reset                          (auto_clock_in_reset),
+    .auto_async_reset_sink_in_reset (auto_resetCtrl_async_reset_sink_in_reset),
+    .auto_in_a_valid                (auto_resetCtrl_in_a_valid),
+    .auto_in_a_bits_opcode          (auto_resetCtrl_in_a_bits_opcode),
+    .auto_in_a_bits_param           (auto_resetCtrl_in_a_bits_param),
+    .auto_in_a_bits_size            (auto_resetCtrl_in_a_bits_size),
+    .auto_in_a_bits_source          (auto_resetCtrl_in_a_bits_source),
+    .auto_in_a_bits_address         (auto_resetCtrl_in_a_bits_address),
+    .auto_in_a_bits_mask            (auto_resetCtrl_in_a_bits_mask),
+    .auto_in_a_bits_data            (auto_resetCtrl_in_a_bits_data),
+    .auto_in_a_bits_corrupt         (auto_resetCtrl_in_a_bits_corrupt),
+    .auto_in_d_ready                (auto_resetCtrl_in_d_ready),
+    .auto_in_d_bits_opcode          (auto_resetCtrl_in_d_bits_opcode),
+    .auto_in_d_bits_data            (auto_resetCtrl_in_d_bits_data)
   );
 endmodule
 

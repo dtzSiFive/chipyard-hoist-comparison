@@ -412,18 +412,6 @@ module RegisterRead_1(
   input         io_kill,
   input  [19:0] io_brupdate_b1_resolve_mask,
                 io_brupdate_b1_mispredict_mask,
-  output [6:0]  io_rf_read_ports_0_addr,
-                io_rf_read_ports_1_addr,
-                io_rf_read_ports_2_addr,
-                io_rf_read_ports_3_addr,
-                io_rf_read_ports_4_addr,
-                io_rf_read_ports_5_addr,
-                io_rf_read_ports_6_addr,
-                io_rf_read_ports_7_addr,
-                io_rf_read_ports_8_addr,
-                io_rf_read_ports_9_addr,
-                io_rf_read_ports_10_addr,
-                io_rf_read_ports_11_addr,
   output        io_exe_reqs_0_valid,
   output [6:0]  io_exe_reqs_0_bits_uop_uopc,
   output [31:0] io_exe_reqs_0_bits_uop_inst,
@@ -760,76 +748,20 @@ module RegisterRead_1(
                 io_exe_reqs_5_bits_rs2_data
 );
 
-  wire        _rrd_decode_unit_5_io_rrd_valid;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_5_io_rrd_uop_uopc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_is_rvc;	// register-read.scala:80:33
-  wire [9:0]  _rrd_decode_unit_5_io_rrd_uop_fu_code;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_5_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33
   wire [1:0]  _rrd_decode_unit_5_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_5_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_5_io_rrd_uop_ctrl_imm_sel;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_5_io_rrd_uop_ctrl_op_fcn;	// register-read.scala:80:33
   wire        _rrd_decode_unit_5_io_rrd_uop_ctrl_fcn_dw;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_is_br;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_is_jalr;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_is_jal;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_is_sfb;	// register-read.scala:80:33
-  wire [19:0] _rrd_decode_unit_5_io_rrd_uop_br_mask;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_5_io_rrd_uop_br_tag;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_5_io_rrd_uop_ftq_idx;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_edge_inst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_5_io_rrd_uop_pc_lob;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_taken;	// register-read.scala:80:33
   wire [19:0] _rrd_decode_unit_5_io_rrd_uop_imm_packed;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_5_io_rrd_uop_rob_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_5_io_rrd_uop_ldq_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_5_io_rrd_uop_stq_idx;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_5_io_rrd_uop_pdst;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_5_io_rrd_uop_prs1;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_5_io_rrd_uop_prs2;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_bypassable;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_is_amo;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_5_io_rrd_uop_uses_stq;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_5_io_rrd_uop_dst_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_5_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_5_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_valid;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_4_io_rrd_uop_uopc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_is_rvc;	// register-read.scala:80:33
-  wire [9:0]  _rrd_decode_unit_4_io_rrd_uop_fu_code;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_4_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33
   wire [1:0]  _rrd_decode_unit_4_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_4_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_4_io_rrd_uop_ctrl_imm_sel;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_4_io_rrd_uop_ctrl_op_fcn;	// register-read.scala:80:33
   wire        _rrd_decode_unit_4_io_rrd_uop_ctrl_fcn_dw;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_is_br;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_is_jalr;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_is_jal;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_is_sfb;	// register-read.scala:80:33
-  wire [19:0] _rrd_decode_unit_4_io_rrd_uop_br_mask;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_4_io_rrd_uop_br_tag;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_4_io_rrd_uop_ftq_idx;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_edge_inst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_4_io_rrd_uop_pc_lob;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_taken;	// register-read.scala:80:33
   wire [19:0] _rrd_decode_unit_4_io_rrd_uop_imm_packed;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_4_io_rrd_uop_rob_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_4_io_rrd_uop_ldq_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_4_io_rrd_uop_stq_idx;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_4_io_rrd_uop_pdst;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_4_io_rrd_uop_prs1;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_4_io_rrd_uop_prs2;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_bypassable;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_is_amo;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_4_io_rrd_uop_uses_stq;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_4_io_rrd_uop_dst_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_4_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_4_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_valid;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_3_io_rrd_uop_uopc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_is_rvc;	// register-read.scala:80:33
-  wire [9:0]  _rrd_decode_unit_3_io_rrd_uop_fu_code;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_3_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33
   wire [1:0]  _rrd_decode_unit_3_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_3_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33
@@ -837,37 +769,7 @@ module RegisterRead_1(
   wire [3:0]  _rrd_decode_unit_3_io_rrd_uop_ctrl_op_fcn;	// register-read.scala:80:33
   wire        _rrd_decode_unit_3_io_rrd_uop_ctrl_fcn_dw;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_3_io_rrd_uop_ctrl_csr_cmd;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_is_br;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_is_jalr;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_is_jal;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_is_sfb;	// register-read.scala:80:33
-  wire [19:0] _rrd_decode_unit_3_io_rrd_uop_br_mask;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_3_io_rrd_uop_br_tag;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_3_io_rrd_uop_ftq_idx;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_edge_inst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_3_io_rrd_uop_pc_lob;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_taken;	// register-read.scala:80:33
   wire [19:0] _rrd_decode_unit_3_io_rrd_uop_imm_packed;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_3_io_rrd_uop_rob_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_3_io_rrd_uop_ldq_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_3_io_rrd_uop_stq_idx;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_3_io_rrd_uop_pdst;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_3_io_rrd_uop_prs1;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_3_io_rrd_uop_prs2;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_bypassable;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_is_amo;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_3_io_rrd_uop_uses_stq;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_3_io_rrd_uop_dst_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_3_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_3_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_valid;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_2_io_rrd_uop_uopc;	// register-read.scala:80:33
-  wire [31:0] _rrd_decode_unit_2_io_rrd_uop_inst;	// register-read.scala:80:33
-  wire [31:0] _rrd_decode_unit_2_io_rrd_uop_debug_inst;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_rvc;	// register-read.scala:80:33
-  wire [39:0] _rrd_decode_unit_2_io_rrd_uop_debug_pc;	// register-read.scala:80:33
-  wire [2:0]  _rrd_decode_unit_2_io_rrd_uop_iq_type;	// register-read.scala:80:33
-  wire [9:0]  _rrd_decode_unit_2_io_rrd_uop_fu_code;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_2_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33
   wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_2_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33
@@ -877,74 +779,7 @@ module RegisterRead_1(
   wire        _rrd_decode_unit_2_io_rrd_uop_ctrl_is_load;	// register-read.scala:80:33
   wire        _rrd_decode_unit_2_io_rrd_uop_ctrl_is_sta;	// register-read.scala:80:33
   wire        _rrd_decode_unit_2_io_rrd_uop_ctrl_is_std;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_iw_state;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_br;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_jalr;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_jal;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_sfb;	// register-read.scala:80:33
-  wire [19:0] _rrd_decode_unit_2_io_rrd_uop_br_mask;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_2_io_rrd_uop_br_tag;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_2_io_rrd_uop_ftq_idx;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_edge_inst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_2_io_rrd_uop_pc_lob;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_taken;	// register-read.scala:80:33
   wire [19:0] _rrd_decode_unit_2_io_rrd_uop_imm_packed;	// register-read.scala:80:33
-  wire [11:0] _rrd_decode_unit_2_io_rrd_uop_csr_addr;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_2_io_rrd_uop_rob_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_2_io_rrd_uop_ldq_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_2_io_rrd_uop_stq_idx;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_rxq_idx;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_2_io_rrd_uop_pdst;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_2_io_rrd_uop_prs1;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_2_io_rrd_uop_prs2;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_2_io_rrd_uop_prs3;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_2_io_rrd_uop_ppred;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_prs1_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_prs2_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_prs3_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_ppred_busy;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_2_io_rrd_uop_stale_pdst;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_exception;	// register-read.scala:80:33
-  wire [63:0] _rrd_decode_unit_2_io_rrd_uop_exc_cause;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_bypassable;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_2_io_rrd_uop_mem_cmd;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_mem_size;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_mem_signed;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_fence;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_fencei;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_amo;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_uses_ldq;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_uses_stq;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_sys_pc2epc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_is_unique;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_flush_on_commit;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_ldst_is_rs1;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_2_io_rrd_uop_ldst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_2_io_rrd_uop_lrs1;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_2_io_rrd_uop_lrs2;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_2_io_rrd_uop_lrs3;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_ldst_val;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_dst_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_frs3_en;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_fp_val;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_fp_single;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_xcpt_pf_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_xcpt_ae_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_xcpt_ma_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_bp_debug_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_2_io_rrd_uop_bp_xcpt_if;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_debug_fsrc;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_2_io_rrd_uop_debug_tsrc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_valid;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_1_io_rrd_uop_uopc;	// register-read.scala:80:33
-  wire [31:0] _rrd_decode_unit_1_io_rrd_uop_inst;	// register-read.scala:80:33
-  wire [31:0] _rrd_decode_unit_1_io_rrd_uop_debug_inst;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_rvc;	// register-read.scala:80:33
-  wire [39:0] _rrd_decode_unit_1_io_rrd_uop_debug_pc;	// register-read.scala:80:33
-  wire [2:0]  _rrd_decode_unit_1_io_rrd_uop_iq_type;	// register-read.scala:80:33
-  wire [9:0]  _rrd_decode_unit_1_io_rrd_uop_fu_code;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_1_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33
   wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_1_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33
@@ -954,74 +789,7 @@ module RegisterRead_1(
   wire        _rrd_decode_unit_1_io_rrd_uop_ctrl_is_load;	// register-read.scala:80:33
   wire        _rrd_decode_unit_1_io_rrd_uop_ctrl_is_sta;	// register-read.scala:80:33
   wire        _rrd_decode_unit_1_io_rrd_uop_ctrl_is_std;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_iw_state;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_br;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_jalr;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_jal;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_sfb;	// register-read.scala:80:33
-  wire [19:0] _rrd_decode_unit_1_io_rrd_uop_br_mask;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_1_io_rrd_uop_br_tag;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_1_io_rrd_uop_ftq_idx;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_edge_inst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_1_io_rrd_uop_pc_lob;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_taken;	// register-read.scala:80:33
   wire [19:0] _rrd_decode_unit_1_io_rrd_uop_imm_packed;	// register-read.scala:80:33
-  wire [11:0] _rrd_decode_unit_1_io_rrd_uop_csr_addr;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_1_io_rrd_uop_rob_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_1_io_rrd_uop_ldq_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_1_io_rrd_uop_stq_idx;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_rxq_idx;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_1_io_rrd_uop_pdst;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_1_io_rrd_uop_prs1;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_1_io_rrd_uop_prs2;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_1_io_rrd_uop_prs3;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_1_io_rrd_uop_ppred;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_prs1_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_prs2_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_prs3_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_ppred_busy;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_1_io_rrd_uop_stale_pdst;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_exception;	// register-read.scala:80:33
-  wire [63:0] _rrd_decode_unit_1_io_rrd_uop_exc_cause;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_bypassable;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_1_io_rrd_uop_mem_cmd;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_mem_size;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_mem_signed;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_fence;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_fencei;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_amo;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_uses_ldq;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_uses_stq;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_sys_pc2epc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_is_unique;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_flush_on_commit;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_ldst_is_rs1;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_1_io_rrd_uop_ldst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_1_io_rrd_uop_lrs1;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_1_io_rrd_uop_lrs2;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_1_io_rrd_uop_lrs3;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_ldst_val;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_dst_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_frs3_en;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_fp_val;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_fp_single;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_xcpt_pf_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_xcpt_ae_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_xcpt_ma_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_bp_debug_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_1_io_rrd_uop_bp_xcpt_if;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_debug_fsrc;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_1_io_rrd_uop_debug_tsrc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_valid;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_io_rrd_uop_uopc;	// register-read.scala:80:33
-  wire [31:0] _rrd_decode_unit_io_rrd_uop_inst;	// register-read.scala:80:33
-  wire [31:0] _rrd_decode_unit_io_rrd_uop_debug_inst;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_rvc;	// register-read.scala:80:33
-  wire [39:0] _rrd_decode_unit_io_rrd_uop_debug_pc;	// register-read.scala:80:33
-  wire [2:0]  _rrd_decode_unit_io_rrd_uop_iq_type;	// register-read.scala:80:33
-  wire [9:0]  _rrd_decode_unit_io_rrd_uop_fu_code;	// register-read.scala:80:33
   wire [3:0]  _rrd_decode_unit_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33
   wire [1:0]  _rrd_decode_unit_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33
   wire [2:0]  _rrd_decode_unit_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33
@@ -1031,66 +799,7 @@ module RegisterRead_1(
   wire        _rrd_decode_unit_io_rrd_uop_ctrl_is_load;	// register-read.scala:80:33
   wire        _rrd_decode_unit_io_rrd_uop_ctrl_is_sta;	// register-read.scala:80:33
   wire        _rrd_decode_unit_io_rrd_uop_ctrl_is_std;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_iw_state;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_br;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_jalr;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_jal;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_sfb;	// register-read.scala:80:33
-  wire [19:0] _rrd_decode_unit_io_rrd_uop_br_mask;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_io_rrd_uop_br_tag;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_io_rrd_uop_ftq_idx;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_edge_inst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_io_rrd_uop_pc_lob;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_taken;	// register-read.scala:80:33
   wire [19:0] _rrd_decode_unit_io_rrd_uop_imm_packed;	// register-read.scala:80:33
-  wire [11:0] _rrd_decode_unit_io_rrd_uop_csr_addr;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_io_rrd_uop_rob_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_io_rrd_uop_ldq_idx;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_io_rrd_uop_stq_idx;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_rxq_idx;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_io_rrd_uop_pdst;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_io_rrd_uop_prs1;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_io_rrd_uop_prs2;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_io_rrd_uop_prs3;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_io_rrd_uop_ppred;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_prs1_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_prs2_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_prs3_busy;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_ppred_busy;	// register-read.scala:80:33
-  wire [6:0]  _rrd_decode_unit_io_rrd_uop_stale_pdst;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_exception;	// register-read.scala:80:33
-  wire [63:0] _rrd_decode_unit_io_rrd_uop_exc_cause;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_bypassable;	// register-read.scala:80:33
-  wire [4:0]  _rrd_decode_unit_io_rrd_uop_mem_cmd;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_mem_size;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_mem_signed;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_fence;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_fencei;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_amo;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_uses_ldq;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_uses_stq;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_sys_pc2epc;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_is_unique;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_flush_on_commit;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_ldst_is_rs1;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_io_rrd_uop_ldst;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_io_rrd_uop_lrs1;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_io_rrd_uop_lrs2;	// register-read.scala:80:33
-  wire [5:0]  _rrd_decode_unit_io_rrd_uop_lrs3;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_ldst_val;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_dst_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_frs3_en;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_fp_val;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_fp_single;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_xcpt_pf_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_xcpt_ae_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_xcpt_ma_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_bp_debug_if;	// register-read.scala:80:33
-  wire        _rrd_decode_unit_io_rrd_uop_bp_xcpt_if;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_debug_fsrc;	// register-read.scala:80:33
-  wire [1:0]  _rrd_decode_unit_io_rrd_uop_debug_tsrc;	// register-read.scala:80:33
   reg         exe_reg_valids_0;	// register-read.scala:69:33
   reg         exe_reg_valids_1;	// register-read.scala:69:33
   reg         exe_reg_valids_2;	// register-read.scala:69:33
@@ -2617,15 +2326,14 @@ module RegisterRead_1(
     else	// register-read.scala:125:57
       exe_reg_rs2_data_5 <= io_rf_read_ports_11_data;	// register-read.scala:72:29
     rrd_valids_0_REG <=
-      _rrd_decode_unit_io_rrd_valid
-      & (io_brupdate_b1_mispredict_mask & _rrd_decode_unit_io_rrd_uop_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:80:33, :84:{29,59}, util.scala:118:{51,59}
-    rrd_uops_0_REG_uopc <= _rrd_decode_unit_io_rrd_uop_uopc;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_inst <= _rrd_decode_unit_io_rrd_uop_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_debug_inst <= _rrd_decode_unit_io_rrd_uop_debug_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_rvc <= _rrd_decode_unit_io_rrd_uop_is_rvc;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_debug_pc <= _rrd_decode_unit_io_rrd_uop_debug_pc;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_iq_type <= _rrd_decode_unit_io_rrd_uop_iq_type;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_fu_code <= _rrd_decode_unit_io_rrd_uop_fu_code;	// register-read.scala:80:33, :86:29
+      io_iss_valids_0 & (io_brupdate_b1_mispredict_mask & io_iss_uops_0_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:84:{29,59}, util.scala:118:{51,59}
+    rrd_uops_0_REG_uopc <= io_iss_uops_0_uopc;	// register-read.scala:86:29
+    rrd_uops_0_REG_inst <= io_iss_uops_0_inst;	// register-read.scala:86:29
+    rrd_uops_0_REG_debug_inst <= io_iss_uops_0_debug_inst;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_rvc <= io_iss_uops_0_is_rvc;	// register-read.scala:86:29
+    rrd_uops_0_REG_debug_pc <= io_iss_uops_0_debug_pc;	// register-read.scala:86:29
+    rrd_uops_0_REG_iq_type <= io_iss_uops_0_iq_type;	// register-read.scala:86:29
+    rrd_uops_0_REG_fu_code <= io_iss_uops_0_fu_code;	// register-read.scala:86:29
     rrd_uops_0_REG_ctrl_br_type <= _rrd_decode_unit_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33, :86:29
     rrd_uops_0_REG_ctrl_op1_sel <= _rrd_decode_unit_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_0_REG_ctrl_op2_sel <= _rrd_decode_unit_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33, :86:29
@@ -2635,77 +2343,75 @@ module RegisterRead_1(
     rrd_uops_0_REG_ctrl_is_load <= _rrd_decode_unit_io_rrd_uop_ctrl_is_load;	// register-read.scala:80:33, :86:29
     rrd_uops_0_REG_ctrl_is_sta <= _rrd_decode_unit_io_rrd_uop_ctrl_is_sta;	// register-read.scala:80:33, :86:29
     rrd_uops_0_REG_ctrl_is_std <= _rrd_decode_unit_io_rrd_uop_ctrl_is_std;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_iw_state <= _rrd_decode_unit_io_rrd_uop_iw_state;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_br <= _rrd_decode_unit_io_rrd_uop_is_br;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_jalr <= _rrd_decode_unit_io_rrd_uop_is_jalr;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_jal <= _rrd_decode_unit_io_rrd_uop_is_jal;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_sfb <= _rrd_decode_unit_io_rrd_uop_is_sfb;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_br_mask <=
-      _rrd_decode_unit_io_rrd_uop_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:80:33, :86:29, util.scala:74:{35,37}
-    rrd_uops_0_REG_br_tag <= _rrd_decode_unit_io_rrd_uop_br_tag;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_ftq_idx <= _rrd_decode_unit_io_rrd_uop_ftq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_edge_inst <= _rrd_decode_unit_io_rrd_uop_edge_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_pc_lob <= _rrd_decode_unit_io_rrd_uop_pc_lob;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_taken <= _rrd_decode_unit_io_rrd_uop_taken;	// register-read.scala:80:33, :86:29
+    rrd_uops_0_REG_iw_state <= io_iss_uops_0_iw_state;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_br <= io_iss_uops_0_is_br;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_jalr <= io_iss_uops_0_is_jalr;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_jal <= io_iss_uops_0_is_jal;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_sfb <= io_iss_uops_0_is_sfb;	// register-read.scala:86:29
+    rrd_uops_0_REG_br_mask <= io_iss_uops_0_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:86:29, util.scala:74:{35,37}
+    rrd_uops_0_REG_br_tag <= io_iss_uops_0_br_tag;	// register-read.scala:86:29
+    rrd_uops_0_REG_ftq_idx <= io_iss_uops_0_ftq_idx;	// register-read.scala:86:29
+    rrd_uops_0_REG_edge_inst <= io_iss_uops_0_edge_inst;	// register-read.scala:86:29
+    rrd_uops_0_REG_pc_lob <= io_iss_uops_0_pc_lob;	// register-read.scala:86:29
+    rrd_uops_0_REG_taken <= io_iss_uops_0_taken;	// register-read.scala:86:29
     rrd_uops_0_REG_imm_packed <= _rrd_decode_unit_io_rrd_uop_imm_packed;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_csr_addr <= _rrd_decode_unit_io_rrd_uop_csr_addr;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_rob_idx <= _rrd_decode_unit_io_rrd_uop_rob_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_ldq_idx <= _rrd_decode_unit_io_rrd_uop_ldq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_stq_idx <= _rrd_decode_unit_io_rrd_uop_stq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_rxq_idx <= _rrd_decode_unit_io_rrd_uop_rxq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_pdst <= _rrd_decode_unit_io_rrd_uop_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_prs1 <= _rrd_decode_unit_io_rrd_uop_prs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_prs2 <= _rrd_decode_unit_io_rrd_uop_prs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_prs3 <= _rrd_decode_unit_io_rrd_uop_prs3;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_ppred <= _rrd_decode_unit_io_rrd_uop_ppred;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_prs1_busy <= _rrd_decode_unit_io_rrd_uop_prs1_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_prs2_busy <= _rrd_decode_unit_io_rrd_uop_prs2_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_prs3_busy <= _rrd_decode_unit_io_rrd_uop_prs3_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_ppred_busy <= _rrd_decode_unit_io_rrd_uop_ppred_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_stale_pdst <= _rrd_decode_unit_io_rrd_uop_stale_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_exception <= _rrd_decode_unit_io_rrd_uop_exception;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_exc_cause <= _rrd_decode_unit_io_rrd_uop_exc_cause;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_bypassable <= _rrd_decode_unit_io_rrd_uop_bypassable;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_mem_cmd <= _rrd_decode_unit_io_rrd_uop_mem_cmd;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_mem_size <= _rrd_decode_unit_io_rrd_uop_mem_size;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_mem_signed <= _rrd_decode_unit_io_rrd_uop_mem_signed;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_fence <= _rrd_decode_unit_io_rrd_uop_is_fence;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_fencei <= _rrd_decode_unit_io_rrd_uop_is_fencei;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_amo <= _rrd_decode_unit_io_rrd_uop_is_amo;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_uses_ldq <= _rrd_decode_unit_io_rrd_uop_uses_ldq;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_uses_stq <= _rrd_decode_unit_io_rrd_uop_uses_stq;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_sys_pc2epc <= _rrd_decode_unit_io_rrd_uop_is_sys_pc2epc;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_is_unique <= _rrd_decode_unit_io_rrd_uop_is_unique;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_flush_on_commit <= _rrd_decode_unit_io_rrd_uop_flush_on_commit;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_ldst_is_rs1 <= _rrd_decode_unit_io_rrd_uop_ldst_is_rs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_ldst <= _rrd_decode_unit_io_rrd_uop_ldst;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_lrs1 <= _rrd_decode_unit_io_rrd_uop_lrs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_lrs2 <= _rrd_decode_unit_io_rrd_uop_lrs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_lrs3 <= _rrd_decode_unit_io_rrd_uop_lrs3;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_ldst_val <= _rrd_decode_unit_io_rrd_uop_ldst_val;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_dst_rtype <= _rrd_decode_unit_io_rrd_uop_dst_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_lrs1_rtype <= _rrd_decode_unit_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_lrs2_rtype <= _rrd_decode_unit_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_frs3_en <= _rrd_decode_unit_io_rrd_uop_frs3_en;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_fp_val <= _rrd_decode_unit_io_rrd_uop_fp_val;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_fp_single <= _rrd_decode_unit_io_rrd_uop_fp_single;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_xcpt_pf_if <= _rrd_decode_unit_io_rrd_uop_xcpt_pf_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_xcpt_ae_if <= _rrd_decode_unit_io_rrd_uop_xcpt_ae_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_xcpt_ma_if <= _rrd_decode_unit_io_rrd_uop_xcpt_ma_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_bp_debug_if <= _rrd_decode_unit_io_rrd_uop_bp_debug_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_bp_xcpt_if <= _rrd_decode_unit_io_rrd_uop_bp_xcpt_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_debug_fsrc <= _rrd_decode_unit_io_rrd_uop_debug_fsrc;	// register-read.scala:80:33, :86:29
-    rrd_uops_0_REG_debug_tsrc <= _rrd_decode_unit_io_rrd_uop_debug_tsrc;	// register-read.scala:80:33, :86:29
+    rrd_uops_0_REG_csr_addr <= io_iss_uops_0_csr_addr;	// register-read.scala:86:29
+    rrd_uops_0_REG_rob_idx <= io_iss_uops_0_rob_idx;	// register-read.scala:86:29
+    rrd_uops_0_REG_ldq_idx <= io_iss_uops_0_ldq_idx;	// register-read.scala:86:29
+    rrd_uops_0_REG_stq_idx <= io_iss_uops_0_stq_idx;	// register-read.scala:86:29
+    rrd_uops_0_REG_rxq_idx <= io_iss_uops_0_rxq_idx;	// register-read.scala:86:29
+    rrd_uops_0_REG_pdst <= io_iss_uops_0_pdst;	// register-read.scala:86:29
+    rrd_uops_0_REG_prs1 <= io_iss_uops_0_prs1;	// register-read.scala:86:29
+    rrd_uops_0_REG_prs2 <= io_iss_uops_0_prs2;	// register-read.scala:86:29
+    rrd_uops_0_REG_prs3 <= io_iss_uops_0_prs3;	// register-read.scala:86:29
+    rrd_uops_0_REG_ppred <= io_iss_uops_0_ppred;	// register-read.scala:86:29
+    rrd_uops_0_REG_prs1_busy <= io_iss_uops_0_prs1_busy;	// register-read.scala:86:29
+    rrd_uops_0_REG_prs2_busy <= io_iss_uops_0_prs2_busy;	// register-read.scala:86:29
+    rrd_uops_0_REG_prs3_busy <= io_iss_uops_0_prs3_busy;	// register-read.scala:86:29
+    rrd_uops_0_REG_ppred_busy <= io_iss_uops_0_ppred_busy;	// register-read.scala:86:29
+    rrd_uops_0_REG_stale_pdst <= io_iss_uops_0_stale_pdst;	// register-read.scala:86:29
+    rrd_uops_0_REG_exception <= io_iss_uops_0_exception;	// register-read.scala:86:29
+    rrd_uops_0_REG_exc_cause <= io_iss_uops_0_exc_cause;	// register-read.scala:86:29
+    rrd_uops_0_REG_bypassable <= io_iss_uops_0_bypassable;	// register-read.scala:86:29
+    rrd_uops_0_REG_mem_cmd <= io_iss_uops_0_mem_cmd;	// register-read.scala:86:29
+    rrd_uops_0_REG_mem_size <= io_iss_uops_0_mem_size;	// register-read.scala:86:29
+    rrd_uops_0_REG_mem_signed <= io_iss_uops_0_mem_signed;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_fence <= io_iss_uops_0_is_fence;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_fencei <= io_iss_uops_0_is_fencei;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_amo <= io_iss_uops_0_is_amo;	// register-read.scala:86:29
+    rrd_uops_0_REG_uses_ldq <= io_iss_uops_0_uses_ldq;	// register-read.scala:86:29
+    rrd_uops_0_REG_uses_stq <= io_iss_uops_0_uses_stq;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_sys_pc2epc <= io_iss_uops_0_is_sys_pc2epc;	// register-read.scala:86:29
+    rrd_uops_0_REG_is_unique <= io_iss_uops_0_is_unique;	// register-read.scala:86:29
+    rrd_uops_0_REG_flush_on_commit <= io_iss_uops_0_flush_on_commit;	// register-read.scala:86:29
+    rrd_uops_0_REG_ldst_is_rs1 <= io_iss_uops_0_ldst_is_rs1;	// register-read.scala:86:29
+    rrd_uops_0_REG_ldst <= io_iss_uops_0_ldst;	// register-read.scala:86:29
+    rrd_uops_0_REG_lrs1 <= io_iss_uops_0_lrs1;	// register-read.scala:86:29
+    rrd_uops_0_REG_lrs2 <= io_iss_uops_0_lrs2;	// register-read.scala:86:29
+    rrd_uops_0_REG_lrs3 <= io_iss_uops_0_lrs3;	// register-read.scala:86:29
+    rrd_uops_0_REG_ldst_val <= io_iss_uops_0_ldst_val;	// register-read.scala:86:29
+    rrd_uops_0_REG_dst_rtype <= io_iss_uops_0_dst_rtype;	// register-read.scala:86:29
+    rrd_uops_0_REG_lrs1_rtype <= io_iss_uops_0_lrs1_rtype;	// register-read.scala:86:29
+    rrd_uops_0_REG_lrs2_rtype <= io_iss_uops_0_lrs2_rtype;	// register-read.scala:86:29
+    rrd_uops_0_REG_frs3_en <= io_iss_uops_0_frs3_en;	// register-read.scala:86:29
+    rrd_uops_0_REG_fp_val <= io_iss_uops_0_fp_val;	// register-read.scala:86:29
+    rrd_uops_0_REG_fp_single <= io_iss_uops_0_fp_single;	// register-read.scala:86:29
+    rrd_uops_0_REG_xcpt_pf_if <= io_iss_uops_0_xcpt_pf_if;	// register-read.scala:86:29
+    rrd_uops_0_REG_xcpt_ae_if <= io_iss_uops_0_xcpt_ae_if;	// register-read.scala:86:29
+    rrd_uops_0_REG_xcpt_ma_if <= io_iss_uops_0_xcpt_ma_if;	// register-read.scala:86:29
+    rrd_uops_0_REG_bp_debug_if <= io_iss_uops_0_bp_debug_if;	// register-read.scala:86:29
+    rrd_uops_0_REG_bp_xcpt_if <= io_iss_uops_0_bp_xcpt_if;	// register-read.scala:86:29
+    rrd_uops_0_REG_debug_fsrc <= io_iss_uops_0_debug_fsrc;	// register-read.scala:86:29
+    rrd_uops_0_REG_debug_tsrc <= io_iss_uops_0_debug_tsrc;	// register-read.scala:86:29
     rrd_valids_1_REG <=
-      _rrd_decode_unit_1_io_rrd_valid
-      & (io_brupdate_b1_mispredict_mask & _rrd_decode_unit_1_io_rrd_uop_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:80:33, :84:{29,59}, util.scala:118:{51,59}
-    rrd_uops_1_REG_uopc <= _rrd_decode_unit_1_io_rrd_uop_uopc;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_inst <= _rrd_decode_unit_1_io_rrd_uop_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_debug_inst <= _rrd_decode_unit_1_io_rrd_uop_debug_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_rvc <= _rrd_decode_unit_1_io_rrd_uop_is_rvc;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_debug_pc <= _rrd_decode_unit_1_io_rrd_uop_debug_pc;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_iq_type <= _rrd_decode_unit_1_io_rrd_uop_iq_type;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_fu_code <= _rrd_decode_unit_1_io_rrd_uop_fu_code;	// register-read.scala:80:33, :86:29
+      io_iss_valids_1 & (io_brupdate_b1_mispredict_mask & io_iss_uops_1_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:84:{29,59}, util.scala:118:{51,59}
+    rrd_uops_1_REG_uopc <= io_iss_uops_1_uopc;	// register-read.scala:86:29
+    rrd_uops_1_REG_inst <= io_iss_uops_1_inst;	// register-read.scala:86:29
+    rrd_uops_1_REG_debug_inst <= io_iss_uops_1_debug_inst;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_rvc <= io_iss_uops_1_is_rvc;	// register-read.scala:86:29
+    rrd_uops_1_REG_debug_pc <= io_iss_uops_1_debug_pc;	// register-read.scala:86:29
+    rrd_uops_1_REG_iq_type <= io_iss_uops_1_iq_type;	// register-read.scala:86:29
+    rrd_uops_1_REG_fu_code <= io_iss_uops_1_fu_code;	// register-read.scala:86:29
     rrd_uops_1_REG_ctrl_br_type <= _rrd_decode_unit_1_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33, :86:29
     rrd_uops_1_REG_ctrl_op1_sel <= _rrd_decode_unit_1_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_1_REG_ctrl_op2_sel <= _rrd_decode_unit_1_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33, :86:29
@@ -2715,77 +2421,75 @@ module RegisterRead_1(
     rrd_uops_1_REG_ctrl_is_load <= _rrd_decode_unit_1_io_rrd_uop_ctrl_is_load;	// register-read.scala:80:33, :86:29
     rrd_uops_1_REG_ctrl_is_sta <= _rrd_decode_unit_1_io_rrd_uop_ctrl_is_sta;	// register-read.scala:80:33, :86:29
     rrd_uops_1_REG_ctrl_is_std <= _rrd_decode_unit_1_io_rrd_uop_ctrl_is_std;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_iw_state <= _rrd_decode_unit_1_io_rrd_uop_iw_state;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_br <= _rrd_decode_unit_1_io_rrd_uop_is_br;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_jalr <= _rrd_decode_unit_1_io_rrd_uop_is_jalr;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_jal <= _rrd_decode_unit_1_io_rrd_uop_is_jal;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_sfb <= _rrd_decode_unit_1_io_rrd_uop_is_sfb;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_br_mask <=
-      _rrd_decode_unit_1_io_rrd_uop_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:80:33, :86:29, util.scala:74:{35,37}
-    rrd_uops_1_REG_br_tag <= _rrd_decode_unit_1_io_rrd_uop_br_tag;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_ftq_idx <= _rrd_decode_unit_1_io_rrd_uop_ftq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_edge_inst <= _rrd_decode_unit_1_io_rrd_uop_edge_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_pc_lob <= _rrd_decode_unit_1_io_rrd_uop_pc_lob;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_taken <= _rrd_decode_unit_1_io_rrd_uop_taken;	// register-read.scala:80:33, :86:29
+    rrd_uops_1_REG_iw_state <= io_iss_uops_1_iw_state;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_br <= io_iss_uops_1_is_br;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_jalr <= io_iss_uops_1_is_jalr;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_jal <= io_iss_uops_1_is_jal;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_sfb <= io_iss_uops_1_is_sfb;	// register-read.scala:86:29
+    rrd_uops_1_REG_br_mask <= io_iss_uops_1_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:86:29, util.scala:74:{35,37}
+    rrd_uops_1_REG_br_tag <= io_iss_uops_1_br_tag;	// register-read.scala:86:29
+    rrd_uops_1_REG_ftq_idx <= io_iss_uops_1_ftq_idx;	// register-read.scala:86:29
+    rrd_uops_1_REG_edge_inst <= io_iss_uops_1_edge_inst;	// register-read.scala:86:29
+    rrd_uops_1_REG_pc_lob <= io_iss_uops_1_pc_lob;	// register-read.scala:86:29
+    rrd_uops_1_REG_taken <= io_iss_uops_1_taken;	// register-read.scala:86:29
     rrd_uops_1_REG_imm_packed <= _rrd_decode_unit_1_io_rrd_uop_imm_packed;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_csr_addr <= _rrd_decode_unit_1_io_rrd_uop_csr_addr;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_rob_idx <= _rrd_decode_unit_1_io_rrd_uop_rob_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_ldq_idx <= _rrd_decode_unit_1_io_rrd_uop_ldq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_stq_idx <= _rrd_decode_unit_1_io_rrd_uop_stq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_rxq_idx <= _rrd_decode_unit_1_io_rrd_uop_rxq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_pdst <= _rrd_decode_unit_1_io_rrd_uop_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_prs1 <= _rrd_decode_unit_1_io_rrd_uop_prs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_prs2 <= _rrd_decode_unit_1_io_rrd_uop_prs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_prs3 <= _rrd_decode_unit_1_io_rrd_uop_prs3;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_ppred <= _rrd_decode_unit_1_io_rrd_uop_ppred;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_prs1_busy <= _rrd_decode_unit_1_io_rrd_uop_prs1_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_prs2_busy <= _rrd_decode_unit_1_io_rrd_uop_prs2_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_prs3_busy <= _rrd_decode_unit_1_io_rrd_uop_prs3_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_ppred_busy <= _rrd_decode_unit_1_io_rrd_uop_ppred_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_stale_pdst <= _rrd_decode_unit_1_io_rrd_uop_stale_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_exception <= _rrd_decode_unit_1_io_rrd_uop_exception;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_exc_cause <= _rrd_decode_unit_1_io_rrd_uop_exc_cause;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_bypassable <= _rrd_decode_unit_1_io_rrd_uop_bypassable;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_mem_cmd <= _rrd_decode_unit_1_io_rrd_uop_mem_cmd;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_mem_size <= _rrd_decode_unit_1_io_rrd_uop_mem_size;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_mem_signed <= _rrd_decode_unit_1_io_rrd_uop_mem_signed;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_fence <= _rrd_decode_unit_1_io_rrd_uop_is_fence;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_fencei <= _rrd_decode_unit_1_io_rrd_uop_is_fencei;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_amo <= _rrd_decode_unit_1_io_rrd_uop_is_amo;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_uses_ldq <= _rrd_decode_unit_1_io_rrd_uop_uses_ldq;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_uses_stq <= _rrd_decode_unit_1_io_rrd_uop_uses_stq;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_sys_pc2epc <= _rrd_decode_unit_1_io_rrd_uop_is_sys_pc2epc;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_is_unique <= _rrd_decode_unit_1_io_rrd_uop_is_unique;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_flush_on_commit <= _rrd_decode_unit_1_io_rrd_uop_flush_on_commit;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_ldst_is_rs1 <= _rrd_decode_unit_1_io_rrd_uop_ldst_is_rs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_ldst <= _rrd_decode_unit_1_io_rrd_uop_ldst;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_lrs1 <= _rrd_decode_unit_1_io_rrd_uop_lrs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_lrs2 <= _rrd_decode_unit_1_io_rrd_uop_lrs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_lrs3 <= _rrd_decode_unit_1_io_rrd_uop_lrs3;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_ldst_val <= _rrd_decode_unit_1_io_rrd_uop_ldst_val;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_dst_rtype <= _rrd_decode_unit_1_io_rrd_uop_dst_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_lrs1_rtype <= _rrd_decode_unit_1_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_lrs2_rtype <= _rrd_decode_unit_1_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_frs3_en <= _rrd_decode_unit_1_io_rrd_uop_frs3_en;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_fp_val <= _rrd_decode_unit_1_io_rrd_uop_fp_val;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_fp_single <= _rrd_decode_unit_1_io_rrd_uop_fp_single;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_xcpt_pf_if <= _rrd_decode_unit_1_io_rrd_uop_xcpt_pf_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_xcpt_ae_if <= _rrd_decode_unit_1_io_rrd_uop_xcpt_ae_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_xcpt_ma_if <= _rrd_decode_unit_1_io_rrd_uop_xcpt_ma_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_bp_debug_if <= _rrd_decode_unit_1_io_rrd_uop_bp_debug_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_bp_xcpt_if <= _rrd_decode_unit_1_io_rrd_uop_bp_xcpt_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_debug_fsrc <= _rrd_decode_unit_1_io_rrd_uop_debug_fsrc;	// register-read.scala:80:33, :86:29
-    rrd_uops_1_REG_debug_tsrc <= _rrd_decode_unit_1_io_rrd_uop_debug_tsrc;	// register-read.scala:80:33, :86:29
+    rrd_uops_1_REG_csr_addr <= io_iss_uops_1_csr_addr;	// register-read.scala:86:29
+    rrd_uops_1_REG_rob_idx <= io_iss_uops_1_rob_idx;	// register-read.scala:86:29
+    rrd_uops_1_REG_ldq_idx <= io_iss_uops_1_ldq_idx;	// register-read.scala:86:29
+    rrd_uops_1_REG_stq_idx <= io_iss_uops_1_stq_idx;	// register-read.scala:86:29
+    rrd_uops_1_REG_rxq_idx <= io_iss_uops_1_rxq_idx;	// register-read.scala:86:29
+    rrd_uops_1_REG_pdst <= io_iss_uops_1_pdst;	// register-read.scala:86:29
+    rrd_uops_1_REG_prs1 <= io_iss_uops_1_prs1;	// register-read.scala:86:29
+    rrd_uops_1_REG_prs2 <= io_iss_uops_1_prs2;	// register-read.scala:86:29
+    rrd_uops_1_REG_prs3 <= io_iss_uops_1_prs3;	// register-read.scala:86:29
+    rrd_uops_1_REG_ppred <= io_iss_uops_1_ppred;	// register-read.scala:86:29
+    rrd_uops_1_REG_prs1_busy <= io_iss_uops_1_prs1_busy;	// register-read.scala:86:29
+    rrd_uops_1_REG_prs2_busy <= io_iss_uops_1_prs2_busy;	// register-read.scala:86:29
+    rrd_uops_1_REG_prs3_busy <= io_iss_uops_1_prs3_busy;	// register-read.scala:86:29
+    rrd_uops_1_REG_ppred_busy <= io_iss_uops_1_ppred_busy;	// register-read.scala:86:29
+    rrd_uops_1_REG_stale_pdst <= io_iss_uops_1_stale_pdst;	// register-read.scala:86:29
+    rrd_uops_1_REG_exception <= io_iss_uops_1_exception;	// register-read.scala:86:29
+    rrd_uops_1_REG_exc_cause <= io_iss_uops_1_exc_cause;	// register-read.scala:86:29
+    rrd_uops_1_REG_bypassable <= io_iss_uops_1_bypassable;	// register-read.scala:86:29
+    rrd_uops_1_REG_mem_cmd <= io_iss_uops_1_mem_cmd;	// register-read.scala:86:29
+    rrd_uops_1_REG_mem_size <= io_iss_uops_1_mem_size;	// register-read.scala:86:29
+    rrd_uops_1_REG_mem_signed <= io_iss_uops_1_mem_signed;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_fence <= io_iss_uops_1_is_fence;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_fencei <= io_iss_uops_1_is_fencei;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_amo <= io_iss_uops_1_is_amo;	// register-read.scala:86:29
+    rrd_uops_1_REG_uses_ldq <= io_iss_uops_1_uses_ldq;	// register-read.scala:86:29
+    rrd_uops_1_REG_uses_stq <= io_iss_uops_1_uses_stq;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_sys_pc2epc <= io_iss_uops_1_is_sys_pc2epc;	// register-read.scala:86:29
+    rrd_uops_1_REG_is_unique <= io_iss_uops_1_is_unique;	// register-read.scala:86:29
+    rrd_uops_1_REG_flush_on_commit <= io_iss_uops_1_flush_on_commit;	// register-read.scala:86:29
+    rrd_uops_1_REG_ldst_is_rs1 <= io_iss_uops_1_ldst_is_rs1;	// register-read.scala:86:29
+    rrd_uops_1_REG_ldst <= io_iss_uops_1_ldst;	// register-read.scala:86:29
+    rrd_uops_1_REG_lrs1 <= io_iss_uops_1_lrs1;	// register-read.scala:86:29
+    rrd_uops_1_REG_lrs2 <= io_iss_uops_1_lrs2;	// register-read.scala:86:29
+    rrd_uops_1_REG_lrs3 <= io_iss_uops_1_lrs3;	// register-read.scala:86:29
+    rrd_uops_1_REG_ldst_val <= io_iss_uops_1_ldst_val;	// register-read.scala:86:29
+    rrd_uops_1_REG_dst_rtype <= io_iss_uops_1_dst_rtype;	// register-read.scala:86:29
+    rrd_uops_1_REG_lrs1_rtype <= io_iss_uops_1_lrs1_rtype;	// register-read.scala:86:29
+    rrd_uops_1_REG_lrs2_rtype <= io_iss_uops_1_lrs2_rtype;	// register-read.scala:86:29
+    rrd_uops_1_REG_frs3_en <= io_iss_uops_1_frs3_en;	// register-read.scala:86:29
+    rrd_uops_1_REG_fp_val <= io_iss_uops_1_fp_val;	// register-read.scala:86:29
+    rrd_uops_1_REG_fp_single <= io_iss_uops_1_fp_single;	// register-read.scala:86:29
+    rrd_uops_1_REG_xcpt_pf_if <= io_iss_uops_1_xcpt_pf_if;	// register-read.scala:86:29
+    rrd_uops_1_REG_xcpt_ae_if <= io_iss_uops_1_xcpt_ae_if;	// register-read.scala:86:29
+    rrd_uops_1_REG_xcpt_ma_if <= io_iss_uops_1_xcpt_ma_if;	// register-read.scala:86:29
+    rrd_uops_1_REG_bp_debug_if <= io_iss_uops_1_bp_debug_if;	// register-read.scala:86:29
+    rrd_uops_1_REG_bp_xcpt_if <= io_iss_uops_1_bp_xcpt_if;	// register-read.scala:86:29
+    rrd_uops_1_REG_debug_fsrc <= io_iss_uops_1_debug_fsrc;	// register-read.scala:86:29
+    rrd_uops_1_REG_debug_tsrc <= io_iss_uops_1_debug_tsrc;	// register-read.scala:86:29
     rrd_valids_2_REG <=
-      _rrd_decode_unit_2_io_rrd_valid
-      & (io_brupdate_b1_mispredict_mask & _rrd_decode_unit_2_io_rrd_uop_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:80:33, :84:{29,59}, util.scala:118:{51,59}
-    rrd_uops_2_REG_uopc <= _rrd_decode_unit_2_io_rrd_uop_uopc;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_inst <= _rrd_decode_unit_2_io_rrd_uop_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_debug_inst <= _rrd_decode_unit_2_io_rrd_uop_debug_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_rvc <= _rrd_decode_unit_2_io_rrd_uop_is_rvc;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_debug_pc <= _rrd_decode_unit_2_io_rrd_uop_debug_pc;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_iq_type <= _rrd_decode_unit_2_io_rrd_uop_iq_type;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_fu_code <= _rrd_decode_unit_2_io_rrd_uop_fu_code;	// register-read.scala:80:33, :86:29
+      io_iss_valids_2 & (io_brupdate_b1_mispredict_mask & io_iss_uops_2_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:84:{29,59}, util.scala:118:{51,59}
+    rrd_uops_2_REG_uopc <= io_iss_uops_2_uopc;	// register-read.scala:86:29
+    rrd_uops_2_REG_inst <= io_iss_uops_2_inst;	// register-read.scala:86:29
+    rrd_uops_2_REG_debug_inst <= io_iss_uops_2_debug_inst;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_rvc <= io_iss_uops_2_is_rvc;	// register-read.scala:86:29
+    rrd_uops_2_REG_debug_pc <= io_iss_uops_2_debug_pc;	// register-read.scala:86:29
+    rrd_uops_2_REG_iq_type <= io_iss_uops_2_iq_type;	// register-read.scala:86:29
+    rrd_uops_2_REG_fu_code <= io_iss_uops_2_fu_code;	// register-read.scala:86:29
     rrd_uops_2_REG_ctrl_br_type <= _rrd_decode_unit_2_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33, :86:29
     rrd_uops_2_REG_ctrl_op1_sel <= _rrd_decode_unit_2_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_2_REG_ctrl_op2_sel <= _rrd_decode_unit_2_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33, :86:29
@@ -2795,73 +2499,71 @@ module RegisterRead_1(
     rrd_uops_2_REG_ctrl_is_load <= _rrd_decode_unit_2_io_rrd_uop_ctrl_is_load;	// register-read.scala:80:33, :86:29
     rrd_uops_2_REG_ctrl_is_sta <= _rrd_decode_unit_2_io_rrd_uop_ctrl_is_sta;	// register-read.scala:80:33, :86:29
     rrd_uops_2_REG_ctrl_is_std <= _rrd_decode_unit_2_io_rrd_uop_ctrl_is_std;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_iw_state <= _rrd_decode_unit_2_io_rrd_uop_iw_state;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_br <= _rrd_decode_unit_2_io_rrd_uop_is_br;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_jalr <= _rrd_decode_unit_2_io_rrd_uop_is_jalr;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_jal <= _rrd_decode_unit_2_io_rrd_uop_is_jal;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_sfb <= _rrd_decode_unit_2_io_rrd_uop_is_sfb;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_br_mask <=
-      _rrd_decode_unit_2_io_rrd_uop_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:80:33, :86:29, util.scala:74:{35,37}
-    rrd_uops_2_REG_br_tag <= _rrd_decode_unit_2_io_rrd_uop_br_tag;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_ftq_idx <= _rrd_decode_unit_2_io_rrd_uop_ftq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_edge_inst <= _rrd_decode_unit_2_io_rrd_uop_edge_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_pc_lob <= _rrd_decode_unit_2_io_rrd_uop_pc_lob;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_taken <= _rrd_decode_unit_2_io_rrd_uop_taken;	// register-read.scala:80:33, :86:29
+    rrd_uops_2_REG_iw_state <= io_iss_uops_2_iw_state;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_br <= io_iss_uops_2_is_br;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_jalr <= io_iss_uops_2_is_jalr;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_jal <= io_iss_uops_2_is_jal;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_sfb <= io_iss_uops_2_is_sfb;	// register-read.scala:86:29
+    rrd_uops_2_REG_br_mask <= io_iss_uops_2_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:86:29, util.scala:74:{35,37}
+    rrd_uops_2_REG_br_tag <= io_iss_uops_2_br_tag;	// register-read.scala:86:29
+    rrd_uops_2_REG_ftq_idx <= io_iss_uops_2_ftq_idx;	// register-read.scala:86:29
+    rrd_uops_2_REG_edge_inst <= io_iss_uops_2_edge_inst;	// register-read.scala:86:29
+    rrd_uops_2_REG_pc_lob <= io_iss_uops_2_pc_lob;	// register-read.scala:86:29
+    rrd_uops_2_REG_taken <= io_iss_uops_2_taken;	// register-read.scala:86:29
     rrd_uops_2_REG_imm_packed <= _rrd_decode_unit_2_io_rrd_uop_imm_packed;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_csr_addr <= _rrd_decode_unit_2_io_rrd_uop_csr_addr;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_rob_idx <= _rrd_decode_unit_2_io_rrd_uop_rob_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_ldq_idx <= _rrd_decode_unit_2_io_rrd_uop_ldq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_stq_idx <= _rrd_decode_unit_2_io_rrd_uop_stq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_rxq_idx <= _rrd_decode_unit_2_io_rrd_uop_rxq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_pdst <= _rrd_decode_unit_2_io_rrd_uop_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_prs1 <= _rrd_decode_unit_2_io_rrd_uop_prs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_prs2 <= _rrd_decode_unit_2_io_rrd_uop_prs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_prs3 <= _rrd_decode_unit_2_io_rrd_uop_prs3;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_ppred <= _rrd_decode_unit_2_io_rrd_uop_ppred;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_prs1_busy <= _rrd_decode_unit_2_io_rrd_uop_prs1_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_prs2_busy <= _rrd_decode_unit_2_io_rrd_uop_prs2_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_prs3_busy <= _rrd_decode_unit_2_io_rrd_uop_prs3_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_ppred_busy <= _rrd_decode_unit_2_io_rrd_uop_ppred_busy;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_stale_pdst <= _rrd_decode_unit_2_io_rrd_uop_stale_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_exception <= _rrd_decode_unit_2_io_rrd_uop_exception;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_exc_cause <= _rrd_decode_unit_2_io_rrd_uop_exc_cause;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_bypassable <= _rrd_decode_unit_2_io_rrd_uop_bypassable;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_mem_cmd <= _rrd_decode_unit_2_io_rrd_uop_mem_cmd;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_mem_size <= _rrd_decode_unit_2_io_rrd_uop_mem_size;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_mem_signed <= _rrd_decode_unit_2_io_rrd_uop_mem_signed;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_fence <= _rrd_decode_unit_2_io_rrd_uop_is_fence;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_fencei <= _rrd_decode_unit_2_io_rrd_uop_is_fencei;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_amo <= _rrd_decode_unit_2_io_rrd_uop_is_amo;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_uses_ldq <= _rrd_decode_unit_2_io_rrd_uop_uses_ldq;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_uses_stq <= _rrd_decode_unit_2_io_rrd_uop_uses_stq;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_sys_pc2epc <= _rrd_decode_unit_2_io_rrd_uop_is_sys_pc2epc;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_is_unique <= _rrd_decode_unit_2_io_rrd_uop_is_unique;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_flush_on_commit <= _rrd_decode_unit_2_io_rrd_uop_flush_on_commit;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_ldst_is_rs1 <= _rrd_decode_unit_2_io_rrd_uop_ldst_is_rs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_ldst <= _rrd_decode_unit_2_io_rrd_uop_ldst;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_lrs1 <= _rrd_decode_unit_2_io_rrd_uop_lrs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_lrs2 <= _rrd_decode_unit_2_io_rrd_uop_lrs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_lrs3 <= _rrd_decode_unit_2_io_rrd_uop_lrs3;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_ldst_val <= _rrd_decode_unit_2_io_rrd_uop_ldst_val;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_dst_rtype <= _rrd_decode_unit_2_io_rrd_uop_dst_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_lrs1_rtype <= _rrd_decode_unit_2_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_lrs2_rtype <= _rrd_decode_unit_2_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_frs3_en <= _rrd_decode_unit_2_io_rrd_uop_frs3_en;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_fp_val <= _rrd_decode_unit_2_io_rrd_uop_fp_val;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_fp_single <= _rrd_decode_unit_2_io_rrd_uop_fp_single;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_xcpt_pf_if <= _rrd_decode_unit_2_io_rrd_uop_xcpt_pf_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_xcpt_ae_if <= _rrd_decode_unit_2_io_rrd_uop_xcpt_ae_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_xcpt_ma_if <= _rrd_decode_unit_2_io_rrd_uop_xcpt_ma_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_bp_debug_if <= _rrd_decode_unit_2_io_rrd_uop_bp_debug_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_bp_xcpt_if <= _rrd_decode_unit_2_io_rrd_uop_bp_xcpt_if;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_debug_fsrc <= _rrd_decode_unit_2_io_rrd_uop_debug_fsrc;	// register-read.scala:80:33, :86:29
-    rrd_uops_2_REG_debug_tsrc <= _rrd_decode_unit_2_io_rrd_uop_debug_tsrc;	// register-read.scala:80:33, :86:29
+    rrd_uops_2_REG_csr_addr <= io_iss_uops_2_csr_addr;	// register-read.scala:86:29
+    rrd_uops_2_REG_rob_idx <= io_iss_uops_2_rob_idx;	// register-read.scala:86:29
+    rrd_uops_2_REG_ldq_idx <= io_iss_uops_2_ldq_idx;	// register-read.scala:86:29
+    rrd_uops_2_REG_stq_idx <= io_iss_uops_2_stq_idx;	// register-read.scala:86:29
+    rrd_uops_2_REG_rxq_idx <= io_iss_uops_2_rxq_idx;	// register-read.scala:86:29
+    rrd_uops_2_REG_pdst <= io_iss_uops_2_pdst;	// register-read.scala:86:29
+    rrd_uops_2_REG_prs1 <= io_iss_uops_2_prs1;	// register-read.scala:86:29
+    rrd_uops_2_REG_prs2 <= io_iss_uops_2_prs2;	// register-read.scala:86:29
+    rrd_uops_2_REG_prs3 <= io_iss_uops_2_prs3;	// register-read.scala:86:29
+    rrd_uops_2_REG_ppred <= io_iss_uops_2_ppred;	// register-read.scala:86:29
+    rrd_uops_2_REG_prs1_busy <= io_iss_uops_2_prs1_busy;	// register-read.scala:86:29
+    rrd_uops_2_REG_prs2_busy <= io_iss_uops_2_prs2_busy;	// register-read.scala:86:29
+    rrd_uops_2_REG_prs3_busy <= io_iss_uops_2_prs3_busy;	// register-read.scala:86:29
+    rrd_uops_2_REG_ppred_busy <= io_iss_uops_2_ppred_busy;	// register-read.scala:86:29
+    rrd_uops_2_REG_stale_pdst <= io_iss_uops_2_stale_pdst;	// register-read.scala:86:29
+    rrd_uops_2_REG_exception <= io_iss_uops_2_exception;	// register-read.scala:86:29
+    rrd_uops_2_REG_exc_cause <= io_iss_uops_2_exc_cause;	// register-read.scala:86:29
+    rrd_uops_2_REG_bypassable <= io_iss_uops_2_bypassable;	// register-read.scala:86:29
+    rrd_uops_2_REG_mem_cmd <= io_iss_uops_2_mem_cmd;	// register-read.scala:86:29
+    rrd_uops_2_REG_mem_size <= io_iss_uops_2_mem_size;	// register-read.scala:86:29
+    rrd_uops_2_REG_mem_signed <= io_iss_uops_2_mem_signed;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_fence <= io_iss_uops_2_is_fence;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_fencei <= io_iss_uops_2_is_fencei;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_amo <= io_iss_uops_2_is_amo;	// register-read.scala:86:29
+    rrd_uops_2_REG_uses_ldq <= io_iss_uops_2_uses_ldq;	// register-read.scala:86:29
+    rrd_uops_2_REG_uses_stq <= io_iss_uops_2_uses_stq;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_sys_pc2epc <= io_iss_uops_2_is_sys_pc2epc;	// register-read.scala:86:29
+    rrd_uops_2_REG_is_unique <= io_iss_uops_2_is_unique;	// register-read.scala:86:29
+    rrd_uops_2_REG_flush_on_commit <= io_iss_uops_2_flush_on_commit;	// register-read.scala:86:29
+    rrd_uops_2_REG_ldst_is_rs1 <= io_iss_uops_2_ldst_is_rs1;	// register-read.scala:86:29
+    rrd_uops_2_REG_ldst <= io_iss_uops_2_ldst;	// register-read.scala:86:29
+    rrd_uops_2_REG_lrs1 <= io_iss_uops_2_lrs1;	// register-read.scala:86:29
+    rrd_uops_2_REG_lrs2 <= io_iss_uops_2_lrs2;	// register-read.scala:86:29
+    rrd_uops_2_REG_lrs3 <= io_iss_uops_2_lrs3;	// register-read.scala:86:29
+    rrd_uops_2_REG_ldst_val <= io_iss_uops_2_ldst_val;	// register-read.scala:86:29
+    rrd_uops_2_REG_dst_rtype <= io_iss_uops_2_dst_rtype;	// register-read.scala:86:29
+    rrd_uops_2_REG_lrs1_rtype <= io_iss_uops_2_lrs1_rtype;	// register-read.scala:86:29
+    rrd_uops_2_REG_lrs2_rtype <= io_iss_uops_2_lrs2_rtype;	// register-read.scala:86:29
+    rrd_uops_2_REG_frs3_en <= io_iss_uops_2_frs3_en;	// register-read.scala:86:29
+    rrd_uops_2_REG_fp_val <= io_iss_uops_2_fp_val;	// register-read.scala:86:29
+    rrd_uops_2_REG_fp_single <= io_iss_uops_2_fp_single;	// register-read.scala:86:29
+    rrd_uops_2_REG_xcpt_pf_if <= io_iss_uops_2_xcpt_pf_if;	// register-read.scala:86:29
+    rrd_uops_2_REG_xcpt_ae_if <= io_iss_uops_2_xcpt_ae_if;	// register-read.scala:86:29
+    rrd_uops_2_REG_xcpt_ma_if <= io_iss_uops_2_xcpt_ma_if;	// register-read.scala:86:29
+    rrd_uops_2_REG_bp_debug_if <= io_iss_uops_2_bp_debug_if;	// register-read.scala:86:29
+    rrd_uops_2_REG_bp_xcpt_if <= io_iss_uops_2_bp_xcpt_if;	// register-read.scala:86:29
+    rrd_uops_2_REG_debug_fsrc <= io_iss_uops_2_debug_fsrc;	// register-read.scala:86:29
+    rrd_uops_2_REG_debug_tsrc <= io_iss_uops_2_debug_tsrc;	// register-read.scala:86:29
     rrd_valids_3_REG <=
-      _rrd_decode_unit_3_io_rrd_valid
-      & (io_brupdate_b1_mispredict_mask & _rrd_decode_unit_3_io_rrd_uop_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:80:33, :84:{29,59}, util.scala:118:{51,59}
-    rrd_uops_3_REG_uopc <= _rrd_decode_unit_3_io_rrd_uop_uopc;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_is_rvc <= _rrd_decode_unit_3_io_rrd_uop_is_rvc;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_fu_code <= _rrd_decode_unit_3_io_rrd_uop_fu_code;	// register-read.scala:80:33, :86:29
+      io_iss_valids_3 & (io_brupdate_b1_mispredict_mask & io_iss_uops_3_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:84:{29,59}, util.scala:118:{51,59}
+    rrd_uops_3_REG_uopc <= io_iss_uops_3_uopc;	// register-read.scala:86:29
+    rrd_uops_3_REG_is_rvc <= io_iss_uops_3_is_rvc;	// register-read.scala:86:29
+    rrd_uops_3_REG_fu_code <= io_iss_uops_3_fu_code;	// register-read.scala:86:29
     rrd_uops_3_REG_ctrl_br_type <= _rrd_decode_unit_3_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33, :86:29
     rrd_uops_3_REG_ctrl_op1_sel <= _rrd_decode_unit_3_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_3_REG_ctrl_op2_sel <= _rrd_decode_unit_3_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33, :86:29
@@ -2869,102 +2571,97 @@ module RegisterRead_1(
     rrd_uops_3_REG_ctrl_op_fcn <= _rrd_decode_unit_3_io_rrd_uop_ctrl_op_fcn;	// register-read.scala:80:33, :86:29
     rrd_uops_3_REG_ctrl_fcn_dw <= _rrd_decode_unit_3_io_rrd_uop_ctrl_fcn_dw;	// register-read.scala:80:33, :86:29
     rrd_uops_3_REG_ctrl_csr_cmd <= _rrd_decode_unit_3_io_rrd_uop_ctrl_csr_cmd;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_is_br <= _rrd_decode_unit_3_io_rrd_uop_is_br;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_is_jalr <= _rrd_decode_unit_3_io_rrd_uop_is_jalr;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_is_jal <= _rrd_decode_unit_3_io_rrd_uop_is_jal;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_is_sfb <= _rrd_decode_unit_3_io_rrd_uop_is_sfb;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_br_mask <=
-      _rrd_decode_unit_3_io_rrd_uop_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:80:33, :86:29, util.scala:74:{35,37}
-    rrd_uops_3_REG_br_tag <= _rrd_decode_unit_3_io_rrd_uop_br_tag;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_ftq_idx <= _rrd_decode_unit_3_io_rrd_uop_ftq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_edge_inst <= _rrd_decode_unit_3_io_rrd_uop_edge_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_pc_lob <= _rrd_decode_unit_3_io_rrd_uop_pc_lob;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_taken <= _rrd_decode_unit_3_io_rrd_uop_taken;	// register-read.scala:80:33, :86:29
+    rrd_uops_3_REG_is_br <= io_iss_uops_3_is_br;	// register-read.scala:86:29
+    rrd_uops_3_REG_is_jalr <= io_iss_uops_3_is_jalr;	// register-read.scala:86:29
+    rrd_uops_3_REG_is_jal <= io_iss_uops_3_is_jal;	// register-read.scala:86:29
+    rrd_uops_3_REG_is_sfb <= io_iss_uops_3_is_sfb;	// register-read.scala:86:29
+    rrd_uops_3_REG_br_mask <= io_iss_uops_3_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:86:29, util.scala:74:{35,37}
+    rrd_uops_3_REG_br_tag <= io_iss_uops_3_br_tag;	// register-read.scala:86:29
+    rrd_uops_3_REG_ftq_idx <= io_iss_uops_3_ftq_idx;	// register-read.scala:86:29
+    rrd_uops_3_REG_edge_inst <= io_iss_uops_3_edge_inst;	// register-read.scala:86:29
+    rrd_uops_3_REG_pc_lob <= io_iss_uops_3_pc_lob;	// register-read.scala:86:29
+    rrd_uops_3_REG_taken <= io_iss_uops_3_taken;	// register-read.scala:86:29
     rrd_uops_3_REG_imm_packed <= _rrd_decode_unit_3_io_rrd_uop_imm_packed;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_rob_idx <= _rrd_decode_unit_3_io_rrd_uop_rob_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_ldq_idx <= _rrd_decode_unit_3_io_rrd_uop_ldq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_stq_idx <= _rrd_decode_unit_3_io_rrd_uop_stq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_pdst <= _rrd_decode_unit_3_io_rrd_uop_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_prs1 <= _rrd_decode_unit_3_io_rrd_uop_prs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_prs2 <= _rrd_decode_unit_3_io_rrd_uop_prs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_bypassable <= _rrd_decode_unit_3_io_rrd_uop_bypassable;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_is_amo <= _rrd_decode_unit_3_io_rrd_uop_is_amo;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_uses_stq <= _rrd_decode_unit_3_io_rrd_uop_uses_stq;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_dst_rtype <= _rrd_decode_unit_3_io_rrd_uop_dst_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_lrs1_rtype <= _rrd_decode_unit_3_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_3_REG_lrs2_rtype <= _rrd_decode_unit_3_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33, :86:29
+    rrd_uops_3_REG_rob_idx <= io_iss_uops_3_rob_idx;	// register-read.scala:86:29
+    rrd_uops_3_REG_ldq_idx <= io_iss_uops_3_ldq_idx;	// register-read.scala:86:29
+    rrd_uops_3_REG_stq_idx <= io_iss_uops_3_stq_idx;	// register-read.scala:86:29
+    rrd_uops_3_REG_pdst <= io_iss_uops_3_pdst;	// register-read.scala:86:29
+    rrd_uops_3_REG_prs1 <= io_iss_uops_3_prs1;	// register-read.scala:86:29
+    rrd_uops_3_REG_prs2 <= io_iss_uops_3_prs2;	// register-read.scala:86:29
+    rrd_uops_3_REG_bypassable <= io_iss_uops_3_bypassable;	// register-read.scala:86:29
+    rrd_uops_3_REG_is_amo <= io_iss_uops_3_is_amo;	// register-read.scala:86:29
+    rrd_uops_3_REG_uses_stq <= io_iss_uops_3_uses_stq;	// register-read.scala:86:29
+    rrd_uops_3_REG_dst_rtype <= io_iss_uops_3_dst_rtype;	// register-read.scala:86:29
+    rrd_uops_3_REG_lrs1_rtype <= io_iss_uops_3_lrs1_rtype;	// register-read.scala:86:29
+    rrd_uops_3_REG_lrs2_rtype <= io_iss_uops_3_lrs2_rtype;	// register-read.scala:86:29
     rrd_valids_4_REG <=
-      _rrd_decode_unit_4_io_rrd_valid
-      & (io_brupdate_b1_mispredict_mask & _rrd_decode_unit_4_io_rrd_uop_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:80:33, :84:{29,59}, util.scala:118:{51,59}
-    rrd_uops_4_REG_uopc <= _rrd_decode_unit_4_io_rrd_uop_uopc;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_is_rvc <= _rrd_decode_unit_4_io_rrd_uop_is_rvc;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_fu_code <= _rrd_decode_unit_4_io_rrd_uop_fu_code;	// register-read.scala:80:33, :86:29
+      io_iss_valids_4 & (io_brupdate_b1_mispredict_mask & io_iss_uops_4_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:84:{29,59}, util.scala:118:{51,59}
+    rrd_uops_4_REG_uopc <= io_iss_uops_4_uopc;	// register-read.scala:86:29
+    rrd_uops_4_REG_is_rvc <= io_iss_uops_4_is_rvc;	// register-read.scala:86:29
+    rrd_uops_4_REG_fu_code <= io_iss_uops_4_fu_code;	// register-read.scala:86:29
     rrd_uops_4_REG_ctrl_br_type <= _rrd_decode_unit_4_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33, :86:29
     rrd_uops_4_REG_ctrl_op1_sel <= _rrd_decode_unit_4_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_4_REG_ctrl_op2_sel <= _rrd_decode_unit_4_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_4_REG_ctrl_imm_sel <= _rrd_decode_unit_4_io_rrd_uop_ctrl_imm_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_4_REG_ctrl_op_fcn <= _rrd_decode_unit_4_io_rrd_uop_ctrl_op_fcn;	// register-read.scala:80:33, :86:29
     rrd_uops_4_REG_ctrl_fcn_dw <= _rrd_decode_unit_4_io_rrd_uop_ctrl_fcn_dw;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_is_br <= _rrd_decode_unit_4_io_rrd_uop_is_br;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_is_jalr <= _rrd_decode_unit_4_io_rrd_uop_is_jalr;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_is_jal <= _rrd_decode_unit_4_io_rrd_uop_is_jal;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_is_sfb <= _rrd_decode_unit_4_io_rrd_uop_is_sfb;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_br_mask <=
-      _rrd_decode_unit_4_io_rrd_uop_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:80:33, :86:29, util.scala:74:{35,37}
-    rrd_uops_4_REG_br_tag <= _rrd_decode_unit_4_io_rrd_uop_br_tag;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_ftq_idx <= _rrd_decode_unit_4_io_rrd_uop_ftq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_edge_inst <= _rrd_decode_unit_4_io_rrd_uop_edge_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_pc_lob <= _rrd_decode_unit_4_io_rrd_uop_pc_lob;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_taken <= _rrd_decode_unit_4_io_rrd_uop_taken;	// register-read.scala:80:33, :86:29
+    rrd_uops_4_REG_is_br <= io_iss_uops_4_is_br;	// register-read.scala:86:29
+    rrd_uops_4_REG_is_jalr <= io_iss_uops_4_is_jalr;	// register-read.scala:86:29
+    rrd_uops_4_REG_is_jal <= io_iss_uops_4_is_jal;	// register-read.scala:86:29
+    rrd_uops_4_REG_is_sfb <= io_iss_uops_4_is_sfb;	// register-read.scala:86:29
+    rrd_uops_4_REG_br_mask <= io_iss_uops_4_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:86:29, util.scala:74:{35,37}
+    rrd_uops_4_REG_br_tag <= io_iss_uops_4_br_tag;	// register-read.scala:86:29
+    rrd_uops_4_REG_ftq_idx <= io_iss_uops_4_ftq_idx;	// register-read.scala:86:29
+    rrd_uops_4_REG_edge_inst <= io_iss_uops_4_edge_inst;	// register-read.scala:86:29
+    rrd_uops_4_REG_pc_lob <= io_iss_uops_4_pc_lob;	// register-read.scala:86:29
+    rrd_uops_4_REG_taken <= io_iss_uops_4_taken;	// register-read.scala:86:29
     rrd_uops_4_REG_imm_packed <= _rrd_decode_unit_4_io_rrd_uop_imm_packed;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_rob_idx <= _rrd_decode_unit_4_io_rrd_uop_rob_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_ldq_idx <= _rrd_decode_unit_4_io_rrd_uop_ldq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_stq_idx <= _rrd_decode_unit_4_io_rrd_uop_stq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_pdst <= _rrd_decode_unit_4_io_rrd_uop_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_prs1 <= _rrd_decode_unit_4_io_rrd_uop_prs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_prs2 <= _rrd_decode_unit_4_io_rrd_uop_prs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_bypassable <= _rrd_decode_unit_4_io_rrd_uop_bypassable;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_is_amo <= _rrd_decode_unit_4_io_rrd_uop_is_amo;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_uses_stq <= _rrd_decode_unit_4_io_rrd_uop_uses_stq;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_dst_rtype <= _rrd_decode_unit_4_io_rrd_uop_dst_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_lrs1_rtype <= _rrd_decode_unit_4_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_4_REG_lrs2_rtype <= _rrd_decode_unit_4_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33, :86:29
+    rrd_uops_4_REG_rob_idx <= io_iss_uops_4_rob_idx;	// register-read.scala:86:29
+    rrd_uops_4_REG_ldq_idx <= io_iss_uops_4_ldq_idx;	// register-read.scala:86:29
+    rrd_uops_4_REG_stq_idx <= io_iss_uops_4_stq_idx;	// register-read.scala:86:29
+    rrd_uops_4_REG_pdst <= io_iss_uops_4_pdst;	// register-read.scala:86:29
+    rrd_uops_4_REG_prs1 <= io_iss_uops_4_prs1;	// register-read.scala:86:29
+    rrd_uops_4_REG_prs2 <= io_iss_uops_4_prs2;	// register-read.scala:86:29
+    rrd_uops_4_REG_bypassable <= io_iss_uops_4_bypassable;	// register-read.scala:86:29
+    rrd_uops_4_REG_is_amo <= io_iss_uops_4_is_amo;	// register-read.scala:86:29
+    rrd_uops_4_REG_uses_stq <= io_iss_uops_4_uses_stq;	// register-read.scala:86:29
+    rrd_uops_4_REG_dst_rtype <= io_iss_uops_4_dst_rtype;	// register-read.scala:86:29
+    rrd_uops_4_REG_lrs1_rtype <= io_iss_uops_4_lrs1_rtype;	// register-read.scala:86:29
+    rrd_uops_4_REG_lrs2_rtype <= io_iss_uops_4_lrs2_rtype;	// register-read.scala:86:29
     rrd_valids_5_REG <=
-      _rrd_decode_unit_5_io_rrd_valid
-      & (io_brupdate_b1_mispredict_mask & _rrd_decode_unit_5_io_rrd_uop_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:80:33, :84:{29,59}, util.scala:118:{51,59}
-    rrd_uops_5_REG_uopc <= _rrd_decode_unit_5_io_rrd_uop_uopc;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_is_rvc <= _rrd_decode_unit_5_io_rrd_uop_is_rvc;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_fu_code <= _rrd_decode_unit_5_io_rrd_uop_fu_code;	// register-read.scala:80:33, :86:29
+      io_iss_valids_5 & (io_brupdate_b1_mispredict_mask & io_iss_uops_5_br_mask) == 20'h0;	// consts.scala:270:20, register-read.scala:84:{29,59}, util.scala:118:{51,59}
+    rrd_uops_5_REG_uopc <= io_iss_uops_5_uopc;	// register-read.scala:86:29
+    rrd_uops_5_REG_is_rvc <= io_iss_uops_5_is_rvc;	// register-read.scala:86:29
+    rrd_uops_5_REG_fu_code <= io_iss_uops_5_fu_code;	// register-read.scala:86:29
     rrd_uops_5_REG_ctrl_br_type <= _rrd_decode_unit_5_io_rrd_uop_ctrl_br_type;	// register-read.scala:80:33, :86:29
     rrd_uops_5_REG_ctrl_op1_sel <= _rrd_decode_unit_5_io_rrd_uop_ctrl_op1_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_5_REG_ctrl_op2_sel <= _rrd_decode_unit_5_io_rrd_uop_ctrl_op2_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_5_REG_ctrl_imm_sel <= _rrd_decode_unit_5_io_rrd_uop_ctrl_imm_sel;	// register-read.scala:80:33, :86:29
     rrd_uops_5_REG_ctrl_op_fcn <= _rrd_decode_unit_5_io_rrd_uop_ctrl_op_fcn;	// register-read.scala:80:33, :86:29
     rrd_uops_5_REG_ctrl_fcn_dw <= _rrd_decode_unit_5_io_rrd_uop_ctrl_fcn_dw;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_is_br <= _rrd_decode_unit_5_io_rrd_uop_is_br;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_is_jalr <= _rrd_decode_unit_5_io_rrd_uop_is_jalr;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_is_jal <= _rrd_decode_unit_5_io_rrd_uop_is_jal;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_is_sfb <= _rrd_decode_unit_5_io_rrd_uop_is_sfb;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_br_mask <=
-      _rrd_decode_unit_5_io_rrd_uop_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:80:33, :86:29, util.scala:74:{35,37}
-    rrd_uops_5_REG_br_tag <= _rrd_decode_unit_5_io_rrd_uop_br_tag;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_ftq_idx <= _rrd_decode_unit_5_io_rrd_uop_ftq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_edge_inst <= _rrd_decode_unit_5_io_rrd_uop_edge_inst;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_pc_lob <= _rrd_decode_unit_5_io_rrd_uop_pc_lob;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_taken <= _rrd_decode_unit_5_io_rrd_uop_taken;	// register-read.scala:80:33, :86:29
+    rrd_uops_5_REG_is_br <= io_iss_uops_5_is_br;	// register-read.scala:86:29
+    rrd_uops_5_REG_is_jalr <= io_iss_uops_5_is_jalr;	// register-read.scala:86:29
+    rrd_uops_5_REG_is_jal <= io_iss_uops_5_is_jal;	// register-read.scala:86:29
+    rrd_uops_5_REG_is_sfb <= io_iss_uops_5_is_sfb;	// register-read.scala:86:29
+    rrd_uops_5_REG_br_mask <= io_iss_uops_5_br_mask & ~io_brupdate_b1_resolve_mask;	// register-read.scala:86:29, util.scala:74:{35,37}
+    rrd_uops_5_REG_br_tag <= io_iss_uops_5_br_tag;	// register-read.scala:86:29
+    rrd_uops_5_REG_ftq_idx <= io_iss_uops_5_ftq_idx;	// register-read.scala:86:29
+    rrd_uops_5_REG_edge_inst <= io_iss_uops_5_edge_inst;	// register-read.scala:86:29
+    rrd_uops_5_REG_pc_lob <= io_iss_uops_5_pc_lob;	// register-read.scala:86:29
+    rrd_uops_5_REG_taken <= io_iss_uops_5_taken;	// register-read.scala:86:29
     rrd_uops_5_REG_imm_packed <= _rrd_decode_unit_5_io_rrd_uop_imm_packed;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_rob_idx <= _rrd_decode_unit_5_io_rrd_uop_rob_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_ldq_idx <= _rrd_decode_unit_5_io_rrd_uop_ldq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_stq_idx <= _rrd_decode_unit_5_io_rrd_uop_stq_idx;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_pdst <= _rrd_decode_unit_5_io_rrd_uop_pdst;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_prs1 <= _rrd_decode_unit_5_io_rrd_uop_prs1;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_prs2 <= _rrd_decode_unit_5_io_rrd_uop_prs2;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_bypassable <= _rrd_decode_unit_5_io_rrd_uop_bypassable;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_is_amo <= _rrd_decode_unit_5_io_rrd_uop_is_amo;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_uses_stq <= _rrd_decode_unit_5_io_rrd_uop_uses_stq;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_dst_rtype <= _rrd_decode_unit_5_io_rrd_uop_dst_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_lrs1_rtype <= _rrd_decode_unit_5_io_rrd_uop_lrs1_rtype;	// register-read.scala:80:33, :86:29
-    rrd_uops_5_REG_lrs2_rtype <= _rrd_decode_unit_5_io_rrd_uop_lrs2_rtype;	// register-read.scala:80:33, :86:29
+    rrd_uops_5_REG_rob_idx <= io_iss_uops_5_rob_idx;	// register-read.scala:86:29
+    rrd_uops_5_REG_ldq_idx <= io_iss_uops_5_ldq_idx;	// register-read.scala:86:29
+    rrd_uops_5_REG_stq_idx <= io_iss_uops_5_stq_idx;	// register-read.scala:86:29
+    rrd_uops_5_REG_pdst <= io_iss_uops_5_pdst;	// register-read.scala:86:29
+    rrd_uops_5_REG_prs1 <= io_iss_uops_5_prs1;	// register-read.scala:86:29
+    rrd_uops_5_REG_prs2 <= io_iss_uops_5_prs2;	// register-read.scala:86:29
+    rrd_uops_5_REG_bypassable <= io_iss_uops_5_bypassable;	// register-read.scala:86:29
+    rrd_uops_5_REG_is_amo <= io_iss_uops_5_is_amo;	// register-read.scala:86:29
+    rrd_uops_5_REG_uses_stq <= io_iss_uops_5_uses_stq;	// register-read.scala:86:29
+    rrd_uops_5_REG_dst_rtype <= io_iss_uops_5_dst_rtype;	// register-read.scala:86:29
+    rrd_uops_5_REG_lrs1_rtype <= io_iss_uops_5_lrs1_rtype;	// register-read.scala:86:29
+    rrd_uops_5_REG_lrs2_rtype <= io_iss_uops_5_lrs2_rtype;	// register-read.scala:86:29
     rrd_rs1_data_0_REG <= io_iss_uops_0_prs1 == 7'h0;	// consts.scala:270:20, register-read.scala:124:{57,67}
     rrd_rs2_data_0_REG <= io_iss_uops_0_prs2 == 7'h0;	// consts.scala:270:20, register-read.scala:125:{57,67}
     rrd_rs1_data_1_REG <= io_iss_uops_1_prs1 == 7'h0;	// consts.scala:270:20, register-read.scala:124:{57,67}
@@ -3696,479 +3393,58 @@ module RegisterRead_1(
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
   RegisterReadDecode_2 rrd_decode_unit (	// register-read.scala:80:33
-    .io_iss_valid               (io_iss_valids_0),
-    .io_iss_uop_uopc            (io_iss_uops_0_uopc),
-    .io_iss_uop_inst            (io_iss_uops_0_inst),
-    .io_iss_uop_debug_inst      (io_iss_uops_0_debug_inst),
-    .io_iss_uop_is_rvc          (io_iss_uops_0_is_rvc),
-    .io_iss_uop_debug_pc        (io_iss_uops_0_debug_pc),
-    .io_iss_uop_iq_type         (io_iss_uops_0_iq_type),
-    .io_iss_uop_fu_code         (io_iss_uops_0_fu_code),
-    .io_iss_uop_iw_state        (io_iss_uops_0_iw_state),
-    .io_iss_uop_is_br           (io_iss_uops_0_is_br),
-    .io_iss_uop_is_jalr         (io_iss_uops_0_is_jalr),
-    .io_iss_uop_is_jal          (io_iss_uops_0_is_jal),
-    .io_iss_uop_is_sfb          (io_iss_uops_0_is_sfb),
-    .io_iss_uop_br_mask         (io_iss_uops_0_br_mask),
-    .io_iss_uop_br_tag          (io_iss_uops_0_br_tag),
-    .io_iss_uop_ftq_idx         (io_iss_uops_0_ftq_idx),
-    .io_iss_uop_edge_inst       (io_iss_uops_0_edge_inst),
-    .io_iss_uop_pc_lob          (io_iss_uops_0_pc_lob),
-    .io_iss_uop_taken           (io_iss_uops_0_taken),
-    .io_iss_uop_imm_packed      (io_iss_uops_0_imm_packed),
-    .io_iss_uop_csr_addr        (io_iss_uops_0_csr_addr),
-    .io_iss_uop_rob_idx         (io_iss_uops_0_rob_idx),
-    .io_iss_uop_ldq_idx         (io_iss_uops_0_ldq_idx),
-    .io_iss_uop_stq_idx         (io_iss_uops_0_stq_idx),
-    .io_iss_uop_rxq_idx         (io_iss_uops_0_rxq_idx),
-    .io_iss_uop_pdst            (io_iss_uops_0_pdst),
-    .io_iss_uop_prs1            (io_iss_uops_0_prs1),
-    .io_iss_uop_prs2            (io_iss_uops_0_prs2),
-    .io_iss_uop_prs3            (io_iss_uops_0_prs3),
-    .io_iss_uop_ppred           (io_iss_uops_0_ppred),
-    .io_iss_uop_prs1_busy       (io_iss_uops_0_prs1_busy),
-    .io_iss_uop_prs2_busy       (io_iss_uops_0_prs2_busy),
-    .io_iss_uop_prs3_busy       (io_iss_uops_0_prs3_busy),
-    .io_iss_uop_ppred_busy      (io_iss_uops_0_ppred_busy),
-    .io_iss_uop_stale_pdst      (io_iss_uops_0_stale_pdst),
-    .io_iss_uop_exception       (io_iss_uops_0_exception),
-    .io_iss_uop_exc_cause       (io_iss_uops_0_exc_cause),
-    .io_iss_uop_bypassable      (io_iss_uops_0_bypassable),
-    .io_iss_uop_mem_cmd         (io_iss_uops_0_mem_cmd),
-    .io_iss_uop_mem_size        (io_iss_uops_0_mem_size),
-    .io_iss_uop_mem_signed      (io_iss_uops_0_mem_signed),
-    .io_iss_uop_is_fence        (io_iss_uops_0_is_fence),
-    .io_iss_uop_is_fencei       (io_iss_uops_0_is_fencei),
-    .io_iss_uop_is_amo          (io_iss_uops_0_is_amo),
-    .io_iss_uop_uses_ldq        (io_iss_uops_0_uses_ldq),
-    .io_iss_uop_uses_stq        (io_iss_uops_0_uses_stq),
-    .io_iss_uop_is_sys_pc2epc   (io_iss_uops_0_is_sys_pc2epc),
-    .io_iss_uop_is_unique       (io_iss_uops_0_is_unique),
-    .io_iss_uop_flush_on_commit (io_iss_uops_0_flush_on_commit),
-    .io_iss_uop_ldst_is_rs1     (io_iss_uops_0_ldst_is_rs1),
-    .io_iss_uop_ldst            (io_iss_uops_0_ldst),
-    .io_iss_uop_lrs1            (io_iss_uops_0_lrs1),
-    .io_iss_uop_lrs2            (io_iss_uops_0_lrs2),
-    .io_iss_uop_lrs3            (io_iss_uops_0_lrs3),
-    .io_iss_uop_ldst_val        (io_iss_uops_0_ldst_val),
-    .io_iss_uop_dst_rtype       (io_iss_uops_0_dst_rtype),
-    .io_iss_uop_lrs1_rtype      (io_iss_uops_0_lrs1_rtype),
-    .io_iss_uop_lrs2_rtype      (io_iss_uops_0_lrs2_rtype),
-    .io_iss_uop_frs3_en         (io_iss_uops_0_frs3_en),
-    .io_iss_uop_fp_val          (io_iss_uops_0_fp_val),
-    .io_iss_uop_fp_single       (io_iss_uops_0_fp_single),
-    .io_iss_uop_xcpt_pf_if      (io_iss_uops_0_xcpt_pf_if),
-    .io_iss_uop_xcpt_ae_if      (io_iss_uops_0_xcpt_ae_if),
-    .io_iss_uop_xcpt_ma_if      (io_iss_uops_0_xcpt_ma_if),
-    .io_iss_uop_bp_debug_if     (io_iss_uops_0_bp_debug_if),
-    .io_iss_uop_bp_xcpt_if      (io_iss_uops_0_bp_xcpt_if),
-    .io_iss_uop_debug_fsrc      (io_iss_uops_0_debug_fsrc),
-    .io_iss_uop_debug_tsrc      (io_iss_uops_0_debug_tsrc),
-    .io_rrd_valid               (_rrd_decode_unit_io_rrd_valid),
-    .io_rrd_uop_uopc            (_rrd_decode_unit_io_rrd_uop_uopc),
-    .io_rrd_uop_inst            (_rrd_decode_unit_io_rrd_uop_inst),
-    .io_rrd_uop_debug_inst      (_rrd_decode_unit_io_rrd_uop_debug_inst),
-    .io_rrd_uop_is_rvc          (_rrd_decode_unit_io_rrd_uop_is_rvc),
-    .io_rrd_uop_debug_pc        (_rrd_decode_unit_io_rrd_uop_debug_pc),
-    .io_rrd_uop_iq_type         (_rrd_decode_unit_io_rrd_uop_iq_type),
-    .io_rrd_uop_fu_code         (_rrd_decode_unit_io_rrd_uop_fu_code),
-    .io_rrd_uop_ctrl_br_type    (_rrd_decode_unit_io_rrd_uop_ctrl_br_type),
-    .io_rrd_uop_ctrl_op1_sel    (_rrd_decode_unit_io_rrd_uop_ctrl_op1_sel),
-    .io_rrd_uop_ctrl_op2_sel    (_rrd_decode_unit_io_rrd_uop_ctrl_op2_sel),
-    .io_rrd_uop_ctrl_imm_sel    (_rrd_decode_unit_io_rrd_uop_ctrl_imm_sel),
-    .io_rrd_uop_ctrl_op_fcn     (_rrd_decode_unit_io_rrd_uop_ctrl_op_fcn),
-    .io_rrd_uop_ctrl_fcn_dw     (_rrd_decode_unit_io_rrd_uop_ctrl_fcn_dw),
-    .io_rrd_uop_ctrl_is_load    (_rrd_decode_unit_io_rrd_uop_ctrl_is_load),
-    .io_rrd_uop_ctrl_is_sta     (_rrd_decode_unit_io_rrd_uop_ctrl_is_sta),
-    .io_rrd_uop_ctrl_is_std     (_rrd_decode_unit_io_rrd_uop_ctrl_is_std),
-    .io_rrd_uop_iw_state        (_rrd_decode_unit_io_rrd_uop_iw_state),
-    .io_rrd_uop_is_br           (_rrd_decode_unit_io_rrd_uop_is_br),
-    .io_rrd_uop_is_jalr         (_rrd_decode_unit_io_rrd_uop_is_jalr),
-    .io_rrd_uop_is_jal          (_rrd_decode_unit_io_rrd_uop_is_jal),
-    .io_rrd_uop_is_sfb          (_rrd_decode_unit_io_rrd_uop_is_sfb),
-    .io_rrd_uop_br_mask         (_rrd_decode_unit_io_rrd_uop_br_mask),
-    .io_rrd_uop_br_tag          (_rrd_decode_unit_io_rrd_uop_br_tag),
-    .io_rrd_uop_ftq_idx         (_rrd_decode_unit_io_rrd_uop_ftq_idx),
-    .io_rrd_uop_edge_inst       (_rrd_decode_unit_io_rrd_uop_edge_inst),
-    .io_rrd_uop_pc_lob          (_rrd_decode_unit_io_rrd_uop_pc_lob),
-    .io_rrd_uop_taken           (_rrd_decode_unit_io_rrd_uop_taken),
-    .io_rrd_uop_imm_packed      (_rrd_decode_unit_io_rrd_uop_imm_packed),
-    .io_rrd_uop_csr_addr        (_rrd_decode_unit_io_rrd_uop_csr_addr),
-    .io_rrd_uop_rob_idx         (_rrd_decode_unit_io_rrd_uop_rob_idx),
-    .io_rrd_uop_ldq_idx         (_rrd_decode_unit_io_rrd_uop_ldq_idx),
-    .io_rrd_uop_stq_idx         (_rrd_decode_unit_io_rrd_uop_stq_idx),
-    .io_rrd_uop_rxq_idx         (_rrd_decode_unit_io_rrd_uop_rxq_idx),
-    .io_rrd_uop_pdst            (_rrd_decode_unit_io_rrd_uop_pdst),
-    .io_rrd_uop_prs1            (_rrd_decode_unit_io_rrd_uop_prs1),
-    .io_rrd_uop_prs2            (_rrd_decode_unit_io_rrd_uop_prs2),
-    .io_rrd_uop_prs3            (_rrd_decode_unit_io_rrd_uop_prs3),
-    .io_rrd_uop_ppred           (_rrd_decode_unit_io_rrd_uop_ppred),
-    .io_rrd_uop_prs1_busy       (_rrd_decode_unit_io_rrd_uop_prs1_busy),
-    .io_rrd_uop_prs2_busy       (_rrd_decode_unit_io_rrd_uop_prs2_busy),
-    .io_rrd_uop_prs3_busy       (_rrd_decode_unit_io_rrd_uop_prs3_busy),
-    .io_rrd_uop_ppred_busy      (_rrd_decode_unit_io_rrd_uop_ppred_busy),
-    .io_rrd_uop_stale_pdst      (_rrd_decode_unit_io_rrd_uop_stale_pdst),
-    .io_rrd_uop_exception       (_rrd_decode_unit_io_rrd_uop_exception),
-    .io_rrd_uop_exc_cause       (_rrd_decode_unit_io_rrd_uop_exc_cause),
-    .io_rrd_uop_bypassable      (_rrd_decode_unit_io_rrd_uop_bypassable),
-    .io_rrd_uop_mem_cmd         (_rrd_decode_unit_io_rrd_uop_mem_cmd),
-    .io_rrd_uop_mem_size        (_rrd_decode_unit_io_rrd_uop_mem_size),
-    .io_rrd_uop_mem_signed      (_rrd_decode_unit_io_rrd_uop_mem_signed),
-    .io_rrd_uop_is_fence        (_rrd_decode_unit_io_rrd_uop_is_fence),
-    .io_rrd_uop_is_fencei       (_rrd_decode_unit_io_rrd_uop_is_fencei),
-    .io_rrd_uop_is_amo          (_rrd_decode_unit_io_rrd_uop_is_amo),
-    .io_rrd_uop_uses_ldq        (_rrd_decode_unit_io_rrd_uop_uses_ldq),
-    .io_rrd_uop_uses_stq        (_rrd_decode_unit_io_rrd_uop_uses_stq),
-    .io_rrd_uop_is_sys_pc2epc   (_rrd_decode_unit_io_rrd_uop_is_sys_pc2epc),
-    .io_rrd_uop_is_unique       (_rrd_decode_unit_io_rrd_uop_is_unique),
-    .io_rrd_uop_flush_on_commit (_rrd_decode_unit_io_rrd_uop_flush_on_commit),
-    .io_rrd_uop_ldst_is_rs1     (_rrd_decode_unit_io_rrd_uop_ldst_is_rs1),
-    .io_rrd_uop_ldst            (_rrd_decode_unit_io_rrd_uop_ldst),
-    .io_rrd_uop_lrs1            (_rrd_decode_unit_io_rrd_uop_lrs1),
-    .io_rrd_uop_lrs2            (_rrd_decode_unit_io_rrd_uop_lrs2),
-    .io_rrd_uop_lrs3            (_rrd_decode_unit_io_rrd_uop_lrs3),
-    .io_rrd_uop_ldst_val        (_rrd_decode_unit_io_rrd_uop_ldst_val),
-    .io_rrd_uop_dst_rtype       (_rrd_decode_unit_io_rrd_uop_dst_rtype),
-    .io_rrd_uop_lrs1_rtype      (_rrd_decode_unit_io_rrd_uop_lrs1_rtype),
-    .io_rrd_uop_lrs2_rtype      (_rrd_decode_unit_io_rrd_uop_lrs2_rtype),
-    .io_rrd_uop_frs3_en         (_rrd_decode_unit_io_rrd_uop_frs3_en),
-    .io_rrd_uop_fp_val          (_rrd_decode_unit_io_rrd_uop_fp_val),
-    .io_rrd_uop_fp_single       (_rrd_decode_unit_io_rrd_uop_fp_single),
-    .io_rrd_uop_xcpt_pf_if      (_rrd_decode_unit_io_rrd_uop_xcpt_pf_if),
-    .io_rrd_uop_xcpt_ae_if      (_rrd_decode_unit_io_rrd_uop_xcpt_ae_if),
-    .io_rrd_uop_xcpt_ma_if      (_rrd_decode_unit_io_rrd_uop_xcpt_ma_if),
-    .io_rrd_uop_bp_debug_if     (_rrd_decode_unit_io_rrd_uop_bp_debug_if),
-    .io_rrd_uop_bp_xcpt_if      (_rrd_decode_unit_io_rrd_uop_bp_xcpt_if),
-    .io_rrd_uop_debug_fsrc      (_rrd_decode_unit_io_rrd_uop_debug_fsrc),
-    .io_rrd_uop_debug_tsrc      (_rrd_decode_unit_io_rrd_uop_debug_tsrc)
+    .io_iss_uop_uopc         (io_iss_uops_0_uopc),
+    .io_iss_uop_imm_packed   (io_iss_uops_0_imm_packed),
+    .io_iss_uop_mem_cmd      (io_iss_uops_0_mem_cmd),
+    .io_iss_uop_lrs2_rtype   (io_iss_uops_0_lrs2_rtype),
+    .io_rrd_uop_ctrl_br_type (_rrd_decode_unit_io_rrd_uop_ctrl_br_type),
+    .io_rrd_uop_ctrl_op1_sel (_rrd_decode_unit_io_rrd_uop_ctrl_op1_sel),
+    .io_rrd_uop_ctrl_op2_sel (_rrd_decode_unit_io_rrd_uop_ctrl_op2_sel),
+    .io_rrd_uop_ctrl_imm_sel (_rrd_decode_unit_io_rrd_uop_ctrl_imm_sel),
+    .io_rrd_uop_ctrl_op_fcn  (_rrd_decode_unit_io_rrd_uop_ctrl_op_fcn),
+    .io_rrd_uop_ctrl_fcn_dw  (_rrd_decode_unit_io_rrd_uop_ctrl_fcn_dw),
+    .io_rrd_uop_ctrl_is_load (_rrd_decode_unit_io_rrd_uop_ctrl_is_load),
+    .io_rrd_uop_ctrl_is_sta  (_rrd_decode_unit_io_rrd_uop_ctrl_is_sta),
+    .io_rrd_uop_ctrl_is_std  (_rrd_decode_unit_io_rrd_uop_ctrl_is_std),
+    .io_rrd_uop_imm_packed   (_rrd_decode_unit_io_rrd_uop_imm_packed)
   );
   RegisterReadDecode_2 rrd_decode_unit_1 (	// register-read.scala:80:33
-    .io_iss_valid               (io_iss_valids_1),
-    .io_iss_uop_uopc            (io_iss_uops_1_uopc),
-    .io_iss_uop_inst            (io_iss_uops_1_inst),
-    .io_iss_uop_debug_inst      (io_iss_uops_1_debug_inst),
-    .io_iss_uop_is_rvc          (io_iss_uops_1_is_rvc),
-    .io_iss_uop_debug_pc        (io_iss_uops_1_debug_pc),
-    .io_iss_uop_iq_type         (io_iss_uops_1_iq_type),
-    .io_iss_uop_fu_code         (io_iss_uops_1_fu_code),
-    .io_iss_uop_iw_state        (io_iss_uops_1_iw_state),
-    .io_iss_uop_is_br           (io_iss_uops_1_is_br),
-    .io_iss_uop_is_jalr         (io_iss_uops_1_is_jalr),
-    .io_iss_uop_is_jal          (io_iss_uops_1_is_jal),
-    .io_iss_uop_is_sfb          (io_iss_uops_1_is_sfb),
-    .io_iss_uop_br_mask         (io_iss_uops_1_br_mask),
-    .io_iss_uop_br_tag          (io_iss_uops_1_br_tag),
-    .io_iss_uop_ftq_idx         (io_iss_uops_1_ftq_idx),
-    .io_iss_uop_edge_inst       (io_iss_uops_1_edge_inst),
-    .io_iss_uop_pc_lob          (io_iss_uops_1_pc_lob),
-    .io_iss_uop_taken           (io_iss_uops_1_taken),
-    .io_iss_uop_imm_packed      (io_iss_uops_1_imm_packed),
-    .io_iss_uop_csr_addr        (io_iss_uops_1_csr_addr),
-    .io_iss_uop_rob_idx         (io_iss_uops_1_rob_idx),
-    .io_iss_uop_ldq_idx         (io_iss_uops_1_ldq_idx),
-    .io_iss_uop_stq_idx         (io_iss_uops_1_stq_idx),
-    .io_iss_uop_rxq_idx         (io_iss_uops_1_rxq_idx),
-    .io_iss_uop_pdst            (io_iss_uops_1_pdst),
-    .io_iss_uop_prs1            (io_iss_uops_1_prs1),
-    .io_iss_uop_prs2            (io_iss_uops_1_prs2),
-    .io_iss_uop_prs3            (io_iss_uops_1_prs3),
-    .io_iss_uop_ppred           (io_iss_uops_1_ppred),
-    .io_iss_uop_prs1_busy       (io_iss_uops_1_prs1_busy),
-    .io_iss_uop_prs2_busy       (io_iss_uops_1_prs2_busy),
-    .io_iss_uop_prs3_busy       (io_iss_uops_1_prs3_busy),
-    .io_iss_uop_ppred_busy      (io_iss_uops_1_ppred_busy),
-    .io_iss_uop_stale_pdst      (io_iss_uops_1_stale_pdst),
-    .io_iss_uop_exception       (io_iss_uops_1_exception),
-    .io_iss_uop_exc_cause       (io_iss_uops_1_exc_cause),
-    .io_iss_uop_bypassable      (io_iss_uops_1_bypassable),
-    .io_iss_uop_mem_cmd         (io_iss_uops_1_mem_cmd),
-    .io_iss_uop_mem_size        (io_iss_uops_1_mem_size),
-    .io_iss_uop_mem_signed      (io_iss_uops_1_mem_signed),
-    .io_iss_uop_is_fence        (io_iss_uops_1_is_fence),
-    .io_iss_uop_is_fencei       (io_iss_uops_1_is_fencei),
-    .io_iss_uop_is_amo          (io_iss_uops_1_is_amo),
-    .io_iss_uop_uses_ldq        (io_iss_uops_1_uses_ldq),
-    .io_iss_uop_uses_stq        (io_iss_uops_1_uses_stq),
-    .io_iss_uop_is_sys_pc2epc   (io_iss_uops_1_is_sys_pc2epc),
-    .io_iss_uop_is_unique       (io_iss_uops_1_is_unique),
-    .io_iss_uop_flush_on_commit (io_iss_uops_1_flush_on_commit),
-    .io_iss_uop_ldst_is_rs1     (io_iss_uops_1_ldst_is_rs1),
-    .io_iss_uop_ldst            (io_iss_uops_1_ldst),
-    .io_iss_uop_lrs1            (io_iss_uops_1_lrs1),
-    .io_iss_uop_lrs2            (io_iss_uops_1_lrs2),
-    .io_iss_uop_lrs3            (io_iss_uops_1_lrs3),
-    .io_iss_uop_ldst_val        (io_iss_uops_1_ldst_val),
-    .io_iss_uop_dst_rtype       (io_iss_uops_1_dst_rtype),
-    .io_iss_uop_lrs1_rtype      (io_iss_uops_1_lrs1_rtype),
-    .io_iss_uop_lrs2_rtype      (io_iss_uops_1_lrs2_rtype),
-    .io_iss_uop_frs3_en         (io_iss_uops_1_frs3_en),
-    .io_iss_uop_fp_val          (io_iss_uops_1_fp_val),
-    .io_iss_uop_fp_single       (io_iss_uops_1_fp_single),
-    .io_iss_uop_xcpt_pf_if      (io_iss_uops_1_xcpt_pf_if),
-    .io_iss_uop_xcpt_ae_if      (io_iss_uops_1_xcpt_ae_if),
-    .io_iss_uop_xcpt_ma_if      (io_iss_uops_1_xcpt_ma_if),
-    .io_iss_uop_bp_debug_if     (io_iss_uops_1_bp_debug_if),
-    .io_iss_uop_bp_xcpt_if      (io_iss_uops_1_bp_xcpt_if),
-    .io_iss_uop_debug_fsrc      (io_iss_uops_1_debug_fsrc),
-    .io_iss_uop_debug_tsrc      (io_iss_uops_1_debug_tsrc),
-    .io_rrd_valid               (_rrd_decode_unit_1_io_rrd_valid),
-    .io_rrd_uop_uopc            (_rrd_decode_unit_1_io_rrd_uop_uopc),
-    .io_rrd_uop_inst            (_rrd_decode_unit_1_io_rrd_uop_inst),
-    .io_rrd_uop_debug_inst      (_rrd_decode_unit_1_io_rrd_uop_debug_inst),
-    .io_rrd_uop_is_rvc          (_rrd_decode_unit_1_io_rrd_uop_is_rvc),
-    .io_rrd_uop_debug_pc        (_rrd_decode_unit_1_io_rrd_uop_debug_pc),
-    .io_rrd_uop_iq_type         (_rrd_decode_unit_1_io_rrd_uop_iq_type),
-    .io_rrd_uop_fu_code         (_rrd_decode_unit_1_io_rrd_uop_fu_code),
-    .io_rrd_uop_ctrl_br_type    (_rrd_decode_unit_1_io_rrd_uop_ctrl_br_type),
-    .io_rrd_uop_ctrl_op1_sel    (_rrd_decode_unit_1_io_rrd_uop_ctrl_op1_sel),
-    .io_rrd_uop_ctrl_op2_sel    (_rrd_decode_unit_1_io_rrd_uop_ctrl_op2_sel),
-    .io_rrd_uop_ctrl_imm_sel    (_rrd_decode_unit_1_io_rrd_uop_ctrl_imm_sel),
-    .io_rrd_uop_ctrl_op_fcn     (_rrd_decode_unit_1_io_rrd_uop_ctrl_op_fcn),
-    .io_rrd_uop_ctrl_fcn_dw     (_rrd_decode_unit_1_io_rrd_uop_ctrl_fcn_dw),
-    .io_rrd_uop_ctrl_is_load    (_rrd_decode_unit_1_io_rrd_uop_ctrl_is_load),
-    .io_rrd_uop_ctrl_is_sta     (_rrd_decode_unit_1_io_rrd_uop_ctrl_is_sta),
-    .io_rrd_uop_ctrl_is_std     (_rrd_decode_unit_1_io_rrd_uop_ctrl_is_std),
-    .io_rrd_uop_iw_state        (_rrd_decode_unit_1_io_rrd_uop_iw_state),
-    .io_rrd_uop_is_br           (_rrd_decode_unit_1_io_rrd_uop_is_br),
-    .io_rrd_uop_is_jalr         (_rrd_decode_unit_1_io_rrd_uop_is_jalr),
-    .io_rrd_uop_is_jal          (_rrd_decode_unit_1_io_rrd_uop_is_jal),
-    .io_rrd_uop_is_sfb          (_rrd_decode_unit_1_io_rrd_uop_is_sfb),
-    .io_rrd_uop_br_mask         (_rrd_decode_unit_1_io_rrd_uop_br_mask),
-    .io_rrd_uop_br_tag          (_rrd_decode_unit_1_io_rrd_uop_br_tag),
-    .io_rrd_uop_ftq_idx         (_rrd_decode_unit_1_io_rrd_uop_ftq_idx),
-    .io_rrd_uop_edge_inst       (_rrd_decode_unit_1_io_rrd_uop_edge_inst),
-    .io_rrd_uop_pc_lob          (_rrd_decode_unit_1_io_rrd_uop_pc_lob),
-    .io_rrd_uop_taken           (_rrd_decode_unit_1_io_rrd_uop_taken),
-    .io_rrd_uop_imm_packed      (_rrd_decode_unit_1_io_rrd_uop_imm_packed),
-    .io_rrd_uop_csr_addr        (_rrd_decode_unit_1_io_rrd_uop_csr_addr),
-    .io_rrd_uop_rob_idx         (_rrd_decode_unit_1_io_rrd_uop_rob_idx),
-    .io_rrd_uop_ldq_idx         (_rrd_decode_unit_1_io_rrd_uop_ldq_idx),
-    .io_rrd_uop_stq_idx         (_rrd_decode_unit_1_io_rrd_uop_stq_idx),
-    .io_rrd_uop_rxq_idx         (_rrd_decode_unit_1_io_rrd_uop_rxq_idx),
-    .io_rrd_uop_pdst            (_rrd_decode_unit_1_io_rrd_uop_pdst),
-    .io_rrd_uop_prs1            (_rrd_decode_unit_1_io_rrd_uop_prs1),
-    .io_rrd_uop_prs2            (_rrd_decode_unit_1_io_rrd_uop_prs2),
-    .io_rrd_uop_prs3            (_rrd_decode_unit_1_io_rrd_uop_prs3),
-    .io_rrd_uop_ppred           (_rrd_decode_unit_1_io_rrd_uop_ppred),
-    .io_rrd_uop_prs1_busy       (_rrd_decode_unit_1_io_rrd_uop_prs1_busy),
-    .io_rrd_uop_prs2_busy       (_rrd_decode_unit_1_io_rrd_uop_prs2_busy),
-    .io_rrd_uop_prs3_busy       (_rrd_decode_unit_1_io_rrd_uop_prs3_busy),
-    .io_rrd_uop_ppred_busy      (_rrd_decode_unit_1_io_rrd_uop_ppred_busy),
-    .io_rrd_uop_stale_pdst      (_rrd_decode_unit_1_io_rrd_uop_stale_pdst),
-    .io_rrd_uop_exception       (_rrd_decode_unit_1_io_rrd_uop_exception),
-    .io_rrd_uop_exc_cause       (_rrd_decode_unit_1_io_rrd_uop_exc_cause),
-    .io_rrd_uop_bypassable      (_rrd_decode_unit_1_io_rrd_uop_bypassable),
-    .io_rrd_uop_mem_cmd         (_rrd_decode_unit_1_io_rrd_uop_mem_cmd),
-    .io_rrd_uop_mem_size        (_rrd_decode_unit_1_io_rrd_uop_mem_size),
-    .io_rrd_uop_mem_signed      (_rrd_decode_unit_1_io_rrd_uop_mem_signed),
-    .io_rrd_uop_is_fence        (_rrd_decode_unit_1_io_rrd_uop_is_fence),
-    .io_rrd_uop_is_fencei       (_rrd_decode_unit_1_io_rrd_uop_is_fencei),
-    .io_rrd_uop_is_amo          (_rrd_decode_unit_1_io_rrd_uop_is_amo),
-    .io_rrd_uop_uses_ldq        (_rrd_decode_unit_1_io_rrd_uop_uses_ldq),
-    .io_rrd_uop_uses_stq        (_rrd_decode_unit_1_io_rrd_uop_uses_stq),
-    .io_rrd_uop_is_sys_pc2epc   (_rrd_decode_unit_1_io_rrd_uop_is_sys_pc2epc),
-    .io_rrd_uop_is_unique       (_rrd_decode_unit_1_io_rrd_uop_is_unique),
-    .io_rrd_uop_flush_on_commit (_rrd_decode_unit_1_io_rrd_uop_flush_on_commit),
-    .io_rrd_uop_ldst_is_rs1     (_rrd_decode_unit_1_io_rrd_uop_ldst_is_rs1),
-    .io_rrd_uop_ldst            (_rrd_decode_unit_1_io_rrd_uop_ldst),
-    .io_rrd_uop_lrs1            (_rrd_decode_unit_1_io_rrd_uop_lrs1),
-    .io_rrd_uop_lrs2            (_rrd_decode_unit_1_io_rrd_uop_lrs2),
-    .io_rrd_uop_lrs3            (_rrd_decode_unit_1_io_rrd_uop_lrs3),
-    .io_rrd_uop_ldst_val        (_rrd_decode_unit_1_io_rrd_uop_ldst_val),
-    .io_rrd_uop_dst_rtype       (_rrd_decode_unit_1_io_rrd_uop_dst_rtype),
-    .io_rrd_uop_lrs1_rtype      (_rrd_decode_unit_1_io_rrd_uop_lrs1_rtype),
-    .io_rrd_uop_lrs2_rtype      (_rrd_decode_unit_1_io_rrd_uop_lrs2_rtype),
-    .io_rrd_uop_frs3_en         (_rrd_decode_unit_1_io_rrd_uop_frs3_en),
-    .io_rrd_uop_fp_val          (_rrd_decode_unit_1_io_rrd_uop_fp_val),
-    .io_rrd_uop_fp_single       (_rrd_decode_unit_1_io_rrd_uop_fp_single),
-    .io_rrd_uop_xcpt_pf_if      (_rrd_decode_unit_1_io_rrd_uop_xcpt_pf_if),
-    .io_rrd_uop_xcpt_ae_if      (_rrd_decode_unit_1_io_rrd_uop_xcpt_ae_if),
-    .io_rrd_uop_xcpt_ma_if      (_rrd_decode_unit_1_io_rrd_uop_xcpt_ma_if),
-    .io_rrd_uop_bp_debug_if     (_rrd_decode_unit_1_io_rrd_uop_bp_debug_if),
-    .io_rrd_uop_bp_xcpt_if      (_rrd_decode_unit_1_io_rrd_uop_bp_xcpt_if),
-    .io_rrd_uop_debug_fsrc      (_rrd_decode_unit_1_io_rrd_uop_debug_fsrc),
-    .io_rrd_uop_debug_tsrc      (_rrd_decode_unit_1_io_rrd_uop_debug_tsrc)
+    .io_iss_uop_uopc         (io_iss_uops_1_uopc),
+    .io_iss_uop_imm_packed   (io_iss_uops_1_imm_packed),
+    .io_iss_uop_mem_cmd      (io_iss_uops_1_mem_cmd),
+    .io_iss_uop_lrs2_rtype   (io_iss_uops_1_lrs2_rtype),
+    .io_rrd_uop_ctrl_br_type (_rrd_decode_unit_1_io_rrd_uop_ctrl_br_type),
+    .io_rrd_uop_ctrl_op1_sel (_rrd_decode_unit_1_io_rrd_uop_ctrl_op1_sel),
+    .io_rrd_uop_ctrl_op2_sel (_rrd_decode_unit_1_io_rrd_uop_ctrl_op2_sel),
+    .io_rrd_uop_ctrl_imm_sel (_rrd_decode_unit_1_io_rrd_uop_ctrl_imm_sel),
+    .io_rrd_uop_ctrl_op_fcn  (_rrd_decode_unit_1_io_rrd_uop_ctrl_op_fcn),
+    .io_rrd_uop_ctrl_fcn_dw  (_rrd_decode_unit_1_io_rrd_uop_ctrl_fcn_dw),
+    .io_rrd_uop_ctrl_is_load (_rrd_decode_unit_1_io_rrd_uop_ctrl_is_load),
+    .io_rrd_uop_ctrl_is_sta  (_rrd_decode_unit_1_io_rrd_uop_ctrl_is_sta),
+    .io_rrd_uop_ctrl_is_std  (_rrd_decode_unit_1_io_rrd_uop_ctrl_is_std),
+    .io_rrd_uop_imm_packed   (_rrd_decode_unit_1_io_rrd_uop_imm_packed)
   );
   RegisterReadDecode_4 rrd_decode_unit_2 (	// register-read.scala:80:33
-    .io_iss_valid               (io_iss_valids_2),
-    .io_iss_uop_uopc            (io_iss_uops_2_uopc),
-    .io_iss_uop_inst            (io_iss_uops_2_inst),
-    .io_iss_uop_debug_inst      (io_iss_uops_2_debug_inst),
-    .io_iss_uop_is_rvc          (io_iss_uops_2_is_rvc),
-    .io_iss_uop_debug_pc        (io_iss_uops_2_debug_pc),
-    .io_iss_uop_iq_type         (io_iss_uops_2_iq_type),
-    .io_iss_uop_fu_code         (io_iss_uops_2_fu_code),
-    .io_iss_uop_iw_state        (io_iss_uops_2_iw_state),
-    .io_iss_uop_is_br           (io_iss_uops_2_is_br),
-    .io_iss_uop_is_jalr         (io_iss_uops_2_is_jalr),
-    .io_iss_uop_is_jal          (io_iss_uops_2_is_jal),
-    .io_iss_uop_is_sfb          (io_iss_uops_2_is_sfb),
-    .io_iss_uop_br_mask         (io_iss_uops_2_br_mask),
-    .io_iss_uop_br_tag          (io_iss_uops_2_br_tag),
-    .io_iss_uop_ftq_idx         (io_iss_uops_2_ftq_idx),
-    .io_iss_uop_edge_inst       (io_iss_uops_2_edge_inst),
-    .io_iss_uop_pc_lob          (io_iss_uops_2_pc_lob),
-    .io_iss_uop_taken           (io_iss_uops_2_taken),
-    .io_iss_uop_imm_packed      (io_iss_uops_2_imm_packed),
-    .io_iss_uop_csr_addr        (io_iss_uops_2_csr_addr),
-    .io_iss_uop_rob_idx         (io_iss_uops_2_rob_idx),
-    .io_iss_uop_ldq_idx         (io_iss_uops_2_ldq_idx),
-    .io_iss_uop_stq_idx         (io_iss_uops_2_stq_idx),
-    .io_iss_uop_rxq_idx         (io_iss_uops_2_rxq_idx),
-    .io_iss_uop_pdst            (io_iss_uops_2_pdst),
-    .io_iss_uop_prs1            (io_iss_uops_2_prs1),
-    .io_iss_uop_prs2            (io_iss_uops_2_prs2),
-    .io_iss_uop_prs3            (io_iss_uops_2_prs3),
-    .io_iss_uop_ppred           (io_iss_uops_2_ppred),
-    .io_iss_uop_prs1_busy       (io_iss_uops_2_prs1_busy),
-    .io_iss_uop_prs2_busy       (io_iss_uops_2_prs2_busy),
-    .io_iss_uop_prs3_busy       (io_iss_uops_2_prs3_busy),
-    .io_iss_uop_ppred_busy      (io_iss_uops_2_ppred_busy),
-    .io_iss_uop_stale_pdst      (io_iss_uops_2_stale_pdst),
-    .io_iss_uop_exception       (io_iss_uops_2_exception),
-    .io_iss_uop_exc_cause       (io_iss_uops_2_exc_cause),
-    .io_iss_uop_bypassable      (io_iss_uops_2_bypassable),
-    .io_iss_uop_mem_cmd         (io_iss_uops_2_mem_cmd),
-    .io_iss_uop_mem_size        (io_iss_uops_2_mem_size),
-    .io_iss_uop_mem_signed      (io_iss_uops_2_mem_signed),
-    .io_iss_uop_is_fence        (io_iss_uops_2_is_fence),
-    .io_iss_uop_is_fencei       (io_iss_uops_2_is_fencei),
-    .io_iss_uop_is_amo          (io_iss_uops_2_is_amo),
-    .io_iss_uop_uses_ldq        (io_iss_uops_2_uses_ldq),
-    .io_iss_uop_uses_stq        (io_iss_uops_2_uses_stq),
-    .io_iss_uop_is_sys_pc2epc   (io_iss_uops_2_is_sys_pc2epc),
-    .io_iss_uop_is_unique       (io_iss_uops_2_is_unique),
-    .io_iss_uop_flush_on_commit (io_iss_uops_2_flush_on_commit),
-    .io_iss_uop_ldst_is_rs1     (io_iss_uops_2_ldst_is_rs1),
-    .io_iss_uop_ldst            (io_iss_uops_2_ldst),
-    .io_iss_uop_lrs1            (io_iss_uops_2_lrs1),
-    .io_iss_uop_lrs2            (io_iss_uops_2_lrs2),
-    .io_iss_uop_lrs3            (io_iss_uops_2_lrs3),
-    .io_iss_uop_ldst_val        (io_iss_uops_2_ldst_val),
-    .io_iss_uop_dst_rtype       (io_iss_uops_2_dst_rtype),
-    .io_iss_uop_lrs1_rtype      (io_iss_uops_2_lrs1_rtype),
-    .io_iss_uop_lrs2_rtype      (io_iss_uops_2_lrs2_rtype),
-    .io_iss_uop_frs3_en         (io_iss_uops_2_frs3_en),
-    .io_iss_uop_fp_val          (io_iss_uops_2_fp_val),
-    .io_iss_uop_fp_single       (io_iss_uops_2_fp_single),
-    .io_iss_uop_xcpt_pf_if      (io_iss_uops_2_xcpt_pf_if),
-    .io_iss_uop_xcpt_ae_if      (io_iss_uops_2_xcpt_ae_if),
-    .io_iss_uop_xcpt_ma_if      (io_iss_uops_2_xcpt_ma_if),
-    .io_iss_uop_bp_debug_if     (io_iss_uops_2_bp_debug_if),
-    .io_iss_uop_bp_xcpt_if      (io_iss_uops_2_bp_xcpt_if),
-    .io_iss_uop_debug_fsrc      (io_iss_uops_2_debug_fsrc),
-    .io_iss_uop_debug_tsrc      (io_iss_uops_2_debug_tsrc),
-    .io_rrd_valid               (_rrd_decode_unit_2_io_rrd_valid),
-    .io_rrd_uop_uopc            (_rrd_decode_unit_2_io_rrd_uop_uopc),
-    .io_rrd_uop_inst            (_rrd_decode_unit_2_io_rrd_uop_inst),
-    .io_rrd_uop_debug_inst      (_rrd_decode_unit_2_io_rrd_uop_debug_inst),
-    .io_rrd_uop_is_rvc          (_rrd_decode_unit_2_io_rrd_uop_is_rvc),
-    .io_rrd_uop_debug_pc        (_rrd_decode_unit_2_io_rrd_uop_debug_pc),
-    .io_rrd_uop_iq_type         (_rrd_decode_unit_2_io_rrd_uop_iq_type),
-    .io_rrd_uop_fu_code         (_rrd_decode_unit_2_io_rrd_uop_fu_code),
-    .io_rrd_uop_ctrl_br_type    (_rrd_decode_unit_2_io_rrd_uop_ctrl_br_type),
-    .io_rrd_uop_ctrl_op1_sel    (_rrd_decode_unit_2_io_rrd_uop_ctrl_op1_sel),
-    .io_rrd_uop_ctrl_op2_sel    (_rrd_decode_unit_2_io_rrd_uop_ctrl_op2_sel),
-    .io_rrd_uop_ctrl_imm_sel    (_rrd_decode_unit_2_io_rrd_uop_ctrl_imm_sel),
-    .io_rrd_uop_ctrl_op_fcn     (_rrd_decode_unit_2_io_rrd_uop_ctrl_op_fcn),
-    .io_rrd_uop_ctrl_fcn_dw     (_rrd_decode_unit_2_io_rrd_uop_ctrl_fcn_dw),
-    .io_rrd_uop_ctrl_is_load    (_rrd_decode_unit_2_io_rrd_uop_ctrl_is_load),
-    .io_rrd_uop_ctrl_is_sta     (_rrd_decode_unit_2_io_rrd_uop_ctrl_is_sta),
-    .io_rrd_uop_ctrl_is_std     (_rrd_decode_unit_2_io_rrd_uop_ctrl_is_std),
-    .io_rrd_uop_iw_state        (_rrd_decode_unit_2_io_rrd_uop_iw_state),
-    .io_rrd_uop_is_br           (_rrd_decode_unit_2_io_rrd_uop_is_br),
-    .io_rrd_uop_is_jalr         (_rrd_decode_unit_2_io_rrd_uop_is_jalr),
-    .io_rrd_uop_is_jal          (_rrd_decode_unit_2_io_rrd_uop_is_jal),
-    .io_rrd_uop_is_sfb          (_rrd_decode_unit_2_io_rrd_uop_is_sfb),
-    .io_rrd_uop_br_mask         (_rrd_decode_unit_2_io_rrd_uop_br_mask),
-    .io_rrd_uop_br_tag          (_rrd_decode_unit_2_io_rrd_uop_br_tag),
-    .io_rrd_uop_ftq_idx         (_rrd_decode_unit_2_io_rrd_uop_ftq_idx),
-    .io_rrd_uop_edge_inst       (_rrd_decode_unit_2_io_rrd_uop_edge_inst),
-    .io_rrd_uop_pc_lob          (_rrd_decode_unit_2_io_rrd_uop_pc_lob),
-    .io_rrd_uop_taken           (_rrd_decode_unit_2_io_rrd_uop_taken),
-    .io_rrd_uop_imm_packed      (_rrd_decode_unit_2_io_rrd_uop_imm_packed),
-    .io_rrd_uop_csr_addr        (_rrd_decode_unit_2_io_rrd_uop_csr_addr),
-    .io_rrd_uop_rob_idx         (_rrd_decode_unit_2_io_rrd_uop_rob_idx),
-    .io_rrd_uop_ldq_idx         (_rrd_decode_unit_2_io_rrd_uop_ldq_idx),
-    .io_rrd_uop_stq_idx         (_rrd_decode_unit_2_io_rrd_uop_stq_idx),
-    .io_rrd_uop_rxq_idx         (_rrd_decode_unit_2_io_rrd_uop_rxq_idx),
-    .io_rrd_uop_pdst            (_rrd_decode_unit_2_io_rrd_uop_pdst),
-    .io_rrd_uop_prs1            (_rrd_decode_unit_2_io_rrd_uop_prs1),
-    .io_rrd_uop_prs2            (_rrd_decode_unit_2_io_rrd_uop_prs2),
-    .io_rrd_uop_prs3            (_rrd_decode_unit_2_io_rrd_uop_prs3),
-    .io_rrd_uop_ppred           (_rrd_decode_unit_2_io_rrd_uop_ppred),
-    .io_rrd_uop_prs1_busy       (_rrd_decode_unit_2_io_rrd_uop_prs1_busy),
-    .io_rrd_uop_prs2_busy       (_rrd_decode_unit_2_io_rrd_uop_prs2_busy),
-    .io_rrd_uop_prs3_busy       (_rrd_decode_unit_2_io_rrd_uop_prs3_busy),
-    .io_rrd_uop_ppred_busy      (_rrd_decode_unit_2_io_rrd_uop_ppred_busy),
-    .io_rrd_uop_stale_pdst      (_rrd_decode_unit_2_io_rrd_uop_stale_pdst),
-    .io_rrd_uop_exception       (_rrd_decode_unit_2_io_rrd_uop_exception),
-    .io_rrd_uop_exc_cause       (_rrd_decode_unit_2_io_rrd_uop_exc_cause),
-    .io_rrd_uop_bypassable      (_rrd_decode_unit_2_io_rrd_uop_bypassable),
-    .io_rrd_uop_mem_cmd         (_rrd_decode_unit_2_io_rrd_uop_mem_cmd),
-    .io_rrd_uop_mem_size        (_rrd_decode_unit_2_io_rrd_uop_mem_size),
-    .io_rrd_uop_mem_signed      (_rrd_decode_unit_2_io_rrd_uop_mem_signed),
-    .io_rrd_uop_is_fence        (_rrd_decode_unit_2_io_rrd_uop_is_fence),
-    .io_rrd_uop_is_fencei       (_rrd_decode_unit_2_io_rrd_uop_is_fencei),
-    .io_rrd_uop_is_amo          (_rrd_decode_unit_2_io_rrd_uop_is_amo),
-    .io_rrd_uop_uses_ldq        (_rrd_decode_unit_2_io_rrd_uop_uses_ldq),
-    .io_rrd_uop_uses_stq        (_rrd_decode_unit_2_io_rrd_uop_uses_stq),
-    .io_rrd_uop_is_sys_pc2epc   (_rrd_decode_unit_2_io_rrd_uop_is_sys_pc2epc),
-    .io_rrd_uop_is_unique       (_rrd_decode_unit_2_io_rrd_uop_is_unique),
-    .io_rrd_uop_flush_on_commit (_rrd_decode_unit_2_io_rrd_uop_flush_on_commit),
-    .io_rrd_uop_ldst_is_rs1     (_rrd_decode_unit_2_io_rrd_uop_ldst_is_rs1),
-    .io_rrd_uop_ldst            (_rrd_decode_unit_2_io_rrd_uop_ldst),
-    .io_rrd_uop_lrs1            (_rrd_decode_unit_2_io_rrd_uop_lrs1),
-    .io_rrd_uop_lrs2            (_rrd_decode_unit_2_io_rrd_uop_lrs2),
-    .io_rrd_uop_lrs3            (_rrd_decode_unit_2_io_rrd_uop_lrs3),
-    .io_rrd_uop_ldst_val        (_rrd_decode_unit_2_io_rrd_uop_ldst_val),
-    .io_rrd_uop_dst_rtype       (_rrd_decode_unit_2_io_rrd_uop_dst_rtype),
-    .io_rrd_uop_lrs1_rtype      (_rrd_decode_unit_2_io_rrd_uop_lrs1_rtype),
-    .io_rrd_uop_lrs2_rtype      (_rrd_decode_unit_2_io_rrd_uop_lrs2_rtype),
-    .io_rrd_uop_frs3_en         (_rrd_decode_unit_2_io_rrd_uop_frs3_en),
-    .io_rrd_uop_fp_val          (_rrd_decode_unit_2_io_rrd_uop_fp_val),
-    .io_rrd_uop_fp_single       (_rrd_decode_unit_2_io_rrd_uop_fp_single),
-    .io_rrd_uop_xcpt_pf_if      (_rrd_decode_unit_2_io_rrd_uop_xcpt_pf_if),
-    .io_rrd_uop_xcpt_ae_if      (_rrd_decode_unit_2_io_rrd_uop_xcpt_ae_if),
-    .io_rrd_uop_xcpt_ma_if      (_rrd_decode_unit_2_io_rrd_uop_xcpt_ma_if),
-    .io_rrd_uop_bp_debug_if     (_rrd_decode_unit_2_io_rrd_uop_bp_debug_if),
-    .io_rrd_uop_bp_xcpt_if      (_rrd_decode_unit_2_io_rrd_uop_bp_xcpt_if),
-    .io_rrd_uop_debug_fsrc      (_rrd_decode_unit_2_io_rrd_uop_debug_fsrc),
-    .io_rrd_uop_debug_tsrc      (_rrd_decode_unit_2_io_rrd_uop_debug_tsrc)
+    .io_iss_uop_uopc         (io_iss_uops_2_uopc),
+    .io_iss_uop_imm_packed   (io_iss_uops_2_imm_packed),
+    .io_iss_uop_mem_cmd      (io_iss_uops_2_mem_cmd),
+    .io_iss_uop_lrs2_rtype   (io_iss_uops_2_lrs2_rtype),
+    .io_rrd_uop_ctrl_br_type (_rrd_decode_unit_2_io_rrd_uop_ctrl_br_type),
+    .io_rrd_uop_ctrl_op1_sel (_rrd_decode_unit_2_io_rrd_uop_ctrl_op1_sel),
+    .io_rrd_uop_ctrl_op2_sel (_rrd_decode_unit_2_io_rrd_uop_ctrl_op2_sel),
+    .io_rrd_uop_ctrl_imm_sel (_rrd_decode_unit_2_io_rrd_uop_ctrl_imm_sel),
+    .io_rrd_uop_ctrl_op_fcn  (_rrd_decode_unit_2_io_rrd_uop_ctrl_op_fcn),
+    .io_rrd_uop_ctrl_fcn_dw  (_rrd_decode_unit_2_io_rrd_uop_ctrl_fcn_dw),
+    .io_rrd_uop_ctrl_is_load (_rrd_decode_unit_2_io_rrd_uop_ctrl_is_load),
+    .io_rrd_uop_ctrl_is_sta  (_rrd_decode_unit_2_io_rrd_uop_ctrl_is_sta),
+    .io_rrd_uop_ctrl_is_std  (_rrd_decode_unit_2_io_rrd_uop_ctrl_is_std),
+    .io_rrd_uop_imm_packed   (_rrd_decode_unit_2_io_rrd_uop_imm_packed)
   );
   RegisterReadDecode_5 rrd_decode_unit_3 (	// register-read.scala:80:33
-    .io_iss_valid            (io_iss_valids_3),
     .io_iss_uop_uopc         (io_iss_uops_3_uopc),
-    .io_iss_uop_is_rvc       (io_iss_uops_3_is_rvc),
-    .io_iss_uop_fu_code      (io_iss_uops_3_fu_code),
-    .io_iss_uop_is_br        (io_iss_uops_3_is_br),
-    .io_iss_uop_is_jalr      (io_iss_uops_3_is_jalr),
-    .io_iss_uop_is_jal       (io_iss_uops_3_is_jal),
-    .io_iss_uop_is_sfb       (io_iss_uops_3_is_sfb),
-    .io_iss_uop_br_mask      (io_iss_uops_3_br_mask),
-    .io_iss_uop_br_tag       (io_iss_uops_3_br_tag),
-    .io_iss_uop_ftq_idx      (io_iss_uops_3_ftq_idx),
-    .io_iss_uop_edge_inst    (io_iss_uops_3_edge_inst),
-    .io_iss_uop_pc_lob       (io_iss_uops_3_pc_lob),
-    .io_iss_uop_taken        (io_iss_uops_3_taken),
     .io_iss_uop_imm_packed   (io_iss_uops_3_imm_packed),
-    .io_iss_uop_rob_idx      (io_iss_uops_3_rob_idx),
-    .io_iss_uop_ldq_idx      (io_iss_uops_3_ldq_idx),
-    .io_iss_uop_stq_idx      (io_iss_uops_3_stq_idx),
-    .io_iss_uop_pdst         (io_iss_uops_3_pdst),
     .io_iss_uop_prs1         (io_iss_uops_3_prs1),
-    .io_iss_uop_prs2         (io_iss_uops_3_prs2),
-    .io_iss_uop_bypassable   (io_iss_uops_3_bypassable),
     .io_iss_uop_mem_cmd      (io_iss_uops_3_mem_cmd),
-    .io_iss_uop_is_amo       (io_iss_uops_3_is_amo),
-    .io_iss_uop_uses_stq     (io_iss_uops_3_uses_stq),
-    .io_iss_uop_dst_rtype    (io_iss_uops_3_dst_rtype),
-    .io_iss_uop_lrs1_rtype   (io_iss_uops_3_lrs1_rtype),
-    .io_iss_uop_lrs2_rtype   (io_iss_uops_3_lrs2_rtype),
-    .io_rrd_valid            (_rrd_decode_unit_3_io_rrd_valid),
-    .io_rrd_uop_uopc         (_rrd_decode_unit_3_io_rrd_uop_uopc),
-    .io_rrd_uop_is_rvc       (_rrd_decode_unit_3_io_rrd_uop_is_rvc),
-    .io_rrd_uop_fu_code      (_rrd_decode_unit_3_io_rrd_uop_fu_code),
     .io_rrd_uop_ctrl_br_type (_rrd_decode_unit_3_io_rrd_uop_ctrl_br_type),
     .io_rrd_uop_ctrl_op1_sel (_rrd_decode_unit_3_io_rrd_uop_ctrl_op1_sel),
     .io_rrd_uop_ctrl_op2_sel (_rrd_decode_unit_3_io_rrd_uop_ctrl_op2_sel),
@@ -4176,168 +3452,32 @@ module RegisterRead_1(
     .io_rrd_uop_ctrl_op_fcn  (_rrd_decode_unit_3_io_rrd_uop_ctrl_op_fcn),
     .io_rrd_uop_ctrl_fcn_dw  (_rrd_decode_unit_3_io_rrd_uop_ctrl_fcn_dw),
     .io_rrd_uop_ctrl_csr_cmd (_rrd_decode_unit_3_io_rrd_uop_ctrl_csr_cmd),
-    .io_rrd_uop_is_br        (_rrd_decode_unit_3_io_rrd_uop_is_br),
-    .io_rrd_uop_is_jalr      (_rrd_decode_unit_3_io_rrd_uop_is_jalr),
-    .io_rrd_uop_is_jal       (_rrd_decode_unit_3_io_rrd_uop_is_jal),
-    .io_rrd_uop_is_sfb       (_rrd_decode_unit_3_io_rrd_uop_is_sfb),
-    .io_rrd_uop_br_mask      (_rrd_decode_unit_3_io_rrd_uop_br_mask),
-    .io_rrd_uop_br_tag       (_rrd_decode_unit_3_io_rrd_uop_br_tag),
-    .io_rrd_uop_ftq_idx      (_rrd_decode_unit_3_io_rrd_uop_ftq_idx),
-    .io_rrd_uop_edge_inst    (_rrd_decode_unit_3_io_rrd_uop_edge_inst),
-    .io_rrd_uop_pc_lob       (_rrd_decode_unit_3_io_rrd_uop_pc_lob),
-    .io_rrd_uop_taken        (_rrd_decode_unit_3_io_rrd_uop_taken),
-    .io_rrd_uop_imm_packed   (_rrd_decode_unit_3_io_rrd_uop_imm_packed),
-    .io_rrd_uop_rob_idx      (_rrd_decode_unit_3_io_rrd_uop_rob_idx),
-    .io_rrd_uop_ldq_idx      (_rrd_decode_unit_3_io_rrd_uop_ldq_idx),
-    .io_rrd_uop_stq_idx      (_rrd_decode_unit_3_io_rrd_uop_stq_idx),
-    .io_rrd_uop_pdst         (_rrd_decode_unit_3_io_rrd_uop_pdst),
-    .io_rrd_uop_prs1         (_rrd_decode_unit_3_io_rrd_uop_prs1),
-    .io_rrd_uop_prs2         (_rrd_decode_unit_3_io_rrd_uop_prs2),
-    .io_rrd_uop_bypassable   (_rrd_decode_unit_3_io_rrd_uop_bypassable),
-    .io_rrd_uop_is_amo       (_rrd_decode_unit_3_io_rrd_uop_is_amo),
-    .io_rrd_uop_uses_stq     (_rrd_decode_unit_3_io_rrd_uop_uses_stq),
-    .io_rrd_uop_dst_rtype    (_rrd_decode_unit_3_io_rrd_uop_dst_rtype),
-    .io_rrd_uop_lrs1_rtype   (_rrd_decode_unit_3_io_rrd_uop_lrs1_rtype),
-    .io_rrd_uop_lrs2_rtype   (_rrd_decode_unit_3_io_rrd_uop_lrs2_rtype)
+    .io_rrd_uop_imm_packed   (_rrd_decode_unit_3_io_rrd_uop_imm_packed)
   );
   RegisterReadDecode_6 rrd_decode_unit_4 (	// register-read.scala:80:33
-    .io_iss_valid            (io_iss_valids_4),
     .io_iss_uop_uopc         (io_iss_uops_4_uopc),
-    .io_iss_uop_is_rvc       (io_iss_uops_4_is_rvc),
-    .io_iss_uop_fu_code      (io_iss_uops_4_fu_code),
-    .io_iss_uop_is_br        (io_iss_uops_4_is_br),
-    .io_iss_uop_is_jalr      (io_iss_uops_4_is_jalr),
-    .io_iss_uop_is_jal       (io_iss_uops_4_is_jal),
-    .io_iss_uop_is_sfb       (io_iss_uops_4_is_sfb),
-    .io_iss_uop_br_mask      (io_iss_uops_4_br_mask),
-    .io_iss_uop_br_tag       (io_iss_uops_4_br_tag),
-    .io_iss_uop_ftq_idx      (io_iss_uops_4_ftq_idx),
-    .io_iss_uop_edge_inst    (io_iss_uops_4_edge_inst),
-    .io_iss_uop_pc_lob       (io_iss_uops_4_pc_lob),
-    .io_iss_uop_taken        (io_iss_uops_4_taken),
     .io_iss_uop_imm_packed   (io_iss_uops_4_imm_packed),
-    .io_iss_uop_rob_idx      (io_iss_uops_4_rob_idx),
-    .io_iss_uop_ldq_idx      (io_iss_uops_4_ldq_idx),
-    .io_iss_uop_stq_idx      (io_iss_uops_4_stq_idx),
-    .io_iss_uop_pdst         (io_iss_uops_4_pdst),
-    .io_iss_uop_prs1         (io_iss_uops_4_prs1),
-    .io_iss_uop_prs2         (io_iss_uops_4_prs2),
-    .io_iss_uop_bypassable   (io_iss_uops_4_bypassable),
     .io_iss_uop_mem_cmd      (io_iss_uops_4_mem_cmd),
-    .io_iss_uop_is_amo       (io_iss_uops_4_is_amo),
-    .io_iss_uop_uses_stq     (io_iss_uops_4_uses_stq),
-    .io_iss_uop_dst_rtype    (io_iss_uops_4_dst_rtype),
-    .io_iss_uop_lrs1_rtype   (io_iss_uops_4_lrs1_rtype),
-    .io_iss_uop_lrs2_rtype   (io_iss_uops_4_lrs2_rtype),
-    .io_rrd_valid            (_rrd_decode_unit_4_io_rrd_valid),
-    .io_rrd_uop_uopc         (_rrd_decode_unit_4_io_rrd_uop_uopc),
-    .io_rrd_uop_is_rvc       (_rrd_decode_unit_4_io_rrd_uop_is_rvc),
-    .io_rrd_uop_fu_code      (_rrd_decode_unit_4_io_rrd_uop_fu_code),
     .io_rrd_uop_ctrl_br_type (_rrd_decode_unit_4_io_rrd_uop_ctrl_br_type),
     .io_rrd_uop_ctrl_op1_sel (_rrd_decode_unit_4_io_rrd_uop_ctrl_op1_sel),
     .io_rrd_uop_ctrl_op2_sel (_rrd_decode_unit_4_io_rrd_uop_ctrl_op2_sel),
     .io_rrd_uop_ctrl_imm_sel (_rrd_decode_unit_4_io_rrd_uop_ctrl_imm_sel),
     .io_rrd_uop_ctrl_op_fcn  (_rrd_decode_unit_4_io_rrd_uop_ctrl_op_fcn),
     .io_rrd_uop_ctrl_fcn_dw  (_rrd_decode_unit_4_io_rrd_uop_ctrl_fcn_dw),
-    .io_rrd_uop_is_br        (_rrd_decode_unit_4_io_rrd_uop_is_br),
-    .io_rrd_uop_is_jalr      (_rrd_decode_unit_4_io_rrd_uop_is_jalr),
-    .io_rrd_uop_is_jal       (_rrd_decode_unit_4_io_rrd_uop_is_jal),
-    .io_rrd_uop_is_sfb       (_rrd_decode_unit_4_io_rrd_uop_is_sfb),
-    .io_rrd_uop_br_mask      (_rrd_decode_unit_4_io_rrd_uop_br_mask),
-    .io_rrd_uop_br_tag       (_rrd_decode_unit_4_io_rrd_uop_br_tag),
-    .io_rrd_uop_ftq_idx      (_rrd_decode_unit_4_io_rrd_uop_ftq_idx),
-    .io_rrd_uop_edge_inst    (_rrd_decode_unit_4_io_rrd_uop_edge_inst),
-    .io_rrd_uop_pc_lob       (_rrd_decode_unit_4_io_rrd_uop_pc_lob),
-    .io_rrd_uop_taken        (_rrd_decode_unit_4_io_rrd_uop_taken),
-    .io_rrd_uop_imm_packed   (_rrd_decode_unit_4_io_rrd_uop_imm_packed),
-    .io_rrd_uop_rob_idx      (_rrd_decode_unit_4_io_rrd_uop_rob_idx),
-    .io_rrd_uop_ldq_idx      (_rrd_decode_unit_4_io_rrd_uop_ldq_idx),
-    .io_rrd_uop_stq_idx      (_rrd_decode_unit_4_io_rrd_uop_stq_idx),
-    .io_rrd_uop_pdst         (_rrd_decode_unit_4_io_rrd_uop_pdst),
-    .io_rrd_uop_prs1         (_rrd_decode_unit_4_io_rrd_uop_prs1),
-    .io_rrd_uop_prs2         (_rrd_decode_unit_4_io_rrd_uop_prs2),
-    .io_rrd_uop_bypassable   (_rrd_decode_unit_4_io_rrd_uop_bypassable),
-    .io_rrd_uop_is_amo       (_rrd_decode_unit_4_io_rrd_uop_is_amo),
-    .io_rrd_uop_uses_stq     (_rrd_decode_unit_4_io_rrd_uop_uses_stq),
-    .io_rrd_uop_dst_rtype    (_rrd_decode_unit_4_io_rrd_uop_dst_rtype),
-    .io_rrd_uop_lrs1_rtype   (_rrd_decode_unit_4_io_rrd_uop_lrs1_rtype),
-    .io_rrd_uop_lrs2_rtype   (_rrd_decode_unit_4_io_rrd_uop_lrs2_rtype)
+    .io_rrd_uop_imm_packed   (_rrd_decode_unit_4_io_rrd_uop_imm_packed)
   );
   RegisterReadDecode_6 rrd_decode_unit_5 (	// register-read.scala:80:33
-    .io_iss_valid            (io_iss_valids_5),
     .io_iss_uop_uopc         (io_iss_uops_5_uopc),
-    .io_iss_uop_is_rvc       (io_iss_uops_5_is_rvc),
-    .io_iss_uop_fu_code      (io_iss_uops_5_fu_code),
-    .io_iss_uop_is_br        (io_iss_uops_5_is_br),
-    .io_iss_uop_is_jalr      (io_iss_uops_5_is_jalr),
-    .io_iss_uop_is_jal       (io_iss_uops_5_is_jal),
-    .io_iss_uop_is_sfb       (io_iss_uops_5_is_sfb),
-    .io_iss_uop_br_mask      (io_iss_uops_5_br_mask),
-    .io_iss_uop_br_tag       (io_iss_uops_5_br_tag),
-    .io_iss_uop_ftq_idx      (io_iss_uops_5_ftq_idx),
-    .io_iss_uop_edge_inst    (io_iss_uops_5_edge_inst),
-    .io_iss_uop_pc_lob       (io_iss_uops_5_pc_lob),
-    .io_iss_uop_taken        (io_iss_uops_5_taken),
     .io_iss_uop_imm_packed   (io_iss_uops_5_imm_packed),
-    .io_iss_uop_rob_idx      (io_iss_uops_5_rob_idx),
-    .io_iss_uop_ldq_idx      (io_iss_uops_5_ldq_idx),
-    .io_iss_uop_stq_idx      (io_iss_uops_5_stq_idx),
-    .io_iss_uop_pdst         (io_iss_uops_5_pdst),
-    .io_iss_uop_prs1         (io_iss_uops_5_prs1),
-    .io_iss_uop_prs2         (io_iss_uops_5_prs2),
-    .io_iss_uop_bypassable   (io_iss_uops_5_bypassable),
     .io_iss_uop_mem_cmd      (io_iss_uops_5_mem_cmd),
-    .io_iss_uop_is_amo       (io_iss_uops_5_is_amo),
-    .io_iss_uop_uses_stq     (io_iss_uops_5_uses_stq),
-    .io_iss_uop_dst_rtype    (io_iss_uops_5_dst_rtype),
-    .io_iss_uop_lrs1_rtype   (io_iss_uops_5_lrs1_rtype),
-    .io_iss_uop_lrs2_rtype   (io_iss_uops_5_lrs2_rtype),
-    .io_rrd_valid            (_rrd_decode_unit_5_io_rrd_valid),
-    .io_rrd_uop_uopc         (_rrd_decode_unit_5_io_rrd_uop_uopc),
-    .io_rrd_uop_is_rvc       (_rrd_decode_unit_5_io_rrd_uop_is_rvc),
-    .io_rrd_uop_fu_code      (_rrd_decode_unit_5_io_rrd_uop_fu_code),
     .io_rrd_uop_ctrl_br_type (_rrd_decode_unit_5_io_rrd_uop_ctrl_br_type),
     .io_rrd_uop_ctrl_op1_sel (_rrd_decode_unit_5_io_rrd_uop_ctrl_op1_sel),
     .io_rrd_uop_ctrl_op2_sel (_rrd_decode_unit_5_io_rrd_uop_ctrl_op2_sel),
     .io_rrd_uop_ctrl_imm_sel (_rrd_decode_unit_5_io_rrd_uop_ctrl_imm_sel),
     .io_rrd_uop_ctrl_op_fcn  (_rrd_decode_unit_5_io_rrd_uop_ctrl_op_fcn),
     .io_rrd_uop_ctrl_fcn_dw  (_rrd_decode_unit_5_io_rrd_uop_ctrl_fcn_dw),
-    .io_rrd_uop_is_br        (_rrd_decode_unit_5_io_rrd_uop_is_br),
-    .io_rrd_uop_is_jalr      (_rrd_decode_unit_5_io_rrd_uop_is_jalr),
-    .io_rrd_uop_is_jal       (_rrd_decode_unit_5_io_rrd_uop_is_jal),
-    .io_rrd_uop_is_sfb       (_rrd_decode_unit_5_io_rrd_uop_is_sfb),
-    .io_rrd_uop_br_mask      (_rrd_decode_unit_5_io_rrd_uop_br_mask),
-    .io_rrd_uop_br_tag       (_rrd_decode_unit_5_io_rrd_uop_br_tag),
-    .io_rrd_uop_ftq_idx      (_rrd_decode_unit_5_io_rrd_uop_ftq_idx),
-    .io_rrd_uop_edge_inst    (_rrd_decode_unit_5_io_rrd_uop_edge_inst),
-    .io_rrd_uop_pc_lob       (_rrd_decode_unit_5_io_rrd_uop_pc_lob),
-    .io_rrd_uop_taken        (_rrd_decode_unit_5_io_rrd_uop_taken),
-    .io_rrd_uop_imm_packed   (_rrd_decode_unit_5_io_rrd_uop_imm_packed),
-    .io_rrd_uop_rob_idx      (_rrd_decode_unit_5_io_rrd_uop_rob_idx),
-    .io_rrd_uop_ldq_idx      (_rrd_decode_unit_5_io_rrd_uop_ldq_idx),
-    .io_rrd_uop_stq_idx      (_rrd_decode_unit_5_io_rrd_uop_stq_idx),
-    .io_rrd_uop_pdst         (_rrd_decode_unit_5_io_rrd_uop_pdst),
-    .io_rrd_uop_prs1         (_rrd_decode_unit_5_io_rrd_uop_prs1),
-    .io_rrd_uop_prs2         (_rrd_decode_unit_5_io_rrd_uop_prs2),
-    .io_rrd_uop_bypassable   (_rrd_decode_unit_5_io_rrd_uop_bypassable),
-    .io_rrd_uop_is_amo       (_rrd_decode_unit_5_io_rrd_uop_is_amo),
-    .io_rrd_uop_uses_stq     (_rrd_decode_unit_5_io_rrd_uop_uses_stq),
-    .io_rrd_uop_dst_rtype    (_rrd_decode_unit_5_io_rrd_uop_dst_rtype),
-    .io_rrd_uop_lrs1_rtype   (_rrd_decode_unit_5_io_rrd_uop_lrs1_rtype),
-    .io_rrd_uop_lrs2_rtype   (_rrd_decode_unit_5_io_rrd_uop_lrs2_rtype)
+    .io_rrd_uop_imm_packed   (_rrd_decode_unit_5_io_rrd_uop_imm_packed)
   );
-  assign io_rf_read_ports_0_addr = io_iss_uops_0_prs1;
-  assign io_rf_read_ports_1_addr = io_iss_uops_0_prs2;
-  assign io_rf_read_ports_2_addr = io_iss_uops_1_prs1;
-  assign io_rf_read_ports_3_addr = io_iss_uops_1_prs2;
-  assign io_rf_read_ports_4_addr = io_iss_uops_2_prs1;
-  assign io_rf_read_ports_5_addr = io_iss_uops_2_prs2;
-  assign io_rf_read_ports_6_addr = io_iss_uops_3_prs1;
-  assign io_rf_read_ports_7_addr = io_iss_uops_3_prs2;
-  assign io_rf_read_ports_8_addr = io_iss_uops_4_prs1;
-  assign io_rf_read_ports_9_addr = io_iss_uops_4_prs2;
-  assign io_rf_read_ports_10_addr = io_iss_uops_5_prs1;
-  assign io_rf_read_ports_11_addr = io_iss_uops_5_prs2;
   assign io_exe_reqs_0_valid = exe_reg_valids_0;	// register-read.scala:69:33
   assign io_exe_reqs_0_bits_uop_uopc = exe_reg_uops_0_uopc;	// register-read.scala:70:29
   assign io_exe_reqs_0_bits_uop_inst = exe_reg_uops_0_inst;	// register-read.scala:70:29

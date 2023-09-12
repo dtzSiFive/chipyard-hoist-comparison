@@ -128,8 +128,7 @@ module TileResetDomain(
   output [31:0] auto_tile_tl_other_masters_out_c_bits_address,
   output [63:0] auto_tile_tl_other_masters_out_c_bits_data,
   output        auto_tile_tl_other_masters_out_d_ready,
-                auto_tile_tl_other_masters_out_e_valid,
-  output [2:0]  auto_tile_tl_other_masters_out_e_bits_sink
+                auto_tile_tl_other_masters_out_e_valid
 );
 
   RocketTile tile (	// HasTiles.scala:253:53
@@ -206,8 +205,7 @@ module TileResetDomain(
     .auto_tl_other_masters_out_c_bits_data
       (auto_tile_tl_other_masters_out_c_bits_data),
     .auto_tl_other_masters_out_d_ready        (auto_tile_tl_other_masters_out_d_ready),
-    .auto_tl_other_masters_out_e_valid        (auto_tile_tl_other_masters_out_e_valid),
-    .auto_tl_other_masters_out_e_bits_sink    (auto_tile_tl_other_masters_out_e_bits_sink)
+    .auto_tl_other_masters_out_e_valid        (auto_tile_tl_other_masters_out_e_valid)
   );
 endmodule
 

@@ -87,26 +87,6 @@ module BTBBranchPredictorBank_4(
                  reset,
                  io_f0_valid,
   input  [39:0]  io_f0_pc,
-  input          io_resp_in_0_f1_0_taken,
-                 io_resp_in_0_f1_0_is_br,
-                 io_resp_in_0_f1_0_is_jal,
-                 io_resp_in_0_f1_0_predicted_pc_valid,
-  input  [39:0]  io_resp_in_0_f1_0_predicted_pc_bits,
-  input          io_resp_in_0_f1_1_taken,
-                 io_resp_in_0_f1_1_is_br,
-                 io_resp_in_0_f1_1_is_jal,
-                 io_resp_in_0_f1_1_predicted_pc_valid,
-  input  [39:0]  io_resp_in_0_f1_1_predicted_pc_bits,
-  input          io_resp_in_0_f1_2_taken,
-                 io_resp_in_0_f1_2_is_br,
-                 io_resp_in_0_f1_2_is_jal,
-                 io_resp_in_0_f1_2_predicted_pc_valid,
-  input  [39:0]  io_resp_in_0_f1_2_predicted_pc_bits,
-  input          io_resp_in_0_f1_3_taken,
-                 io_resp_in_0_f1_3_is_br,
-                 io_resp_in_0_f1_3_is_jal,
-                 io_resp_in_0_f1_3_predicted_pc_valid,
-  input  [39:0]  io_resp_in_0_f1_3_predicted_pc_bits,
   input          io_resp_in_0_f2_0_taken,
                  io_resp_in_0_f2_0_is_br,
                  io_resp_in_0_f2_0_is_jal,
@@ -158,26 +138,6 @@ module BTBBranchPredictorBank_4(
   input          io_update_bits_cfi_taken,
   input  [39:0]  io_update_bits_target,
   input  [119:0] io_update_bits_meta,
-  output         io_resp_f1_0_taken,
-                 io_resp_f1_0_is_br,
-                 io_resp_f1_0_is_jal,
-                 io_resp_f1_0_predicted_pc_valid,
-  output [39:0]  io_resp_f1_0_predicted_pc_bits,
-  output         io_resp_f1_1_taken,
-                 io_resp_f1_1_is_br,
-                 io_resp_f1_1_is_jal,
-                 io_resp_f1_1_predicted_pc_valid,
-  output [39:0]  io_resp_f1_1_predicted_pc_bits,
-  output         io_resp_f1_2_taken,
-                 io_resp_f1_2_is_br,
-                 io_resp_f1_2_is_jal,
-                 io_resp_f1_2_predicted_pc_valid,
-  output [39:0]  io_resp_f1_2_predicted_pc_bits,
-  output         io_resp_f1_3_taken,
-                 io_resp_f1_3_is_br,
-                 io_resp_f1_3_is_jal,
-                 io_resp_f1_3_predicted_pc_valid,
-  output [39:0]  io_resp_f1_3_predicted_pc_bits,
   output         io_resp_f2_0_taken,
                  io_resp_f2_0_is_br,
                  io_resp_f2_0_is_jal,
@@ -808,26 +768,6 @@ module BTBBranchPredictorBank_4(
     .W0_data (s1_update_bits_target),	// predictor.scala:184:30
     .R0_data (_ebtb_ext_R0_data)
   );
-  assign io_resp_f1_0_taken = io_resp_in_0_f1_0_taken;
-  assign io_resp_f1_0_is_br = io_resp_in_0_f1_0_is_br;
-  assign io_resp_f1_0_is_jal = io_resp_in_0_f1_0_is_jal;
-  assign io_resp_f1_0_predicted_pc_valid = io_resp_in_0_f1_0_predicted_pc_valid;
-  assign io_resp_f1_0_predicted_pc_bits = io_resp_in_0_f1_0_predicted_pc_bits;
-  assign io_resp_f1_1_taken = io_resp_in_0_f1_1_taken;
-  assign io_resp_f1_1_is_br = io_resp_in_0_f1_1_is_br;
-  assign io_resp_f1_1_is_jal = io_resp_in_0_f1_1_is_jal;
-  assign io_resp_f1_1_predicted_pc_valid = io_resp_in_0_f1_1_predicted_pc_valid;
-  assign io_resp_f1_1_predicted_pc_bits = io_resp_in_0_f1_1_predicted_pc_bits;
-  assign io_resp_f1_2_taken = io_resp_in_0_f1_2_taken;
-  assign io_resp_f1_2_is_br = io_resp_in_0_f1_2_is_br;
-  assign io_resp_f1_2_is_jal = io_resp_in_0_f1_2_is_jal;
-  assign io_resp_f1_2_predicted_pc_valid = io_resp_in_0_f1_2_predicted_pc_valid;
-  assign io_resp_f1_2_predicted_pc_bits = io_resp_in_0_f1_2_predicted_pc_bits;
-  assign io_resp_f1_3_taken = io_resp_in_0_f1_3_taken;
-  assign io_resp_f1_3_is_br = io_resp_in_0_f1_3_is_br;
-  assign io_resp_f1_3_is_jal = io_resp_in_0_f1_3_is_jal;
-  assign io_resp_f1_3_predicted_pc_valid = io_resp_in_0_f1_3_predicted_pc_valid;
-  assign io_resp_f1_3_predicted_pc_bits = io_resp_in_0_f1_3_predicted_pc_bits;
   assign io_resp_f2_0_taken = REG & REG_1 | io_resp_in_0_f2_0_taken;	// btb.scala:102:19, :104:{18,32}, :108:{20,36}, :109:34
   assign io_resp_f2_0_is_br = REG ? io_resp_f2_0_is_br_REG : io_resp_in_0_f2_0_is_br;	// btb.scala:102:19, :104:{18,32}, :106:{34,44}
   assign io_resp_f2_0_is_jal = REG ? io_resp_f2_0_is_jal_REG : io_resp_in_0_f2_0_is_jal;	// btb.scala:102:19, :104:{18,32}, :107:{34,44}

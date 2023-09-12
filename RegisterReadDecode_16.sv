@@ -83,38 +83,10 @@
 `endif // not def SYNTHESIS
 
 module RegisterReadDecode_16(
-  input         io_iss_valid,
   input  [6:0]  io_iss_uop_uopc,
-  input         io_iss_uop_is_rvc,
-  input  [9:0]  io_iss_uop_fu_code,
-  input         io_iss_uop_is_br,
-                io_iss_uop_is_jalr,
-                io_iss_uop_is_jal,
-                io_iss_uop_is_sfb,
-  input  [11:0] io_iss_uop_br_mask,
-  input  [3:0]  io_iss_uop_br_tag,
-  input  [4:0]  io_iss_uop_ftq_idx,
-  input         io_iss_uop_edge_inst,
-  input  [5:0]  io_iss_uop_pc_lob,
-  input         io_iss_uop_taken,
   input  [19:0] io_iss_uop_imm_packed,
-  input  [5:0]  io_iss_uop_rob_idx,
-  input  [3:0]  io_iss_uop_ldq_idx,
-                io_iss_uop_stq_idx,
-  input  [6:0]  io_iss_uop_pdst,
-                io_iss_uop_prs1,
-                io_iss_uop_prs2,
-  input         io_iss_uop_bypassable,
+  input  [6:0]  io_iss_uop_prs1,
   input  [4:0]  io_iss_uop_mem_cmd,
-  input         io_iss_uop_is_amo,
-                io_iss_uop_uses_stq,
-  input  [1:0]  io_iss_uop_dst_rtype,
-                io_iss_uop_lrs1_rtype,
-                io_iss_uop_lrs2_rtype,
-  output        io_rrd_valid,
-  output [6:0]  io_rrd_uop_uopc,
-  output        io_rrd_uop_is_rvc,
-  output [9:0]  io_rrd_uop_fu_code,
   output [3:0]  io_rrd_uop_ctrl_br_type,
   output [1:0]  io_rrd_uop_ctrl_op1_sel,
   output [2:0]  io_rrd_uop_ctrl_op2_sel,
@@ -122,29 +94,7 @@ module RegisterReadDecode_16(
   output [3:0]  io_rrd_uop_ctrl_op_fcn,
   output        io_rrd_uop_ctrl_fcn_dw,
   output [2:0]  io_rrd_uop_ctrl_csr_cmd,
-  output        io_rrd_uop_is_br,
-                io_rrd_uop_is_jalr,
-                io_rrd_uop_is_jal,
-                io_rrd_uop_is_sfb,
-  output [11:0] io_rrd_uop_br_mask,
-  output [3:0]  io_rrd_uop_br_tag,
-  output [4:0]  io_rrd_uop_ftq_idx,
-  output        io_rrd_uop_edge_inst,
-  output [5:0]  io_rrd_uop_pc_lob,
-  output        io_rrd_uop_taken,
-  output [19:0] io_rrd_uop_imm_packed,
-  output [5:0]  io_rrd_uop_rob_idx,
-  output [3:0]  io_rrd_uop_ldq_idx,
-                io_rrd_uop_stq_idx,
-  output [6:0]  io_rrd_uop_pdst,
-                io_rrd_uop_prs1,
-                io_rrd_uop_prs2,
-  output        io_rrd_uop_bypassable,
-                io_rrd_uop_is_amo,
-                io_rrd_uop_uses_stq,
-  output [1:0]  io_rrd_uop_dst_rtype,
-                io_rrd_uop_lrs1_rtype,
-                io_rrd_uop_lrs2_rtype
+  output [19:0] io_rrd_uop_imm_packed
 );
 
   wire       _rrd_cs_decoder_bit_T_3 = io_iss_uop_uopc == 7'h19;	// Decode.scala:14:121
@@ -200,10 +150,6 @@ module RegisterReadDecode_16(
        | _rrd_cs_decoder_bit_T_176,
      _rrd_cs_decoder_bit_T_232 | _rrd_cs_decoder_bit_T_173 | _rrd_cs_decoder_bit_T_174
        | _rrd_cs_decoder_bit_T_176};	// Cat.scala:30:58, Decode.scala:14:121, :15:30
-  assign io_rrd_valid = io_iss_valid;
-  assign io_rrd_uop_uopc = io_iss_uop_uopc;
-  assign io_rrd_uop_is_rvc = io_iss_uop_is_rvc;
-  assign io_rrd_uop_fu_code = io_iss_uop_fu_code;
   assign io_rrd_uop_ctrl_br_type =
     {1'h0,
      _rrd_cs_decoder_bit_T_10 | _rrd_cs_decoder_bit_T_2 | _rrd_cs_decoder_bit_T_6,
@@ -265,31 +211,9 @@ module RegisterReadDecode_16(
     (rrd_cs_csr_cmd == 3'h6 | (&rrd_cs_csr_cmd)) & io_iss_uop_prs1 == 7'h0
       ? 3'h2
       : rrd_cs_csr_cmd;	// Cat.scala:30:58, Decode.scala:14:121, func-unit-decode.scala:343:91, :348:{33,43,61,72,82}, :349:33
-  assign io_rrd_uop_is_br = io_iss_uop_is_br;
-  assign io_rrd_uop_is_jalr = io_iss_uop_is_jalr;
-  assign io_rrd_uop_is_jal = io_iss_uop_is_jal;
-  assign io_rrd_uop_is_sfb = io_iss_uop_is_sfb;
-  assign io_rrd_uop_br_mask = io_iss_uop_br_mask;
-  assign io_rrd_uop_br_tag = io_iss_uop_br_tag;
-  assign io_rrd_uop_ftq_idx = io_iss_uop_ftq_idx;
-  assign io_rrd_uop_edge_inst = io_iss_uop_edge_inst;
-  assign io_rrd_uop_pc_lob = io_iss_uop_pc_lob;
-  assign io_rrd_uop_taken = io_iss_uop_taken;
   assign io_rrd_uop_imm_packed =
     io_iss_uop_uopc == 7'h43 | io_iss_uop_uopc == 7'h1 & io_iss_uop_mem_cmd == 5'h6
       ? 20'h0
       : io_iss_uop_imm_packed;	// Decode.scala:14:121, func-unit-decode.scala:320:16, :339:46, :340:76, :343:{39,69,91,103}, :344:27
-  assign io_rrd_uop_rob_idx = io_iss_uop_rob_idx;
-  assign io_rrd_uop_ldq_idx = io_iss_uop_ldq_idx;
-  assign io_rrd_uop_stq_idx = io_iss_uop_stq_idx;
-  assign io_rrd_uop_pdst = io_iss_uop_pdst;
-  assign io_rrd_uop_prs1 = io_iss_uop_prs1;
-  assign io_rrd_uop_prs2 = io_iss_uop_prs2;
-  assign io_rrd_uop_bypassable = io_iss_uop_bypassable;
-  assign io_rrd_uop_is_amo = io_iss_uop_is_amo;
-  assign io_rrd_uop_uses_stq = io_iss_uop_uses_stq;
-  assign io_rrd_uop_dst_rtype = io_iss_uop_dst_rtype;
-  assign io_rrd_uop_lrs1_rtype = io_iss_uop_lrs1_rtype;
-  assign io_rrd_uop_lrs2_rtype = io_iss_uop_lrs2_rtype;
 endmodule
 

@@ -194,12 +194,6 @@ module PeripheryBus_1(
   output [63:0] auto_coupler_to_l2_ctrl_buffer_out_a_bits_data,
   output        auto_coupler_to_l2_ctrl_buffer_out_a_bits_corrupt,
                 auto_coupler_to_l2_ctrl_buffer_out_d_ready,
-                auto_fixedClockNode_out_3_clock,
-                auto_fixedClockNode_out_3_reset,
-                auto_fixedClockNode_out_2_clock,
-                auto_fixedClockNode_out_2_reset,
-                auto_fixedClockNode_out_0_clock,
-                auto_fixedClockNode_out_0_reset,
                 auto_bus_xing_in_a_ready,
                 auto_bus_xing_in_d_valid,
   output [2:0]  auto_bus_xing_in_d_bits_opcode,
@@ -209,59 +203,24 @@ module PeripheryBus_1(
   output        auto_bus_xing_in_d_bits_sink,
                 auto_bus_xing_in_d_bits_denied,
   output [63:0] auto_bus_xing_in_d_bits_data,
-  output        auto_bus_xing_in_d_bits_corrupt,
-                clock,
-                reset
+  output        auto_bus_xing_in_d_bits_corrupt
 );
 
-  wire        _coupler_from_port_named_custom_boot_pin_auto_tl_in_a_ready;	// LazyModule.scala:432:27
-  wire        _coupler_from_port_named_custom_boot_pin_auto_tl_in_d_valid;	// LazyModule.scala:432:27
-  wire        _coupler_from_port_named_custom_boot_pin_auto_tl_out_a_valid;	// LazyModule.scala:432:27
-  wire [30:0] _coupler_from_port_named_custom_boot_pin_auto_tl_out_a_bits_address;	// LazyModule.scala:432:27
-  wire [63:0] _coupler_from_port_named_custom_boot_pin_auto_tl_out_a_bits_data;	// LazyModule.scala:432:27
   wire        _coupler_to_bootrom_auto_tl_in_a_ready;	// LazyModule.scala:432:27
-  wire        _coupler_to_bootrom_auto_tl_in_d_valid;	// LazyModule.scala:432:27
   wire [2:0]  _coupler_to_bootrom_auto_tl_in_d_bits_size;	// LazyModule.scala:432:27
   wire [7:0]  _coupler_to_bootrom_auto_tl_in_d_bits_source;	// LazyModule.scala:432:27
-  wire [63:0] _coupler_to_bootrom_auto_tl_in_d_bits_data;	// LazyModule.scala:432:27
   wire        _coupler_to_debug_auto_tl_in_a_ready;	// LazyModule.scala:432:27
   wire        _coupler_to_debug_auto_tl_in_d_valid;	// LazyModule.scala:432:27
-  wire [2:0]  _coupler_to_debug_auto_tl_in_d_bits_opcode;	// LazyModule.scala:432:27
   wire [2:0]  _coupler_to_debug_auto_tl_in_d_bits_size;	// LazyModule.scala:432:27
   wire [7:0]  _coupler_to_debug_auto_tl_in_d_bits_source;	// LazyModule.scala:432:27
-  wire [63:0] _coupler_to_debug_auto_tl_in_d_bits_data;	// LazyModule.scala:432:27
   wire        _coupler_to_clint_auto_tl_in_a_ready;	// LazyModule.scala:432:27
   wire        _coupler_to_clint_auto_tl_in_d_valid;	// LazyModule.scala:432:27
-  wire [2:0]  _coupler_to_clint_auto_tl_in_d_bits_opcode;	// LazyModule.scala:432:27
   wire [2:0]  _coupler_to_clint_auto_tl_in_d_bits_size;	// LazyModule.scala:432:27
   wire [7:0]  _coupler_to_clint_auto_tl_in_d_bits_source;	// LazyModule.scala:432:27
-  wire [63:0] _coupler_to_clint_auto_tl_in_d_bits_data;	// LazyModule.scala:432:27
   wire        _coupler_to_plic_auto_tl_in_a_ready;	// LazyModule.scala:432:27
   wire        _coupler_to_plic_auto_tl_in_d_valid;	// LazyModule.scala:432:27
-  wire [2:0]  _coupler_to_plic_auto_tl_in_d_bits_opcode;	// LazyModule.scala:432:27
   wire [2:0]  _coupler_to_plic_auto_tl_in_d_bits_size;	// LazyModule.scala:432:27
   wire [7:0]  _coupler_to_plic_auto_tl_in_d_bits_source;	// LazyModule.scala:432:27
-  wire [63:0] _coupler_to_plic_auto_tl_in_d_bits_data;	// LazyModule.scala:432:27
-  wire        _coupler_to_bus_named_subsystem_pbus_auto_widget_in_a_ready;	// LazyModule.scala:432:27
-  wire        _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_valid;	// LazyModule.scala:432:27
-  wire [2:0]  _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_opcode;	// LazyModule.scala:432:27
-  wire [1:0]  _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_param;	// LazyModule.scala:432:27
-  wire [2:0]  _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_size;	// LazyModule.scala:432:27
-  wire [7:0]  _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_source;	// LazyModule.scala:432:27
-  wire        _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_sink;	// LazyModule.scala:432:27
-  wire        _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_denied;	// LazyModule.scala:432:27
-  wire [63:0] _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_data;	// LazyModule.scala:432:27
-  wire        _coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_corrupt;	// LazyModule.scala:432:27
-  wire        _buffer_1_auto_out_a_valid;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_1_auto_out_a_bits_opcode;	// Buffer.scala:68:28
-  wire [2:0]  _buffer_1_auto_out_a_bits_param;	// Buffer.scala:68:28
-  wire [3:0]  _buffer_1_auto_out_a_bits_size;	// Buffer.scala:68:28
-  wire [6:0]  _buffer_1_auto_out_a_bits_source;	// Buffer.scala:68:28
-  wire [30:0] _buffer_1_auto_out_a_bits_address;	// Buffer.scala:68:28
-  wire [7:0]  _buffer_1_auto_out_a_bits_mask;	// Buffer.scala:68:28
-  wire [63:0] _buffer_1_auto_out_a_bits_data;	// Buffer.scala:68:28
-  wire        _buffer_1_auto_out_a_bits_corrupt;	// Buffer.scala:68:28
-  wire        _buffer_1_auto_out_d_ready;	// Buffer.scala:68:28
   wire        _coupler_to_l2_ctrl_auto_tl_in_a_ready;	// LazyModule.scala:432:27
   wire        _coupler_to_l2_ctrl_auto_tl_in_d_valid;	// LazyModule.scala:432:27
   wire [2:0]  _coupler_to_l2_ctrl_auto_tl_in_d_bits_opcode;	// LazyModule.scala:432:27
@@ -285,12 +244,7 @@ module PeripheryBus_1(
   wire        _atomics_auto_in_a_ready;	// AtomicAutomata.scala:283:29
   wire        _atomics_auto_in_d_valid;	// AtomicAutomata.scala:283:29
   wire [2:0]  _atomics_auto_in_d_bits_opcode;	// AtomicAutomata.scala:283:29
-  wire [1:0]  _atomics_auto_in_d_bits_param;	// AtomicAutomata.scala:283:29
-  wire [3:0]  _atomics_auto_in_d_bits_size;	// AtomicAutomata.scala:283:29
-  wire [7:0]  _atomics_auto_in_d_bits_source;	// AtomicAutomata.scala:283:29
-  wire        _atomics_auto_in_d_bits_sink;	// AtomicAutomata.scala:283:29
   wire        _atomics_auto_in_d_bits_denied;	// AtomicAutomata.scala:283:29
-  wire [63:0] _atomics_auto_in_d_bits_data;	// AtomicAutomata.scala:283:29
   wire        _atomics_auto_in_d_bits_corrupt;	// AtomicAutomata.scala:283:29
   wire        _atomics_auto_out_a_valid;	// AtomicAutomata.scala:283:29
   wire [2:0]  _atomics_auto_out_a_bits_opcode;	// AtomicAutomata.scala:283:29
@@ -333,86 +287,30 @@ module PeripheryBus_1(
   wire [63:0] _out_xbar_auto_in_d_bits_data;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_in_d_bits_corrupt;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_6_a_valid;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_6_a_bits_opcode;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_6_a_bits_param;	// PeripheryBus.scala:50:30
   wire [2:0]  _out_xbar_auto_out_6_a_bits_size;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_6_a_bits_source;	// PeripheryBus.scala:50:30
   wire [16:0] _out_xbar_auto_out_6_a_bits_address;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_6_a_bits_mask;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_6_a_bits_corrupt;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_6_d_ready;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_5_a_valid;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_5_a_bits_opcode;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_5_a_bits_param;	// PeripheryBus.scala:50:30
   wire [2:0]  _out_xbar_auto_out_5_a_bits_size;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_5_a_bits_source;	// PeripheryBus.scala:50:30
   wire [11:0] _out_xbar_auto_out_5_a_bits_address;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_5_a_bits_mask;	// PeripheryBus.scala:50:30
-  wire [63:0] _out_xbar_auto_out_5_a_bits_data;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_5_a_bits_corrupt;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_5_d_ready;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_4_a_valid;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_4_a_bits_opcode;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_4_a_bits_param;	// PeripheryBus.scala:50:30
   wire [2:0]  _out_xbar_auto_out_4_a_bits_size;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_4_a_bits_source;	// PeripheryBus.scala:50:30
   wire [25:0] _out_xbar_auto_out_4_a_bits_address;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_4_a_bits_mask;	// PeripheryBus.scala:50:30
-  wire [63:0] _out_xbar_auto_out_4_a_bits_data;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_4_a_bits_corrupt;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_4_d_ready;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_3_a_valid;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_3_a_bits_opcode;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_3_a_bits_param;	// PeripheryBus.scala:50:30
   wire [2:0]  _out_xbar_auto_out_3_a_bits_size;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_3_a_bits_source;	// PeripheryBus.scala:50:30
   wire [27:0] _out_xbar_auto_out_3_a_bits_address;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_3_a_bits_mask;	// PeripheryBus.scala:50:30
-  wire [63:0] _out_xbar_auto_out_3_a_bits_data;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_3_a_bits_corrupt;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_3_d_ready;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_2_a_valid;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_2_a_bits_opcode;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_2_a_bits_param;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_2_a_bits_size;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_2_a_bits_source;	// PeripheryBus.scala:50:30
-  wire [30:0] _out_xbar_auto_out_2_a_bits_address;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_2_a_bits_mask;	// PeripheryBus.scala:50:30
-  wire [63:0] _out_xbar_auto_out_2_a_bits_data;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_2_a_bits_corrupt;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_2_d_ready;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_1_a_valid;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_1_a_bits_opcode;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_1_a_bits_param;	// PeripheryBus.scala:50:30
   wire [2:0]  _out_xbar_auto_out_1_a_bits_size;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_1_a_bits_source;	// PeripheryBus.scala:50:30
   wire [25:0] _out_xbar_auto_out_1_a_bits_address;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_1_a_bits_mask;	// PeripheryBus.scala:50:30
-  wire [63:0] _out_xbar_auto_out_1_a_bits_data;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_1_a_bits_corrupt;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_1_d_ready;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_0_a_valid;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_0_a_bits_opcode;	// PeripheryBus.scala:50:30
-  wire [2:0]  _out_xbar_auto_out_0_a_bits_param;	// PeripheryBus.scala:50:30
-  wire [3:0]  _out_xbar_auto_out_0_a_bits_size;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_0_a_bits_source;	// PeripheryBus.scala:50:30
   wire [13:0] _out_xbar_auto_out_0_a_bits_address;	// PeripheryBus.scala:50:30
-  wire [7:0]  _out_xbar_auto_out_0_a_bits_mask;	// PeripheryBus.scala:50:30
-  wire [63:0] _out_xbar_auto_out_0_a_bits_data;	// PeripheryBus.scala:50:30
-  wire        _out_xbar_auto_out_0_a_bits_corrupt;	// PeripheryBus.scala:50:30
   wire        _out_xbar_auto_out_0_d_ready;	// PeripheryBus.scala:50:30
   wire        _in_xbar_auto_in_1_a_ready;	// PeripheryBus.scala:49:29
   wire        _in_xbar_auto_in_1_d_valid;	// PeripheryBus.scala:49:29
-  wire        _in_xbar_auto_in_0_a_ready;	// PeripheryBus.scala:49:29
-  wire        _in_xbar_auto_in_0_d_valid;	// PeripheryBus.scala:49:29
-  wire [2:0]  _in_xbar_auto_in_0_d_bits_opcode;	// PeripheryBus.scala:49:29
-  wire [1:0]  _in_xbar_auto_in_0_d_bits_param;	// PeripheryBus.scala:49:29
-  wire [3:0]  _in_xbar_auto_in_0_d_bits_size;	// PeripheryBus.scala:49:29
-  wire [6:0]  _in_xbar_auto_in_0_d_bits_source;	// PeripheryBus.scala:49:29
-  wire        _in_xbar_auto_in_0_d_bits_sink;	// PeripheryBus.scala:49:29
-  wire        _in_xbar_auto_in_0_d_bits_denied;	// PeripheryBus.scala:49:29
-  wire [63:0] _in_xbar_auto_in_0_d_bits_data;	// PeripheryBus.scala:49:29
-  wire        _in_xbar_auto_in_0_d_bits_corrupt;	// PeripheryBus.scala:49:29
   wire        _in_xbar_auto_out_a_valid;	// PeripheryBus.scala:49:29
   wire [2:0]  _in_xbar_auto_out_a_bits_opcode;	// PeripheryBus.scala:49:29
   wire [2:0]  _in_xbar_auto_out_a_bits_param;	// PeripheryBus.scala:49:29
@@ -423,42 +321,15 @@ module PeripheryBus_1(
   wire [63:0] _in_xbar_auto_out_a_bits_data;	// PeripheryBus.scala:49:29
   wire        _in_xbar_auto_out_a_bits_corrupt;	// PeripheryBus.scala:49:29
   wire        _in_xbar_auto_out_d_ready;	// PeripheryBus.scala:49:29
-  wire        _fixer_auto_in_a_ready;	// PeripheryBus.scala:47:33
-  wire        _fixer_auto_in_d_valid;	// PeripheryBus.scala:47:33
-  wire [2:0]  _fixer_auto_in_d_bits_opcode;	// PeripheryBus.scala:47:33
-  wire [1:0]  _fixer_auto_in_d_bits_param;	// PeripheryBus.scala:47:33
-  wire [3:0]  _fixer_auto_in_d_bits_size;	// PeripheryBus.scala:47:33
-  wire [7:0]  _fixer_auto_in_d_bits_source;	// PeripheryBus.scala:47:33
-  wire        _fixer_auto_in_d_bits_sink;	// PeripheryBus.scala:47:33
-  wire        _fixer_auto_in_d_bits_denied;	// PeripheryBus.scala:47:33
-  wire [63:0] _fixer_auto_in_d_bits_data;	// PeripheryBus.scala:47:33
-  wire        _fixer_auto_in_d_bits_corrupt;	// PeripheryBus.scala:47:33
-  wire        _fixer_auto_out_a_valid;	// PeripheryBus.scala:47:33
-  wire [2:0]  _fixer_auto_out_a_bits_opcode;	// PeripheryBus.scala:47:33
-  wire [2:0]  _fixer_auto_out_a_bits_param;	// PeripheryBus.scala:47:33
-  wire [3:0]  _fixer_auto_out_a_bits_size;	// PeripheryBus.scala:47:33
-  wire [7:0]  _fixer_auto_out_a_bits_source;	// PeripheryBus.scala:47:33
-  wire [30:0] _fixer_auto_out_a_bits_address;	// PeripheryBus.scala:47:33
-  wire [7:0]  _fixer_auto_out_a_bits_mask;	// PeripheryBus.scala:47:33
-  wire [63:0] _fixer_auto_out_a_bits_data;	// PeripheryBus.scala:47:33
-  wire        _fixer_auto_out_a_bits_corrupt;	// PeripheryBus.scala:47:33
-  wire        _fixer_auto_out_d_ready;	// PeripheryBus.scala:47:33
-  wire        _fixedClockNode_auto_out_0_clock;	// ClockGroup.scala:106:107
-  wire        _fixedClockNode_auto_out_0_reset;	// ClockGroup.scala:106:107
-  wire        _clockGroup_auto_out_clock;	// BusWrapper.scala:41:38
-  wire        _clockGroup_auto_out_reset;	// BusWrapper.scala:41:38
-  wire        _subsystem_cbus_clock_groups_auto_out_member_subsystem_cbus_0_clock;	// BusWrapper.scala:40:48
-  wire        _subsystem_cbus_clock_groups_auto_out_member_subsystem_cbus_0_reset;	// BusWrapper.scala:40:48
   reg  [2:0]  state;	// CustomBootPin.scala:46:28
   wire        _GEN = state == 3'h1;	// Conditional.scala:37:30, CustomBootPin.scala:46:28, :51:54
   wire        bundleOut_0_1_a_valid = (|state) & (_GEN | state != 3'h2 & state == 3'h3);	// Conditional.scala:37:30, :39:67, :40:58, CustomBootPin.scala:46:28, :47:20, :53:24, :60:40, :62:68
-  always @(posedge _fixedClockNode_auto_out_0_clock) begin	// ClockGroup.scala:106:107
-    if (_fixedClockNode_auto_out_0_reset)	// ClockGroup.scala:106:107
+  always @(posedge auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock) begin
+    if (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset)
       state <= 3'h0;	// CustomBootPin.scala:46:28
-    else begin	// ClockGroup.scala:106:107
+    else begin
       automatic logic            _GEN_0 =
-        _coupler_from_port_named_custom_boot_pin_auto_tl_in_a_ready
-        & bundleOut_0_1_a_valid;	// Conditional.scala:39:67, :40:58, CustomBootPin.scala:47:20, Decoupled.scala:40:37, LazyModule.scala:432:27
+        _in_xbar_auto_in_1_a_ready & bundleOut_0_1_a_valid;	// Conditional.scala:39:67, :40:58, CustomBootPin.scala:47:20, Decoupled.scala:40:37, PeripheryBus.scala:49:29
       automatic logic [2:0]      _GEN_1;	// Conditional.scala:39:67, CustomBootPin.scala:46:28, :74:{43,51}
       automatic logic [7:0][2:0] _GEN_2;	// Conditional.scala:37:30, :39:67, :40:58, CustomBootPin.scala:51:46, :60:32, :62:60, :71:32, :73:52
       _GEN_1 = state == 3'h5 & ~custom_boot ? 3'h0 : state;	// Conditional.scala:37:30, :39:67, CustomBootPin.scala:46:28, :73:60, :74:{29,43,51}
@@ -466,11 +337,11 @@ module PeripheryBus_1(
         {{_GEN_1},
          {_GEN_1},
          {_GEN_1},
-         {_coupler_from_port_named_custom_boot_pin_auto_tl_in_d_valid ? 3'h5 : state},
+         {_in_xbar_auto_in_1_d_valid ? 3'h5 : state},
          {_GEN_0 ? 3'h4 : state},
-         {_coupler_from_port_named_custom_boot_pin_auto_tl_in_d_valid ? 3'h3 : state},
+         {_in_xbar_auto_in_1_d_valid ? 3'h3 : state},
          {_GEN_0 ? 3'h2 : state},
-         {custom_boot ? 3'h1 : state}};	// Conditional.scala:37:30, :39:67, :40:58, CustomBootPin.scala:46:28, :51:{46,54}, :60:{32,40}, :62:{60,68}, :71:{32,40}, :73:{52,60}, :74:{43,51}, Decoupled.scala:40:37, LazyModule.scala:432:27
+         {custom_boot ? 3'h1 : state}};	// Conditional.scala:37:30, :39:67, :40:58, CustomBootPin.scala:46:28, :51:{46,54}, :60:{32,40}, :62:{60,68}, :71:{32,40}, :73:{52,60}, :74:{43,51}, Decoupled.scala:40:37, PeripheryBus.scala:49:29
       state <= _GEN_2[state];	// Conditional.scala:37:30, :39:67, :40:58, CustomBootPin.scala:46:28, :51:46, :60:32, :62:60, :71:32, :73:52
     end
   end // always @(posedge)
@@ -492,39 +363,11 @@ module PeripheryBus_1(
       `FIRRTL_AFTER_INITIAL
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  ClockGroupAggregator_3 subsystem_cbus_clock_groups (	// BusWrapper.scala:40:48
-    .auto_in_member_subsystem_cbus_0_clock
-      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
-    .auto_in_member_subsystem_cbus_0_reset
-      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
-    .auto_out_member_subsystem_cbus_0_clock
-      (_subsystem_cbus_clock_groups_auto_out_member_subsystem_cbus_0_clock),
-    .auto_out_member_subsystem_cbus_0_reset
-      (_subsystem_cbus_clock_groups_auto_out_member_subsystem_cbus_0_reset)
-  );
-  ClockGroup_3 clockGroup (	// BusWrapper.scala:41:38
-    .auto_in_member_subsystem_cbus_0_clock
-      (_subsystem_cbus_clock_groups_auto_out_member_subsystem_cbus_0_clock),	// BusWrapper.scala:40:48
-    .auto_in_member_subsystem_cbus_0_reset
-      (_subsystem_cbus_clock_groups_auto_out_member_subsystem_cbus_0_reset),	// BusWrapper.scala:40:48
-    .auto_out_clock                        (_clockGroup_auto_out_clock),
-    .auto_out_reset                        (_clockGroup_auto_out_reset)
-  );
-  FixedClockBroadcast_3 fixedClockNode (	// ClockGroup.scala:106:107
-    .auto_in_clock    (_clockGroup_auto_out_clock),	// BusWrapper.scala:41:38
-    .auto_in_reset    (_clockGroup_auto_out_reset),	// BusWrapper.scala:41:38
-    .auto_out_4_clock (auto_fixedClockNode_out_3_clock),
-    .auto_out_4_reset (auto_fixedClockNode_out_3_reset),
-    .auto_out_3_clock (auto_fixedClockNode_out_2_clock),
-    .auto_out_3_reset (auto_fixedClockNode_out_2_reset),
-    .auto_out_1_clock (auto_fixedClockNode_out_0_clock),
-    .auto_out_1_reset (auto_fixedClockNode_out_0_reset),
-    .auto_out_0_clock (_fixedClockNode_auto_out_0_clock),
-    .auto_out_0_reset (_fixedClockNode_auto_out_0_reset)
-  );
   TLFIFOFixer_2 fixer (	// PeripheryBus.scala:47:33
-    .clock                   (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                   (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_in_a_valid         (_buffer_auto_out_a_valid),	// Buffer.scala:68:28
     .auto_in_a_bits_opcode   (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
     .auto_in_a_bits_param    (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
@@ -532,7 +375,6 @@ module PeripheryBus_1(
     .auto_in_a_bits_source   (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
     .auto_in_a_bits_address  (_buffer_auto_out_a_bits_address),	// Buffer.scala:68:28
     .auto_in_a_bits_mask     (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
-    .auto_in_a_bits_data     (_buffer_auto_out_a_bits_data),	// Buffer.scala:68:28
     .auto_in_a_bits_corrupt  (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
     .auto_in_d_ready         (_buffer_auto_out_d_ready),	// Buffer.scala:68:28
     .auto_out_a_ready        (_out_xbar_auto_in_a_ready),	// PeripheryBus.scala:50:30
@@ -543,70 +385,40 @@ module PeripheryBus_1(
     .auto_out_d_bits_source  (_out_xbar_auto_in_d_bits_source),	// PeripheryBus.scala:50:30
     .auto_out_d_bits_sink    (_out_xbar_auto_in_d_bits_sink),	// PeripheryBus.scala:50:30
     .auto_out_d_bits_denied  (_out_xbar_auto_in_d_bits_denied),	// PeripheryBus.scala:50:30
-    .auto_out_d_bits_data    (_out_xbar_auto_in_d_bits_data),	// PeripheryBus.scala:50:30
-    .auto_out_d_bits_corrupt (_out_xbar_auto_in_d_bits_corrupt),	// PeripheryBus.scala:50:30
-    .auto_in_a_ready         (_fixer_auto_in_a_ready),
-    .auto_in_d_valid         (_fixer_auto_in_d_valid),
-    .auto_in_d_bits_opcode   (_fixer_auto_in_d_bits_opcode),
-    .auto_in_d_bits_param    (_fixer_auto_in_d_bits_param),
-    .auto_in_d_bits_size     (_fixer_auto_in_d_bits_size),
-    .auto_in_d_bits_source   (_fixer_auto_in_d_bits_source),
-    .auto_in_d_bits_sink     (_fixer_auto_in_d_bits_sink),
-    .auto_in_d_bits_denied   (_fixer_auto_in_d_bits_denied),
-    .auto_in_d_bits_data     (_fixer_auto_in_d_bits_data),
-    .auto_in_d_bits_corrupt  (_fixer_auto_in_d_bits_corrupt),
-    .auto_out_a_valid        (_fixer_auto_out_a_valid),
-    .auto_out_a_bits_opcode  (_fixer_auto_out_a_bits_opcode),
-    .auto_out_a_bits_param   (_fixer_auto_out_a_bits_param),
-    .auto_out_a_bits_size    (_fixer_auto_out_a_bits_size),
-    .auto_out_a_bits_source  (_fixer_auto_out_a_bits_source),
-    .auto_out_a_bits_address (_fixer_auto_out_a_bits_address),
-    .auto_out_a_bits_mask    (_fixer_auto_out_a_bits_mask),
-    .auto_out_a_bits_data    (_fixer_auto_out_a_bits_data),
-    .auto_out_a_bits_corrupt (_fixer_auto_out_a_bits_corrupt),
-    .auto_out_d_ready        (_fixer_auto_out_d_ready)
+    .auto_out_d_bits_corrupt (_out_xbar_auto_in_d_bits_corrupt)	// PeripheryBus.scala:50:30
   );
   TLXbar_4 in_xbar (	// PeripheryBus.scala:49:29
-    .clock                    (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                    (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
-    .auto_in_1_a_valid
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_out_a_valid),	// LazyModule.scala:432:27
-    .auto_in_1_a_bits_address
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_out_a_bits_address),	// LazyModule.scala:432:27
-    .auto_in_1_a_bits_data
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_out_a_bits_data),	// LazyModule.scala:432:27
-    .auto_in_0_a_valid        (_buffer_1_auto_out_a_valid),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_opcode  (_buffer_1_auto_out_a_bits_opcode),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_param   (_buffer_1_auto_out_a_bits_param),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_size    (_buffer_1_auto_out_a_bits_size),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_source  (_buffer_1_auto_out_a_bits_source),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_address (_buffer_1_auto_out_a_bits_address),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_mask    (_buffer_1_auto_out_a_bits_mask),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_data    (_buffer_1_auto_out_a_bits_data),	// Buffer.scala:68:28
-    .auto_in_0_a_bits_corrupt (_buffer_1_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
-    .auto_in_0_d_ready        (_buffer_1_auto_out_d_ready),	// Buffer.scala:68:28
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
+    .auto_in_1_a_valid        (bundleOut_0_1_a_valid),	// Conditional.scala:39:67, :40:58, CustomBootPin.scala:47:20
+    .auto_in_1_a_bits_address (_GEN ? 31'h4000 : 31'h2000000),	// Conditional.scala:37:30, :39:67, CustomBootPin.scala:54:23, Edges.scala:470:15
+    .auto_in_1_a_bits_data    (_GEN ? 64'h80000000 : 64'h1),	// Conditional.scala:37:30, :39:67, CustomBootPin.scala:54:23, Edges.scala:472:15
+    .auto_in_0_a_valid        (auto_bus_xing_in_a_valid),
+    .auto_in_0_a_bits_opcode  (auto_bus_xing_in_a_bits_opcode),
+    .auto_in_0_a_bits_param   (auto_bus_xing_in_a_bits_param),
+    .auto_in_0_a_bits_size    (auto_bus_xing_in_a_bits_size),
+    .auto_in_0_a_bits_source  (auto_bus_xing_in_a_bits_source),
+    .auto_in_0_a_bits_address (auto_bus_xing_in_a_bits_address),
+    .auto_in_0_a_bits_mask    (auto_bus_xing_in_a_bits_mask),
+    .auto_in_0_a_bits_data    (auto_bus_xing_in_a_bits_data),
+    .auto_in_0_a_bits_corrupt (auto_bus_xing_in_a_bits_corrupt),
+    .auto_in_0_d_ready        (auto_bus_xing_in_d_ready),
     .auto_out_a_ready         (_atomics_auto_in_a_ready),	// AtomicAutomata.scala:283:29
     .auto_out_d_valid         (_atomics_auto_in_d_valid),	// AtomicAutomata.scala:283:29
     .auto_out_d_bits_opcode   (_atomics_auto_in_d_bits_opcode),	// AtomicAutomata.scala:283:29
-    .auto_out_d_bits_param    (_atomics_auto_in_d_bits_param),	// AtomicAutomata.scala:283:29
-    .auto_out_d_bits_size     (_atomics_auto_in_d_bits_size),	// AtomicAutomata.scala:283:29
-    .auto_out_d_bits_source   (_atomics_auto_in_d_bits_source),	// AtomicAutomata.scala:283:29
-    .auto_out_d_bits_sink     (_atomics_auto_in_d_bits_sink),	// AtomicAutomata.scala:283:29
+    .auto_out_d_bits_param    (_buffer_auto_in_d_bits_param),	// Buffer.scala:68:28
+    .auto_out_d_bits_size     (_buffer_auto_in_d_bits_size),	// Buffer.scala:68:28
+    .auto_out_d_bits_source   (_buffer_auto_in_d_bits_source),	// Buffer.scala:68:28
+    .auto_out_d_bits_sink     (_buffer_auto_in_d_bits_sink),	// Buffer.scala:68:28
     .auto_out_d_bits_denied   (_atomics_auto_in_d_bits_denied),	// AtomicAutomata.scala:283:29
-    .auto_out_d_bits_data     (_atomics_auto_in_d_bits_data),	// AtomicAutomata.scala:283:29
     .auto_out_d_bits_corrupt  (_atomics_auto_in_d_bits_corrupt),	// AtomicAutomata.scala:283:29
     .auto_in_1_a_ready        (_in_xbar_auto_in_1_a_ready),
     .auto_in_1_d_valid        (_in_xbar_auto_in_1_d_valid),
-    .auto_in_0_a_ready        (_in_xbar_auto_in_0_a_ready),
-    .auto_in_0_d_valid        (_in_xbar_auto_in_0_d_valid),
-    .auto_in_0_d_bits_opcode  (_in_xbar_auto_in_0_d_bits_opcode),
-    .auto_in_0_d_bits_param   (_in_xbar_auto_in_0_d_bits_param),
-    .auto_in_0_d_bits_size    (_in_xbar_auto_in_0_d_bits_size),
-    .auto_in_0_d_bits_source  (_in_xbar_auto_in_0_d_bits_source),
-    .auto_in_0_d_bits_sink    (_in_xbar_auto_in_0_d_bits_sink),
-    .auto_in_0_d_bits_denied  (_in_xbar_auto_in_0_d_bits_denied),
-    .auto_in_0_d_bits_data    (_in_xbar_auto_in_0_d_bits_data),
-    .auto_in_0_d_bits_corrupt (_in_xbar_auto_in_0_d_bits_corrupt),
+    .auto_in_0_a_ready        (auto_bus_xing_in_a_ready),
+    .auto_in_0_d_valid        (auto_bus_xing_in_d_valid),
+    .auto_in_0_d_bits_source  (auto_bus_xing_in_d_bits_source),
     .auto_out_a_valid         (_in_xbar_auto_out_a_valid),
     .auto_out_a_bits_opcode   (_in_xbar_auto_out_a_bits_opcode),
     .auto_out_a_bits_param    (_in_xbar_auto_out_a_bits_param),
@@ -619,61 +431,62 @@ module PeripheryBus_1(
     .auto_out_d_ready         (_in_xbar_auto_out_d_ready)
   );
   TLXbar_5 out_xbar (	// PeripheryBus.scala:50:30
-    .clock                     (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                     (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
-    .auto_in_a_valid           (_fixer_auto_out_a_valid),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_opcode     (_fixer_auto_out_a_bits_opcode),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_param      (_fixer_auto_out_a_bits_param),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_size       (_fixer_auto_out_a_bits_size),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_source     (_fixer_auto_out_a_bits_source),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_address    (_fixer_auto_out_a_bits_address),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_mask       (_fixer_auto_out_a_bits_mask),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_data       (_fixer_auto_out_a_bits_data),	// PeripheryBus.scala:47:33
-    .auto_in_a_bits_corrupt    (_fixer_auto_out_a_bits_corrupt),	// PeripheryBus.scala:47:33
-    .auto_in_d_ready           (_fixer_auto_out_d_ready),	// PeripheryBus.scala:47:33
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
+    .auto_in_a_valid           (_buffer_auto_out_a_valid),	// Buffer.scala:68:28
+    .auto_in_a_bits_opcode     (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
+    .auto_in_a_bits_param      (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
+    .auto_in_a_bits_size       (_buffer_auto_out_a_bits_size),	// Buffer.scala:68:28
+    .auto_in_a_bits_source     (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
+    .auto_in_a_bits_address    (_buffer_auto_out_a_bits_address),	// Buffer.scala:68:28
+    .auto_in_a_bits_mask       (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
+    .auto_in_a_bits_corrupt    (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
+    .auto_in_d_ready           (_buffer_auto_out_d_ready),	// Buffer.scala:68:28
     .auto_out_6_a_ready        (_coupler_to_bootrom_auto_tl_in_a_ready),	// LazyModule.scala:432:27
-    .auto_out_6_d_valid        (_coupler_to_bootrom_auto_tl_in_d_valid),	// LazyModule.scala:432:27
+    .auto_out_6_d_valid        (auto_coupler_to_bootrom_fragmenter_out_d_valid),
     .auto_out_6_d_bits_size    (_coupler_to_bootrom_auto_tl_in_d_bits_size),	// LazyModule.scala:432:27
     .auto_out_6_d_bits_source  (_coupler_to_bootrom_auto_tl_in_d_bits_source),	// LazyModule.scala:432:27
-    .auto_out_6_d_bits_data    (_coupler_to_bootrom_auto_tl_in_d_bits_data),	// LazyModule.scala:432:27
+    .auto_out_6_d_bits_data    (auto_coupler_to_bootrom_fragmenter_out_d_bits_data),
     .auto_out_5_a_ready        (_coupler_to_debug_auto_tl_in_a_ready),	// LazyModule.scala:432:27
     .auto_out_5_d_valid        (_coupler_to_debug_auto_tl_in_d_valid),	// LazyModule.scala:432:27
-    .auto_out_5_d_bits_opcode  (_coupler_to_debug_auto_tl_in_d_bits_opcode),	// LazyModule.scala:432:27
+    .auto_out_5_d_bits_opcode  (auto_coupler_to_debug_fragmenter_out_d_bits_opcode),
     .auto_out_5_d_bits_size    (_coupler_to_debug_auto_tl_in_d_bits_size),	// LazyModule.scala:432:27
     .auto_out_5_d_bits_source  (_coupler_to_debug_auto_tl_in_d_bits_source),	// LazyModule.scala:432:27
-    .auto_out_5_d_bits_data    (_coupler_to_debug_auto_tl_in_d_bits_data),	// LazyModule.scala:432:27
+    .auto_out_5_d_bits_data    (auto_coupler_to_debug_fragmenter_out_d_bits_data),
     .auto_out_4_a_ready        (_coupler_to_clint_auto_tl_in_a_ready),	// LazyModule.scala:432:27
     .auto_out_4_d_valid        (_coupler_to_clint_auto_tl_in_d_valid),	// LazyModule.scala:432:27
-    .auto_out_4_d_bits_opcode  (_coupler_to_clint_auto_tl_in_d_bits_opcode),	// LazyModule.scala:432:27
+    .auto_out_4_d_bits_opcode  (auto_coupler_to_clint_fragmenter_out_d_bits_opcode),
     .auto_out_4_d_bits_size    (_coupler_to_clint_auto_tl_in_d_bits_size),	// LazyModule.scala:432:27
     .auto_out_4_d_bits_source  (_coupler_to_clint_auto_tl_in_d_bits_source),	// LazyModule.scala:432:27
-    .auto_out_4_d_bits_data    (_coupler_to_clint_auto_tl_in_d_bits_data),	// LazyModule.scala:432:27
+    .auto_out_4_d_bits_data    (auto_coupler_to_clint_fragmenter_out_d_bits_data),
     .auto_out_3_a_ready        (_coupler_to_plic_auto_tl_in_a_ready),	// LazyModule.scala:432:27
     .auto_out_3_d_valid        (_coupler_to_plic_auto_tl_in_d_valid),	// LazyModule.scala:432:27
-    .auto_out_3_d_bits_opcode  (_coupler_to_plic_auto_tl_in_d_bits_opcode),	// LazyModule.scala:432:27
+    .auto_out_3_d_bits_opcode  (auto_coupler_to_plic_fragmenter_out_d_bits_opcode),
     .auto_out_3_d_bits_size    (_coupler_to_plic_auto_tl_in_d_bits_size),	// LazyModule.scala:432:27
     .auto_out_3_d_bits_source  (_coupler_to_plic_auto_tl_in_d_bits_source),	// LazyModule.scala:432:27
-    .auto_out_3_d_bits_data    (_coupler_to_plic_auto_tl_in_d_bits_data),	// LazyModule.scala:432:27
+    .auto_out_3_d_bits_data    (auto_coupler_to_plic_fragmenter_out_d_bits_data),
     .auto_out_2_a_ready
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_a_ready),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_ready),
     .auto_out_2_d_valid
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_valid),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_valid),
     .auto_out_2_d_bits_opcode
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_opcode),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_opcode),
     .auto_out_2_d_bits_param
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_param),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_param),
     .auto_out_2_d_bits_size
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_size),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_size),
     .auto_out_2_d_bits_source
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_source),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_source),
     .auto_out_2_d_bits_sink
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_sink),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_sink),
     .auto_out_2_d_bits_denied
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_denied),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_denied),
     .auto_out_2_d_bits_data
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_data),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_data),
     .auto_out_2_d_bits_corrupt
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_corrupt),	// LazyModule.scala:432:27
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_corrupt),
     .auto_out_1_a_ready        (_coupler_to_l2_ctrl_auto_tl_in_a_ready),	// LazyModule.scala:432:27
     .auto_out_1_d_valid        (_coupler_to_l2_ctrl_auto_tl_in_d_valid),	// LazyModule.scala:432:27
     .auto_out_1_d_bits_opcode  (_coupler_to_l2_ctrl_auto_tl_in_d_bits_opcode),	// LazyModule.scala:432:27
@@ -705,78 +518,40 @@ module PeripheryBus_1(
     .auto_in_d_bits_data       (_out_xbar_auto_in_d_bits_data),
     .auto_in_d_bits_corrupt    (_out_xbar_auto_in_d_bits_corrupt),
     .auto_out_6_a_valid        (_out_xbar_auto_out_6_a_valid),
-    .auto_out_6_a_bits_opcode  (_out_xbar_auto_out_6_a_bits_opcode),
-    .auto_out_6_a_bits_param   (_out_xbar_auto_out_6_a_bits_param),
     .auto_out_6_a_bits_size    (_out_xbar_auto_out_6_a_bits_size),
-    .auto_out_6_a_bits_source  (_out_xbar_auto_out_6_a_bits_source),
     .auto_out_6_a_bits_address (_out_xbar_auto_out_6_a_bits_address),
-    .auto_out_6_a_bits_mask    (_out_xbar_auto_out_6_a_bits_mask),
-    .auto_out_6_a_bits_corrupt (_out_xbar_auto_out_6_a_bits_corrupt),
     .auto_out_6_d_ready        (_out_xbar_auto_out_6_d_ready),
     .auto_out_5_a_valid        (_out_xbar_auto_out_5_a_valid),
-    .auto_out_5_a_bits_opcode  (_out_xbar_auto_out_5_a_bits_opcode),
-    .auto_out_5_a_bits_param   (_out_xbar_auto_out_5_a_bits_param),
     .auto_out_5_a_bits_size    (_out_xbar_auto_out_5_a_bits_size),
-    .auto_out_5_a_bits_source  (_out_xbar_auto_out_5_a_bits_source),
     .auto_out_5_a_bits_address (_out_xbar_auto_out_5_a_bits_address),
-    .auto_out_5_a_bits_mask    (_out_xbar_auto_out_5_a_bits_mask),
-    .auto_out_5_a_bits_data    (_out_xbar_auto_out_5_a_bits_data),
-    .auto_out_5_a_bits_corrupt (_out_xbar_auto_out_5_a_bits_corrupt),
     .auto_out_5_d_ready        (_out_xbar_auto_out_5_d_ready),
     .auto_out_4_a_valid        (_out_xbar_auto_out_4_a_valid),
-    .auto_out_4_a_bits_opcode  (_out_xbar_auto_out_4_a_bits_opcode),
-    .auto_out_4_a_bits_param   (_out_xbar_auto_out_4_a_bits_param),
     .auto_out_4_a_bits_size    (_out_xbar_auto_out_4_a_bits_size),
-    .auto_out_4_a_bits_source  (_out_xbar_auto_out_4_a_bits_source),
     .auto_out_4_a_bits_address (_out_xbar_auto_out_4_a_bits_address),
-    .auto_out_4_a_bits_mask    (_out_xbar_auto_out_4_a_bits_mask),
-    .auto_out_4_a_bits_data    (_out_xbar_auto_out_4_a_bits_data),
-    .auto_out_4_a_bits_corrupt (_out_xbar_auto_out_4_a_bits_corrupt),
     .auto_out_4_d_ready        (_out_xbar_auto_out_4_d_ready),
     .auto_out_3_a_valid        (_out_xbar_auto_out_3_a_valid),
-    .auto_out_3_a_bits_opcode  (_out_xbar_auto_out_3_a_bits_opcode),
-    .auto_out_3_a_bits_param   (_out_xbar_auto_out_3_a_bits_param),
     .auto_out_3_a_bits_size    (_out_xbar_auto_out_3_a_bits_size),
-    .auto_out_3_a_bits_source  (_out_xbar_auto_out_3_a_bits_source),
     .auto_out_3_a_bits_address (_out_xbar_auto_out_3_a_bits_address),
-    .auto_out_3_a_bits_mask    (_out_xbar_auto_out_3_a_bits_mask),
-    .auto_out_3_a_bits_data    (_out_xbar_auto_out_3_a_bits_data),
-    .auto_out_3_a_bits_corrupt (_out_xbar_auto_out_3_a_bits_corrupt),
     .auto_out_3_d_ready        (_out_xbar_auto_out_3_d_ready),
-    .auto_out_2_a_valid        (_out_xbar_auto_out_2_a_valid),
-    .auto_out_2_a_bits_opcode  (_out_xbar_auto_out_2_a_bits_opcode),
-    .auto_out_2_a_bits_param   (_out_xbar_auto_out_2_a_bits_param),
-    .auto_out_2_a_bits_size    (_out_xbar_auto_out_2_a_bits_size),
-    .auto_out_2_a_bits_source  (_out_xbar_auto_out_2_a_bits_source),
-    .auto_out_2_a_bits_address (_out_xbar_auto_out_2_a_bits_address),
-    .auto_out_2_a_bits_mask    (_out_xbar_auto_out_2_a_bits_mask),
-    .auto_out_2_a_bits_data    (_out_xbar_auto_out_2_a_bits_data),
-    .auto_out_2_a_bits_corrupt (_out_xbar_auto_out_2_a_bits_corrupt),
-    .auto_out_2_d_ready        (_out_xbar_auto_out_2_d_ready),
+    .auto_out_2_a_valid
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_valid),
+    .auto_out_2_a_bits_size
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_size),
+    .auto_out_2_d_ready
+      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_ready),
     .auto_out_1_a_valid        (_out_xbar_auto_out_1_a_valid),
-    .auto_out_1_a_bits_opcode  (_out_xbar_auto_out_1_a_bits_opcode),
-    .auto_out_1_a_bits_param   (_out_xbar_auto_out_1_a_bits_param),
     .auto_out_1_a_bits_size    (_out_xbar_auto_out_1_a_bits_size),
-    .auto_out_1_a_bits_source  (_out_xbar_auto_out_1_a_bits_source),
     .auto_out_1_a_bits_address (_out_xbar_auto_out_1_a_bits_address),
-    .auto_out_1_a_bits_mask    (_out_xbar_auto_out_1_a_bits_mask),
-    .auto_out_1_a_bits_data    (_out_xbar_auto_out_1_a_bits_data),
-    .auto_out_1_a_bits_corrupt (_out_xbar_auto_out_1_a_bits_corrupt),
     .auto_out_1_d_ready        (_out_xbar_auto_out_1_d_ready),
     .auto_out_0_a_valid        (_out_xbar_auto_out_0_a_valid),
-    .auto_out_0_a_bits_opcode  (_out_xbar_auto_out_0_a_bits_opcode),
-    .auto_out_0_a_bits_param   (_out_xbar_auto_out_0_a_bits_param),
-    .auto_out_0_a_bits_size    (_out_xbar_auto_out_0_a_bits_size),
-    .auto_out_0_a_bits_source  (_out_xbar_auto_out_0_a_bits_source),
     .auto_out_0_a_bits_address (_out_xbar_auto_out_0_a_bits_address),
-    .auto_out_0_a_bits_mask    (_out_xbar_auto_out_0_a_bits_mask),
-    .auto_out_0_a_bits_data    (_out_xbar_auto_out_0_a_bits_data),
-    .auto_out_0_a_bits_corrupt (_out_xbar_auto_out_0_a_bits_corrupt),
     .auto_out_0_d_ready        (_out_xbar_auto_out_0_d_ready)
   );
   TLBuffer_7 buffer (	// Buffer.scala:68:28
-    .clock                   (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                   (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_in_a_valid         (_atomics_auto_out_a_valid),	// AtomicAutomata.scala:283:29
     .auto_in_a_bits_opcode   (_atomics_auto_out_a_bits_opcode),	// AtomicAutomata.scala:283:29
     .auto_in_a_bits_param    (_atomics_auto_out_a_bits_param),	// AtomicAutomata.scala:283:29
@@ -787,16 +562,16 @@ module PeripheryBus_1(
     .auto_in_a_bits_data     (_atomics_auto_out_a_bits_data),	// AtomicAutomata.scala:283:29
     .auto_in_a_bits_corrupt  (_atomics_auto_out_a_bits_corrupt),	// AtomicAutomata.scala:283:29
     .auto_in_d_ready         (_atomics_auto_out_d_ready),	// AtomicAutomata.scala:283:29
-    .auto_out_a_ready        (_fixer_auto_in_a_ready),	// PeripheryBus.scala:47:33
-    .auto_out_d_valid        (_fixer_auto_in_d_valid),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_opcode  (_fixer_auto_in_d_bits_opcode),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_param   (_fixer_auto_in_d_bits_param),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_size    (_fixer_auto_in_d_bits_size),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_source  (_fixer_auto_in_d_bits_source),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_sink    (_fixer_auto_in_d_bits_sink),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_denied  (_fixer_auto_in_d_bits_denied),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_data    (_fixer_auto_in_d_bits_data),	// PeripheryBus.scala:47:33
-    .auto_out_d_bits_corrupt (_fixer_auto_in_d_bits_corrupt),	// PeripheryBus.scala:47:33
+    .auto_out_a_ready        (_out_xbar_auto_in_a_ready),	// PeripheryBus.scala:50:30
+    .auto_out_d_valid        (_out_xbar_auto_in_d_valid),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_opcode  (_out_xbar_auto_in_d_bits_opcode),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_param   (_out_xbar_auto_in_d_bits_param),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_size    (_out_xbar_auto_in_d_bits_size),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_source  (_out_xbar_auto_in_d_bits_source),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_sink    (_out_xbar_auto_in_d_bits_sink),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_denied  (_out_xbar_auto_in_d_bits_denied),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_data    (_out_xbar_auto_in_d_bits_data),	// PeripheryBus.scala:50:30
+    .auto_out_d_bits_corrupt (_out_xbar_auto_in_d_bits_corrupt),	// PeripheryBus.scala:50:30
     .auto_in_a_ready         (_buffer_auto_in_a_ready),
     .auto_in_d_valid         (_buffer_auto_in_d_valid),
     .auto_in_d_bits_opcode   (_buffer_auto_in_d_bits_opcode),
@@ -819,8 +594,10 @@ module PeripheryBus_1(
     .auto_out_d_ready        (_buffer_auto_out_d_ready)
   );
   TLAtomicAutomata_1 atomics (	// AtomicAutomata.scala:283:29
-    .clock                   (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                   (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_in_a_valid         (_in_xbar_auto_out_a_valid),	// PeripheryBus.scala:49:29
     .auto_in_a_bits_opcode   (_in_xbar_auto_out_a_bits_opcode),	// PeripheryBus.scala:49:29
     .auto_in_a_bits_param    (_in_xbar_auto_out_a_bits_param),	// PeripheryBus.scala:49:29
@@ -844,12 +621,8 @@ module PeripheryBus_1(
     .auto_in_a_ready         (_atomics_auto_in_a_ready),
     .auto_in_d_valid         (_atomics_auto_in_d_valid),
     .auto_in_d_bits_opcode   (_atomics_auto_in_d_bits_opcode),
-    .auto_in_d_bits_param    (_atomics_auto_in_d_bits_param),
-    .auto_in_d_bits_size     (_atomics_auto_in_d_bits_size),
-    .auto_in_d_bits_source   (_atomics_auto_in_d_bits_source),
-    .auto_in_d_bits_sink     (_atomics_auto_in_d_bits_sink),
     .auto_in_d_bits_denied   (_atomics_auto_in_d_bits_denied),
-    .auto_in_d_bits_data     (_atomics_auto_in_d_bits_data),
+    .auto_in_d_bits_data     (auto_bus_xing_in_d_bits_data),
     .auto_in_d_bits_corrupt  (_atomics_auto_in_d_bits_corrupt),
     .auto_out_a_valid        (_atomics_auto_out_a_valid),
     .auto_out_a_bits_opcode  (_atomics_auto_out_a_bits_opcode),
@@ -863,17 +636,19 @@ module PeripheryBus_1(
     .auto_out_d_ready        (_atomics_auto_out_d_ready)
   );
   ErrorDeviceWrapper wrapped_error_device (	// LazyModule.scala:432:27
-    .clock                         (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                         (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_buffer_in_a_valid        (_out_xbar_auto_out_0_a_valid),	// PeripheryBus.scala:50:30
-    .auto_buffer_in_a_bits_opcode  (_out_xbar_auto_out_0_a_bits_opcode),	// PeripheryBus.scala:50:30
-    .auto_buffer_in_a_bits_param   (_out_xbar_auto_out_0_a_bits_param),	// PeripheryBus.scala:50:30
-    .auto_buffer_in_a_bits_size    (_out_xbar_auto_out_0_a_bits_size),	// PeripheryBus.scala:50:30
-    .auto_buffer_in_a_bits_source  (_out_xbar_auto_out_0_a_bits_source),	// PeripheryBus.scala:50:30
+    .auto_buffer_in_a_bits_opcode  (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
+    .auto_buffer_in_a_bits_param   (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
+    .auto_buffer_in_a_bits_size    (_buffer_auto_out_a_bits_size),	// Buffer.scala:68:28
+    .auto_buffer_in_a_bits_source  (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
     .auto_buffer_in_a_bits_address (_out_xbar_auto_out_0_a_bits_address),	// PeripheryBus.scala:50:30
-    .auto_buffer_in_a_bits_mask    (_out_xbar_auto_out_0_a_bits_mask),	// PeripheryBus.scala:50:30
-    .auto_buffer_in_a_bits_data    (_out_xbar_auto_out_0_a_bits_data),	// PeripheryBus.scala:50:30
-    .auto_buffer_in_a_bits_corrupt (_out_xbar_auto_out_0_a_bits_corrupt),	// PeripheryBus.scala:50:30
+    .auto_buffer_in_a_bits_mask    (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
+    .auto_buffer_in_a_bits_data    (_buffer_auto_out_a_bits_data),	// Buffer.scala:68:28
+    .auto_buffer_in_a_bits_corrupt (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
     .auto_buffer_in_d_ready        (_out_xbar_auto_out_0_d_ready),	// PeripheryBus.scala:50:30
     .auto_buffer_in_a_ready        (_wrapped_error_device_auto_buffer_in_a_ready),
     .auto_buffer_in_d_valid        (_wrapped_error_device_auto_buffer_in_d_valid),
@@ -887,8 +662,10 @@ module PeripheryBus_1(
     .auto_buffer_in_d_bits_corrupt (_wrapped_error_device_auto_buffer_in_d_bits_corrupt)
   );
   TLInterconnectCoupler_13 coupler_to_l2_ctrl (	// LazyModule.scala:432:27
-    .clock                          (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                          (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_buffer_out_a_ready        (auto_coupler_to_l2_ctrl_buffer_out_a_ready),
     .auto_buffer_out_d_valid        (auto_coupler_to_l2_ctrl_buffer_out_d_valid),
     .auto_buffer_out_d_bits_opcode  (auto_coupler_to_l2_ctrl_buffer_out_d_bits_opcode),
@@ -896,14 +673,14 @@ module PeripheryBus_1(
     .auto_buffer_out_d_bits_source  (auto_coupler_to_l2_ctrl_buffer_out_d_bits_source),
     .auto_buffer_out_d_bits_data    (auto_coupler_to_l2_ctrl_buffer_out_d_bits_data),
     .auto_tl_in_a_valid             (_out_xbar_auto_out_1_a_valid),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_opcode       (_out_xbar_auto_out_1_a_bits_opcode),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_param        (_out_xbar_auto_out_1_a_bits_param),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_opcode       (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_param        (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_size         (_out_xbar_auto_out_1_a_bits_size),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_source       (_out_xbar_auto_out_1_a_bits_source),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_source       (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_address      (_out_xbar_auto_out_1_a_bits_address),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_mask         (_out_xbar_auto_out_1_a_bits_mask),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_data         (_out_xbar_auto_out_1_a_bits_data),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_corrupt      (_out_xbar_auto_out_1_a_bits_corrupt),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_mask         (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_data         (_buffer_auto_out_a_bits_data),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_corrupt      (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
     .auto_tl_in_d_ready             (_out_xbar_auto_out_1_d_ready),	// PeripheryBus.scala:50:30
     .auto_buffer_out_a_valid        (auto_coupler_to_l2_ctrl_buffer_out_a_valid),
     .auto_buffer_out_a_bits_opcode  (auto_coupler_to_l2_ctrl_buffer_out_a_bits_opcode),
@@ -926,123 +703,11 @@ module PeripheryBus_1(
     .auto_tl_in_d_bits_data         (_coupler_to_l2_ctrl_auto_tl_in_d_bits_data),
     .auto_tl_in_d_bits_corrupt      (_coupler_to_l2_ctrl_auto_tl_in_d_bits_corrupt)
   );
-  TLBuffer_10 buffer_1 (	// Buffer.scala:68:28
-    .auto_in_a_valid         (auto_bus_xing_in_a_valid),
-    .auto_in_a_bits_opcode   (auto_bus_xing_in_a_bits_opcode),
-    .auto_in_a_bits_param    (auto_bus_xing_in_a_bits_param),
-    .auto_in_a_bits_size     (auto_bus_xing_in_a_bits_size),
-    .auto_in_a_bits_source   (auto_bus_xing_in_a_bits_source),
-    .auto_in_a_bits_address  (auto_bus_xing_in_a_bits_address),
-    .auto_in_a_bits_mask     (auto_bus_xing_in_a_bits_mask),
-    .auto_in_a_bits_data     (auto_bus_xing_in_a_bits_data),
-    .auto_in_a_bits_corrupt  (auto_bus_xing_in_a_bits_corrupt),
-    .auto_in_d_ready         (auto_bus_xing_in_d_ready),
-    .auto_out_a_ready        (_in_xbar_auto_in_0_a_ready),	// PeripheryBus.scala:49:29
-    .auto_out_d_valid        (_in_xbar_auto_in_0_d_valid),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_opcode  (_in_xbar_auto_in_0_d_bits_opcode),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_param   (_in_xbar_auto_in_0_d_bits_param),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_size    (_in_xbar_auto_in_0_d_bits_size),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_source  (_in_xbar_auto_in_0_d_bits_source),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_sink    (_in_xbar_auto_in_0_d_bits_sink),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_denied  (_in_xbar_auto_in_0_d_bits_denied),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_data    (_in_xbar_auto_in_0_d_bits_data),	// PeripheryBus.scala:49:29
-    .auto_out_d_bits_corrupt (_in_xbar_auto_in_0_d_bits_corrupt),	// PeripheryBus.scala:49:29
-    .auto_in_a_ready         (auto_bus_xing_in_a_ready),
-    .auto_in_d_valid         (auto_bus_xing_in_d_valid),
-    .auto_in_d_bits_opcode   (auto_bus_xing_in_d_bits_opcode),
-    .auto_in_d_bits_param    (auto_bus_xing_in_d_bits_param),
-    .auto_in_d_bits_size     (auto_bus_xing_in_d_bits_size),
-    .auto_in_d_bits_source   (auto_bus_xing_in_d_bits_source),
-    .auto_in_d_bits_sink     (auto_bus_xing_in_d_bits_sink),
-    .auto_in_d_bits_denied   (auto_bus_xing_in_d_bits_denied),
-    .auto_in_d_bits_data     (auto_bus_xing_in_d_bits_data),
-    .auto_in_d_bits_corrupt  (auto_bus_xing_in_d_bits_corrupt),
-    .auto_out_a_valid        (_buffer_1_auto_out_a_valid),
-    .auto_out_a_bits_opcode  (_buffer_1_auto_out_a_bits_opcode),
-    .auto_out_a_bits_param   (_buffer_1_auto_out_a_bits_param),
-    .auto_out_a_bits_size    (_buffer_1_auto_out_a_bits_size),
-    .auto_out_a_bits_source  (_buffer_1_auto_out_a_bits_source),
-    .auto_out_a_bits_address (_buffer_1_auto_out_a_bits_address),
-    .auto_out_a_bits_mask    (_buffer_1_auto_out_a_bits_mask),
-    .auto_out_a_bits_data    (_buffer_1_auto_out_a_bits_data),
-    .auto_out_a_bits_corrupt (_buffer_1_auto_out_a_bits_corrupt),
-    .auto_out_d_ready        (_buffer_1_auto_out_d_ready)
-  );
-  TLInterconnectCoupler_14 coupler_to_bus_named_subsystem_pbus (	// LazyModule.scala:432:27
-    .auto_widget_in_a_valid           (_out_xbar_auto_out_2_a_valid),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_opcode     (_out_xbar_auto_out_2_a_bits_opcode),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_param      (_out_xbar_auto_out_2_a_bits_param),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_size       (_out_xbar_auto_out_2_a_bits_size),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_source     (_out_xbar_auto_out_2_a_bits_source),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_address    (_out_xbar_auto_out_2_a_bits_address),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_mask       (_out_xbar_auto_out_2_a_bits_mask),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_data       (_out_xbar_auto_out_2_a_bits_data),	// PeripheryBus.scala:50:30
-    .auto_widget_in_a_bits_corrupt    (_out_xbar_auto_out_2_a_bits_corrupt),	// PeripheryBus.scala:50:30
-    .auto_widget_in_d_ready           (_out_xbar_auto_out_2_d_ready),	// PeripheryBus.scala:50:30
-    .auto_bus_xing_out_a_ready
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_ready),
-    .auto_bus_xing_out_d_valid
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_valid),
-    .auto_bus_xing_out_d_bits_opcode
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_opcode),
-    .auto_bus_xing_out_d_bits_param
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_param),
-    .auto_bus_xing_out_d_bits_size
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_size),
-    .auto_bus_xing_out_d_bits_source
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_source),
-    .auto_bus_xing_out_d_bits_sink
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_sink),
-    .auto_bus_xing_out_d_bits_denied
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_denied),
-    .auto_bus_xing_out_d_bits_data
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_data),
-    .auto_bus_xing_out_d_bits_corrupt
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_bits_corrupt),
-    .auto_widget_in_a_ready
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_a_ready),
-    .auto_widget_in_d_valid
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_valid),
-    .auto_widget_in_d_bits_opcode
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_opcode),
-    .auto_widget_in_d_bits_param
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_param),
-    .auto_widget_in_d_bits_size
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_size),
-    .auto_widget_in_d_bits_source
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_source),
-    .auto_widget_in_d_bits_sink
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_sink),
-    .auto_widget_in_d_bits_denied
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_denied),
-    .auto_widget_in_d_bits_data
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_data),
-    .auto_widget_in_d_bits_corrupt
-      (_coupler_to_bus_named_subsystem_pbus_auto_widget_in_d_bits_corrupt),
-    .auto_bus_xing_out_a_valid
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_valid),
-    .auto_bus_xing_out_a_bits_opcode
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_opcode),
-    .auto_bus_xing_out_a_bits_param
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_param),
-    .auto_bus_xing_out_a_bits_size
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_size),
-    .auto_bus_xing_out_a_bits_source
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_source),
-    .auto_bus_xing_out_a_bits_address
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_address),
-    .auto_bus_xing_out_a_bits_mask
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_mask),
-    .auto_bus_xing_out_a_bits_data
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_data),
-    .auto_bus_xing_out_a_bits_corrupt
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_corrupt),
-    .auto_bus_xing_out_d_ready
-      (auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_d_ready)
-  );
   TLInterconnectCoupler_15 coupler_to_plic (	// LazyModule.scala:432:27
-    .clock                              (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                              (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_fragmenter_out_a_ready        (auto_coupler_to_plic_fragmenter_out_a_ready),
     .auto_fragmenter_out_d_valid        (auto_coupler_to_plic_fragmenter_out_d_valid),
     .auto_fragmenter_out_d_bits_opcode
@@ -1050,16 +715,14 @@ module PeripheryBus_1(
     .auto_fragmenter_out_d_bits_size    (auto_coupler_to_plic_fragmenter_out_d_bits_size),
     .auto_fragmenter_out_d_bits_source
       (auto_coupler_to_plic_fragmenter_out_d_bits_source),
-    .auto_fragmenter_out_d_bits_data    (auto_coupler_to_plic_fragmenter_out_d_bits_data),
     .auto_tl_in_a_valid                 (_out_xbar_auto_out_3_a_valid),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_opcode           (_out_xbar_auto_out_3_a_bits_opcode),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_param            (_out_xbar_auto_out_3_a_bits_param),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_opcode           (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_param            (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_size             (_out_xbar_auto_out_3_a_bits_size),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_source           (_out_xbar_auto_out_3_a_bits_source),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_source           (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_address          (_out_xbar_auto_out_3_a_bits_address),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_mask             (_out_xbar_auto_out_3_a_bits_mask),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_data             (_out_xbar_auto_out_3_a_bits_data),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_corrupt          (_out_xbar_auto_out_3_a_bits_corrupt),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_mask             (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_corrupt          (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
     .auto_tl_in_d_ready                 (_out_xbar_auto_out_3_d_ready),	// PeripheryBus.scala:50:30
     .auto_fragmenter_out_a_valid        (auto_coupler_to_plic_fragmenter_out_a_valid),
     .auto_fragmenter_out_a_bits_opcode
@@ -1072,20 +735,19 @@ module PeripheryBus_1(
     .auto_fragmenter_out_a_bits_address
       (auto_coupler_to_plic_fragmenter_out_a_bits_address),
     .auto_fragmenter_out_a_bits_mask    (auto_coupler_to_plic_fragmenter_out_a_bits_mask),
-    .auto_fragmenter_out_a_bits_data    (auto_coupler_to_plic_fragmenter_out_a_bits_data),
     .auto_fragmenter_out_a_bits_corrupt
       (auto_coupler_to_plic_fragmenter_out_a_bits_corrupt),
     .auto_fragmenter_out_d_ready        (auto_coupler_to_plic_fragmenter_out_d_ready),
     .auto_tl_in_a_ready                 (_coupler_to_plic_auto_tl_in_a_ready),
     .auto_tl_in_d_valid                 (_coupler_to_plic_auto_tl_in_d_valid),
-    .auto_tl_in_d_bits_opcode           (_coupler_to_plic_auto_tl_in_d_bits_opcode),
     .auto_tl_in_d_bits_size             (_coupler_to_plic_auto_tl_in_d_bits_size),
-    .auto_tl_in_d_bits_source           (_coupler_to_plic_auto_tl_in_d_bits_source),
-    .auto_tl_in_d_bits_data             (_coupler_to_plic_auto_tl_in_d_bits_data)
+    .auto_tl_in_d_bits_source           (_coupler_to_plic_auto_tl_in_d_bits_source)
   );
   TLInterconnectCoupler_16 coupler_to_clint (	// LazyModule.scala:432:27
-    .clock                              (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                              (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_fragmenter_out_a_ready        (auto_coupler_to_clint_fragmenter_out_a_ready),
     .auto_fragmenter_out_d_valid        (auto_coupler_to_clint_fragmenter_out_d_valid),
     .auto_fragmenter_out_d_bits_opcode
@@ -1094,17 +756,14 @@ module PeripheryBus_1(
       (auto_coupler_to_clint_fragmenter_out_d_bits_size),
     .auto_fragmenter_out_d_bits_source
       (auto_coupler_to_clint_fragmenter_out_d_bits_source),
-    .auto_fragmenter_out_d_bits_data
-      (auto_coupler_to_clint_fragmenter_out_d_bits_data),
     .auto_tl_in_a_valid                 (_out_xbar_auto_out_4_a_valid),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_opcode           (_out_xbar_auto_out_4_a_bits_opcode),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_param            (_out_xbar_auto_out_4_a_bits_param),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_opcode           (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_param            (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_size             (_out_xbar_auto_out_4_a_bits_size),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_source           (_out_xbar_auto_out_4_a_bits_source),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_source           (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_address          (_out_xbar_auto_out_4_a_bits_address),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_mask             (_out_xbar_auto_out_4_a_bits_mask),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_data             (_out_xbar_auto_out_4_a_bits_data),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_corrupt          (_out_xbar_auto_out_4_a_bits_corrupt),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_mask             (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_corrupt          (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
     .auto_tl_in_d_ready                 (_out_xbar_auto_out_4_d_ready),	// PeripheryBus.scala:50:30
     .auto_fragmenter_out_a_valid        (auto_coupler_to_clint_fragmenter_out_a_valid),
     .auto_fragmenter_out_a_bits_opcode
@@ -1119,21 +778,19 @@ module PeripheryBus_1(
       (auto_coupler_to_clint_fragmenter_out_a_bits_address),
     .auto_fragmenter_out_a_bits_mask
       (auto_coupler_to_clint_fragmenter_out_a_bits_mask),
-    .auto_fragmenter_out_a_bits_data
-      (auto_coupler_to_clint_fragmenter_out_a_bits_data),
     .auto_fragmenter_out_a_bits_corrupt
       (auto_coupler_to_clint_fragmenter_out_a_bits_corrupt),
     .auto_fragmenter_out_d_ready        (auto_coupler_to_clint_fragmenter_out_d_ready),
     .auto_tl_in_a_ready                 (_coupler_to_clint_auto_tl_in_a_ready),
     .auto_tl_in_d_valid                 (_coupler_to_clint_auto_tl_in_d_valid),
-    .auto_tl_in_d_bits_opcode           (_coupler_to_clint_auto_tl_in_d_bits_opcode),
     .auto_tl_in_d_bits_size             (_coupler_to_clint_auto_tl_in_d_bits_size),
-    .auto_tl_in_d_bits_source           (_coupler_to_clint_auto_tl_in_d_bits_source),
-    .auto_tl_in_d_bits_data             (_coupler_to_clint_auto_tl_in_d_bits_data)
+    .auto_tl_in_d_bits_source           (_coupler_to_clint_auto_tl_in_d_bits_source)
   );
   TLInterconnectCoupler_17 coupler_to_debug (	// LazyModule.scala:432:27
-    .clock                              (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                              (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_fragmenter_out_a_ready        (auto_coupler_to_debug_fragmenter_out_a_ready),
     .auto_fragmenter_out_d_valid        (auto_coupler_to_debug_fragmenter_out_d_valid),
     .auto_fragmenter_out_d_bits_opcode
@@ -1142,17 +799,14 @@ module PeripheryBus_1(
       (auto_coupler_to_debug_fragmenter_out_d_bits_size),
     .auto_fragmenter_out_d_bits_source
       (auto_coupler_to_debug_fragmenter_out_d_bits_source),
-    .auto_fragmenter_out_d_bits_data
-      (auto_coupler_to_debug_fragmenter_out_d_bits_data),
     .auto_tl_in_a_valid                 (_out_xbar_auto_out_5_a_valid),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_opcode           (_out_xbar_auto_out_5_a_bits_opcode),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_param            (_out_xbar_auto_out_5_a_bits_param),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_opcode           (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_param            (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_size             (_out_xbar_auto_out_5_a_bits_size),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_source           (_out_xbar_auto_out_5_a_bits_source),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_source           (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_address          (_out_xbar_auto_out_5_a_bits_address),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_mask             (_out_xbar_auto_out_5_a_bits_mask),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_data             (_out_xbar_auto_out_5_a_bits_data),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_corrupt          (_out_xbar_auto_out_5_a_bits_corrupt),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_mask             (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_corrupt          (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
     .auto_tl_in_d_ready                 (_out_xbar_auto_out_5_d_ready),	// PeripheryBus.scala:50:30
     .auto_fragmenter_out_a_valid        (auto_coupler_to_debug_fragmenter_out_a_valid),
     .auto_fragmenter_out_a_bits_opcode
@@ -1167,37 +821,33 @@ module PeripheryBus_1(
       (auto_coupler_to_debug_fragmenter_out_a_bits_address),
     .auto_fragmenter_out_a_bits_mask
       (auto_coupler_to_debug_fragmenter_out_a_bits_mask),
-    .auto_fragmenter_out_a_bits_data
-      (auto_coupler_to_debug_fragmenter_out_a_bits_data),
     .auto_fragmenter_out_a_bits_corrupt
       (auto_coupler_to_debug_fragmenter_out_a_bits_corrupt),
     .auto_fragmenter_out_d_ready        (auto_coupler_to_debug_fragmenter_out_d_ready),
     .auto_tl_in_a_ready                 (_coupler_to_debug_auto_tl_in_a_ready),
     .auto_tl_in_d_valid                 (_coupler_to_debug_auto_tl_in_d_valid),
-    .auto_tl_in_d_bits_opcode           (_coupler_to_debug_auto_tl_in_d_bits_opcode),
     .auto_tl_in_d_bits_size             (_coupler_to_debug_auto_tl_in_d_bits_size),
-    .auto_tl_in_d_bits_source           (_coupler_to_debug_auto_tl_in_d_bits_source),
-    .auto_tl_in_d_bits_data             (_coupler_to_debug_auto_tl_in_d_bits_data)
+    .auto_tl_in_d_bits_source           (_coupler_to_debug_auto_tl_in_d_bits_source)
   );
   TLInterconnectCoupler_24 coupler_to_bootrom (	// LazyModule.scala:432:27
-    .clock                              (_fixedClockNode_auto_out_0_clock),	// ClockGroup.scala:106:107
-    .reset                              (_fixedClockNode_auto_out_0_reset),	// ClockGroup.scala:106:107
+    .clock
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_clock),
+    .reset
+      (auto_subsystem_cbus_clock_groups_in_member_subsystem_cbus_0_reset),
     .auto_fragmenter_out_a_ready        (auto_coupler_to_bootrom_fragmenter_out_a_ready),
     .auto_fragmenter_out_d_valid        (auto_coupler_to_bootrom_fragmenter_out_d_valid),
     .auto_fragmenter_out_d_bits_size
       (auto_coupler_to_bootrom_fragmenter_out_d_bits_size),
     .auto_fragmenter_out_d_bits_source
       (auto_coupler_to_bootrom_fragmenter_out_d_bits_source),
-    .auto_fragmenter_out_d_bits_data
-      (auto_coupler_to_bootrom_fragmenter_out_d_bits_data),
     .auto_tl_in_a_valid                 (_out_xbar_auto_out_6_a_valid),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_opcode           (_out_xbar_auto_out_6_a_bits_opcode),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_param            (_out_xbar_auto_out_6_a_bits_param),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_opcode           (_buffer_auto_out_a_bits_opcode),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_param            (_buffer_auto_out_a_bits_param),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_size             (_out_xbar_auto_out_6_a_bits_size),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_source           (_out_xbar_auto_out_6_a_bits_source),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_source           (_buffer_auto_out_a_bits_source),	// Buffer.scala:68:28
     .auto_tl_in_a_bits_address          (_out_xbar_auto_out_6_a_bits_address),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_mask             (_out_xbar_auto_out_6_a_bits_mask),	// PeripheryBus.scala:50:30
-    .auto_tl_in_a_bits_corrupt          (_out_xbar_auto_out_6_a_bits_corrupt),	// PeripheryBus.scala:50:30
+    .auto_tl_in_a_bits_mask             (_buffer_auto_out_a_bits_mask),	// Buffer.scala:68:28
+    .auto_tl_in_a_bits_corrupt          (_buffer_auto_out_a_bits_corrupt),	// Buffer.scala:68:28
     .auto_tl_in_d_ready                 (_out_xbar_auto_out_6_d_ready),	// PeripheryBus.scala:50:30
     .auto_fragmenter_out_a_valid        (auto_coupler_to_bootrom_fragmenter_out_a_valid),
     .auto_fragmenter_out_a_bits_opcode
@@ -1214,31 +864,33 @@ module PeripheryBus_1(
       (auto_coupler_to_bootrom_fragmenter_out_a_bits_mask),
     .auto_fragmenter_out_a_bits_corrupt
       (auto_coupler_to_bootrom_fragmenter_out_a_bits_corrupt),
-    .auto_fragmenter_out_d_ready        (auto_coupler_to_bootrom_fragmenter_out_d_ready),
     .auto_tl_in_a_ready                 (_coupler_to_bootrom_auto_tl_in_a_ready),
-    .auto_tl_in_d_valid                 (_coupler_to_bootrom_auto_tl_in_d_valid),
     .auto_tl_in_d_bits_size             (_coupler_to_bootrom_auto_tl_in_d_bits_size),
-    .auto_tl_in_d_bits_source           (_coupler_to_bootrom_auto_tl_in_d_bits_source),
-    .auto_tl_in_d_bits_data             (_coupler_to_bootrom_auto_tl_in_d_bits_data)
+    .auto_tl_in_d_bits_source           (_coupler_to_bootrom_auto_tl_in_d_bits_source)
   );
-  TLInterconnectCoupler_25 coupler_from_port_named_custom_boot_pin (	// LazyModule.scala:432:27
-    .auto_tl_in_a_valid         (bundleOut_0_1_a_valid),	// Conditional.scala:39:67, :40:58, CustomBootPin.scala:47:20
-    .auto_tl_in_a_bits_address  (_GEN ? 31'h4000 : 31'h2000000),	// Conditional.scala:37:30, :39:67, CustomBootPin.scala:54:23, Edges.scala:470:15
-    .auto_tl_in_a_bits_data     (_GEN ? 64'h80000000 : 64'h1),	// Conditional.scala:37:30, :39:67, CustomBootPin.scala:54:23, Edges.scala:472:15
-    .auto_tl_out_a_ready        (_in_xbar_auto_in_1_a_ready),	// PeripheryBus.scala:49:29
-    .auto_tl_out_d_valid        (_in_xbar_auto_in_1_d_valid),	// PeripheryBus.scala:49:29
-    .auto_tl_in_a_ready
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_in_a_ready),
-    .auto_tl_in_d_valid
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_in_d_valid),
-    .auto_tl_out_a_valid
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_out_a_valid),
-    .auto_tl_out_a_bits_address
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_out_a_bits_address),
-    .auto_tl_out_a_bits_data
-      (_coupler_from_port_named_custom_boot_pin_auto_tl_out_a_bits_data)
-  );
-  assign clock = _fixedClockNode_auto_out_0_clock;	// ClockGroup.scala:106:107
-  assign reset = _fixedClockNode_auto_out_0_reset;	// ClockGroup.scala:106:107
+  assign auto_coupler_to_bootrom_fragmenter_out_d_ready = _out_xbar_auto_out_6_d_ready;	// PeripheryBus.scala:50:30
+  assign auto_coupler_to_debug_fragmenter_out_a_bits_data = _buffer_auto_out_a_bits_data;	// Buffer.scala:68:28
+  assign auto_coupler_to_clint_fragmenter_out_a_bits_data = _buffer_auto_out_a_bits_data;	// Buffer.scala:68:28
+  assign auto_coupler_to_plic_fragmenter_out_a_bits_data = _buffer_auto_out_a_bits_data;	// Buffer.scala:68:28
+  assign auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_opcode =
+    _buffer_auto_out_a_bits_opcode;	// Buffer.scala:68:28
+  assign auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_param =
+    _buffer_auto_out_a_bits_param;	// Buffer.scala:68:28
+  assign auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_source =
+    _buffer_auto_out_a_bits_source;	// Buffer.scala:68:28
+  assign auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_address =
+    _buffer_auto_out_a_bits_address;	// Buffer.scala:68:28
+  assign auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_mask =
+    _buffer_auto_out_a_bits_mask;	// Buffer.scala:68:28
+  assign auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_data =
+    _buffer_auto_out_a_bits_data;	// Buffer.scala:68:28
+  assign auto_coupler_to_bus_named_subsystem_pbus_bus_xing_out_a_bits_corrupt =
+    _buffer_auto_out_a_bits_corrupt;	// Buffer.scala:68:28
+  assign auto_bus_xing_in_d_bits_opcode = _atomics_auto_in_d_bits_opcode;	// AtomicAutomata.scala:283:29
+  assign auto_bus_xing_in_d_bits_param = _buffer_auto_in_d_bits_param;	// Buffer.scala:68:28
+  assign auto_bus_xing_in_d_bits_size = _buffer_auto_in_d_bits_size;	// Buffer.scala:68:28
+  assign auto_bus_xing_in_d_bits_sink = _buffer_auto_in_d_bits_sink;	// Buffer.scala:68:28
+  assign auto_bus_xing_in_d_bits_denied = _atomics_auto_in_d_bits_denied;	// AtomicAutomata.scala:283:29
+  assign auto_bus_xing_in_d_bits_corrupt = _atomics_auto_in_d_bits_corrupt;	// AtomicAutomata.scala:283:29
 endmodule
 

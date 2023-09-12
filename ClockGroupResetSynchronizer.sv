@@ -97,19 +97,12 @@ module ClockGroupResetSynchronizer(
          auto_in_member_allClocks_subsystem_sbus_0_reset,
          auto_in_member_allClocks_implicit_clock_clock,
          auto_in_member_allClocks_implicit_clock_reset,
-  output auto_out_member_allClocks_subsystem_cbus_0_clock,
-         auto_out_member_allClocks_subsystem_cbus_0_reset,
-         auto_out_member_allClocks_subsystem_mbus_0_clock,
+  output auto_out_member_allClocks_subsystem_cbus_0_reset,
          auto_out_member_allClocks_subsystem_mbus_0_reset,
-         auto_out_member_allClocks_subsystem_fbus_0_clock,
          auto_out_member_allClocks_subsystem_fbus_0_reset,
-         auto_out_member_allClocks_subsystem_pbus_0_clock,
          auto_out_member_allClocks_subsystem_pbus_0_reset,
-         auto_out_member_allClocks_subsystem_sbus_1_clock,
          auto_out_member_allClocks_subsystem_sbus_1_reset,
-         auto_out_member_allClocks_subsystem_sbus_0_clock,
          auto_out_member_allClocks_subsystem_sbus_0_reset,
-         auto_out_member_allClocks_implicit_clock_clock,
          auto_out_member_allClocks_implicit_clock_reset
 );
 
@@ -148,19 +141,5 @@ module ClockGroupResetSynchronizer(
     .reset         (auto_in_member_allClocks_subsystem_cbus_0_reset),
     .io_sync_reset (auto_out_member_allClocks_subsystem_cbus_0_reset)
   );
-  assign auto_out_member_allClocks_subsystem_cbus_0_clock =
-    auto_in_member_allClocks_subsystem_cbus_0_clock;
-  assign auto_out_member_allClocks_subsystem_mbus_0_clock =
-    auto_in_member_allClocks_subsystem_mbus_0_clock;
-  assign auto_out_member_allClocks_subsystem_fbus_0_clock =
-    auto_in_member_allClocks_subsystem_fbus_0_clock;
-  assign auto_out_member_allClocks_subsystem_pbus_0_clock =
-    auto_in_member_allClocks_subsystem_pbus_0_clock;
-  assign auto_out_member_allClocks_subsystem_sbus_1_clock =
-    auto_in_member_allClocks_subsystem_sbus_1_clock;
-  assign auto_out_member_allClocks_subsystem_sbus_0_clock =
-    auto_in_member_allClocks_subsystem_sbus_0_clock;
-  assign auto_out_member_allClocks_implicit_clock_clock =
-    auto_in_member_allClocks_implicit_clock_clock;
 endmodule
 

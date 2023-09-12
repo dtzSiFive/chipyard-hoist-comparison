@@ -92,7 +92,6 @@ module TLXbar_2(
   input  [7:0]  auto_in_a_bits_source,
   input  [30:0] auto_in_a_bits_address,
   input  [7:0]  auto_in_a_bits_mask,
-  input  [63:0] auto_in_a_bits_data,
   input         auto_in_a_bits_corrupt,
                 auto_in_d_ready,
                 auto_out_2_a_ready,
@@ -128,35 +127,13 @@ module TLXbar_2(
   output [63:0] auto_in_d_bits_data,
   output        auto_in_d_bits_corrupt,
                 auto_out_2_a_valid,
-  output [2:0]  auto_out_2_a_bits_opcode,
-                auto_out_2_a_bits_param,
-                auto_out_2_a_bits_size,
-  output [7:0]  auto_out_2_a_bits_source,
   output [20:0] auto_out_2_a_bits_address,
-  output [7:0]  auto_out_2_a_bits_mask,
-  output [63:0] auto_out_2_a_bits_data,
-  output        auto_out_2_a_bits_corrupt,
-                auto_out_2_d_ready,
+  output        auto_out_2_d_ready,
                 auto_out_1_a_valid,
-  output [2:0]  auto_out_1_a_bits_opcode,
-                auto_out_1_a_bits_param,
-                auto_out_1_a_bits_size,
-  output [7:0]  auto_out_1_a_bits_source,
-  output [30:0] auto_out_1_a_bits_address,
-  output [7:0]  auto_out_1_a_bits_mask,
-  output [63:0] auto_out_1_a_bits_data,
-  output        auto_out_1_a_bits_corrupt,
                 auto_out_1_d_ready,
                 auto_out_0_a_valid,
-  output [2:0]  auto_out_0_a_bits_opcode,
-                auto_out_0_a_bits_param,
-                auto_out_0_a_bits_size,
-  output [7:0]  auto_out_0_a_bits_source,
   output [14:0] auto_out_0_a_bits_address,
-  output [7:0]  auto_out_0_a_bits_mask,
-  output [63:0] auto_out_0_a_bits_data,
-  output        auto_out_0_a_bits_corrupt,
-                auto_out_0_d_ready
+  output        auto_out_0_d_ready
 );
 
   wire       requestAIO_0_0 =
@@ -333,34 +310,12 @@ module TLXbar_2(
     | (muxStateEarly_2 ? auto_out_2_d_bits_data : 64'h0);	// Arbiter.scala:117:30, Bundles.scala:257:54, Mux.scala:27:72
   assign auto_in_d_bits_corrupt = out_12_bits_corrupt;	// Mux.scala:27:72
   assign auto_out_2_a_valid = auto_in_a_valid & requestAIO_0_2;	// Parameters.scala:137:{49,52,67}, Xbar.scala:428:50
-  assign auto_out_2_a_bits_opcode = auto_in_a_bits_opcode;
-  assign auto_out_2_a_bits_param = auto_in_a_bits_param;
-  assign auto_out_2_a_bits_size = auto_in_a_bits_size;
-  assign auto_out_2_a_bits_source = auto_in_a_bits_source;
   assign auto_out_2_a_bits_address = auto_in_a_bits_address[20:0];	// BundleMap.scala:247:19
-  assign auto_out_2_a_bits_mask = auto_in_a_bits_mask;
-  assign auto_out_2_a_bits_data = auto_in_a_bits_data;
-  assign auto_out_2_a_bits_corrupt = auto_in_a_bits_corrupt;
   assign auto_out_2_d_ready = auto_in_d_ready & (idle ? readys_readys[2] : state_2);	// Arbiter.scala:26:18, :88:28, :95:86, :116:26, :121:24, :123:31
   assign auto_out_1_a_valid = auto_in_a_valid & requestAIO_0_1;	// Parameters.scala:137:{49,52,67}, Xbar.scala:428:50
-  assign auto_out_1_a_bits_opcode = auto_in_a_bits_opcode;
-  assign auto_out_1_a_bits_param = auto_in_a_bits_param;
-  assign auto_out_1_a_bits_size = auto_in_a_bits_size;
-  assign auto_out_1_a_bits_source = auto_in_a_bits_source;
-  assign auto_out_1_a_bits_address = auto_in_a_bits_address;
-  assign auto_out_1_a_bits_mask = auto_in_a_bits_mask;
-  assign auto_out_1_a_bits_data = auto_in_a_bits_data;
-  assign auto_out_1_a_bits_corrupt = auto_in_a_bits_corrupt;
   assign auto_out_1_d_ready = auto_in_d_ready & (idle ? readys_readys[1] : state_1);	// Arbiter.scala:26:18, :88:28, :95:86, :116:26, :121:24, :123:31
   assign auto_out_0_a_valid = auto_in_a_valid & requestAIO_0_0;	// Parameters.scala:137:{49,52,67}, Xbar.scala:428:50
-  assign auto_out_0_a_bits_opcode = auto_in_a_bits_opcode;
-  assign auto_out_0_a_bits_param = auto_in_a_bits_param;
-  assign auto_out_0_a_bits_size = auto_in_a_bits_size;
-  assign auto_out_0_a_bits_source = auto_in_a_bits_source;
   assign auto_out_0_a_bits_address = auto_in_a_bits_address[14:0];	// BundleMap.scala:247:19
-  assign auto_out_0_a_bits_mask = auto_in_a_bits_mask;
-  assign auto_out_0_a_bits_data = auto_in_a_bits_data;
-  assign auto_out_0_a_bits_corrupt = auto_in_a_bits_corrupt;
   assign auto_out_0_d_ready = auto_in_d_ready & (idle ? readys_readys[0] : state_0);	// Arbiter.scala:26:18, :88:28, :95:86, :116:26, :121:24, :123:31
 endmodule
 

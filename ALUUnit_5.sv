@@ -100,16 +100,10 @@ module ALUUnit_5(
                 io_req_bits_uop_is_jal,
                 io_req_bits_uop_is_sfb,
   input  [15:0] io_req_bits_uop_br_mask,
-  input  [3:0]  io_req_bits_uop_br_tag,
-  input  [4:0]  io_req_bits_uop_ftq_idx,
-  input         io_req_bits_uop_edge_inst,
-  input  [5:0]  io_req_bits_uop_pc_lob,
   input         io_req_bits_uop_taken,
   input  [19:0] io_req_bits_uop_imm_packed,
   input  [6:0]  io_req_bits_uop_rob_idx,
-  input  [4:0]  io_req_bits_uop_ldq_idx,
-                io_req_bits_uop_stq_idx,
-  input  [6:0]  io_req_bits_uop_pdst,
+                io_req_bits_uop_pdst,
                 io_req_bits_uop_prs1,
   input         io_req_bits_uop_bypassable,
                 io_req_bits_uop_is_amo,
@@ -130,19 +124,7 @@ module ALUUnit_5(
                 io_resp_bits_uop_uses_stq,
   output [1:0]  io_resp_bits_uop_dst_rtype,
   output [63:0] io_resp_bits_data,
-  output        io_bypass_0_valid,
-  output [6:0]  io_bypass_0_bits_uop_pdst,
-  output [1:0]  io_bypass_0_bits_uop_dst_rtype,
-  output [63:0] io_bypass_0_bits_data,
-  output        io_brinfo_uop_is_rvc,
-  output [15:0] io_brinfo_uop_br_mask,
-  output [3:0]  io_brinfo_uop_br_tag,
-  output [4:0]  io_brinfo_uop_ftq_idx,
-  output        io_brinfo_uop_edge_inst,
-  output [5:0]  io_brinfo_uop_pc_lob,
-  output [6:0]  io_brinfo_uop_rob_idx,
-  output [4:0]  io_brinfo_uop_ldq_idx,
-                io_brinfo_uop_stq_idx,
+                io_bypass_0_bits_data,
   output        io_brinfo_valid,
                 io_brinfo_mispredict,
                 io_brinfo_taken,
@@ -309,19 +291,7 @@ module ALUUnit_5(
   assign io_resp_bits_uop_uses_stq = r_uops_0_uses_stq;	// functional-unit.scala:229:23
   assign io_resp_bits_uop_dst_rtype = r_uops_0_dst_rtype;	// functional-unit.scala:229:23
   assign io_resp_bits_data = r_data_0;	// functional-unit.scala:440:19
-  assign io_bypass_0_valid = io_req_valid;
-  assign io_bypass_0_bits_uop_pdst = io_req_bits_uop_pdst;
-  assign io_bypass_0_bits_uop_dst_rtype = io_req_bits_uop_dst_rtype;
   assign io_bypass_0_bits_data = _alu_out_T_5 ? io_req_bits_rs2_data : _alu_io_out;	// functional-unit.scala:320:19, :444:{8,30}
-  assign io_brinfo_uop_is_rvc = io_req_bits_uop_is_rvc;
-  assign io_brinfo_uop_br_mask = io_req_bits_uop_br_mask;
-  assign io_brinfo_uop_br_tag = io_req_bits_uop_br_tag;
-  assign io_brinfo_uop_ftq_idx = io_req_bits_uop_ftq_idx;
-  assign io_brinfo_uop_edge_inst = io_req_bits_uop_edge_inst;
-  assign io_brinfo_uop_pc_lob = io_req_bits_uop_pc_lob;
-  assign io_brinfo_uop_rob_idx = io_req_bits_uop_rob_idx;
-  assign io_brinfo_uop_ldq_idx = io_req_bits_uop_ldq_idx;
-  assign io_brinfo_uop_stq_idx = io_req_bits_uop_stq_idx;
   assign io_brinfo_valid = brinfo_valid;	// functional-unit.scala:366:15
   assign io_brinfo_mispredict =
     brinfo_valid

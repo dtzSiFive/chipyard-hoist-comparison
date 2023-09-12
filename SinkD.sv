@@ -94,9 +94,7 @@ module SinkD(
   input         io_d_bits_denied,
   input  [63:0] io_d_bits_data,
   input         io_d_bits_corrupt,
-  input  [2:0]  io_way,
-  input  [9:0]  io_set,
-  input         io_bs_adr_ready,
+                io_bs_adr_ready,
                 io_grant_safe,
   output        io_resp_valid,
                 io_resp_bits_last,
@@ -109,12 +107,8 @@ module SinkD(
   output [2:0]  io_source,
   output        io_bs_adr_valid,
                 io_bs_adr_bits_noop,
-  output [2:0]  io_bs_adr_bits_way,
-  output [9:0]  io_bs_adr_bits_set,
   output [2:0]  io_bs_adr_bits_beat,
-  output [63:0] io_bs_dat_data,
-  output [9:0]  io_grant_req_set,
-  output [2:0]  io_grant_req_way
+  output [63:0] io_bs_dat_data
 );
 
   wire        _d_io_deq_ready_T_2;	// SinkD.scala:62:30
@@ -215,10 +209,6 @@ module SinkD(
   assign io_source = _d_io_deq_valid ? _d_io_deq_bits_source : io_source_r;	// Decoupled.scala:296:21, Reg.scala:15:16, SinkD.scala:56:19
   assign io_bs_adr_valid = (|counter) | _d_io_deq_valid & io_grant_safe;	// Decoupled.scala:296:21, Edges.scala:228:27, :230:25, SinkD.scala:63:{29,41}
   assign io_bs_adr_bits_noop = ~_d_io_deq_valid | ~(_d_io_deq_bits_opcode[0]);	// Decoupled.scala:296:21, Edges.scala:105:36, SinkD.scala:74:{26,35,38}
-  assign io_bs_adr_bits_way = io_way;
-  assign io_bs_adr_bits_set = io_set;
   assign io_bs_adr_bits_beat = _d_io_deq_valid ? beat : io_bs_adr_bits_beat_r;	// Decoupled.scala:296:21, Edges.scala:233:25, Reg.scala:15:16, SinkD.scala:77:29
-  assign io_grant_req_set = io_set;
-  assign io_grant_req_way = io_way;
 endmodule
 
